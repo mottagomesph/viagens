@@ -63,7 +63,6 @@
     position:relative;
     display:flex;
     flex-direction:column;
-    padding: calc(30px + var(--safe-top)) 26px calc(92px + var(--safe-bottom));
     overflow:hidden;
   }
 
@@ -74,7 +73,30 @@
     z-index:0;
   }
 
-  .slide > *{ position:relative; z-index:1; }
+  /* Área de conteúdo: rola internamente quando o texto (fonte grande,
+     tradução, etc.) não cabe na altura da tela. O espaço reservado para
+     a barra de navegação inferior fica FORA desta área, então nunca é
+     invadido — não importa o quanto o conteúdo cresça. */
+  .slide-content{
+    position:relative;
+    z-index:1;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: calc(30px + var(--safe-top)) 26px 28px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* faixa reservada e fixa para os controles de navegação —
+     nunca faz parte do fluxo rolável do conteúdo */
+  .nav-safe-area{
+    flex: 0 0 auto;
+    height: calc(72px + var(--safe-bottom));
+    position:relative;
+    z-index:1;
+  }
 
   /* ---------- progress dots ---------- */
   .progress{
@@ -102,7 +124,7 @@
 
   /* ---------- typography ---------- */
   .kicker{
-    font-size:13px;
+    font-size:0.8125rem;
     letter-spacing:0.04em;
     color: var(--text-dim);
     margin: 0 0 6px;
@@ -112,14 +134,14 @@
     font-family:'Fraunces', serif;
     font-optical-sizing:auto;
     font-weight:480;
-    font-size: clamp(34px, 10.5vw, 46px);
+    font-size: clamp(2.125rem, 10.5vw, 2.875rem);
     line-height:1.02;
     margin: 0 0 2px;
     color: var(--text);
     letter-spacing: -0.01em;
   }
   .dates{
-    font-size:15px;
+    font-size:0.9375rem;
     color: var(--gold);
     font-weight:600;
     margin:0 0 22px;
@@ -134,18 +156,18 @@
   .big-temp .num{
     font-family:'Fraunces', serif;
     font-weight:340;
-    font-size: clamp(88px, 30vw, 128px);
+    font-size: clamp(5.5rem, 30vw, 8rem);
     line-height:0.82;
     color: var(--text);
   }
   .big-temp .unit{
     font-family:'Fraunces', serif;
-    font-size: clamp(28px, 8vw, 38px);
+    font-size: clamp(1.75rem, 8vw, 2.375rem);
     color: var(--gold);
     padding-bottom: 0.14em;
   }
   .range-label{
-    font-size:14.5px;
+    font-size:0.90625rem;
     color: var(--text-dim);
     margin: 0 0 26px;
     line-height:1.5;
@@ -179,19 +201,19 @@
     margin-bottom:14px;
   }
   .card .label{
-    font-size:12.5px;
+    font-size:0.78125rem;
     color: var(--gold);
     font-weight:600;
     margin:0 0 8px;
   }
   .card p{
     margin:0;
-    font-size: 16.5px;
+    font-size: 1.03125rem;
     line-height:1.5;
     color: var(--text);
   }
   .card p.sub{
-    font-size:14px;
+    font-size:0.875rem;
     color: var(--text-dim);
     margin-top:8px;
     line-height:1.45;
@@ -201,14 +223,13 @@
     display:flex;
     align-items:center;
     gap:10px;
-    font-size:14.5px;
+    font-size:0.90625rem;
     color: var(--text-dim);
-    margin-top: auto;
+    margin-top:18px;
     padding-top:14px;
+    border-top: 1px solid var(--line);
   }
   .rain-note svg{ flex:none; opacity:0.75; }
-
-  .footer-spacer{ flex:1; }
 
   /* ---------- cover slide ---------- */
   .cover{
@@ -216,7 +237,7 @@
     align-items:flex-start;
   }
   .cover .eyebrow{
-    font-size:14px;
+    font-size:0.875rem;
     color: var(--gold);
     font-weight:600;
     margin-bottom:18px;
@@ -225,13 +246,13 @@
   .cover h1{
     font-family:'Fraunces', serif;
     font-weight:480;
-    font-size: clamp(40px, 12vw, 58px);
+    font-size: clamp(2.5rem, 12vw, 3.625rem);
     line-height:1.03;
     margin:0 0 18px;
     letter-spacing:-0.01em;
   }
   .cover p.lead{
-    font-size:17px;
+    font-size:1.0625rem;
     line-height:1.55;
     color: var(--text-dim);
     max-width: 30ch;
@@ -245,7 +266,7 @@
   .route .stop{
     display:flex; align-items:center; gap:14px;
     padding:11px 0;
-    font-size:15.5px;
+    font-size:0.96875rem;
     color:var(--text);
     border-bottom:1px solid var(--line);
   }
@@ -255,14 +276,14 @@
     background: var(--gold);
     flex:none;
   }
-  .route .stop .d{ color:var(--text-dim); font-size:13.5px; margin-left:auto; }
+  .route .stop .d{ color:var(--text-dim); font-size:0.84375rem; margin-left:auto; }
 
   /* ---------- closing slide ---------- */
-  .closing{ justify-content:center; }
+  .closing{ justify-content:flex-start; }
   .closing h1{
     font-family:'Fraunces', serif;
     font-weight:480;
-    font-size: clamp(32px, 9.5vw, 42px);
+    font-size: clamp(2rem, 9.5vw, 2.625rem);
     line-height:1.08;
     margin:0 0 20px;
   }
@@ -272,14 +293,14 @@
   }
   .closing .packitem{
     display:flex; gap:14px; align-items:flex-start;
-    font-size:15.5px; line-height:1.45;
+    font-size:0.96875rem; line-height:1.45;
   }
   .closing .packitem .ic{
     flex:none; width:26px; text-align:center; padding-top:1px;
-    color: var(--gold); font-size:17px;
+    color: var(--gold); font-size:1.0625rem;
   }
   .closing .note{
-    font-size:14px; color:var(--text-dim); line-height:1.55;
+    font-size:0.875rem; color:var(--text-dim); line-height:1.55;
     border-top:1px solid var(--line);
     padding-top:18px;
   }
@@ -316,7 +337,7 @@
     bottom: calc(38px + var(--safe-bottom));
     left:0; right:0;
     text-align:center;
-    font-size:12.5px;
+    font-size:0.78125rem;
     color: var(--text-dim);
     letter-spacing:0.04em;
     z-index:5;
@@ -336,127 +357,141 @@
   <div class="track" id="track">
 
     <!-- SLIDE 0 — CAPA -->
-    <section class="slide cover">
-      <p class="eyebrow">Roteiro em família</p>
-      <h1>O clima<br>da nossa<br>viagem</h1>
-      <p class="lead">Espanha e França, de 7 a 22 de novembro. Um resumo rápido do que esperar — e do que vestir — em cada cidade.</p>
-      <div class="route">
-        <div class="stop"><span class="dot"></span> Madri <span class="d">7–10 nov</span></div>
-        <div class="stop"><span class="dot"></span> Barcelona <span class="d">10–13 nov</span></div>
-        <div class="stop"><span class="dot"></span> Estrasburgo &amp; Colmar <span class="d">13–16 nov</span></div>
-        <div class="stop"><span class="dot"></span> Paris <span class="d">16–22 nov</span></div>
+    <section class="slide">
+      <div class="slide-content cover">
+        <p class="eyebrow">Roteiro em família</p>
+        <h1>O clima<br>da nossa<br>viagem</h1>
+        <p class="lead">Espanha e França, de 7 a 22 de novembro. Um resumo rápido do que esperar — e do que vestir — em cada cidade.</p>
+        <div class="route">
+          <div class="stop"><span class="dot"></span> Madri <span class="d">7–10 nov</span></div>
+          <div class="stop"><span class="dot"></span> Barcelona <span class="d">10–13 nov</span></div>
+          <div class="stop"><span class="dot"></span> Estrasburgo &amp; Colmar <span class="d">13–16 nov</span></div>
+          <div class="stop"><span class="dot"></span> Paris <span class="d">16–22 nov</span></div>
+        </div>
       </div>
+      <div class="nav-safe-area"></div>
     </section>
 
     <!-- SLIDE 1 — MADRI -->
     <section class="slide">
-      <p class="kicker">Primeira parada</p>
-      <h1 class="city">Madri</h1>
-      <p class="dates">7 a 10 de novembro</p>
+      <div class="slide-content">
+        <p class="kicker">Primeira parada</p>
+        <h1 class="city">Madri</h1>
+        <p class="dates">7 a 10 de novembro</p>
 
-      <div class="big-temp"><span class="num">15°</span><span class="unit">tarde</span></div>
-      <p class="range-label">Noites em torno de <b>7°</b>. A cidade mais quente e mais seca do roteiro.</p>
+        <div class="big-temp"><span class="num">15°</span><span class="unit">tarde</span></div>
+        <p class="range-label">Noites em torno de <b>7°</b>. A cidade mais quente e mais seca do roteiro.</p>
 
-      <div class="therm"><div class="mark" style="left:58%"></div></div>
+        <div class="therm"><div class="mark" style="left:58%"></div></div>
 
-      <div class="card">
-        <p class="label">Como se vestir</p>
-        <p>Uma jaqueta leve resolve o dia inteiro.</p>
-        <p class="sub">Pense num casaco de meia estação — o que você usaria numa manhã fresca em São Paulo em julho. À noite, um cachecol já é suficiente.</p>
+        <div class="card">
+          <p class="label">Como se vestir</p>
+          <p>Uma jaqueta leve resolve o dia inteiro.</p>
+          <p class="sub">Pense num casaco de meia estação — o que você usaria numa manhã fresca em São Paulo em julho. À noite, um cachecol já é suficiente.</p>
+        </div>
+
+        <div class="rain-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 2v9"/><path d="M8 6l4 5 4-5"/></svg>
+          Céu maiormente aberto — chuva não é o destaque por aqui.
+        </div>
       </div>
-
-      <div class="footer-spacer"></div>
-      <div class="rain-note">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 2v9"/><path d="M8 6l4 5 4-5"/></svg>
-        Céu maiormente aberto — chuva não é o destaque por aqui.
-      </div>
+      <div class="nav-safe-area"></div>
     </section>
 
     <!-- SLIDE 2 — BARCELONA -->
     <section class="slide">
-      <p class="kicker">Segunda parada</p>
-      <h1 class="city">Barcelona</h1>
-      <p class="dates">10 a 13 de novembro</p>
+      <div class="slide-content">
+        <p class="kicker">Segunda parada</p>
+        <h1 class="city">Barcelona</h1>
+        <p class="dates">10 a 13 de novembro</p>
 
-      <div class="big-temp"><span class="num">16°</span><span class="unit">tarde</span></div>
-      <p class="range-label">Noites em torno de <b>9°</b>. Um pouco mais amena que Madri, com o ar do Mediterrâneo.</p>
+        <div class="big-temp"><span class="num">16°</span><span class="unit">tarde</span></div>
+        <p class="range-label">Noites em torno de <b>9°</b>. Um pouco mais amena que Madri, com o ar do Mediterrâneo.</p>
 
-      <div class="therm"><div class="mark" style="left:64%"></div></div>
+        <div class="therm"><div class="mark" style="left:64%"></div></div>
 
-      <div class="card">
-        <p class="label">Como se vestir</p>
-        <p>Suéter ou jaqueta leve por cima de uma camisa.</p>
-        <p class="sub">De dia, dá para caminhar tranquilo. Ao anoitecer, vale ter um casaco mais fechado à mão — a brisa do mar refresca rápido.</p>
+        <div class="card">
+          <p class="label">Como se vestir</p>
+          <p>Suéter ou jaqueta leve por cima de uma camisa.</p>
+          <p class="sub">De dia, dá para caminhar tranquilo. Ao anoitecer, vale ter um casaco mais fechado à mão — a brisa do mar refresca rápido.</p>
+        </div>
+
+        <div class="rain-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 2v9"/><path d="M8 6l4 5 4-5"/></svg>
+          Pode passar uma garoa rápida — nada que atrapalhe o passeio.
+        </div>
       </div>
-
-      <div class="footer-spacer"></div>
-      <div class="rain-note">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 2v9"/><path d="M8 6l4 5 4-5"/></svg>
-        Pode passar uma garoa rápida — nada que atrapalhe o passeio.
-      </div>
+      <div class="nav-safe-area"></div>
     </section>
 
     <!-- SLIDE 3 — ESTRASBURGO / COLMAR -->
     <section class="slide">
-      <p class="kicker">Terceira parada</p>
-      <h1 class="city">Estrasburgo<br>&amp; Colmar</h1>
-      <p class="dates">13 a 16 de novembro</p>
+      <div class="slide-content">
+        <p class="kicker">Terceira parada</p>
+        <h1 class="city">Estrasburgo<br>&amp; Colmar</h1>
+        <p class="dates">13 a 16 de novembro</p>
 
-      <div class="big-temp"><span class="num">9°</span><span class="unit">tarde</span></div>
-      <p class="range-label">Noites perto de <b>3°</b>. É o trecho mais frio da viagem — bom já chegar preparado.</p>
+        <div class="big-temp"><span class="num">9°</span><span class="unit">tarde</span></div>
+        <p class="range-label">Noites perto de <b>3°</b>. É o trecho mais frio da viagem — bom já chegar preparado.</p>
 
-      <div class="therm"><div class="mark" style="left:22%"></div></div>
+        <div class="therm"><div class="mark" style="left:22%"></div></div>
 
-      <div class="card">
-        <p class="label">Como se vestir</p>
-        <p>Aqui entra o casaco de inverno de verdade.</p>
-        <p class="sub">Gorro, cachecol e luvas fazem diferença, principalmente nas ruas de pedra do centro histórico. Uma camada térmica por baixo ajuda bastante.</p>
+        <div class="card">
+          <p class="label">Como se vestir</p>
+          <p>Aqui entra o casaco de inverno de verdade.</p>
+          <p class="sub">Gorro, cachecol e luvas fazem diferença, principalmente nas ruas de pedra do centro histórico. Uma camada térmica por baixo ajuda bastante.</p>
+        </div>
+
+        <div class="rain-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
+          Charme de outono europeu — vale a pena curtir o friozinho.
+        </div>
       </div>
-
-      <div class="footer-spacer"></div>
-      <div class="rain-note">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v6M12 16v6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
-        Charme de outono europeu — vale a pena curtir o friozinho.
-      </div>
+      <div class="nav-safe-area"></div>
     </section>
 
     <!-- SLIDE 4 — PARIS -->
     <section class="slide">
-      <p class="kicker">Última parada</p>
-      <h1 class="city">Paris</h1>
-      <p class="dates">16 a 22 de novembro</p>
+      <div class="slide-content">
+        <p class="kicker">Última parada</p>
+        <h1 class="city">Paris</h1>
+        <p class="dates">16 a 22 de novembro</p>
 
-      <div class="big-temp"><span class="num">10°</span><span class="unit">tarde</span></div>
-      <p class="range-label">Noites por volta de <b>4°</b>, esfriando um pouco mais perto do fim da estadia.</p>
+        <div class="big-temp"><span class="num">10°</span><span class="unit">tarde</span></div>
+        <p class="range-label">Noites por volta de <b>4°</b>, esfriando um pouco mais perto do fim da estadia.</p>
 
-      <div class="therm"><div class="mark" style="left:30%"></div></div>
+        <div class="therm"><div class="mark" style="left:30%"></div></div>
 
-      <div class="card">
-        <p class="label">Como se vestir</p>
-        <p>Casaco de inverno, com uma camada extra para a noite.</p>
-        <p class="sub">É o trecho mais longo — os últimos dias tendem a ser os mais frios. Sapato fechado e confortável é o combinado da semana toda.</p>
+        <div class="card">
+          <p class="label">Como se vestir</p>
+          <p>Casaco de inverno, com uma camada extra para a noite.</p>
+          <p class="sub">É o trecho mais longo — os últimos dias tendem a ser os mais frios. Sapato fechado e confortável é o combinado da semana toda.</p>
+        </div>
+
+        <div class="rain-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 2v9"/><path d="M8 6l4 5 4-5"/></svg>
+          Leve chance de chuva em algum dia — nada que mude os planos.
+        </div>
       </div>
-
-      <div class="footer-spacer"></div>
-      <div class="rain-note">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 18a5 5 0 0 0-10 0"/><path d="M12 2v9"/><path d="M8 6l4 5 4-5"/></svg>
-        Leve chance de chuva em algum dia — nada que mude os planos.
-      </div>
+      <div class="nav-safe-area"></div>
     </section>
 
     <!-- SLIDE 5 — FECHAMENTO / MALA -->
-    <section class="slide closing">
-      <p class="kicker">Resumindo</p>
-      <h1>A mala da família</h1>
+    <section class="slide">
+      <div class="slide-content closing">
+        <p class="kicker">Resumindo</p>
+        <h1>A mala da família</h1>
 
-      <div class="packlist">
-        <div class="packitem"><span class="ic">①</span> Camadas: da jaqueta leve (Madri e Barcelona) ao casaco de inverno (Estrasburgo e Paris).</div>
-        <div class="packitem"><span class="ic">②</span> Cachecol, gorro e luvas — essenciais a partir de Estrasburgo.</div>
-        <div class="packitem"><span class="ic">③</span> Calçado fechado e confortável, bom para caminhar e para pedras de rua.</div>
-        <div class="packitem"><span class="ic">④</span> Uma capa leve de chuva na bagagem, só por garantia.</div>
+        <div class="packlist">
+          <div class="packitem"><span class="ic">①</span> Camadas: da jaqueta leve (Madri e Barcelona) ao casaco de inverno (Estrasburgo e Paris).</div>
+          <div class="packitem"><span class="ic">②</span> Cachecol, gorro e luvas — essenciais a partir de Estrasburgo.</div>
+          <div class="packitem"><span class="ic">③</span> Calçado fechado e confortável, bom para caminhar e para pedras de rua.</div>
+          <div class="packitem"><span class="ic">④</span> Uma capa leve de chuva na bagagem, só por garantia.</div>
+        </div>
+
+        <p class="note">Temperaturas médias de novembro, com base em décadas de dados históricos de cada cidade. Detalhes completos no documento do projeto.</p>
       </div>
-
-      <p class="note">Temperaturas médias de novembro, com base em décadas de dados históricos de cada cidade. Detalhes completos no documento do projeto.</p>
+      <div class="nav-safe-area"></div>
     </section>
 
   </div>
