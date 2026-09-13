@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4A070B">
+<title>Que frio vamos encontrar — China e Turquia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700;9..144,900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --lacquer:#7A0E14;
+    --lacquer-deep:#4A070B;
+    --gold:#D9A441;
+    --gold-bright:#F2D089;
+    --ivory:#F6EEE1;
+    --frost:#93BFDD;
+
+    --serif:"Fraunces","Hoefler Text",Georgia,serif;
+    --sans:"Archivo","Helvetica Neue",system-ui,sans-serif;
+
+    --pad-x:clamp(22px,6vw,96px);
+    --pad-top:clamp(30px,5vh,76px);
+    --pad-bottom:clamp(96px,12vh,116px);
+    --inset:clamp(10px,2vmin,26px);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  html{height:100%}
+  body{
+    height:100%;
+    background:var(--lacquer-deep);
+    color:var(--ivory);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;
+    overflow:hidden;
+    overscroll-behavior:none;
+  }
+
+  /* ---------- stage ---------- */
+
+  .stage{
+    position:fixed;
+    inset:0;
+    height:100dvh;
+    background:radial-gradient(125% 95% at 18% 0%, #8E1219 0%, var(--lacquer) 46%, var(--lacquer-deep) 100%);
+  }
+
+  .frame{
+    position:absolute;
+    inset:var(--inset);
+    border:1px solid rgba(217,164,65,.3);
+    pointer-events:none;
+    z-index:3;
+  }
+  .frame::before,.frame::after{
+    content:"";position:absolute;width:9px;height:9px;border:1px solid var(--gold);
+  }
+  .frame::before{top:-5px;left:-5px;border-right:none;border-bottom:none}
+  .frame::after{bottom:-5px;right:-5px;border-left:none;border-top:none}
+
+  /* The scroll box has a fixed height; .inner uses min-height:100% so short
+     slides centre while tall slides grow and scroll from the very top. */
+  .slide{
+    position:absolute;
+    inset:0;
+    display:none;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+    scrollbar-width:none;
+  }
+  .slide::-webkit-scrollbar{display:none}
+  .slide[data-active]{display:block}
+
+  .inner{
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:var(--pad-top) var(--pad-x) var(--pad-bottom);
+  }
+
+  /* ---------- type ---------- */
+
+  h1{
+    font-family:var(--serif);font-weight:900;
+    font-size:clamp(2.15rem,7.6vw,4.9rem);
+    line-height:1;letter-spacing:-.02em;
+    color:var(--gold-bright);max-width:16ch;
+  }
+  h2{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(1.62rem,5.6vw,3rem);
+    line-height:1.06;letter-spacing:-.015em;
+    color:var(--gold-bright);max-width:19ch;
+  }
+  .place{
+    font-family:var(--serif);font-weight:900;
+    font-size:clamp(2.2rem,8.4vw,4rem);
+    line-height:.96;letter-spacing:-.025em;
+    color:var(--gold-bright);
+  }
+  .when{
+    font-size:clamp(.86rem,3.2vw,1rem);
+    color:rgba(246,238,225,.62);margin-top:.55em;
+  }
+  p.body{
+    font-size:clamp(1rem,3.6vw,1.1rem);
+    line-height:1.55;max-width:46ch;
+    color:rgba(246,238,225,.88);
+  }
+  .fine{
+    font-size:clamp(.82rem,3vw,.9rem);
+    line-height:1.55;color:rgba(246,238,225,.55);max-width:50ch;
+  }
+  .rule{height:1px;background:rgba(217,164,65,.3);border:0}
+
+  /* ---------- cover ---------- */
+
+  .cover-extremes{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(16px,5vw,88px);
+    margin:clamp(24px,4vh,46px) 0 clamp(18px,2.6vh,28px);
+    max-width:760px;
+  }
+  .ext-num{
+    font-family:var(--serif);font-weight:900;
+    font-size:clamp(3rem,15vw,8rem);
+    line-height:.82;letter-spacing:-.045em;
+  }
+  .ext-num.warm{color:var(--gold-bright)}
+  .ext-num.cold{color:var(--frost)}
+  .ext-label{
+    margin-top:.85em;
+    font-size:clamp(.82rem,3.1vw,1rem);
+    line-height:1.35;color:rgba(246,238,225,.82);
+  }
+  .ext-label span{display:block;color:rgba(246,238,225,.5);font-size:.88em;margin-top:.15em}
+  .gap-note{
+    display:flex;align-items:center;gap:14px;
+    font-size:clamp(.86rem,3.2vw,1.05rem);
+    color:var(--gold);max-width:640px;
+  }
+  .gap-note .rule{flex:1}
+
+  /* ---------- ladder ---------- */
+
+  .ladder{margin-top:clamp(16px,2.6vh,30px);max-width:950px}
+  .rung{
+    display:grid;
+    grid-template-columns:clamp(66px,17vw,120px) 1fr;
+    gap:4px clamp(10px,2.4vw,32px);
+    align-items:baseline;
+    padding:clamp(9px,1.5vh,15px) 0;
+    border-top:1px solid rgba(217,164,65,.22);
+  }
+  .rung:last-child{border-bottom:1px solid rgba(217,164,65,.22)}
+  .rung-t{
+    grid-row:span 2;
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(1.25rem,4.6vw,2rem);
+    line-height:1;letter-spacing:-.02em;color:var(--gold-bright);
+  }
+  .rung.sub .rung-t{color:var(--frost)}
+  .rung-a{font-size:clamp(.95rem,3.4vw,1rem);line-height:1.4;color:rgba(246,238,225,.93)}
+  .rung-b{font-size:clamp(.86rem,3.1vw,.95rem);line-height:1.4;color:rgba(246,238,225,.58)}
+  .rung.flag{background:rgba(147,191,221,.1)}
+  .rung.flag .rung-a{color:var(--frost)}
+
+  /* ---------- two kinds of cold ---------- */
+
+  .duo{
+    display:grid;grid-template-columns:1fr;
+    gap:clamp(20px,3vh,48px);
+    margin-top:clamp(18px,2.6vh,32px);max-width:980px;
+  }
+  .duo section{border-top:2px solid var(--gold);padding-top:clamp(11px,1.8vh,18px)}
+  .duo section.dry{border-top-color:var(--frost)}
+  .duo h3{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(1.15rem,4.2vw,1.6rem);
+    color:var(--gold-bright);margin-bottom:.5em;letter-spacing:-.01em;
+  }
+  .duo section.dry h3{color:var(--frost)}
+  .duo ul{list-style:none;display:grid;gap:.5em}
+  .duo li{
+    font-size:clamp(.93rem,3.4vw,1rem);line-height:1.45;
+    color:rgba(246,238,225,.86);padding-left:1.1em;position:relative;
+  }
+  .duo li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;background:var(--gold)}
+  .duo section.dry li::before{background:var(--frost)}
+  .verdict{
+    margin-top:clamp(22px,3vh,42px);
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(1.2rem,4.6vw,1.95rem);
+    line-height:1.25;color:var(--gold-bright);max-width:26ch;
+    border-left:2px solid var(--gold);padding-left:clamp(13px,3.4vw,24px);
+  }
+
+  /* ---------- trip overview rows ---------- */
+
+  .trip{margin-top:clamp(16px,2.6vh,28px);max-width:860px}
+  .triprow{padding:clamp(6px,1.1vh,11px) 0}
+  .triprow-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    gap:12px;margin-bottom:6px;
+  }
+  .triprow-name{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(.98rem,3.6vw,1.18rem);
+    color:var(--ivory);letter-spacing:-.01em;
+  }
+  .triprow.icy .triprow-name{color:var(--frost)}
+  .triprow-val{
+    font-size:clamp(.86rem,3.1vw,.98rem);
+    color:rgba(246,238,225,.6);white-space:nowrap;
+  }
+  .triprow.icy .triprow-val{color:var(--frost)}
+  .track{
+    position:relative;height:clamp(13px,3.4vw,17px);
+    background:rgba(246,238,225,.08);
+  }
+  .track .zero{
+    position:absolute;top:-3px;bottom:-3px;left:66.7%;
+    width:1px;background:rgba(246,238,225,.5);
+  }
+  .bar{position:absolute;top:0;bottom:0}
+  .bar.warm{background:var(--gold-bright)}
+  .bar.cold{background:var(--frost)}
+  .scaleticks{
+    position:relative;height:20px;margin-top:9px;
+    border-top:1px solid rgba(217,164,65,.25);
+  }
+  .scaleticks span{
+    position:absolute;top:5px;transform:translateX(-50%);
+    font-size:clamp(.68rem,2.5vw,.78rem);color:rgba(246,238,225,.45);
+  }
+  .legend{display:flex;gap:20px;margin-top:16px;flex-wrap:wrap}
+  .legend div{display:flex;align-items:center;gap:8px;font-size:clamp(.8rem,3vw,.9rem);color:rgba(246,238,225,.7)}
+  .legend i{width:18px;height:3px;display:block}
+
+  /* ---------- destination ---------- */
+
+  .dest{display:flex;flex-direction:column}
+  .temps{
+    display:flex;align-items:flex-end;
+    gap:clamp(26px,9vw,64px);
+    margin:clamp(16px,2.6vh,32px) 0 0;
+  }
+  .temp-num{
+    font-family:var(--serif);font-weight:900;
+    font-size:clamp(3rem,14vw,6.4rem);
+    line-height:.8;letter-spacing:-.045em;
+  }
+  .temp-num.warm{color:var(--gold-bright)}
+  .temp-num.cold{color:var(--frost)}
+  .temp-cap{margin-top:.8em;font-size:clamp(.8rem,3vw,.92rem);color:rgba(246,238,225,.6)}
+
+  .rail{margin:clamp(16px,2.4vh,26px) 0 clamp(4px,1vh,10px)}
+  .rail-v{display:none}
+  .rail-h{max-width:440px}
+  .rail-h .track{height:clamp(12px,3.2vw,15px)}
+  .rail-h .scaleticks{height:19px;margin-top:8px}
+
+  .dest-body{margin-top:clamp(10px,1.8vh,18px)}
+  .kit{display:flex;flex-wrap:wrap;gap:7px;margin-top:clamp(13px,2vh,22px)}
+  .kit span{
+    border:1px solid rgba(217,164,65,.5);
+    padding:.42em .8em;
+    font-size:clamp(.8rem,3vw,.87rem);
+    color:var(--gold-bright);
+  }
+  .warn{
+    margin-top:clamp(16px,2.4vh,28px);
+    border-left:2px solid var(--frost);
+    padding-left:clamp(13px,3.4vw,20px);max-width:52ch;
+  }
+  .warn b{
+    display:block;font-family:var(--serif);font-weight:700;
+    font-size:clamp(1rem,3.7vw,1.1rem);
+    color:var(--frost);margin-bottom:.25em;
+  }
+  .warn p{font-size:clamp(.92rem,3.4vw,.98rem);line-height:1.5;color:rgba(246,238,225,.84)}
+
+  /* ---------- packing ---------- */
+
+  .packs{
+    display:grid;grid-template-columns:1fr;
+    gap:clamp(18px,2.6vh,42px);
+    margin-top:clamp(18px,2.6vh,34px);
+  }
+  .packs h3{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(1.05rem,3.9vw,1.32rem);
+    color:var(--gold-bright);padding-bottom:.4em;margin-bottom:.6em;
+    border-bottom:1px solid rgba(217,164,65,.35);
+  }
+  .packs section.icy h3{color:var(--frost);border-bottom-color:rgba(147,191,221,.45)}
+  .packs ul{list-style:none;display:grid;gap:.4em}
+  .packs li{font-size:clamp(.92rem,3.4vw,.96rem);line-height:1.4;color:rgba(246,238,225,.86)}
+
+  /* ---------- todo ---------- */
+
+  .todo{margin-top:clamp(16px,2.6vh,32px);max-width:900px}
+  .todo li{
+    list-style:none;display:grid;grid-template-columns:auto 1fr;
+    gap:clamp(13px,3.4vw,26px);align-items:baseline;
+    padding:clamp(13px,2vh,20px) 0;
+    border-top:1px solid rgba(217,164,65,.22);
+  }
+  .todo li:last-child{border-bottom:1px solid rgba(217,164,65,.22)}
+  .todo .n{font-family:var(--serif);font-weight:700;font-size:clamp(1.3rem,4.6vw,1.85rem);color:var(--gold);line-height:1}
+  .todo .t{font-size:clamp(.97rem,3.5vw,1.06rem);line-height:1.45}
+  .todo .t em{display:block;font-style:normal;color:rgba(246,238,225,.55);font-size:.88em;margin-top:.28em}
+
+  /* ---------- closing ---------- */
+
+  .closing{
+    font-family:var(--serif);font-weight:300;
+    font-size:clamp(1.6rem,6.6vw,3.3rem);
+    line-height:1.2;letter-spacing:-.02em;color:var(--ivory);max-width:20ch;
+  }
+  .closing b{font-weight:900;color:var(--gold-bright)}
+  .closing i{font-style:normal;font-weight:900;color:var(--frost)}
+
+  /* ---------- chrome ---------- */
+
+  .fade{
+    position:fixed;left:0;right:0;bottom:0;
+    height:120px;pointer-events:none;z-index:2;
+    background:linear-gradient(to top,rgba(74,7,11,.95),rgba(74,7,11,0));
+    opacity:0;transition:opacity .2s ease;
+  }
+  .fade[data-show]{opacity:1}
+
+  .chrome{
+    position:fixed;z-index:4;
+    left:calc(var(--inset) + 14px);
+    right:calc(var(--inset) + 14px);
+    bottom:calc(var(--inset) + 14px + env(safe-area-inset-bottom));
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    pointer-events:none;
+  }
+  .counter{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(.82rem,3vw,.95rem);
+    color:rgba(217,164,65,.85);letter-spacing:.04em;
+  }
+  .hint{
+    font-size:clamp(.74rem,2.7vw,.85rem);
+    color:rgba(217,164,65,.75);
+    opacity:0;transition:opacity .2s ease;
+  }
+  .hint[data-show]{opacity:1}
+  .nav{display:flex;gap:9px;pointer-events:auto}
+  .nav button{
+    width:46px;height:46px;
+    background:rgba(74,7,11,.5);
+    border:1px solid rgba(217,164,65,.45);
+    color:var(--gold-bright);font-size:1.05rem;cursor:pointer;
+    display:grid;place-items:center;
+    -webkit-tap-highlight-color:transparent;
+    transition:background .18s ease,border-color .18s ease;
+  }
+  .nav button:hover{background:rgba(217,164,65,.16);border-color:var(--gold)}
+  .nav button:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px}
+  .nav button[disabled]{opacity:.26;cursor:default}
+  .nav button[disabled]:hover{background:rgba(74,7,11,.5);border-color:rgba(217,164,65,.45)}
+
+  .progress{
+    position:fixed;left:0;bottom:0;height:2px;z-index:5;
+    background:var(--gold);width:0;
+    transition:width .34s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* ---------- wider screens ---------- */
+
+  @media (min-width:600px){
+    .duo{grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+    .packs{grid-template-columns:1fr 1fr}
+    .rung{grid-template-columns:clamp(66px,17vw,120px) 1fr 1fr}
+    .rung-t{grid-row:auto}
+  }
+
+  @media (min-width:761px){
+    .dest{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      grid-template-areas:"head rail" "temps rail" "body rail";
+      column-gap:clamp(28px,4vw,64px);
+      align-content:center;
+    }
+    .dest-head{grid-area:head}
+    .temps{grid-area:temps}
+    .dest-body{grid-area:body}
+    .rail{grid-area:rail;align-self:center;margin:0}
+    .rail-v{display:block;width:clamp(104px,12vw,140px)}
+    .rail-h{display:none}
+    .packs{grid-template-columns:repeat(4,1fr)}
+  }
+
+  @media (min-width:1000px){
+    .cover-extremes{grid-template-columns:auto auto;justify-content:start}
+  }
+
+  /* ---------- short landscape phones ---------- */
+
+  @media (max-height:520px) and (orientation:landscape){
+    :root{--pad-top:22px;--pad-bottom:82px}
+    .temp-num{font-size:clamp(2.4rem,7vh,3.4rem)}
+    .place{font-size:clamp(1.8rem,7vh,2.6rem)}
+    .ext-num{font-size:clamp(2.6rem,11vh,4rem)}
+    h1{font-size:clamp(1.8rem,8vh,3rem)}
+    h2{font-size:clamp(1.4rem,6vh,2.2rem)}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="frame"></div>
+
+  <!-- 1 — cover -->
+  <section class="slide" data-active><div class="inner">
+    <h1>Que frio vamos encontrar</h1>
+    <div class="cover-extremes">
+      <div>
+        <div class="ext-num warm">+11°</div>
+        <div class="ext-label">o dia mais ameno<span>Chongqing, 8 de janeiro</span></div>
+      </div>
+      <div>
+        <div class="ext-num cold">−24°</div>
+        <div class="ext-label">a noite mais fria<span>Harbin, 13 de janeiro</span></div>
+      </div>
+    </div>
+    <div class="gap-note"><span>35 graus de diferença em 24 dias</span><hr class="rule"></div>
+    <p class="fine" style="margin-top:24px">China e Turquia, 27 de dezembro a 20 de janeiro. Os números são a média dos últimos 30 anos para cada data. Não é previsão do tempo — é o cenário mais provável.</p>
+  </div></section>
+
+  <!-- 2 — the trip at a glance -->
+  <section class="slide"><div class="inner">
+    <h2>A viagem inteira, de uma vez</h2>
+    <div class="trip">
+      <div class="triprow">
+        <div class="triprow-top"><div class="triprow-name">Xangai</div><div class="triprow-val">3° a 9°</div></div>
+        <div class="track"><div class="zero"></div><div class="bar warm" style="left:73.3%;width:13.4%"></div></div>
+      </div>
+      <div class="triprow">
+        <div class="triprow-top"><div class="triprow-name">Zhangjiajie</div><div class="triprow-val">0° a 6°</div></div>
+        <div class="track"><div class="zero"></div><div class="bar warm" style="left:66.7%;width:13.3%"></div></div>
+      </div>
+      <div class="triprow">
+        <div class="triprow-top"><div class="triprow-name">Furong</div><div class="triprow-val">1° a 7°</div></div>
+        <div class="track"><div class="zero"></div><div class="bar warm" style="left:68.9%;width:13.3%"></div></div>
+      </div>
+      <div class="triprow">
+        <div class="triprow-top"><div class="triprow-name">Chongqing</div><div class="triprow-val">5° a 11°</div></div>
+        <div class="track"><div class="zero"></div><div class="bar warm" style="left:77.8%;width:13.3%"></div></div>
+      </div>
+      <div class="triprow">
+        <div class="triprow-top"><div class="triprow-name">Chengdu</div><div class="triprow-val">3° a 10°</div></div>
+        <div class="track"><div class="zero"></div><div class="bar warm" style="left:73.3%;width:15.6%"></div></div>
+      </div>
+      <div class="triprow icy">
+        <div class="triprow-top"><div class="triprow-name">Harbin</div><div class="triprow-val">−24° a −13°</div></div>
+        <div class="track"><div class="zero"></div><div class="bar cold" style="left:13.3%;width:24.5%"></div></div>
+      </div>
+      <div class="triprow">
+        <div class="triprow-top"><div class="triprow-name">Pequim</div><div class="triprow-val">−8° a 2°</div></div>
+        <div class="track"><div class="zero"></div><div class="bar cold" style="left:48.9%;width:17.8%"></div><div class="bar warm" style="left:66.7%;width:4.4%"></div></div>
+      </div>
+      <div class="triprow">
+        <div class="triprow-top"><div class="triprow-name">Istambul</div><div class="triprow-val">4° a 8°</div></div>
+        <div class="track"><div class="zero"></div><div class="bar warm" style="left:75.6%;width:8.8%"></div></div>
+      </div>
+      <div class="scaleticks">
+        <span style="left:3%">−30°</span>
+        <span style="left:22.2%">−20°</span>
+        <span style="left:44.4%">−10°</span>
+        <span style="left:66.7%">0°</span>
+        <span style="left:88.9%">+10°</span>
+      </div>
+    </div>
+    <div class="legend">
+      <div><i style="background:#F2D089"></i>acima de zero</div>
+      <div><i style="background:#93BFDD"></i>abaixo de zero</div>
+    </div>
+    <p class="body" style="margin-top:18px">Sete das oito paradas ficam entre 0 e 11 graus — frio de casaco, nada fora do comum. Harbin é o único lugar realmente extremo.</p>
+  </div></section>
+
+  <!-- 3 — ladder -->
+  <section class="slide"><div class="inner">
+    <h2>O que cada temperatura significa</h2>
+    <div class="ladder">
+      <div class="rung">
+        <div class="rung-t">+10°</div>
+        <div class="rung-a">Casaco leve resolve.</div>
+        <div class="rung-b">Uma noite de inverno em São Paulo.</div>
+      </div>
+      <div class="rung">
+        <div class="rung-t">+5°</div>
+        <div class="rung-a">Casaco médio, cachecol, gorro.</div>
+        <div class="rung-b">Dentro da geladeira faz +4°.</div>
+      </div>
+      <div class="rung sub">
+        <div class="rung-t">0°</div>
+        <div class="rung-a">Três camadas, luvas obrigatórias.</div>
+        <div class="rung-b">É a temperatura em que a água congela.</div>
+      </div>
+      <div class="rung sub">
+        <div class="rung-t">−10°</div>
+        <div class="rung-a">Casaco de pluma e roupa térmica por baixo.</div>
+        <div class="rung-b">Jeans comum já não dá conta.</div>
+      </div>
+      <div class="rung sub">
+        <div class="rung-t">−18°</div>
+        <div class="rung-a">Nenhuma pele exposta.</div>
+        <div class="rung-b">É a temperatura do nosso freezer.</div>
+      </div>
+      <div class="rung sub flag">
+        <div class="rung-t">−24°</div>
+        <div class="rung-a">Harbin de madrugada. Mais frio que dentro do freezer.</div>
+        <div class="rung-b">Com vento, a sensação chega a −35°.</div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 4 — two kinds of cold -->
+  <section class="slide"><div class="inner">
+    <h2>Existem dois tipos de frio nessa viagem</h2>
+    <div class="duo">
+      <section>
+        <h3>Frio molhado</h3>
+        <ul>
+          <li>Xangai, Zhangjiajie, Furong, Chongqing, Chengdu</li>
+          <li>Umidade do ar entre 75% e 87%</li>
+          <li>Os prédios não têm aquecimento — por lei, só existe no norte do país</li>
+          <li>Dentro do quarto faz quase a mesma coisa que na rua</li>
+          <li>A roupa precisa aguentar o dia inteiro</li>
+        </ul>
+      </section>
+      <section class="dry">
+        <h3>Frio seco</h3>
+        <ul>
+          <li>Harbin e Pequim</li>
+          <li>Ar seco: 41% de umidade em Pequim</li>
+          <li>Aquecimento central ligado 24 horas</li>
+          <li>Dentro de tudo faz 22 graus: hotel, loja, metrô, restaurante</li>
+          <li>A roupa precisa sair rápido ao entrar</li>
+        </ul>
+      </section>
+    </div>
+    <p class="verdict">5 graus em Chongqing incomodam mais que −5 graus em Pequim.</p>
+  </div></section>
+
+  <!-- 5 — Xangai -->
+  <section class="slide"><div class="inner"><div class="dest">
+    <div class="dest-head">
+      <div class="place">Xangai</div>
+      <div class="when">28 de dezembro a 1º de janeiro, 4 noites</div>
+    </div>
+    <div class="temps">
+      <div><div class="temp-num warm">9°</div><div class="temp-cap">de dia</div></div>
+      <div><div class="temp-num warm">3°</div><div class="temp-cap">de noite</div></div>
+    </div>
+    <div class="rail" data-day="9" data-night="3"></div>
+    <div class="dest-body">
+      <p class="body">Frio de casaco, úmido e quase sempre nublado. Perto do rio, o vento derruba a sensação vários graus.</p>
+      <div class="kit"><span>casaco médio impermeável</span><span>cachecol</span><span>gorro</span><span>guarda-chuva</span></div>
+      <div class="warn">
+        <b>Réveillon no terraço</b>
+        <p>O jantar do dia 31 é às 21h, ao ar livre, no 7º andar perto do Bund. Vai estar entre 3 e 6 graus, com vento, por umas duas horas. Roupa térmica por baixo da roupa social.</p>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- 6 — Zhangjiajie -->
+  <section class="slide"><div class="inner"><div class="dest">
+    <div class="dest-head">
+      <div class="place">Zhangjiajie</div>
+      <div class="when">1º a 5 de janeiro, 4 noites</div>
+    </div>
+    <div class="temps">
+      <div><div class="temp-num warm">6°</div><div class="temp-cap">de dia, na cidade</div></div>
+      <div><div class="temp-num cold">−5°</div><div class="temp-cap">de noite, na montanha</div></div>
+    </div>
+    <div class="rail" data-day="6" data-night="-5"></div>
+    <div class="dest-body">
+      <p class="body">Na cidade é frio comum. No alto das montanhas faz 7 graus a menos, com neblina quase sempre e gelo nas escadas.</p>
+      <div class="kit"><span>três camadas</span><span>luvas</span><span>sapato antiderrapante</span><span>garras de gelo</span></div>
+      <div class="warn">
+        <b>A montanha pode fechar</b>
+        <p>Quando neva ou congela, a passarela de vidro e parte dos teleféricos do Tianmen fecham. Como temos 4 dias, vale deixar a montanha para o de melhor tempo em vez de marcar no primeiro.</p>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- 7 — Furong -->
+  <section class="slide"><div class="inner"><div class="dest">
+    <div class="dest-head">
+      <div class="place">Furong</div>
+      <div class="when">5 a 7 de janeiro, 2 noites</div>
+    </div>
+    <div class="temps">
+      <div><div class="temp-num warm">7°</div><div class="temp-cap">de dia</div></div>
+      <div><div class="temp-num warm">1°</div><div class="temp-cap">de noite</div></div>
+    </div>
+    <div class="rail" data-day="7" data-night="1"></div>
+    <div class="dest-body">
+      <p class="body">O hotel fica em cima da cachoeira. O ar fica saturado de água, as pedras da rua nunca secam e roupa lavada não seca de um dia para o outro.</p>
+      <div class="kit"><span>mesmo kit de Zhangjiajie</span><span>sapato com boa aderência</span><span>roupa extra</span></div>
+      <div class="warn">
+        <b>O show de luzes é na varanda</b>
+        <p>Ver a cachoeira iluminada à noite quer dizer ficar parada a 1 grau, com umidade máxima. Deixe um agasalho pesado à mão no quarto.</p>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- 8 — Chongqing -->
+  <section class="slide"><div class="inner"><div class="dest">
+    <div class="dest-head">
+      <div class="place">Chongqing</div>
+      <div class="when">7 a 9 de janeiro, 2 noites</div>
+    </div>
+    <div class="temps">
+      <div><div class="temp-num warm">11°</div><div class="temp-cap">de dia</div></div>
+      <div><div class="temp-num warm">5°</div><div class="temp-cap">de noite</div></div>
+    </div>
+    <div class="rail" data-day="11" data-night="5"></div>
+    <div class="dest-body">
+      <p class="body">A temperatura é a melhor da viagem. O problema é outro: 21 dos 31 dias de janeiro são encobertos e o sol aparece meia hora por dia. A cidade é apelidada de capital da névoa.</p>
+      <div class="kit"><span>casaco médio</span><span>capa de chuva leve</span><span>guarda-chuva</span></div>
+      <div class="warn">
+        <b>A suíte é no 63º andar por causa da vista</b>
+        <p>A névoa da manhã costuma só levantar depois das 10h. A vista rende mais à noite, com a cidade iluminada, ou entre 14h e 17h. O mirante e o passeio de barco precisam ser reservados com um dia de antecedência.</p>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- 9 — Chengdu -->
+  <section class="slide"><div class="inner"><div class="dest">
+    <div class="dest-head">
+      <div class="place">Chengdu</div>
+      <div class="when">9 a 11 de janeiro, 2 noites</div>
+    </div>
+    <div class="temps">
+      <div><div class="temp-num warm">10°</div><div class="temp-cap">de dia</div></div>
+      <div><div class="temp-num warm">3°</div><div class="temp-cap">de noite</div></div>
+    </div>
+    <div class="rail" data-day="10" data-night="3"></div>
+    <div class="dest-body">
+      <p class="body">Muito parecido com Chongqing: ameno, úmido e sem sol. Janeiro é o mês de mais neblina do ano, com 7 a 12 dias. Chove pouco, quase só garoa.</p>
+      <div class="kit"><span>casaco médio</span><span>cachecol</span><span>máscara para a poluição</span></div>
+      <div class="warn">
+        <b>Mesma história do 37º andar</b>
+        <p>A vista da cidade também pode amanhecer fechada. Melhor aproveitar no fim da tarde e à noite.</p>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- 10 — Harbin -->
+  <section class="slide"><div class="inner"><div class="dest">
+    <div class="dest-head">
+      <div class="place" style="color:var(--frost)">Harbin</div>
+      <div class="when">11 a 14 de janeiro, 3 noites</div>
+    </div>
+    <div class="temps">
+      <div><div class="temp-num cold">−13°</div><div class="temp-cap">de dia</div></div>
+      <div><div class="temp-num cold">−24°</div><div class="temp-cap">de noite</div></div>
+    </div>
+    <div class="rail" data-day="-13" data-night="-24"></div>
+    <div class="dest-body">
+      <p class="body">Mais frio que dentro do freezer. Com o vento, a sensação chega a −35 graus, e nessa faixa a pele exposta congela em 15 minutos. O sol se põe às 16h10 — e o Festival de Gelo se vê à noite.</p>
+      <div class="kit"><span>parca de pluma longa</span><span>segunda pele</span><span>botas isoladas</span><span>balaclava</span><span>duas luvas</span><span>bolsas térmicas</span></div>
+      <div class="warn">
+        <b>46 graus de diferença ao abrir a porta</b>
+        <p>Dentro de tudo faz 22 graus. A roupa tem que abrir e sair em segundos, senão a gente transpira por dentro e o suor congela ao sair. O celular também desliga sozinho no frio: manter no bolso interno.</p>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- 11 — Pequim -->
+  <section class="slide"><div class="inner"><div class="dest">
+    <div class="dest-head">
+      <div class="place">Pequim</div>
+      <div class="when">14 a 18 de janeiro, 4 noites</div>
+    </div>
+    <div class="temps">
+      <div><div class="temp-num warm">2°</div><div class="temp-cap">de dia</div></div>
+      <div><div class="temp-num cold">−8°</div><div class="temp-cap">de noite</div></div>
+    </div>
+    <div class="rail" data-day="2" data-night="-8"></div>
+    <div class="dest-body">
+      <p class="body">Depois de Harbin vai parecer ameno, e é aí que mora a armadilha. O frio é seco e o céu costuma estar limpo, mas o vento pesa: a −8 graus com vento, a sensação é de −15.</p>
+      <div class="kit"><span>casaco de pluma</span><span>gorro</span><span>luvas</span><span>hidratante</span><span>máscara</span></div>
+      <div class="warn">
+        <b>Na Muralha, vista quase o de Harbin</b>
+        <p>Badaling e Mutianyu ficam em altitude, sem nenhum abrigo contra o vento: faz de 4 a 6 graus a menos que na cidade e venta muito mais. Os degraus podem estar com gelo.</p>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- 12 — Istambul -->
+  <section class="slide"><div class="inner"><div class="dest">
+    <div class="dest-head">
+      <div class="place">Istambul</div>
+      <div class="when">18 a 20 de janeiro, 2 noites</div>
+    </div>
+    <div class="temps">
+      <div><div class="temp-num warm">8°</div><div class="temp-cap">de dia</div></div>
+      <div><div class="temp-num warm">4°</div><div class="temp-cap">de noite</div></div>
+    </div>
+    <div class="rail" data-day="8" data-night="4"></div>
+    <div class="dest-body">
+      <p class="body">Aqui o problema não é o frio, é a água. Janeiro é o mês mais chuvoso do ano e chove em 20 dos 31 dias — pouco de cada vez, mas quase todo dia. O vento do Mar Negro deixa os 4 graus da noite com cara de zero.</p>
+      <div class="kit"><span>casaco impermeável com capuz</span><span>sapato com aderência</span><span>guarda-chuva</span></div>
+      <div class="warn">
+        <b>Ladeira de pedra molhada</b>
+        <p>O hotel fica em Karaköy, aos pés da Torre de Gálata, numa região de ladeiras calçadas em pedra. Com chuva, escorrega muito. Neva de 3 a 4 dias por mês — quando neva forte, o aeroporto cancela voos.</p>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- 13 — packing -->
+  <section class="slide"><div class="inner">
+    <h2>O que vai na mala</h2>
+    <div class="packs">
+      <section>
+        <h3>Para a viagem toda</h3>
+        <ul>
+          <li>2 conjuntos de segunda pele térmica</li>
+          <li>1 fleece e 1 colete de pluma</li>
+          <li>Casaco impermeável com capuz</li>
+          <li>Gorro que cubra as orelhas</li>
+          <li>Cachecol</li>
+          <li>2 pares de luvas, um fino e um grosso</li>
+          <li>4 pares de meia de lã</li>
+          <li>Sapato impermeável antiderrapante</li>
+          <li>Hidratante e protetor labial</li>
+        </ul>
+      </section>
+      <section class="icy">
+        <h3>Só para Harbin</h3>
+        <ul>
+          <li>Parca de pluma longa e pesada</li>
+          <li>Botas isoladas</li>
+          <li>Balaclava</li>
+          <li>Calça térmica por fora</li>
+          <li>Bolsas térmicas — baratas e fáceis de achar lá</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Para as montanhas</h3>
+        <ul>
+          <li>Garras de encaixe no sapato</li>
+          <li>Bastão de caminhada dobrável</li>
+          <li>Mochila pequena para a camada extra</li>
+        </ul>
+      </section>
+      <section>
+        <h3>Para Istambul</h3>
+        <ul>
+          <li>Capa de chuva de verdade</li>
+          <li>Sapato com boa aderência</li>
+        </ul>
+      </section>
+    </div>
+    <p class="fine" style="margin-top:22px">A franquia da Turkish é de duas malas de 23 kg por pessoa, o que acomoda bem o volume de roupa de inverno.</p>
+  </div></section>
+
+  <!-- 14 — todo -->
+  <section class="slide"><div class="inner">
+    <h2>Três coisas para resolver antes</h2>
+    <ul class="todo">
+      <li>
+        <div class="n">1</div>
+        <div class="t">Perguntar ao restaurante do réveillon se o terraço tem aquecedor e se existe mesa dentro em caso de chuva.
+          <em>The Fellas Terrace, reserva já paga e confirmada para 31/12 às 21h.</em></div>
+      </li>
+      <li>
+        <div class="n">2</div>
+        <div class="t">Decidir se a parca pesada de Harbin vai do Brasil ou se compramos na China.
+          <em>Lá é muito mais barato, e economiza o item mais volumoso da mala na ida.</em></div>
+      </li>
+      <li>
+        <div class="n">3</div>
+        <div class="t">Separar casaco e luvas para a bagagem de mão.
+          <em>Desembarcamos em Xangai às 17h10 com 8 graus. Se a mala atrasar, é o que vai sobrar.</em></div>
+      </li>
+    </ul>
+    <p class="fine" style="margin-top:24px">Em dezembro dá para conferir a previsão de verdade e ajustar. Até lá, esses números são o melhor palpite possível.</p>
+  </div></section>
+
+  <!-- 15 — closing -->
+  <section class="slide"><div class="inner">
+    <p class="closing">No fim, é simples: <b>um casaco bom para 21 dias</b> e <i>equipamento de verdade para 3</i>.</p>
+  </div></section>
+
+  <div class="fade" id="fade"></div>
+
+  <div class="chrome">
+    <div class="counter" id="counter">1 / 15</div>
+    <div class="hint" id="hint">role para ver mais</div>
+    <div class="nav">
+      <button id="prev" aria-label="Slide anterior">&#8592;</button>
+      <button id="next" aria-label="Próximo slide">&#8594;</button>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</div>
+
+<script>
+(function(){
+  var slides   = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var counter  = document.getElementById('counter');
+  var progress = document.getElementById('progress');
+  var prev     = document.getElementById('prev');
+  var next     = document.getElementById('next');
+  var hint     = document.getElementById('hint');
+  var fade     = document.getElementById('fade');
+  var i = 0;
+
+  /* shared temperature scale: -30 to +15 */
+  var TOP = 15, BOT = -30, SPAN = TOP - BOT;
+  function pct(t){ return (t - BOT) / SPAN * 100; }
+
+  function segments(day, night){
+    var a = pct(night), b = pct(day), z = pct(0), out = [];
+    if (night >= 0)    out.push(['warm', a, b - a]);
+    else if (day <= 0) out.push(['cold', a, b - a]);
+    else { out.push(['cold', a, z - a]); out.push(['warm', z, b - z]); }
+    return out;
+  }
+
+  document.querySelectorAll('.rail').forEach(function(el){
+    var day = parseFloat(el.dataset.day), night = parseFloat(el.dataset.night);
+    var segs = segments(day, night);
+
+    /* horizontal bar for phones */
+    var bars = segs.map(function(s){
+      return '<div class="bar ' + s[0] + '" style="left:' + s[1] + '%;width:' + s[2] + '%"></div>';
+    }).join('');
+    var ticks = '';
+    [[-30,'3%'],[-20,'22.2%'],[-10,'44.4%'],[0,'66.7%'],[10,'88.9%']].forEach(function(t){
+      ticks += '<span style="left:' + t[1] + '">' + (t[0] > 0 ? '+' : '') + t[0] + '\u00B0</span>';
+    });
+    var horizontal =
+      '<div class="rail-h">' +
+        '<div class="track"><div class="zero"></div>' + bars + '</div>' +
+        '<div class="scaleticks">' + ticks + '</div>' +
+      '</div>';
+
+    /* vertical column for wider screens */
+    var H = 300, PAD = 18, W = 130;
+    function y(t){ return PAD + (TOP - t) / SPAN * H; }
+    var vbars = segs.map(function(s){
+      var t1 = BOT + (s[1] / 100) * SPAN;
+      var t2 = BOT + ((s[1] + s[2]) / 100) * SPAN;
+      var fill = s[0] === 'warm' ? '#F2D089' : '#93BFDD';
+      return '<rect x="30" y="' + y(t2) + '" width="22" height="' + (y(t1) - y(t2)) + '" fill="' + fill + '"/>';
+    }).join('');
+    var vticks = '';
+    [10, 0, -10, -20, -30].forEach(function(t){
+      var ty = y(t);
+      vticks += '<line x1="24" y1="' + ty + '" x2="58" y2="' + ty + '" stroke="rgba(217,164,65,.22)" stroke-width="1"/>'
+              + '<text x="66" y="' + (ty + 4) + '" fill="rgba(246,238,225,.42)" font-family="Archivo, sans-serif" font-size="11">'
+              + (t > 0 ? '+' : '') + t + '\u00B0</text>';
+    });
+    var vertical =
+      '<svg class="rail-v" viewBox="0 0 ' + W + ' ' + (H + 2 * PAD) + '" role="img" aria-label="Faixa de temperatura desta parada, na mesma escala de todas as outras">'
+      + '<rect x="30" y="' + PAD + '" width="22" height="' + H + '" fill="rgba(246,238,225,.07)"/>'
+      + vticks
+      + '<line x1="24" y1="' + y(0) + '" x2="58" y2="' + y(0) + '" stroke="rgba(246,238,225,.55)" stroke-width="1.5"/>'
+      + vbars
+      + '</svg>';
+
+    el.innerHTML = vertical + horizontal;
+  });
+
+  /* scroll hint when a slide is taller than the screen */
+  function refreshHint(){
+    var s = slides[i];
+    var more = (s.scrollHeight - s.clientHeight > 24) &&
+               (s.scrollTop < s.scrollHeight - s.clientHeight - 16);
+    if (more){ hint.setAttribute('data-show',''); fade.setAttribute('data-show',''); }
+    else { hint.removeAttribute('data-show'); fade.removeAttribute('data-show'); }
+  }
+  slides.forEach(function(s){ s.addEventListener('scroll', refreshHint, {passive:true}); });
+  window.addEventListener('resize', refreshHint);
+  window.addEventListener('orientationchange', function(){ setTimeout(refreshHint, 250); });
+
+  function show(n){
+    slides[i].removeAttribute('data-active');
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    var s = slides[i];
+    s.setAttribute('data-active','');
+    s.scrollTop = 0;
+    counter.textContent = (i + 1) + ' / ' + slides.length;
+    progress.style.width = ((i + 1) / slides.length * 100) + '%';
+    prev.disabled = (i === 0);
+    next.disabled = (i === slides.length - 1);
+    refreshHint();
+  }
+
+  prev.addEventListener('click', function(){ show(i - 1); });
+  next.addEventListener('click', function(){ show(i + 1); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' '){ e.preventDefault(); show(i + 1); }
+    if (e.key === 'ArrowLeft'  || e.key === 'PageUp'){ e.preventDefault(); show(i - 1); }
+    if (e.key === 'Home'){ e.preventDefault(); show(0); }
+    if (e.key === 'End'){ e.preventDefault(); show(slides.length - 1); }
+  });
+
+  /* swipe sideways only when it clearly beats vertical scrolling */
+  var x0 = null, y0 = null;
+  document.addEventListener('touchstart', function(e){
+    x0 = e.changedTouches[0].clientX;
+    y0 = e.changedTouches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    var dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.6) show(dx < 0 ? i + 1 : i - 1);
+    x0 = y0 = null;
+  }, {passive:true});
+
+  show(0);
+  window.addEventListener('load', refreshHint);
+})();
+</script>
+</body>
+</html>
