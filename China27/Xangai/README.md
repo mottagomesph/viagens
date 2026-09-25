@@ -17,7 +17,7 @@ Depois de alterar e reenviar o `index.html`, mude o nome do cache em `sw.js`
 As seis fotos estão na pasta `img/` e ficam guardadas no celular junto com a página,
 então funcionam na China sem internet. Para trocar uma, substitua o JPG em `img/`
 mantendo o nome (veja `img/LEIA-ME.txt`).
-Depois de qualquer mudança, troque o número da versão em `sw.js` (v5 → v6).
+Depois de qualquer mudança, troque o número da versão em `sw.js` (v6 → v7).
 
 Créditos (Wikimedia Commons):
 - Capa: "Pudong skyline at dusk.jpg", Lloyd Tudor, CC BY-SA 4.0
