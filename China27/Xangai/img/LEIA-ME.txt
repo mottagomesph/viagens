@@ -1,0 +1,11 @@
+As fotos da página ficam aqui, em JPG, com exatamente estes nomes:
+
+capa.jpg  - foto principal (skyline de Lujiazui visto do Bund, por exemplo)
+dia0.jpg  - Bund iluminado à noite
+dia1.jpg  - Yu Garden ou a Casa de Chá Huxinting
+dia2.jpg  - Wukang Mansion ou as ruas arborizadas da Concessão Francesa
+dia3.jpg  - Nanjing Road ou People's Square
+dia4.jpg  - Ponte Waibaidu e Suzhou Creek
+
+Tamanho ideal: cerca de 1200 px de largura e até 300 KB cada.
+Se nenhuma foto carregar, aparece um painel colorido com o nome do lugar em chinês.
