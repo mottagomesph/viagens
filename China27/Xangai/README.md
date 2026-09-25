@@ -14,7 +14,15 @@ Depois de alterar e reenviar o `index.html`, mude o nome do cache em `sw.js`
 (`xangai-orbitas-v1` → `v2`) para que os celulares baixem a versão nova.
 
 ## Fotos
-As seis fotos estão na pasta `img/` (Wikimedia Commons; créditos em Úteis → Fotos) e ficam guardadas
-no celular junto com a página, então funcionam na China sem internet.
-Para trocar uma, substitua o JPG em `img/` mantendo o nome (veja `img/LEIA-ME.txt`).
-Depois de qualquer mudança, troque o número da versão em `sw.js` (v4 → v5).
+As seis fotos estão na pasta `img/` e ficam guardadas no celular junto com a página,
+então funcionam na China sem internet. Para trocar uma, substitua o JPG em `img/`
+mantendo o nome (veja `img/LEIA-ME.txt`).
+Depois de qualquer mudança, troque o número da versão em `sw.js` (v5 → v6).
+
+Créditos (Wikimedia Commons):
+- Capa: "Pudong skyline at dusk.jpg", Lloyd Tudor, CC BY-SA 4.0
+- Dia 0: "The Bund by night 20250503-2.jpg", Suicasmo, CC0
+- Dia 1: "Huxinting Teahouse at the Yu Garden pond, Old City, Shanghai.jpg", Peter K Burian, CC BY-SA 4.0
+- Dia 2: "Wukang Mansion (20191114161507).jpg", N509FZ, CC BY-SA 4.0
+- Dia 3: "2014.11.15.181406 Nanjing Road Pedestrian Zone Shanghai.jpg", Hermann Luyken, CC0
+- Dia 4: "Waibaidu Bridge.jpg", Legolas1024, CC BY-SA 3.0

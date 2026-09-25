@@ -53,27 +53,34 @@ time,.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .ph::before{content:attr(data-g);position:absolute;right:-.06em;bottom:-.18em;font-weight:800;font-size:5.5rem;line-height:1;color:#fff;opacity:.16;white-space:nowrap;letter-spacing:-.04em}
 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 
-/* header */
-.top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.top h1{font-size:1.6rem}
-.top .k{margin-top:2px}
-.clock{display:grid;gap:2px;background:var(--card);border-radius:14px;padding:7px 11px;box-shadow:var(--sh);font-size:.72rem;color:var(--muted);text-align:right}
-.clock b{font-family:var(--mono);color:var(--ink);font-size:.86rem;font-weight:600;margin-left:6px}
-
-/* hero */
-.hero{position:relative;margin-top:18px;border-radius:30px;overflow:hidden;box-shadow:var(--sh);min-height:360px;display:flex;align-items:flex-end;color:#fff}
+/* hero: foto da cidade + título */
+.hero{position:relative;margin-top:4px;border-radius:30px;overflow:hidden;box-shadow:var(--sh);min-height:330px;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
 .hero-img{position:absolute;inset:0}
 .hero-img::before{font-size:9rem}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 25%,rgba(0,0,0,.72) 100%)}
-.hero-c{position:relative;z-index:1;padding:20px;display:grid;gap:6px;width:100%}
-.hero .k{color:rgba(255,255,255,.8)}
-.hero h2{font-size:1.65rem}
-.hero .cd{font-family:var(--mono);font-size:.92rem;opacity:.92}
-.hero .glass{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(20,22,24,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:999px;padding:6px 6px 6px 20px;text-decoration:none;font-weight:600;font-size:.95rem}
-.round{flex:none;width:42px;height:42px;border-radius:50%;background:#fff;color:#16191B;display:grid;place-items:center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 45%,rgba(0,0,0,.7) 100%)}
+.hero-bar{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;padding:14px}
+.hero-c{position:relative;z-index:1;padding:20px;display:grid;gap:4px}
+.hero h1{font-size:2rem;line-height:1.05}
+.hero .k{color:rgba(255,255,255,.85)}
+.ibtn{width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;color:#fff;background:rgba(20,22,24,.4);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);cursor:pointer}
+.ibtn svg{width:22px;height:22px}
+.clock{display:grid;gap:1px;border-radius:14px;padding:6px 11px;font-size:.7rem;color:rgba(255,255,255,.8);text-align:right;background:rgba(20,22,24,.4);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.clock b{font-family:var(--mono);color:#fff;font-size:.86rem;font-weight:600;margin-left:6px}
+
+/* próximo compromisso, sem foto */
+.next{margin-top:12px;background:var(--card);border-radius:24px;box-shadow:var(--sh);padding:16px;display:grid;gap:4px}
+.next-h{display:flex;align-items:center;gap:8px}
+.next-ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.next-ic svg{width:17px;height:17px}
+.next h2{font-size:1.3rem;margin-top:4px}
+.next .cd{font-family:var(--mono);font-size:.9rem;color:var(--soft)}
+.pillbtn{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--pill);color:var(--pillink);border-radius:999px;padding:6px 6px 6px 20px;text-decoration:none;font-weight:600;font-size:.95rem}
+.pillbtn .round{background:var(--pillink);color:var(--pill)}
+.round{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;color:#16191B;display:grid;place-items:center}
 .round svg{width:20px;height:20px}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.tag{font-size:.74rem;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.tags{margin-top:8px}
+.tag{color:#fff;font-size:.74rem;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 
 /* section heads */
 .sec{padding-top:30px}
@@ -179,12 +186,6 @@ time,.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.92rem;margin:0}
 .kv dt{color:var(--muted)}
 .kv dd{margin:0}
-.warn{background:color-mix(in srgb,var(--accent) 9%,var(--card))}
-details.method{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:14px 16px}
-details.method summary{cursor:pointer;font-weight:600}
-details.method ul{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--soft);font-size:.92rem}
-details.method b{color:var(--ink)}
-.credits dd{font-size:.8rem;word-break:break-word}.credits a{color:var(--soft)}
 .foot{margin-top:22px;font-size:.76rem;color:var(--muted)}
 
 /* bottom tab bar */
@@ -194,8 +195,21 @@ details.method b{color:var(--ink)}
 .tabbar a.on{background:var(--pillink);color:var(--pill);opacity:1}
 .tabbar a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
+/* info pop-up */
+dialog.pop{margin:auto;width:calc(100% - 32px);max-width:440px;max-height:85dvh;border-radius:26px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.popc{padding:18px 18px 20px;display:grid;gap:12px;overflow:auto;max-height:85dvh}
+.poph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.poph h2{font-size:1.2rem}
+.xbtn{flex:none;width:36px;height:36px;border-radius:50%;border:0;background:var(--fill);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.xbtn svg{width:18px;height:18px}
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rules li{background:var(--fill);border-radius:14px;padding:10px 12px;display:grid;gap:2px}
+.rules b{font-size:.95rem}
+.rules span{font-size:.9rem;color:var(--soft)}
+
 /* sheet */
-dialog{border:0;padding:0;margin:auto auto 0;width:100%;max-width:560px;max-height:88dvh;border-radius:28px 28px 0 0;background:var(--card);color:var(--ink)}
+dialog{border:0;padding:0;background:var(--card);color:var(--ink)}
+#sheet{margin:auto auto 0;width:100%;max-width:560px;max-height:88dvh;border-radius:28px 28px 0 0;background:var(--card);color:var(--ink)}
 dialog::backdrop{background:rgba(5,10,12,.5)}
 .sheet{padding:14px 20px calc(env(safe-area-inset-bottom,0px) + 20px);display:grid;gap:10px;overflow:auto;max-height:88dvh}
 .grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 6px}
@@ -214,20 +228,28 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 <body>
 <main class="wrap" id="inicio">
 
-<header class="top">
-  <div><p class="k">你好 · Nǐ hǎo</p><h1>Xangai em Órbitas</h1><p class="k">28 dez – 1 jan · Metropolo East Nanjing Rd</p></div>
-  <div class="clock"><span>Xangai<b id="ckS">--:--</b></span><span>Brasil<b id="ckB">--:--</b></span></div>
-</header>
-
-<section class="hero" aria-label="Próximo compromisso">
+<section class="hero" aria-label="Xangai em Órbitas">
   <div class="ph hero-img" style="--pc:var(--c1)" data-g="上海"><img data-slot="capa" alt="" decoding="async" referrerpolicy="no-referrer"></div>
-  <div class="hero-c">
-    <p class="k" id="nowEy">Próximo compromisso</p>
-    <h2 id="nowT">Carregando…</h2>
-    <p class="cd" id="nowC"></p>
-    <div class="tags"><span class="tag">4 noites</span><span class="tag">5 polos</span><span class="tag">19 imperdíveis</span></div>
-    <a class="glass" id="nowA" href="#horarios">Ver horários<span class="round"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  <div class="hero-bar">
+    <button class="ibtn" id="infoBtn" aria-label="Como funciona o roteiro de órbitas" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.6" r="1.2" fill="currentColor"/></svg></button>
+    <div class="clock"><span>Xangai<b id="ckS">--:--</b></span><span>Brasil<b id="ckB">--:--</b></span></div>
   </div>
+  <div class="hero-c">
+    <p class="k">你好 · Nǐ hǎo</p>
+    <h1>Xangai em Órbitas</h1>
+    <p class="k">28 dez – 1 jan · Metropolo East Nanjing Rd</p>
+    <div class="tags"><span class="tag">4 noites</span><span class="tag">5 polos</span><span class="tag">19 imperdíveis</span></div>
+  </div>
+</section>
+
+<section class="next" aria-label="Próximo compromisso">
+  <div class="next-h">
+    <span class="next-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+    <p class="k" id="nowEy">Próximo compromisso</p>
+  </div>
+  <h2 id="nowT">Carregando…</h2>
+  <p class="cd" id="nowC"></p>
+  <a class="pillbtn" id="nowA" href="#horarios">Ver horários<span class="round"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 </section>
 
 <section class="sec">
@@ -420,26 +442,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
       <p class="lbl">Clima esperado</p>
       <p>Máximas de 8 a 11 °C e mínimas de 2 a 5 °C, com umidade alta, céu encoberto e vento forte na orla do Huangpu. Sem aquecimento central nos ambientes. Sol se põe perto das 17h.</p>
     </div>
-    <div class="card warn">
-      <p class="lbl">Antes de sair</p>
-      <p>Na semana: confirmar o aviso oficial de restrição do Bund para 31/12; perguntar ao The Fellas sobre aquecedores ou mantas no terraço; confirmar os horários do Yu Garden e do Jia Jia Tang Bao; comprar o ingresso da Shanghai Tower. Os custos da planilha para o Yu Garden (¥572) e a Oriental Pearl (¥959) parecem errados.</p>
-    </div>
-    <div class="card">
-      <p class="lbl">Fotos</p>
-      <p>Fotos do Wikimedia Commons, redimensionadas e guardadas na pasta img/ da própria página.</p>
-      <dl class="kv credits"><dt>Capa</dt><dd><a href="https://commons.wikimedia.org/wiki/File:Pudong_skyline_at_dusk.jpg" target="_blank" rel="noopener">Lloyd Tudor</a>, CC BY-SA 4.0, via Wikimedia Commons</dd><dt>Dia 0</dt><dd><a href="https://commons.wikimedia.org/wiki/File:The_Bund_by_night_20250503-2.jpg" target="_blank" rel="noopener">Suicasmo</a>, CC0, via Wikimedia Commons</dd><dt>Dia 1</dt><dd><a href="https://commons.wikimedia.org/wiki/File:Huxinting_Teahouse_at_the_Yu_Garden_pond,_Old_City,_Shanghai.jpg" target="_blank" rel="noopener">Peter K Burian</a>, CC BY-SA 4.0, via Wikimedia Commons</dd><dt>Dia 2</dt><dd><a href="https://commons.wikimedia.org/wiki/File:Wukang_Mansion_(20191114161507).jpg" target="_blank" rel="noopener">N509FZ</a>, CC BY-SA 4.0, via Wikimedia Commons</dd><dt>Dia 3</dt><dd><a href="https://commons.wikimedia.org/wiki/File:2014.11.15.181406_Nanjing_Road_Pedestrian_Zone_Shanghai.jpg" target="_blank" rel="noopener">Hermann Luyken</a>, CC0, via Wikimedia Commons</dd><dt>Dia 4</dt><dd><a href="https://commons.wikimedia.org/wiki/File:Waibaidu_Bridge.jpg" target="_blank" rel="noopener">Legolas1024</a>, CC BY-SA 3.0, via Wikimedia Commons</dd></dl>
-    </div>
-    <details class="method">
-      <summary>Como funciona o roteiro de órbitas</summary>
-      <ul>
-        <li><b>Um polo por dia.</b> Metrô ou carro só para ir e voltar; dentro do polo, tudo a pé.</li>
-        <li><b>Três órbitas.</b> Núcleo: imperdíveis. Órbita média: preferenciais no caminho. Órbita externa: só se passar na porta.</li>
-        <li><b>Hora marcada só para o que tem hora.</b> Voo, reserva, fechamento e luz do dia. O resto é ordem sugerida.</li>
-        <li><b>Uma pausa longa por dia.</b> Café, pub ou hotel.</li>
-        <li><b>Válvula.</b> Cada dia diz o que cortar primeiro e com qual dia trocar.</li>
-        <li><b>Coringas.</b> Bares e restaurantes perto do hotel para qualquer noite.</li>
-      </ul>
-    </details>
   </div>
   <p class="foot">Página sem códigos de reserva, números de bilhete ou dados de passaporte, por ficar em endereço público. Versão de 25/09/2026.</p>
 </section>
@@ -453,6 +455,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   <a href="#mapa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10.5a6 6 0 0 1 12 0C18 15.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
   <a href="#uteis"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="7.5" r="2" fill="currentColor"/><circle cx="16.5" cy="7.5" r="2" fill="currentColor"/><circle cx="7.5" cy="16.5" r="2" fill="currentColor"/><circle cx="16.5" cy="16.5" r="2" fill="currentColor"/></svg><span>Úteis</span></a>
 </nav>
+
+<dialog id="info" class="pop" aria-labelledby="infoT">
+  <div class="popc">
+    <div class="poph"><h2 id="infoT">Como funciona o roteiro de órbitas</h2><button class="xbtn" id="infoX" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <ul class="rules">
+      <li><b>Um polo por dia</b><span>Metrô ou carro só para ir e voltar; dentro do polo, tudo a pé.</span></li>
+      <li><b>Três órbitas</b><span>Núcleo: imperdíveis. Órbita média: preferenciais no caminho. Órbita externa: só se passar na porta.</span></li>
+      <li><b>Hora marcada só para o que tem hora</b><span>Voo, reserva, fechamento e luz do dia. O resto é ordem sugerida.</span></li>
+      <li><b>Uma pausa longa por dia</b><span>Café, pub ou o próprio hotel.</span></li>
+      <li><b>Válvula</b><span>Cada dia diz o que cortar primeiro e com qual outro dia trocar.</span></li>
+      <li><b>Coringas</b><span>Bares e restaurantes perto do hotel para qualquer noite.</span></li>
+    </ul>
+  </div>
+</dialog>
 
 <dialog id="sheet" aria-label="Detalhes do lugar">
   <div class="sheet">
@@ -567,6 +583,10 @@ document.addEventListener('click', e => {
   const f = e.target.closest('[data-full]'); if (f) showFull(f.dataset.full, f.dataset.sub || '');
 });
 $('sClose').onclick = () => sheet.close();
+const info = $('info');
+$('infoBtn').onclick = () => { if (info.showModal) info.showModal(); else info.setAttribute('open', ''); };
+$('infoX').onclick = () => info.close();
+info.addEventListener('click', e => { if (e.target === info) info.close(); });
 sheet.addEventListener('click', e => { if (e.target === sheet) sheet.close(); });
 $('sFull').onclick = () => { if (cur) showFull(cur.cn, cur.ad || cur.n); };
 const full = $('full');
