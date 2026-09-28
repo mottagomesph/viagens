@@ -1,6 +1,6 @@
 // Cache offline: abra uma vez com internet e a página passa a funcionar sem rede.
-// Ao publicar uma versão nova, troque o número abaixo (v7 -> v8).
-const CACHE = 'xangai-orbitas-v7';
+// Ao publicar uma versão nova, troque o número abaixo (v8 -> v9).
+const CACHE = 'xangai-orbitas-v8';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-180.png', './icon-512.png'];
 const PHOTOS = ['capa', 'dia0', 'dia1', 'dia2', 'dia3', 'dia4'].map(n => './img/' + n + '.jpg');
 self.addEventListener('install', e => {

@@ -11,13 +11,13 @@ Roteiro de Xangai (28/12/2026 a 01/01/2027) em página única, para celular.
 Abra o endereço uma vez no celular, ainda no Brasil, e use "Adicionar à Tela de Início".
 A página fica guardada no aparelho e abre mesmo sem rede.
 Depois de alterar e reenviar o `index.html`, mude o nome do cache em `sw.js`
-(ex.: `xangai-orbitas-v7` → `v8`) para que os celulares baixem a versão nova.
+(ex.: `xangai-orbitas-v8` → `v9`) para que os celulares baixem a versão nova.
 
 ## Fotos
 As seis fotos estão na pasta `img/` e ficam guardadas no celular junto com a página,
 então funcionam na China sem internet. Para trocar uma, substitua o JPG em `img/`
 mantendo o nome (veja `img/LEIA-ME.txt`).
-Depois de qualquer mudança, troque o número da versão em `sw.js` (v7 → v8).
+Depois de qualquer mudança, troque o número da versão em `sw.js` (v8 → v9).
 
 ## Fonte do título
 O nome "Xangai" usa a fonte Chelsea (Kong Font), recortada só com essas letras e embutida

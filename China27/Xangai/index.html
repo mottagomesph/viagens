@@ -165,6 +165,37 @@ time,.num{font-variant-numeric:tabular-nums}
 .valve{background:color-mix(in srgb,var(--dc) 10%,var(--card));border-radius:16px;padding:10px 14px}
 .valve p:last-child{font-size:.93rem;color:var(--soft)}
 
+/* voos e trens com bilhete: cartão de itinerário com linha do tempo */
+.fl{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:16px;display:grid;gap:14px;margin-bottom:10px}
+.fl-h h3{font-size:1.15rem;margin-top:2px}
+.fl-h .k{display:flex;align-items:center;gap:6px}
+.fl-h .k svg{width:15px;height:15px;color:var(--flight)}
+.fl-sum{display:flex;flex-wrap:wrap;gap:6px}
+.fl-sum span{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--fill);color:var(--soft);font-variant-numeric:tabular-nums}
+.fl-sum span:first-child{background:color-mix(in srgb,var(--flight) 14%,transparent);color:var(--ink)}
+.fr{list-style:none;margin:0;padding:0}
+.fr li{display:grid;grid-template-columns:50px 14px 1fr;column-gap:10px}
+.fr .r{background:linear-gradient(var(--flight),var(--flight)) center/2px 100% no-repeat;position:relative}
+.fr .s .r::before{content:"";position:absolute;left:50%;top:6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--card);border:2.5px solid var(--flight);box-sizing:border-box}
+.fr .s:first-child .r{background-size:2px calc(100% - 12px);background-position:center bottom}
+.fr .s:last-child .r{background-size:2px 12px;background-position:center top}
+.fr .c .r{background:repeating-linear-gradient(var(--muted) 0 4px,transparent 4px 8px) center/2px 100% no-repeat}
+.fr .t{font-weight:700;font-size:1.05rem;line-height:1.4;font-variant-numeric:tabular-nums}
+.fr .s .x{padding-bottom:2px}
+.fr .s .x b{font-size:.98rem}
+.fr .s .x small{display:block;font-size:.78rem;color:var(--muted);line-height:1.35}
+.fr .g .x{font-size:.82rem;color:var(--soft);padding:8px 0 12px;display:flex;align-items:center;gap:6px}
+.fr .g .x svg{flex:none;width:14px;height:14px;color:var(--flight)}
+.fr .c .x{padding:8px 0 12px}
+.fr .c .x span{display:inline-block;font-size:.84rem;font-weight:600;background:var(--fill);border-radius:12px;padding:6px 10px}
+.fl .facts{margin-top:-2px}
+.facts .w p{font-size:.9rem;line-height:1.45;margin-top:1px}
+
+#flsheet .fl{box-shadow:none;padding:0;margin:0;background:none}
+.flbtn{display:inline-flex;align-items:center;gap:4px;margin-top:8px;min-height:34px;padding:6px 10px 6px 12px;border:0;border-radius:999px;background:color-mix(in srgb,var(--flight) 13%,transparent);color:var(--flight);font-size:.82rem;font-weight:650;cursor:pointer}
+.flbtn svg{width:16px;height:16px}
+.flbtn:active{transform:scale(.97)}
+
 /* agenda */
 .legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--soft);margin-bottom:12px}
 .legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--k)}
@@ -242,7 +273,7 @@ dialog.pop{margin:auto;width:calc(100% - 32px);max-width:440px;max-height:85dvh;
 
 /* sheet */
 dialog{border:0;padding:0;background:var(--card);color:var(--ink)}
-#sheet{margin:auto auto 0;width:100%;max-width:560px;max-height:88dvh;border-radius:28px 28px 0 0;background:var(--card);color:var(--ink)}
+#sheet,#flsheet{margin:auto auto 0;width:100%;max-width:560px;max-height:88dvh;border-radius:28px 28px 0 0;background:var(--card);color:var(--ink)}
 dialog::backdrop{background:rgba(5,10,12,.5)}
 .sheet{padding:14px 20px calc(env(safe-area-inset-bottom,0px) + 20px);display:grid;gap:10px;overflow:auto;max-height:88dvh}
 .grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 6px}
@@ -419,10 +450,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 </section>
 
 <section class="sec" id="horarios">
-  <div class="sh"><h2>Horários e voos</h2></div>
-  <p class="sub">Horário local de cada lugar.</p>
+  <div class="sh"><h2>Horários</h2></div>
+  <p class="sub">Horário local de cada lugar. Nos voos, toque em “Detalhes do voo” para ver conexão, duração e bagagem.</p>
   <div class="legend"><span style="--k:var(--flight)">Voo</span><span style="--k:var(--hard)">Horário fixo</span><span style="--k:var(--muted)">Sugerido ou estimado</span></div>
-  <div class="agday" data-key="27/12"><p class="agh">dom · 27/12</p><ul class="ag"><li class="t-flight"><time data-t="2026-12-27T04:10:00-03:00" data-tz="hora de Brasília"></time><div><b>Voo TK16 · GRU → Istambul</b><p>Guarulhos 04h10 → IST 22h35 (hora de Istambul). A350-900. Conexão de 3h15 em área restrita.</p></div></li></ul></div><div class="agday" data-key="28/12"><p class="agh">seg · 28/12</p><ul class="ag"><li class="t-flight"><time data-t="2026-12-28T01:50:00+03:00" data-tz="hora de Istambul"></time><div><b>Voo TK26 · Istambul → Xangai</b><p>IST 01h50 → PVG 17h10. Boeing 777. Parca e luvas na bagagem de mão.</p></div></li><li class="t-flight"><time data-t="2026-12-28T17:10:00+08:00" data-tz=""></time><div><b>Pouso em Pudong (PVG)</b><p>Imigração e bagagem: cerca de 1 h. Metrô L2 direto até East Nanjing Rd, ou táxi/Didi de 50 a 70 min.</p></div></li><li class="t-soft"><time data-t="2026-12-28T19:30:00+08:00" data-tz=""></time><div><b>Check-in no hotel</b><p>Liberado a partir das 14h. Caução de CNY 300 (cartão, dinheiro, Alipay ou WeChat Pay). Chegada estimada.</p></div></li><li class="t-soft"><time data-t="2026-12-28T22:00:00+08:00" data-tz=""></time><div><b>Iluminação do Bund costuma apagar</b><p>Por isso o Bund vem antes do jantar.</p></div></li></ul></div><div class="agday" data-key="29/12"><p class="agh">ter · 29/12</p><ul class="ag"><li class="t-hard"><time data-t="2026-12-29T06:30:00+08:00" data-tz=""></time><div><b>Café da manhã no hotel</b><p>Buffet das 6h30 às 10h, incluído para os dois.</p></div></li><li class="t-soft"><time data-t="2026-12-29T09:00:00+08:00" data-tz=""></time><div><b>Yu Garden na abertura</b><p>Horário de abertura a confirmar. Antes das 10h há menos excursões.</p></div></li><li class="t-soft"><time data-t="2026-12-29T16:15:00+08:00" data-tz=""></time><div><b>Shanghai Tower</b><p>Sugestão: chegar ao mirante por volta de 16h15. Pôr do sol perto das 17h. Comprar ingresso antes.</p></div></li><li class="t-soft"><time data-t="2026-12-29T21:30:00+08:00" data-tz=""></time><div><b>Takumi fecha a cozinha</b><p>Jantar no IFC (Takumi até 21h30).</p></div></li></ul></div><div class="agday" data-key="30/12"><p class="agh">qua · 30/12</p><ul class="ag"><li class="t-hard"><time data-t="2026-12-30T06:30:00+08:00" data-tz=""></time><div><b>Café da manhã no hotel</b><p>Buffet das 6h30 às 10h.</p></div></li><li class="t-soft"><time data-t="2026-12-30T15:00:00+08:00" data-tz=""></time><div><b>Blarney Stone abre</b><p>Pub irlandês no caminho para Tianzifang.</p></div></li></ul></div><div class="agday" data-key="31/12"><p class="agh">qui · 31/12</p><ul class="ag"><li class="t-hard"><time data-t="2026-12-31T06:30:00+08:00" data-tz=""></time><div><b>Café da manhã no hotel</b><p>Buffet das 6h30 às 10h.</p></div></li><li class="t-soft"><time data-t="2026-12-31T15:30:00+08:00" data-tz=""></time><div><b>De volta ao hotel</b><p>Descanso antes da noite.</p></div></li><li class="t-hard"><time data-t="2026-12-31T20:00:00+08:00" data-tz=""></time><div><b>Área do Bund fechada a veículos</b><p>Das 20h à 1h (regra da virada 2024/25; confirmar a de 2026). Hotel e restaurante estão dentro da área: nada de táxi ou Didi.</p></div></li><li class="t-soft"><time data-t="2026-12-31T20:40:00+08:00" data-tz=""></time><div><b>Sair a pé para o The Fellas</b><p>900 m, cerca de 12 min, pelas ruas internas (Sichuan ou Jiangxi Road), longe da orla.</p></div></li><li class="t-hard"><time data-t="2026-12-31T21:00:00+08:00" data-tz=""></time><div><b>Jantar de Réveillon · The Fellas Terrace</b><p>7º andar, Yan&#x27;an East Road nº 7. Terraço externo. Mesa retida por 15 min; duração estimada de 2 h. Dress code smart casual.</p></div></li></ul></div><div class="agday" data-key="01/01"><p class="agh">sex · 01/01</p><ul class="ag"><li class="t-hard"><time data-t="2027-01-01T01:00:00+08:00" data-tz=""></time><div><b>Fim da restrição de veículos</b><p>Depois disso, táxi e Didi voltam a circular na área.</p></div></li><li class="t-hard"><time data-t="2027-01-01T06:30:00+08:00" data-tz=""></time><div><b>Café da manhã no hotel</b><p>Último café incluído, das 6h30 às 10h.</p></div></li><li class="t-hard"><time data-t="2027-01-01T12:00:00+08:00" data-tz=""></time><div><b>Check-out</b><p>Até 12h. Deixar as malas no guarda-volumes.</p></div></li><li class="t-hard"><time data-t="2027-01-01T15:30:00+08:00" data-tz=""></time><div><b>Sair para o aeroporto</b><p>Didi até PVG T1 (50 a 70 min; feriado) ou L2 até Longyang Road + Maglev.</p></div></li><li class="t-soft"><time data-t="2027-01-01T17:10:00+08:00" data-tz=""></time><div><b>Chegar ao PVG, Terminal 1</b><p>A companhia recomenda chegar 2 h antes.</p></div></li><li class="t-hard"><time data-t="2027-01-01T18:30:00+08:00" data-tz=""></time><div><b>Check-in do FM9343 fecha</b><p>40 min antes da partida. Despacho: 20 kg por pessoa (Pedro com +5 kg comprados). Mão: 8 kg.</p></div></li><li class="t-hard"><time data-t="2027-01-01T18:50:00+08:00" data-tz=""></time><div><b>Portão de embarque fecha</b><p>20 min antes da partida.</p></div></li><li class="t-flight"><time data-t="2027-01-01T19:10:00+08:00" data-tz=""></time><div><b>Voo FM9343 · Xangai → Zhangjiajie</b><p>PVG T1 19h10 → DYG T2 21h40. Shanghai Airlines (China Eastern), Boeing 737. Assentos 37J e 37K.</p></div></li></ul></div>
+  <div class="agday" data-key="27/12"><p class="agh">dom · 27/12</p><ul class="ag"><li class="t-flight"><time data-t="2026-12-27T04:10:00-03:00" data-tz="hora de Brasília"></time><div><b>Voo TK16 · GRU → Istambul</b><button class="flbtn" data-fl="chegada">Detalhes do voo<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li></ul></div><div class="agday" data-key="28/12"><p class="agh">seg · 28/12</p><ul class="ag"><li class="t-flight"><time data-t="2026-12-28T01:50:00+03:00" data-tz="hora de Istambul"></time><div><b>Voo TK26 · Istambul → Xangai</b><button class="flbtn" data-fl="chegada">Detalhes do voo<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-flight"><time data-t="2026-12-28T17:10:00+08:00" data-tz=""></time><div><b>Pouso em Pudong (PVG)</b><button class="flbtn" data-fl="chegada">Detalhes do voo<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-soft"><time data-t="2026-12-28T19:30:00+08:00" data-tz=""></time><div><b>Check-in no hotel</b><p>Liberado a partir das 14h. Caução de CNY 300 (cartão, dinheiro, Alipay ou WeChat Pay). Chegada estimada.</p></div></li><li class="t-soft"><time data-t="2026-12-28T22:00:00+08:00" data-tz=""></time><div><b>Iluminação do Bund costuma apagar</b><p>Por isso o Bund vem antes do jantar.</p></div></li></ul></div><div class="agday" data-key="29/12"><p class="agh">ter · 29/12</p><ul class="ag"><li class="t-hard"><time data-t="2026-12-29T06:30:00+08:00" data-tz=""></time><div><b>Café da manhã no hotel</b><p>Buffet das 6h30 às 10h, incluído para os dois.</p></div></li><li class="t-soft"><time data-t="2026-12-29T09:00:00+08:00" data-tz=""></time><div><b>Yu Garden na abertura</b><p>Horário de abertura a confirmar. Antes das 10h há menos excursões.</p></div></li><li class="t-soft"><time data-t="2026-12-29T16:15:00+08:00" data-tz=""></time><div><b>Shanghai Tower</b><p>Sugestão: chegar ao mirante por volta de 16h15. Pôr do sol perto das 17h. Comprar ingresso antes.</p></div></li><li class="t-soft"><time data-t="2026-12-29T21:30:00+08:00" data-tz=""></time><div><b>Takumi fecha a cozinha</b><p>Jantar no IFC (Takumi até 21h30).</p></div></li></ul></div><div class="agday" data-key="30/12"><p class="agh">qua · 30/12</p><ul class="ag"><li class="t-hard"><time data-t="2026-12-30T06:30:00+08:00" data-tz=""></time><div><b>Café da manhã no hotel</b><p>Buffet das 6h30 às 10h.</p></div></li><li class="t-soft"><time data-t="2026-12-30T15:00:00+08:00" data-tz=""></time><div><b>Blarney Stone abre</b><p>Pub irlandês no caminho para Tianzifang.</p></div></li></ul></div><div class="agday" data-key="31/12"><p class="agh">qui · 31/12</p><ul class="ag"><li class="t-hard"><time data-t="2026-12-31T06:30:00+08:00" data-tz=""></time><div><b>Café da manhã no hotel</b><p>Buffet das 6h30 às 10h.</p></div></li><li class="t-soft"><time data-t="2026-12-31T15:30:00+08:00" data-tz=""></time><div><b>De volta ao hotel</b><p>Descanso antes da noite.</p></div></li><li class="t-hard"><time data-t="2026-12-31T20:00:00+08:00" data-tz=""></time><div><b>Área do Bund fechada a veículos</b><p>Das 20h à 1h (regra da virada 2024/25; confirmar a de 2026). Hotel e restaurante estão dentro da área: nada de táxi ou Didi.</p></div></li><li class="t-soft"><time data-t="2026-12-31T20:40:00+08:00" data-tz=""></time><div><b>Sair a pé para o The Fellas</b><p>900 m, cerca de 12 min, pelas ruas internas (Sichuan ou Jiangxi Road), longe da orla.</p></div></li><li class="t-hard"><time data-t="2026-12-31T21:00:00+08:00" data-tz=""></time><div><b>Jantar de Réveillon · The Fellas Terrace</b><p>7º andar, Yan&#x27;an East Road nº 7. Terraço externo. Mesa retida por 15 min; duração estimada de 2 h. Dress code smart casual.</p></div></li></ul></div><div class="agday" data-key="01/01"><p class="agh">sex · 01/01</p><ul class="ag"><li class="t-hard"><time data-t="2027-01-01T01:00:00+08:00" data-tz=""></time><div><b>Fim da restrição de veículos</b><p>Depois disso, táxi e Didi voltam a circular na área.</p></div></li><li class="t-hard"><time data-t="2027-01-01T06:30:00+08:00" data-tz=""></time><div><b>Café da manhã no hotel</b><p>Último café incluído, das 6h30 às 10h.</p></div></li><li class="t-hard"><time data-t="2027-01-01T12:00:00+08:00" data-tz=""></time><div><b>Check-out</b><p>Até 12h. Deixar as malas no guarda-volumes.</p></div></li><li class="t-hard"><time data-t="2027-01-01T15:30:00+08:00" data-tz=""></time><div><b>Sair para o aeroporto</b><p>Didi até PVG T1 (50 a 70 min; feriado) ou L2 até Longyang Road + Maglev.</p></div></li><li class="t-soft"><time data-t="2027-01-01T17:10:00+08:00" data-tz=""></time><div><b>Chegar ao PVG, Terminal 1</b><p>A companhia recomenda chegar 2 h antes.</p></div></li><li class="t-hard"><time data-t="2027-01-01T18:30:00+08:00" data-tz=""></time><div><b>Check-in do FM9343 fecha</b><p>40 min antes da partida. Despacho: 20 kg por pessoa (Pedro com +5 kg comprados). Mão: 8 kg.</p></div></li><li class="t-hard"><time data-t="2027-01-01T18:50:00+08:00" data-tz=""></time><div><b>Portão de embarque fecha</b><p>20 min antes da partida.</p></div></li><li class="t-flight"><time data-t="2027-01-01T19:10:00+08:00" data-tz=""></time><div><b>Voo FM9343 · Xangai → Zhangjiajie</b><button class="flbtn" data-fl="saida">Detalhes do voo<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li></ul></div>
 </section>
 
 <section class="sec" id="mapa">
@@ -504,6 +535,36 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
   </div>
 </dialog>
 
+<dialog id="flsheet" aria-label="Detalhes do voo">
+  <div class="sheet">
+    <div class="grab"></div>
+    <article class="fl" id="fl-chegada" hidden>
+    <div class="fl-h"><p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 20.5l1.5-1.2v-5l7.5 3v-2l-7.5-4.8V5a1.5 1.5 0 0 0-3 0v5.5L1.5 15.3v2l7.5-3v5l1.5 1.2z" fill="currentColor" transform="rotate(90 12 12)"/></svg>Chegada a Xangai · Turkish Airlines</p><h3>São Paulo → Istambul → Xangai</h3></div>
+    <div class="fl-sum"><span>26h porta a porta</span><span>22h45 em voo</span><span>1 conexão</span></div>
+    <ol class="fr">
+      <li class="s"><time class="t">04:10</time><span class="r"></span><div class="x"><b>GRU · São Paulo</b><small>dom 27/12 · hora de Brasília</small></div></li>
+      <li class="g"><span></span><span class="r"></span><p class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 20.5l1.5-1.2v-5l7.5 3v-2l-7.5-4.8V5a1.5 1.5 0 0 0-3 0v5.5L1.5 15.3v2l7.5-3v5l1.5 1.2z" fill="currentColor" transform="rotate(90 12 12)"/></svg>TK16 · 12h25 de voo · Airbus A350‑900</p></li>
+      <li class="s"><time class="t">22:35</time><span class="r"></span><div class="x"><b>IST · Istambul</b><small>dom 27/12 · hora de Istambul</small></div></li>
+      <li class="c"><span></span><span class="r"></span><p class="x"><span>Conexão em Istambul: 3h15</span></p></li>
+      <li class="s"><time class="t">01:50</time><span class="r"></span><div class="x"><b>IST · Istambul</b><small>seg 28/12 · hora de Istambul</small></div></li>
+      <li class="g"><span></span><span class="r"></span><p class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 20.5l1.5-1.2v-5l7.5 3v-2l-7.5-4.8V5a1.5 1.5 0 0 0-3 0v5.5L1.5 15.3v2l7.5-3v5l1.5 1.2z" fill="currentColor" transform="rotate(90 12 12)"/></svg>TK26 · 10h20 de voo · Boeing 777</p></li>
+      <li class="s"><time class="t">17:10</time><span class="r"></span><div class="x"><b>PVG · Xangai Pudong</b><small>seg 28/12 · hora de Xangai (11h à frente de Brasília)</small></div></li>
+    </ol>
+    <div class="facts"><div><span>Despachada</span><b>2 × 23 kg por pessoa</b></div><div><span>De mão</span><b>8 kg por pessoa</b></div><div class="w"><span>Na bagagem de mão</span><p>Parca e luvas: chega-se ao inverno de Xangai.</p></div><div class="w"><span>Depois do pouso</span><p>Imigração e bagagem: cerca de 1 h. Até o hotel: metrô L2 direto até East Nanjing Rd, ou táxi/Didi de 50 a 70 min.</p></div></div>
+  </article>
+    <article class="fl" id="fl-saida" hidden>
+    <div class="fl-h"><p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 20.5l1.5-1.2v-5l7.5 3v-2l-7.5-4.8V5a1.5 1.5 0 0 0-3 0v5.5L1.5 15.3v2l7.5-3v5l1.5 1.2z" fill="currentColor" transform="rotate(90 12 12)"/></svg>Saída de Xangai · Shanghai Airlines (China Eastern)</p><h3>Xangai → Zhangjiajie</h3></div>
+    <div class="fl-sum"><span>2h30 em voo</span><span>Direto</span><span>Refeição a bordo</span></div>
+    <ol class="fr">
+      <li class="s"><time class="t">19:10</time><span class="r"></span><div class="x"><b>PVG · Xangai Pudong</b><small>sex 01/01 · Terminal 1</small></div></li>
+      <li class="g"><span></span><span class="r"></span><p class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 20.5l1.5-1.2v-5l7.5 3v-2l-7.5-4.8V5a1.5 1.5 0 0 0-3 0v5.5L1.5 15.3v2l7.5-3v5l1.5 1.2z" fill="currentColor" transform="rotate(90 12 12)"/></svg>FM9343 · 2h30 de voo · Boeing 737‑800</p></li>
+      <li class="s"><time class="t">21:40</time><span class="r"></span><div class="x"><b>DYG · Zhangjiajie Hehua</b><small>sex 01/01 · Terminal 2 · mesmo fuso</small></div></li>
+    </ol>
+    <div class="facts"><div><span>Chegar ao aeroporto</span><b>até 17:10</b></div><div><span>Check-in fecha</span><b>18:30</b></div><div><span>Portão fecha</span><b>18:50</b></div><div><span>Assentos</span><b>37J e 37K</b></div><div class="w"><span>Bagagem</span><b>Despachada 20 kg por pessoa (Pedro: 25 kg) · de mão 8 kg + 1 item pessoal</b></div><div class="w"><span>Até o aeroporto</span><p>Sair do hotel às 15:30. Didi até o PVG T1 (50 a 70 min; feriado) ou L2 até Longyang Road + Maglev.</p></div></div>
+  </article>
+    <div class="btns"><button class="btn" id="flClose">Fechar</button></div>
+  </div>
+</dialog>
 <dialog id="sheet" aria-label="Detalhes do lugar">
   <div class="sheet">
     <div class="grab"></div>
@@ -554,7 +615,13 @@ function fmtDur(ms){
 }
 // agenda: texto de apoio em duas linhas; tocar no item mostra o resto
 function clampAgenda(){ document.querySelectorAll('.ag li').forEach(li => { const p = li.querySelector('p'); if (!p || li.classList.contains('x')) return; const more = p.scrollHeight > p.clientHeight + 1; li.classList.toggle('more', more); if (more) li.tabIndex = 0; else li.removeAttribute('tabindex'); }); }
-document.addEventListener('click', e => { const li = e.target.closest('.ag li.more'); if (li) li.classList.toggle('x'); });
+document.addEventListener('click', e => { if (e.target.closest('.flbtn')) return; const li = e.target.closest('.ag li.more'); if (li) li.classList.toggle('x'); });
+// janela com o cartão do voo
+const flsheet = $('flsheet');
+function openFl(k){ document.querySelectorAll('#flsheet .fl').forEach(f => f.hidden = f.id !== 'fl-' + k); if (flsheet.showModal) flsheet.showModal(); else flsheet.setAttribute('open', ''); }
+document.addEventListener('click', e => { const b = e.target.closest('[data-fl]'); if (b) { e.preventDefault(); openFl(b.dataset.fl); } });
+$('flClose').onclick = () => flsheet.close();
+flsheet.addEventListener('click', e => { if (e.target === flsheet) flsheet.close(); });
 document.addEventListener('keydown', e => { const li = e.target.closest && e.target.closest('.ag li.more'); if (li && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); li.classList.toggle('x'); } });
 window.addEventListener('resize', clampAgenda);
 document.querySelectorAll('time[data-t]').forEach(t => {
@@ -585,6 +652,9 @@ function tick(){
     $('nowC').textContent = fmtDur(Date.parse(next.t) - now);
     $('nowX').textContent = next.k + ' · ' + hhmm(next.t) + (next.tz ? ' · ' + next.tz : '');
     const a = $('nowA');
+    const fb = next.kind === 'flight' && [...document.querySelectorAll('.ag time')].find(x => x.dataset.t === next.t)?.closest('li').querySelector('.flbtn');
+    if (fb) { a.firstChild.textContent = 'Detalhes do voo'; a.href = '#horarios'; a.dataset.fl = fb.dataset.fl; delete a.dataset.open; }
+    else { delete a.dataset.fl; if (!inTrip) { a.firstChild.textContent = 'Ver horários'; a.href = '#horarios'; } }
     if (inTrip) { a.firstChild.textContent = 'Abrir o roteiro de hoje'; a.href = '#dia' + DAYNAMES[key][0]; a.dataset.open = 'dia' + DAYNAMES[key][0]; }
   } else {
     $('nowEy').textContent = 'Xangai concluída'; $('nowT').textContent = 'Boa viagem para Zhangjiajie'; $('nowC').textContent = ''; $('nowX').textContent = '';
