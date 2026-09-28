@@ -44,11 +44,13 @@
   --c0:#8C9CA5; --c1:#DD6656; --c2:#4FAA86; --c3:#D39E38; --c4:#6F9BD8;
   --sh:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
 }
+/* texto grande: no iPhone, seguir o tamanho de texto dos Ajustes; todo o resto da página é em rem */
+@supports (font:-apple-system-body){@media (hover:none) and (pointer:coarse){html{font:-apple-system-body}}}
 [hidden]{display:none!important}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;scroll-padding-top:16px;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 var(--sans);letter-spacing:-.005em;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 112px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.5 var(--sans);letter-spacing:-.005em;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 112px)}
 h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
 p{margin:0}
 button{font:inherit;color:inherit}
@@ -74,7 +76,7 @@ time,.num{font-variant-numeric:tabular-nums}
 .hero-c{position:relative;z-index:1;padding:20px;display:grid;gap:4px}
 .hero h1{display:grid;gap:6px;font-weight:400;letter-spacing:0;line-height:1}
 .hero h1 .bv{font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.88)}
-.hero h1 .cid{font-family:Chelsea,var(--sans);font-size:3.7rem;line-height:.95;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5),0 2px 20px rgba(0,0,0,.45)}
+.hero h1 .cid{font-family:Chelsea,var(--sans);font-size:min(3.7rem,19vw);line-height:.95;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5),0 2px 20px rgba(0,0,0,.45)}
 .hero h1 .cid::after{content:"";display:block;width:56px;height:4px;border-radius:2px;background:var(--accent);margin-top:10px;box-shadow:0 1px 6px rgba(0,0,0,.35)}
 .hero .k{color:rgba(255,255,255,.85)}
 .ibtn{width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;color:#fff;background:rgba(20,22,24,.4);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);cursor:pointer}
@@ -148,7 +150,7 @@ time,.num{font-variant-numeric:tabular-nums}
 .facts b{font-size:.92rem}
 .tlbox{background:var(--fill);border-radius:16px;padding:12px 14px}
 .tl{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px;font-size:.92rem}
-.tl li{display:grid;grid-template-columns:50px 1fr;gap:8px}
+.tl li{display:grid;grid-template-columns:3.2rem 1fr;gap:8px}
 .tl time{font-weight:600}
 .flow{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .flow li{background:var(--fill);border-radius:16px;padding:10px 14px}
@@ -169,23 +171,23 @@ time,.num{font-variant-numeric:tabular-nums}
 .fl{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:16px;display:grid;gap:14px;margin-bottom:10px}
 .fl-h h3{font-size:1.15rem;margin-top:2px}
 .fl-h .k{display:flex;align-items:center;gap:6px}
-.fl-h .k svg{width:15px;height:15px;color:var(--flight)}
+.fl-h .k svg{width:1.2em;height:1.2em;flex:none;color:var(--flight)}
 .fl-sum{display:flex;flex-wrap:wrap;gap:6px}
 .fl-sum span{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--fill);color:var(--soft);font-variant-numeric:tabular-nums}
 .fl-sum span:first-child{background:color-mix(in srgb,var(--flight) 14%,transparent);color:var(--ink)}
 .fr{list-style:none;margin:0;padding:0}
-.fr li{display:grid;grid-template-columns:50px 14px 1fr;column-gap:10px}
+.fr li{display:grid;grid-template-columns:3.3rem 14px 1fr;column-gap:10px;--dy:.74rem}
 .fr .r{background:linear-gradient(var(--flight),var(--flight)) center/2px 100% no-repeat;position:relative}
-.fr .s .r::before{content:"";position:absolute;left:50%;top:6px;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--card);border:2.5px solid var(--flight);box-sizing:border-box}
-.fr .s:first-child .r{background-size:2px calc(100% - 12px);background-position:center bottom}
-.fr .s:last-child .r{background-size:2px 12px;background-position:center top}
+.fr .s .r::before{content:"";position:absolute;left:50%;top:calc(var(--dy) - 6px);width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--card);border:2.5px solid var(--flight);box-sizing:border-box}
+.fr .s:first-child .r{background-size:2px calc(100% - var(--dy));background-position:center bottom}
+.fr .s:last-child .r{background-size:2px var(--dy);background-position:center top}
 .fr .c .r{background:repeating-linear-gradient(var(--muted) 0 4px,transparent 4px 8px) center/2px 100% no-repeat}
 .fr .t{font-weight:700;font-size:1.05rem;line-height:1.4;font-variant-numeric:tabular-nums}
 .fr .s .x{padding-bottom:2px}
 .fr .s .x b{font-size:.98rem}
 .fr .s .x small{display:block;font-size:.78rem;color:var(--muted);line-height:1.35}
 .fr .g .x{font-size:.82rem;color:var(--soft);padding:8px 0 12px;display:flex;align-items:center;gap:6px}
-.fr .g .x svg{flex:none;width:14px;height:14px;color:var(--flight)}
+.fr .g .x svg{flex:none;width:1.15em;height:1.15em;color:var(--flight)}
 .fr .c .x{padding:8px 0 12px}
 .fr .c .x span{display:inline-block;font-size:.84rem;font-weight:600;background:var(--fill);border-radius:12px;padding:6px 10px}
 .fl .facts{margin-top:-2px}
@@ -193,7 +195,7 @@ time,.num{font-variant-numeric:tabular-nums}
 
 #flsheet .fl{box-shadow:none;padding:0;margin:0;background:none}
 .flbtn{display:inline-flex;align-items:center;gap:4px;margin-top:8px;min-height:34px;padding:6px 10px 6px 12px;border:0;border-radius:999px;background:color-mix(in srgb,var(--flight) 13%,transparent);color:var(--flight);font-size:.82rem;font-weight:650;cursor:pointer}
-.flbtn svg{width:16px;height:16px}
+.flbtn svg{width:1.15em;height:1.15em;flex:none}
 .flbtn:active{transform:scale(.97)}
 
 /* agenda */
@@ -203,7 +205,7 @@ time,.num{font-variant-numeric:tabular-nums}
 .agh{font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px}
 .agday.today .agh{color:var(--accent-ink)}
 .ag{list-style:none;margin:0;padding:0}
-.ag li{display:grid;grid-template-columns:58px 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.ag li{display:grid;grid-template-columns:3.7rem 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
 .ag time{font-size:.98rem;font-weight:600}
 .ag time small{display:block;font-size:.64rem;font-weight:500;color:var(--muted);line-height:1.2}
 .ag b{font-weight:600;font-size:.96rem}
