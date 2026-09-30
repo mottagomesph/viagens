@@ -10,13 +10,13 @@ A pasta fica em `China27/Zhangjiajie/` do repositório `viagens`, publicado pelo
 Abra o endereço uma vez no celular, ainda no Brasil, e use "Adicionar à Tela de Início".
 A página fica guardada no aparelho e abre mesmo sem rede.
 Depois de alterar e reenviar o `index.html`, mude o nome do cache em `sw.js`
-(ex.: `zhangjiajie-orbitas-v2` → `v3`) para que os celulares baixem a versão nova.
+(ex.: `zhangjiajie-orbitas-v3` → `v4`) para que os celulares baixem a versão nova.
 
 ## Fotos
 As seis fotos estão na pasta `img/` e ficam guardadas no celular junto com a página,
 então funcionam na China sem internet. Para trocar uma, substitua o JPG em `img/`
 mantendo o nome (veja `img/LEIA-ME.txt`).
-Depois de qualquer mudança, troque o número da versão em `sw.js` (v2 → v3).
+Depois de qualquer mudança, troque o número da versão em `sw.js` (v3 → v4).
 
 ## Fonte do título
 O nome "Zhangjiajie" usa a fonte Chelsea (Kong Font), recortada só com essas letras e embutida

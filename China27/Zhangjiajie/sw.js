@@ -1,6 +1,6 @@
 // Cache offline: abra uma vez com internet e a página passa a funcionar sem rede.
-// Ao publicar uma versão nova, troque o número abaixo (v2 -> v3).
-const CACHE = 'zhangjiajie-orbitas-v2';
+// Ao publicar uma versão nova, troque o número abaixo (v3 -> v4).
+const CACHE = 'zhangjiajie-orbitas-v3';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-180.png', './icon-512.png'];
 const PHOTOS = ['capa', 'dia0', 'dia1', 'dia2', 'dia3', 'dia4'].map(n => './img/' + n + '.jpg');
 self.addEventListener('install', e => {
