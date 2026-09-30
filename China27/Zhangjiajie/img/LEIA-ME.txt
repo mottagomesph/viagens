@@ -1,0 +1,11 @@
+As fotos da página ficam aqui, em JPG, com exatamente estes nomes:
+
+capa.jpg  - foto principal (Porta do Céu, no Tianmen)
+dia0.jpg  - teleférico de Tianmen saindo da cidade
+dia1.jpg  - pilares de Tianzi e Yuanjiajie na neblina
+dia2.jpg  - ponte de vidro do Grand Canyon
+dia3.jpg  - Tianmen Shan com a Porta do Céu, vista do teleférico
+dia4.jpg  - portão da Tusi City (Tujia Folk Custom Park)
+
+Tamanho ideal: cerca de 1200 px de largura e até 300 KB cada.
+Se nenhuma foto carregar, aparece um painel colorido com o nome do lugar em chinês.

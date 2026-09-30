@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EEF0EF">
+<script>
+// aplica o tema escolhido antes de desenhar a página (preferência guardada neste aparelho)
+(function(){ try { var t = localStorage.getItem('tema'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {} })();
+</script>
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Zhangjiajie">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>Zhangjiajie em Órbitas</title>
+<style>
+/* fonte Chelsea recortada só com as letras do nome da cidade, embutida em base64 */
+@font-face{font-family:'Chelsea';src:url(data:font/woff2;base64,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) format('woff2');font-display:block}
+:root{
+  color-scheme:light;
+  --bg:#EEF0EF; --card:#FFFFFF; --ink:#16191B; --soft:#4A5256; --muted:#8A9296; --line:#E3E6E6; --fill:#F4F5F5;
+  --pill:#1D2023; --pillink:#FFFFFF;
+  --map:#EAEEEE; --water:#C3D6DC; --accent:#2F5D46; --accent-ink:#2F5D46; --accent-deep:#2F5D46; --hard:#C2412F; --flight:#2E62A3;
+  --c0:#56666F; --c1:#B23A2E; --c2:#2E7A5E; --c3:#A26F0C; --c4:#2D5C96;
+  --sh:0 1px 2px rgba(20,28,30,.05),0 8px 24px rgba(20,28,30,.07);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#0D1113; --card:#171C1F; --ink:#EDF1F2; --soft:#B6C0C4; --muted:#7F8B90; --line:#252C30; --fill:#1E2528;
+  --pill:#F1F3F3; --pillink:#15181A;
+  --map:#141B1E; --water:#1F3D49; --accent:#5A9A7A; --accent-ink:#7CC29E; --accent-deep:#2F5D46; --hard:#EC7362; --flight:#7DA7E0;
+  --c0:#8C9CA5; --c1:#DD6656; --c2:#4FAA86; --c3:#D39E38; --c4:#6F9BD8;
+  --sh:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1113; --card:#171C1F; --ink:#EDF1F2; --soft:#B6C0C4; --muted:#7F8B90; --line:#252C30; --fill:#1E2528;
+  --pill:#F1F3F3; --pillink:#15181A;
+  --map:#141B1E; --water:#1F3D49; --accent:#5A9A7A; --accent-ink:#7CC29E; --accent-deep:#2F5D46; --hard:#EC7362; --flight:#7DA7E0;
+  --c0:#8C9CA5; --c1:#DD6656; --c2:#4FAA86; --c3:#D39E38; --c4:#6F9BD8;
+  --sh:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+/* texto grande: no iPhone, seguir o tamanho de texto dos Ajustes; todo o resto da página é em rem */
+@supports (font:-apple-system-body){@media (hover:none) and (pointer:coarse){html{font:-apple-system-body}}}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:16px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.5 var(--sans);letter-spacing:-.005em;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 112px)}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit}
+a{color:inherit}
+time,.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:560px;margin:0 auto;padding-inline:18px;padding-top:calc(env(safe-area-inset-top,0px) + 14px)}
+.k{font-size:.78rem;color:var(--muted);font-weight:500}
+.lbl{font-size:.76rem;color:var(--muted);font-weight:600;margin-bottom:2px}
+
+/* photo slot: photo if present, otherwise colored panel with the place name in Chinese */
+.ph{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 85% 10%,color-mix(in srgb,#fff 22%,transparent),transparent 55%),
+  linear-gradient(155deg,color-mix(in srgb,var(--pc) 70%,#000) 0%,var(--pc) 60%,color-mix(in srgb,var(--pc) 75%,#fff) 100%)}
+.ph::before{content:attr(data-g);position:absolute;right:-.06em;bottom:-.18em;font-weight:800;font-size:5.5rem;line-height:1;color:#fff;opacity:.16;white-space:nowrap;letter-spacing:-.04em}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+/* hero: foto da cidade + título */
+.hero{position:relative;margin-top:4px;border-radius:30px;overflow:hidden;box-shadow:var(--sh);min-height:330px;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
+.hero-img{position:absolute;inset:0}
+.hero-img::before{font-size:9rem}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 45%,rgba(0,0,0,.7) 100%)}
+.hero-bar{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;padding:14px}
+.hero-c{position:relative;z-index:1;padding:20px;display:grid;gap:4px}
+.hero h1{display:grid;gap:6px;font-weight:400;letter-spacing:0;line-height:1}
+.hero h1 .bv{font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.88)}
+.hero h1 .cid{font-family:Chelsea,var(--sans);font-size:min(3.7rem,15.5vw);line-height:.95;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5),0 2px 20px rgba(0,0,0,.45)}
+.hero h1 .cid::after{content:"";display:block;width:56px;height:4px;border-radius:2px;background:var(--accent);margin-top:10px;box-shadow:0 1px 6px rgba(0,0,0,.35)}
+.hero .k{color:rgba(255,255,255,.85)}
+.ibtn{width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;color:#fff;background:rgba(20,22,24,.4);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);cursor:pointer}
+.ibtn svg{width:22px;height:22px}
+.hbtns{display:flex;gap:8px;align-items:center}
+.ibtn.sm{width:34px;height:34px;opacity:.85}
+.ibtn.sm svg{width:17px;height:17px}
+.i-sun{display:none}
+:root[data-theme="dark"] .i-sun{display:block}:root[data-theme="dark"] .i-moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .i-sun{display:block}:root:not([data-theme="light"]) .i-moon{display:none}}
+.clock{display:grid;gap:1px;border-radius:14px;padding:6px 11px;font-size:.7rem;color:rgba(255,255,255,.8);text-align:right;background:rgba(20,22,24,.4);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.clock b{font-variant-numeric:tabular-nums;color:#fff;font-size:.86rem;font-weight:600;margin-left:6px}
+
+/* próximo compromisso, sem foto */
+.next{margin-top:12px;background:var(--card);border-radius:24px;box-shadow:var(--sh);padding:16px;display:grid;gap:4px}
+.next-h{display:flex;align-items:center;gap:8px}
+.next-ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.next-ic svg{width:17px;height:17px}
+.next h2{font-size:1.3rem;margin-top:4px}
+.next .cd{font-size:1.55rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;color:var(--accent-ink);font-variant-numeric:tabular-nums;margin-top:4px}
+.next .cdx{font-size:.86rem;color:var(--soft);font-variant-numeric:tabular-nums}
+.next .cd:empty,.next .cdx:empty{display:none}
+.pillbtn{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--pill);color:var(--pillink);border-radius:999px;padding:6px 6px 6px 20px;text-decoration:none;font-weight:600;font-size:.95rem}
+.pillbtn .round{background:var(--pillink);color:var(--pill)}
+.round{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;color:#16191B;display:grid;place-items:center}
+.round svg{width:20px;height:20px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tags{margin-top:8px}
+.tag{color:#fff;font-size:.74rem;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* section heads */
+.sec{padding-top:44px}
+.sh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.sh h2{font-size:1.12rem;font-weight:650;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.sh h2::before{content:"";flex:none;width:4px;height:1.05em;border-radius:2px;background:var(--accent)}
+.sh a{font-size:.88rem;font-weight:600;color:var(--accent-ink);text-decoration:none}
+.sub{color:var(--soft);font-size:.92rem;margin:-4px 0 12px}
+
+/* carousel */
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-18px;padding:4px 18px 14px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.pcard{flex:none;width:72%;max-width:300px;scroll-snap-align:start;background:var(--card);border-radius:24px;padding:8px;box-shadow:var(--sh);text-decoration:none;display:grid;gap:10px}
+.pc-img{height:170px;border-radius:18px}
+.pc-body{padding:0 8px 6px;display:grid;gap:3px}
+.pc-body h3{font-size:1.05rem}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.meta{font-size:.82rem;color:var(--muted)}
+.go{width:38px;height:38px;border-radius:50%;background:var(--pill);color:var(--pillink);display:grid;place-items:center}
+.go svg{width:18px;height:18px}
+
+/* accordion */
+.accs{display:grid;gap:10px}
+.acc{background:var(--card);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.acc summary{list-style:none;display:grid;grid-template-columns:64px 1fr 24px;gap:12px;align-items:center;padding:10px 14px 10px 10px;cursor:pointer}
+.acc summary::-webkit-details-marker{display:none}
+.thumb{width:64px;height:64px;border-radius:16px}
+.thumb::before{font-size:2.1rem}
+.acc-t h3{font-size:1rem}
+.acc-t .k{display:flex;align-items:center;gap:6px}
+.acc-t .k::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dc)}
+.acc.today .acc-t .k::after{content:"hoje";font-size:.68rem;font-weight:700;color:#fff;background:var(--dc);border-radius:999px;padding:1px 7px}
+.chev{width:22px;height:22px;color:var(--muted);transition:transform .2s}
+.acc[open] .chev{transform:rotate(180deg)}
+.acc-b{padding:4px 16px 18px;display:grid;gap:14px}
+.polo{font-size:.95rem}
+.polo span{display:block;font-size:.76rem;color:var(--muted);font-weight:600}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.facts div{background:var(--fill);border-radius:14px;padding:8px 12px;display:grid}
+.facts .w{grid-column:1/-1}
+.facts span{font-size:.72rem;color:var(--muted)}
+.facts b{font-size:.92rem}
+.tlbox{background:var(--fill);border-radius:16px;padding:12px 14px}
+.tl{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px;font-size:.92rem}
+.tl li{display:grid;grid-template-columns:3.2rem 1fr;gap:8px}
+.tl time{font-weight:600}
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.flow li{background:var(--fill);border-radius:16px;padding:10px 14px}
+.flow p:last-child{font-size:.95rem}
+.pub{border:1.5px dashed var(--line);border-radius:16px;padding:10px 14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 12px;font-size:.87rem;cursor:pointer;min-height:36px;text-align:left}
+.chip .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--dc)}
+.chip.o-a{background:var(--pill);color:var(--pillink);border-color:var(--pill);font-weight:600}
+.chip.o-a .dot{background:var(--dc);box-shadow:0 0 0 2px var(--pill)}
+.chip.o-o{color:var(--soft)}
+.chip.o-o .dot{background:transparent;border:1.6px solid var(--dc)}
+.chip:active{transform:scale(.97)}
+.valve{background:color-mix(in srgb,var(--dc) 10%,var(--card));border-radius:16px;padding:10px 14px}
+.valve p:last-child{font-size:.93rem;color:var(--soft)}
+
+/* voos e trens com bilhete: cartão de itinerário com linha do tempo */
+.fl{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:16px;display:grid;gap:14px;margin-bottom:10px}
+.fl-h h3{font-size:1.15rem;margin-top:2px}
+.fl-h .k{display:flex;align-items:center;gap:6px}
+.fl-h .k svg{width:1.2em;height:1.2em;flex:none;color:var(--flight)}
+.fl-sum{display:flex;flex-wrap:wrap;gap:6px}
+.fl-sum span{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--fill);color:var(--soft);font-variant-numeric:tabular-nums}
+.fl-sum span:first-child{background:color-mix(in srgb,var(--flight) 14%,transparent);color:var(--ink)}
+.fr{list-style:none;margin:0;padding:0}
+.fr li{display:grid;grid-template-columns:3.3rem 14px 1fr;column-gap:10px;--dy:.74rem}
+.fr .r{background:linear-gradient(var(--flight),var(--flight)) center/2px 100% no-repeat;position:relative}
+.fr .s .r::before{content:"";position:absolute;left:50%;top:calc(var(--dy) - 6px);width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--card);border:2.5px solid var(--flight);box-sizing:border-box}
+.fr .s:first-child .r{background-size:2px calc(100% - var(--dy));background-position:center bottom}
+.fr .s:last-child .r{background-size:2px var(--dy);background-position:center top}
+.fr .c .r{background:repeating-linear-gradient(var(--muted) 0 4px,transparent 4px 8px) center/2px 100% no-repeat}
+.fr .t{font-weight:700;font-size:1.05rem;line-height:1.4;font-variant-numeric:tabular-nums}
+.fr .s .x{padding-bottom:2px}
+.fr .s .x b{font-size:.98rem}
+.fr .s .x small{display:block;font-size:.78rem;color:var(--muted);line-height:1.35}
+.fr .g .x{font-size:.82rem;color:var(--soft);padding:8px 0 12px;display:flex;align-items:center;gap:6px}
+.fr .g .x svg{flex:none;width:1.15em;height:1.15em;color:var(--flight)}
+.fr .c .x{padding:8px 0 12px}
+.fr .c .x span{display:inline-block;font-size:.84rem;font-weight:600;background:var(--fill);border-radius:12px;padding:6px 10px}
+.fl .facts{margin-top:-2px}
+.facts .w p{font-size:.9rem;line-height:1.45;margin-top:1px}
+
+#flsheet .fl{box-shadow:none;padding:0;margin:0;background:none}
+.flbtn{display:inline-flex;align-items:center;gap:4px;margin-top:8px;min-height:34px;padding:6px 10px 6px 12px;border:0;border-radius:999px;background:color-mix(in srgb,var(--flight) 13%,transparent);color:var(--flight);font-size:.82rem;font-weight:650;cursor:pointer}
+.flbtn svg{width:1.15em;height:1.15em;flex:none}
+.flbtn:active{transform:scale(.97)}
+
+/* agenda */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--soft);margin-bottom:12px}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--k)}
+.agday{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:12px 16px;margin-bottom:10px}
+.agh{font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px}
+.agday.today .agh{color:var(--accent-ink)}
+.ag{list-style:none;margin:0;padding:0}
+.ag li{display:grid;grid-template-columns:3.7rem 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.ag time{font-size:.98rem;font-weight:600}
+.ag time small{display:block;font-size:.64rem;font-weight:500;color:var(--muted);line-height:1.2}
+.ag b{font-weight:600;font-size:.96rem}
+.ag p{color:color-mix(in srgb,var(--soft) 78%,var(--muted));font-size:.86rem;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.ag li.more{cursor:pointer}
+.ag li.more.x p{-webkit-line-clamp:unset;display:block}
+.t-hard time{color:var(--hard)}
+.t-flight time{color:var(--flight)}
+.t-soft time{color:var(--muted)}
+.ag li.past{opacity:.4}
+.ag li.next{background:color-mix(in srgb,var(--accent) 10%,transparent);margin-inline:-10px;padding-inline:10px;border-radius:12px;border-top-color:transparent}
+
+/* map */
+.mapbox{background:var(--card);border-radius:24px;overflow:hidden;box-shadow:var(--sh)}
+.mapbox svg{display:block;width:100%;height:auto}
+.pt{cursor:pointer}
+.mreg{font-size:26px;letter-spacing:.2em;fill:var(--muted);opacity:.5;font-family:var(--sans);font-weight:700}
+.mnum{font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:22px;font-weight:600;fill:#fff}
+.mhot{font-family:var(--sans);font-size:22px;font-weight:700;fill:var(--ink)}
+.mlab{font-family:var(--sans);font-size:18px;fill:var(--muted)}
+.cap{font-size:.78rem;color:var(--muted);padding:10px 14px 14px}
+
+/* jokers */
+.jlist{background:var(--card);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.jrow{width:100%;display:flex;justify-content:space-between;gap:10px;padding:13px 16px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer;font-size:.95rem}
+.jrow:last-child{border-bottom:0}
+.jd{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.84rem;white-space:nowrap}
+
+/* useful */
+.cards{display:grid;gap:10px}
+.card{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:16px;display:grid;gap:6px}
+.card .cnbig{font-size:1.3rem;line-height:1.35;font-weight:700}
+.card p{color:var(--soft);font-size:.9rem}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--fill);color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:600;cursor:pointer}
+.btn.pri{background:var(--pill);color:var(--pillink);border-color:var(--pill)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.92rem;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.foot{margin-top:22px;font-size:.76rem;color:var(--muted)}
+
+/* desfoque progressivo na base da tela (efeito de borda do iOS): camadas com desfoque crescente, cada uma mascarada por um degradê */
+.edge{position:fixed;left:0;right:0;bottom:0;height:calc(env(safe-area-inset-bottom,0px) + 118px);z-index:29;pointer-events:none}
+.edge i{position:absolute;inset:0}
+.edge i:nth-child(1){-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px);-webkit-mask:linear-gradient(transparent 0%,#000 30%);mask:linear-gradient(transparent 0%,#000 30%)}
+.edge i:nth-child(2){-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);-webkit-mask:linear-gradient(transparent 25%,#000 55%);mask:linear-gradient(transparent 25%,#000 55%)}
+.edge i:nth-child(3){-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-mask:linear-gradient(transparent 50%,#000 80%);mask:linear-gradient(transparent 50%,#000 80%)}
+.edge::after{content:"";position:absolute;inset:0;background:linear-gradient(color-mix(in srgb,var(--bg) 0%,transparent),color-mix(in srgb,var(--bg) 70%,transparent))}
+/* bottom tab bar */
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:30;display:flex;gap:4px;background:color-mix(in srgb,var(--pill) 76%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(18px);backdrop-filter:saturate(1.4) blur(18px);border:1px solid color-mix(in srgb,var(--pillink) 10%,transparent);border-radius:999px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.tabbar a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:var(--pillink);opacity:.7;text-decoration:none;transition:background .2s,opacity .2s}
+.tabbar a svg{width:22px;height:22px}
+.tabbar a.on{background:var(--pillink);color:var(--pill);opacity:1}
+.tabbar a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* info pop-up */
+dialog.pop{margin:auto;width:calc(100% - 32px);max-width:440px;max-height:85dvh;border-radius:26px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.popc{padding:18px 18px 20px;display:grid;gap:12px;overflow:auto;max-height:85dvh}
+.poph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.poph h2{font-size:1.2rem}
+.xbtn{flex:none;width:36px;height:36px;border-radius:50%;border:0;background:var(--fill);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.xbtn svg{width:18px;height:18px}
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rules li{background:var(--fill);border-radius:14px;padding:10px 12px;display:grid;gap:2px}
+.rules b{font-size:.95rem}
+.rules span{font-size:.9rem;color:var(--soft)}
+
+/* sheet */
+dialog{border:0;padding:0;background:var(--card);color:var(--ink)}
+#sheet,#flsheet{margin:auto auto 0;width:100%;max-width:560px;max-height:88dvh;border-radius:28px 28px 0 0;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(5,10,12,.5)}
+.sheet{padding:14px 20px calc(env(safe-area-inset-bottom,0px) + 20px);display:grid;gap:10px;overflow:auto;max-height:88dvh}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 6px}
+.sheet h2{font-size:1.4rem}
+.sheet .cnbig{font-size:1.7rem;font-weight:700;line-height:1.3}
+.stags{display:flex;flex-wrap:wrap;gap:6px}
+.stag{font-size:.74rem;padding:4px 10px;border-radius:999px;background:var(--fill);color:var(--soft);font-weight:600}
+.stag.imp{background:var(--accent-deep);color:#fff}
+.full{position:fixed;inset:0;z-index:60;background:#fff;color:#000;display:grid;place-items:center;padding:24px;text-align:center}
+.full .t{font-size:clamp(2rem,11vw,4.5rem);font-weight:800;line-height:1.25;word-break:break-word}
+.full .s{font-size:1.1rem;margin-top:18px;color:#333}
+.full .x{margin-top:28px;font-size:.9rem;color:#666}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Zhangjiajie: endereço local nos cartões, notas das órbitas e mapa em dois quadros */
+.card .cnad{font-size:1rem;line-height:1.4;font-weight:600;color:var(--ink)}
+.card .cnbig{color:var(--ink)}
+.ag .flbtn{display:flex;width:fit-content}
+.chip small{font-size:.76rem;color:var(--muted)}
+.onote{font-size:.9rem;color:var(--soft)}
+.mseg{display:inline-flex;gap:4px;padding:4px;border-radius:999px;background:color-mix(in srgb,var(--ink) 7%,transparent);margin-bottom:12px}
+.mseg button{border:0;background:none;border-radius:999px;min-height:36px;padding:6px 18px;font-size:.9rem;font-weight:600;color:var(--soft);cursor:pointer}
+.mseg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:var(--sh)}
+.mapbox[hidden]{display:none!important}
+.mapbox .mreg{font-size:34px}.mapbox .mnum{font-size:30px}.mapbox .mhot{font-size:30px}.mapbox .mlab{font-size:26px}
+.facts small{font-size:.76rem;color:var(--soft);line-height:1.3}
+.facts .w p.tr{font-size:.92rem}
+</style>
+</head>
+<body>
+<main class="wrap" id="inicio">
+
+<section class="hero" aria-label="Zhangjiajie em Órbitas">
+  <div class="ph hero-img" style="--pc:var(--c2)" data-g="张家界"><img data-slot="capa" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="hero-bar">
+    <div class="hbtns"><button class="ibtn" id="infoBtn" aria-label="Como funciona o roteiro de órbitas" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.6" r="1.2" fill="currentColor"/></svg></button><button class="ibtn sm" id="themeBtn" aria-label="Alternar modo claro e escuro"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button></div>
+    <div class="clock"><span>Zhangjiajie<b id="ckS">--:--</b></span><span>Brasil<b id="ckB">--:--</b></span></div>
+  </div>
+  <div class="hero-c">
+    <h1><span class="bv">Bem-vindos a</span><span class="cid">Zhangjiajie</span></h1>
+    <p class="k">1 – 5 jan · Hampton by Hilton Tianmen Mountain</p>
+    <div class="tags"><span class="tag">4 noites</span><span class="tag">5 polos</span><span class="tag">8 imperdíveis</span></div>
+  </div>
+</section>
+
+<section class="next" aria-label="Próximo compromisso">
+  <div class="next-h">
+    <span class="next-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+    <p class="k" id="nowEy">Próximo compromisso</p>
+  </div>
+  <h2 id="nowT">Carregando…</h2>
+  <p class="cd" id="nowC"></p>
+  <p class="cdx" id="nowX"></p>
+  <a class="pillbtn" id="nowA" href="#horarios">Ver horários<span class="round"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</section>
+
+<section class="sec">
+  <div class="sh"><h2>Os cinco polos</h2><a href="#roteiro">Ver todos</a></div>
+  <div class="rail">
+<a class="pcard" href="#dia0" data-open="dia0">
+  <div class="ph pc-img" style="--pc:var(--c0)" data-g="官黎坪"><img data-slot="dia0" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="pc-body">
+    <p class="k">Dia 0 · sex 01/01</p>
+    <h3>Pouso e primeira noite</h3>
+    <div class="pc-foot"><span class="meta">No hotel</span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  </div>
+</a>
+<a class="pcard" href="#dia1" data-open="dia1">
+  <div class="ph pc-img" style="--pc:var(--c1)" data-g="袁家界"><img data-slot="dia1" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="pc-body">
+    <p class="k">Dia 1 · sáb 02/01</p>
+    <h3>Wulingyuan: Avatar, Bailong e Tianzi</h3>
+    <div class="pc-foot"><span class="meta">26,2 km do hotel</span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  </div>
+</a>
+<a class="pcard" href="#dia2" data-open="dia2">
+  <div class="ph pc-img" style="--pc:var(--c2)" data-g="大峡谷"><img data-slot="dia2" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="pc-body">
+    <p class="k">Dia 2 · dom 03/01</p>
+    <h3>Grand Canyon e a tarde de volta ao parque</h3>
+    <div class="pc-foot"><span class="meta">38,1 km do hotel</span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  </div>
+</a>
+<a class="pcard" href="#dia3" data-open="dia3">
+  <div class="ph pc-img" style="--pc:var(--c3)" data-g="天门山"><img data-slot="dia3" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="pc-body">
+    <p class="k">Dia 3 · seg 04/01</p>
+    <h3>Tianmen Shan e noite no centro antigo</h3>
+    <div class="pc-foot"><span class="meta">3,4 km do hotel</span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  </div>
+</a>
+<a class="pcard" href="#dia4" data-open="dia4">
+  <div class="ph pc-img" style="--pc:var(--c4)" data-g="南庄坪"><img data-slot="dia4" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="pc-body">
+    <p class="k">Dia 4 · ter 05/01</p>
+    <h3>Manhã leve e almoço a caminho do trem</h3>
+    <div class="pc-foot"><span class="meta">2,5 km do hotel</span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  </div>
+</a>
+  </div>
+</section>
+
+<section class="sec" id="roteiro">
+  <div class="sh"><h2>Roteiro dia a dia</h2></div>
+  <p class="sub">Toque em um dia para abrir. Toque em um lugar para ver nome em chinês, endereço e mapa.</p>
+  <div class="accs">
+<details class="acc" id="dia0" data-key="01/01" style="--dc:var(--c0)">
+  <summary>
+    <div class="ph thumb" style="--pc:var(--c0)" data-g="官黎坪"><img data-slot="dia0" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+    <div class="acc-t"><p class="k">Dia 0 · sex 01/01</p><h3>Pouso e primeira noite</h3></div>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="acc-b">
+    <p class="polo"><span>Centro de gravidade</span>Hotel, em Guanliping, em frente ao teleférico de Tianmen</p>
+    <div class="facts"><div><span>Do hotel</span><b>0 km</b></div><div><span>Raio</span><b>0,6 km</b><small>até os coringas</small></div><div class="w"><span>Transporte</span><p class="tr">Táxi ou Didi do aeroporto (T2) ao hotel: 3,9 km em linha reta, ~15 min (estimativa)</p></div></div>
+    <div class="tlbox"><p class="lbl">Horários do dia</p><ul class="tl"><li class="t-flight"><time data-t="2027-01-01T19:10:00+08:00"></time><span>FM9343 parte de Xangai Pudong · T1</span></li><li class="t-flight"><time data-t="2027-01-01T21:40:00+08:00"></time><span>Pouso em Zhangjiajie Hehua · T2</span></li><li class="t-soft"><time data-t="2027-01-01T22:30:00+08:00"></time><span>Chegada ao hotel e check-in (estimativa)</span></li></ul></div>
+    <ol class="flow"><li><p class="lbl">Noite</p><p>Há refeição a bordo. Se houver fome, Qindama, a 0,6 km, é conhecido por fechar tarde (até ~01:00, horário não oficial). Dormir cedo: o Dia 1 começa às 07:00.</p></li></ol>
+    
+    <div class="orb"><p class="lbl">Órbitas</p><p class="onote">Nenhum lugar do núcleo ou das órbitas: para a ceia, use os coringas.</p></div>
+    <div class="valve"><p class="lbl">Válvula</p><p>Nada a cortar. Com atraso do voo, pular a ceia.</p></div>
+  </div>
+</details>
+<details class="acc" id="dia1" data-key="02/01" style="--dc:var(--c1)">
+  <summary>
+    <div class="ph thumb" style="--pc:var(--c1)" data-g="袁家界"><img data-slot="dia1" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+    <div class="acc-t"><p class="k">Dia 1 · sáb 02/01</p><h3>Wulingyuan: Avatar, Bailong e Tianzi</h3></div>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="acc-b">
+    <p class="polo"><span>Centro de gravidade</span>Eixo Bailong → Yuanjiajie → Tianzi, no Parque Florestal Nacional</p>
+    <div class="facts"><div><span>Do hotel</span><b>26,2 km</b></div><div><span>Raio</span><b>~3,8 km</b><small>de ônibus interno, elevador e teleférico</small></div><div class="w"><span>Transporte</span><p class="tr">Carro até o portão de Wulingyuan (武陵源标志门), ~50 min, táxi ¥80–120 (Ctrip); ou ônibus da rodoviária central (a cada 10 min, ~50 min, ¥12). Volta de carro, com parada no 72 Qilou (a 4,6 km do hotel).</p></div></div>
+    <div class="tlbox"><p class="lbl">Horários do dia</p><ul class="tl"><li class="t-soft"><time data-t="2027-01-02T07:00:00+08:00"></time><span>Café da manhã do hotel</span></li><li class="t-soft"><time data-t="2027-01-02T07:20:00+08:00"></time><span>Sair para Wulingyuan</span></li><li class="t-soft"><time data-t="2027-01-02T08:30:00+08:00"></time><span>Bailong Elevator abre</span></li><li class="t-hard"><time data-t="2027-01-02T17:00:00+08:00"></time><span>Fim da entrada no parque</span></li><li class="t-soft"><time data-t="2027-01-02T17:45:00+08:00"></time><span>72 Qilou ao anoitecer</span></li><li class="t-soft"><time data-t="2027-01-02T17:52:00+08:00"></time><span>Pôr do sol</span></li></ul></div>
+    <ol class="flow"><li><p class="lbl">Manhã</p><p>Portão de Wulingyuan, ônibus interno até Shuiraosimen e <b>Bailong Elevator</b> na abertura, antes das filas de sábado de feriado. No alto, <b>Yuanjiajie (Avatar Mountains)</b>: mirante Mihuntai, Montanha Aleluia e Primeira Ponte sob o Céu.</p></li><li><p class="lbl">Almoço</p><p>Almoço sentado numa área de serviço do alto (Yuanjiajie ou Tianzi). Levar lanche de reserva.</p></li><li><p class="lbl">Tarde</p><p>Ônibus interno até <b>Tianzi Mountain</b>: Pico do Pincel Imperial e Fada Oferecendo Flores. Descida pelo teleférico de Tianzi até a base, junto ao Ten-Mile Gallery (十里画廊; trem opcional, ¥38) e perto do portão de Wulingyuan.</p></li><li><p class="lbl">Fim de tarde</p><p>Carro de volta, com parada no <b>72 Qilou (72 Wonder Tower)</b> por volta das 17:45, quando as luzes acendem.</p></li><li><p class="lbl">Noite</p><p>Jantar no 72 Qilou: Suo Xi Shan Zhai – 72 Qilou (comida de Xiangxi) ou Zaozao Xiaobo Cai – 72 Qilou (barato).</p></li></ol>
+    <div class="pub"><p class="lbl">Pub do dia</p><p>Nenhum no acervo; o 72 Qilou tem vida noturna própria.</p></div>
+    <div class="orb"><p class="lbl">Núcleo · imperdíveis</p><div class="chips"><button class="chip o-a" data-i="3"><span class="dot"></span>Zhangjiajie National Forest Park</button><button class="chip o-a" data-i="5"><span class="dot"></span>Bailong Elevator</button><button class="chip o-a" data-i="4"><span class="dot"></span>Yuanjiajie (Avatar Mountains)</button><button class="chip o-a" data-i="6"><span class="dot"></span>Tianzi Mountain</button><button class="chip o-a" data-i="2"><span class="dot"></span>72 Qilou (72 Wonder Tower) <small>(na volta)</small></button></div></div><div class="orb"><p class="lbl">Órbita média · preferenciais</p><p class="onote">Nenhum preferencial no parque.</p></div><div class="orb"><p class="lbl">Órbita externa · se passar perto</p><div class="chips"><button class="chip o-o" data-i="9"><span class="dot"></span>Suo Xi Shan Zhai – 72 Qilou</button><button class="chip o-o" data-i="10"><span class="dot"></span>Zaozao Xiaobo Cai – 72 Qilou</button><button class="chip o-o" data-i="7"><span class="dot"></span>Impression Niyan – 72 Qilou</button><button class="chip o-o" data-i="8"><span class="dot"></span>Xiachi Xiashuan – 72 Qilou</button></div></div>
+    <div class="valve"><p class="lbl">Válvula</p><p>Cortar primeiro o Ten-Mile Gallery; depois, o 72 Qilou (vai para a volta do Dia 2). Se o teleférico de Tianzi estiver em manutenção, descer pelo Bailong. Com neblina fechada ou gelo previstos, trocar com o Dia 3 (Tianmen), decidindo com a previsão de 48 h.</p></div>
+  </div>
+</details>
+<details class="acc" id="dia2" data-key="03/01" style="--dc:var(--c2)">
+  <summary>
+    <div class="ph thumb" style="--pc:var(--c2)" data-g="大峡谷"><img data-slot="dia2" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+    <div class="acc-t"><p class="k">Dia 2 · dom 03/01</p><h3>Grand Canyon e a tarde de volta ao parque</h3></div>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="acc-b">
+    <p class="polo"><span>Centro de gravidade</span>Grand Canyon (manhã) e trecho sul do parque (tarde), ligados de carro (~40 min)</p>
+    <div class="facts"><div><span>Do hotel</span><b>38,1 km</b><small>até o cânion</small></div><div><span>Raio</span><b>dois blocos</b><small>cânion de manhã, parque à tarde</small></div><div class="w"><span>Transporte</span><p class="tr">Carro com motorista para o dia inteiro (recomendado): hotel → cânion → Wulingyuan → portão sul → hotel. O ingresso do parque do Dia 1 vale por 4 dias.</p></div></div>
+    <div class="tlbox"><p class="lbl">Horários do dia</p><ul class="tl"><li class="t-soft"><time data-t="2027-01-03T07:00:00+08:00"></time><span>Café da manhã do hotel</span></li><li class="t-soft"><time data-t="2027-01-03T07:15:00+08:00"></time><span>Sair para o Grand Canyon</span></li><li class="t-soft"><time data-t="2027-01-03T08:30:00+08:00"></time><span>Grand Canyon abre (a confirmar)</span></li><li class="t-hard"><time data-t="2027-01-03T16:00:00+08:00"></time><span>Último acesso ao Grand Canyon</span></li><li class="t-hard"><time data-t="2027-01-03T17:00:00+08:00"></time><span>Fim da entrada no parque</span></li><li class="t-soft"><time data-t="2027-01-03T17:53:00+08:00"></time><span>Pôr do sol</span></li></ul></div>
+    <ol class="flow"><li><p class="lbl">Manhã</p><p><b>Zhangjiajie Grand Canyon</b>: ponte de vidro, descida ao cânion pelas trilhas, cachoeiras e barco até a saída (~3 h, estimativa).</p></li><li><p class="lbl">Almoço</p><p>Pausa longa em Wulingyuan, junto à Xibu Street: Zhai Zi Li De Bo Bo Cai – Wulingyuan ou Impression Niyan – Xibu Jie (Wulingyuan); chá no Tea Doctor’s House.</p></li><li><p class="lbl">Tarde</p><p>Escolher uma: <b>Riacho do Chicote Dourado</b> (金鞭溪), de Shuiraosimen ao portão sul, ~7,5 km planos à beira d’água (~2h30), com saída do lado da cidade (recomendado); <b>Yangjiajie</b> (杨家界), vizinho de Yuanjiajie e menos cheio (teleférico ¥76); <b>Huangshizhai</b> (黄石寨), mirante clássico junto ao portão sul (teleférico ¥65); Ten-Mile Gallery (十里画廊), se ficou de fora; ou o que ficou para trás no Dia 1. Fora do ingresso do parque: Baofeng Lake (barco no lago).</p></li><li><p class="lbl">Fim de tarde</p><p>Saída pelo portão sul (森林公园门票站) até ~17:15 e carro ao hotel (~45 min).</p></li><li><p class="lbl">Noite</p><p>Coringas perto do hotel (Lao Zhang Jia San Xia Guo, Qindama). Se o 72 Qilou ficou do Dia 1, parar lá na volta.</p></li></ol>
+    <div class="pub"><p class="lbl">Pub do dia</p><p>Os bares da Xibu Street ficam no horário do almoço; à noite, coringas.</p></div>
+    <div class="orb"><p class="lbl">Núcleo · imperdíveis</p><div class="chips"><button class="chip o-a" data-i="11"><span class="dot"></span>Zhangjiajie Grand Canyon</button></div></div><div class="orb"><p class="lbl">Órbita média · preferenciais</p><p class="onote">Nenhum preferencial no polo.</p></div><div class="orb"><p class="lbl">Órbita externa · se passar perto</p><div class="chips"><button class="chip o-o" data-i="15"><span class="dot"></span>Xibu Street</button><button class="chip o-o" data-i="14"><span class="dot"></span>Zhai Zi Li De Bo Bo Cai – Wulingyuan</button><button class="chip o-o" data-i="13"><span class="dot"></span>Impression Niyan – Xibu Jie (Wulingyuan)</button><button class="chip o-o" data-i="16"><span class="dot"></span>Tea Doctor&#x27;s House</button><button class="chip o-o" data-i="17"><span class="dot"></span>Ming Tien Coffee Language <small>(incerto)</small></button><button class="chip o-o" data-i="12"><span class="dot"></span>Baofeng Lake</button><button class="chip o-o" data-i="18"><span class="dot"></span>Yellow Dragon Cave (Huanglong Cave) <small>(chuva)</small></button></div></div>
+    <div class="valve"><p class="lbl">Válvula</p><p>Cortar primeiro a tarde no parque (voltar do cânion direto ou fazer só o Baofeng Lake). Com chuva forte, gelo ou vento, a ponte de vidro fecha: trocar a manhã do cânion pela Yellow Dragon Cave, que é quase toda coberta.</p></div>
+  </div>
+</details>
+<details class="acc" id="dia3" data-key="04/01" style="--dc:var(--c3)">
+  <summary>
+    <div class="ph thumb" style="--pc:var(--c3)" data-g="天门山"><img data-slot="dia3" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+    <div class="acc-t"><p class="k">Dia 3 · seg 04/01</p><h3>Tianmen Shan e noite no centro antigo</h3></div>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="acc-b">
+    <p class="polo"><span>Centro de gravidade</span>Tianmen Shan de manhã (teleférico em frente ao hotel; Porta do Céu 7,1 km ao sul) e centro antigo de Yongding à noite</p>
+    <div class="facts"><div><span>Do hotel</span><b>3,4 km</b><small>montanha; centro antigo a 1,6 km</small></div><div><span>Raio</span><b>~3,6 km</b><small>montanha; centro antigo ~0,4 km</small></div><div class="w"><span>Transporte</span><p class="tr">A pé até o teleférico. Linha A: teleférico até a estação intermediária, ônibus pelas 99 curvas, escadas rolantes até o topo; descida pelo teleférico expresso até o portão da montanha e ônibus de volta ao centro. À noite, 1,5 km a pé ou táxi.</p></div></div>
+    <div class="tlbox"><p class="lbl">Horários do dia</p><ul class="tl"><li class="t-soft"><time data-t="2027-01-04T07:00:00+08:00"></time><span>Café da manhã do hotel</span></li><li class="t-soft"><time data-t="2027-01-04T07:30:00+08:00"></time><span>Teleférico de Tianmen · linha A</span></li><li class="t-soft"><time data-t="2027-01-04T08:30:00+08:00"></time><span>Escada rolante da Porta do Céu abre</span></li><li class="t-soft"><time data-t="2027-01-04T14:30:00+08:00"></time><span>Ligar para o hotel de Furong</span></li><li class="t-hard"><time data-t="2027-01-04T16:00:00+08:00"></time><span>Último ingresso no Tianmen</span></li><li class="t-soft"><time data-t="2027-01-04T17:53:00+08:00"></time><span>Pôr do sol</span></li><li class="t-soft"><time data-t="2027-01-04T19:30:00+08:00"></time><span>Espetáculo 遇见大庸 · Dayong Fucheng</span></li></ul></div>
+    <ol class="flow"><li><p class="lbl">Manhã</p><p><b>Tianmen Mountain</b> pela linha A: 99 curvas de ônibus, <b>Heaven’s Gate</b> (escadaria de 999 degraus e escada rolante na rocha) e o topo, com as passarelas do penhasco e de vidro e o templo Tianmen (2 a 3 h no alto).</p></li><li><p class="lbl">Almoço</p><p>De volta por volta das 13:30: Gan Nian San Xia Guo, a 0,3 km do hotel (peça san xia guo).</p></li><li><p class="lbl">Tarde</p><p>Pausa longa no hotel.</p></li><li><p class="lbl">Noite</p><p>Centro antigo: Dayong Fucheng iluminado, Jiefang Road e Nanzheng Street. Jantar no Gulu Restaurant &amp; Bar (pizzas e massas; à noite, jazz em vinil e coquetéis) ou no Hololi Japanese Cuisine. Bares junto ao Dayong Fucheng: Friends Circle Music Bar e Luyao Music Live Bar.</p></li></ol>
+    <div class="pub"><p class="lbl">Pub do dia</p><p>Friends Circle Music Bar (registro ativo desde 2019), Luyao Music Live Bar (ativo desde 2023; identificação por inferência) e o próprio Gulu. Aini Pub, Encounter Bar e Mofang Bar têm status incerto.</p></div>
+    <div class="orb"><p class="lbl">Núcleo · imperdíveis</p><div class="chips"><button class="chip o-a" data-i="19"><span class="dot"></span>Tianmen Mountain</button><button class="chip o-a" data-i="20"><span class="dot"></span>Heaven&#x27;s Gate</button></div></div><div class="orb"><p class="lbl">Órbita média · preferenciais</p><div class="chips"><button class="chip o-p" data-i="21"><span class="dot"></span>Gan Nian San Xia Guo</button><button class="chip o-p" data-i="23"><span class="dot"></span>Gulu Restaurant &amp; Bar</button><button class="chip o-p" data-i="22"><span class="dot"></span>Hololi Japanese Cuisine</button><button class="chip o-p" data-i="24"><span class="dot"></span>Ot Canteen &amp; Wine Bar</button></div></div><div class="orb"><p class="lbl">Órbita externa · se passar perto</p><div class="chips"><button class="chip o-o" data-i="34"><span class="dot"></span>Dayong Fucheng</button><button class="chip o-o" data-i="31"><span class="dot"></span>Jiefang Road</button><button class="chip o-o" data-i="30"><span class="dot"></span>Nanzheng Street</button><button class="chip o-o" data-i="35"><span class="dot"></span>Beizheng Street</button><button class="chip o-o" data-i="27"><span class="dot"></span>Nanmenkou</button><button class="chip o-o" data-i="28"><span class="dot"></span>Huilong Road</button><button class="chip o-o" data-i="33"><span class="dot"></span>Friends Circle Music Bar</button><button class="chip o-o" data-i="32"><span class="dot"></span>Luyao Music Live Bar</button><button class="chip o-o" data-i="25"><span class="dot"></span>Impression Niyan – Tianmen Cableway</button><button class="chip o-o" data-i="29"><span class="dot"></span>Aini Pub <small>(incerto)</small></button><button class="chip o-o" data-i="36"><span class="dot"></span>Encounter Bar <small>(incerto)</small></button><button class="chip o-o" data-i="26"><span class="dot"></span>Mofang Bar <small>(incerto)</small></button></div></div>
+    <div class="valve"><p class="lbl">Válvula</p><p>No alto, cortar primeiro a trilha oeste. Com neblina densa ou gelo, as passarelas fecham; com mau tempo, o ônibus para e todas as linhas passam a operar como linha C (só teleférico expresso). Nesse caso, trocar com o Dia 1, se decidido na véspera. A noite no centro antigo fica de qualquer jeito.</p></div>
+  </div>
+</details>
+<details class="acc" id="dia4" data-key="05/01" style="--dc:var(--c4)">
+  <summary>
+    <div class="ph thumb" style="--pc:var(--c4)" data-g="南庄坪"><img data-slot="dia4" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+    <div class="acc-t"><p class="k">Dia 4 · ter 05/01</p><h3>Manhã leve e almoço a caminho do trem</h3></div>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="acc-b">
+    <p class="polo"><span>Centro de gravidade</span>Nanzhuangping (Nimo Kitchen e Tusi City), no caminho da estação Oeste</p>
+    <div class="facts"><div><span>Do hotel</span><b>2,5 km</b></div><div><span>Raio</span><b>~0,6 km</b></div><div class="w"><span>Transporte</span><p class="tr">Táxi ou Didi: hotel → Nimo Kitchen (2,9 km) → estação Zhangjiajie Oeste (4,3 km, ~15 min, estimativa)</p></div></div>
+    <div class="tlbox"><p class="lbl">Horários do dia</p><ul class="tl"><li class="t-soft"><time data-t="2027-01-05T07:00:00+08:00"></time><span>Café da manhã do hotel</span></li><li class="t-hard"><time data-t="2027-01-05T12:00:00+08:00"></time><span>Check-out</span></li><li class="t-soft"><time data-t="2027-01-05T13:20:00+08:00"></time><span>Sair do Nimo Kitchen para a estação</span></li><li class="t-soft"><time data-t="2027-01-05T13:45:00+08:00"></time><span>Chegar à estação Zhangjiajie Oeste</span></li><li class="t-flight"><time data-t="2027-01-05T14:45:00+08:00"></time><span>G6057 parte de Zhangjiajie Oeste (a confirmar)</span></li><li class="t-flight"><time data-t="2027-01-05T15:08:00+08:00"></time><span>Chegada a Furong</span></li></ul></div>
+    <ol class="flow"><li><p class="lbl">Manhã</p><p>Opção A: centro antigo de dia, com café no Codo Cafe Bistro (a partir das 09:30) e liang mian no Zhu Nao Ke Liang Mian – Nanzheng. Opção B: Tusi City (Tujia Folk Custom Park), com a dança Baishou às 10:00.</p></li><li><p class="lbl">11:00–12:00</p><p>Hotel e check-out, com as malas.</p></li><li><p class="lbl">Almoço</p><p>Nimo Kitchen — Fine Dining &amp; Wine Bar (abre às 11:00), almoço de despedida numa casa de tijolos à beira do rio Li. Alternativa: Puku Restaurant &amp; Wine.</p></li><li><p class="lbl">Tarde</p><p>Táxi com as malas até a estação Oeste (张家界西); G6057 às 14:45 (a confirmar).</p></li></ol>
+    
+    <div class="orb"><p class="lbl">Núcleo · imperdíveis</p><p class="onote">Nenhum imperdível (dia de partida).</p></div><div class="orb"><p class="lbl">Órbita média · preferenciais</p><div class="chips"><button class="chip o-p" data-i="39"><span class="dot"></span>Nimo Kitchen — Fine Dining &amp; Wine Bar</button><button class="chip o-p" data-i="37"><span class="dot"></span>Codo Cafe Bistro</button><button class="chip o-p" data-i="38"><span class="dot"></span>Puku Restaurant &amp; Wine <small>(endereço incerto)</small></button></div></div><div class="orb"><p class="lbl">Órbita externa · se passar perto</p><div class="chips"><button class="chip o-o" data-i="41"><span class="dot"></span>Tusi City (Tujia Folk Custom Park)</button><button class="chip o-o" data-i="40"><span class="dot"></span>Zhu Nao Ke Liang Mian – Nanzheng</button></div></div>
+    <div class="valve"><p class="lbl">Válvula</p><p>Se a manhã atrasar, almoçar num coringa ao lado do hotel (Suo Xi Shan Zhai – Tianmen Cableway) e ir direto à estação. Se o G6057 não existir na nova grade, as alternativas são G6117 (12:40), G6365 (13:07) e G6079 (15:10).</p></div>
+  </div>
+</details>
+  </div>
+</section>
+
+<section class="sec" id="horarios">
+  <div class="sh"><h2>Horários</h2></div>
+  <p class="sub">Hora de Pequim, a mesma em toda a China. No voo e no trem, toque em “Detalhes do voo” ou “Detalhes do trem” para ver duração e bagagem.</p>
+  <div class="legend"><span style="--k:var(--flight)">Voo ou trem</span><span style="--k:var(--hard)">Horário fixo</span><span style="--k:var(--muted)">Sugerido ou estimado</span></div>
+  <div class="agday" data-key="22/12"><p class="agh">ter · 22/12</p><ul class="ag"><li class="t-hard"><time data-t="2026-12-22T16:30:00+08:00" data-tz=""></time><div><b>Abre a venda do trem de 05/01 · 12306</b><p>Zhangjiajie Oeste (张家界西) → Furong (芙蓉镇), G6057. 05:30 em Brasília. Conferir se o trem existe na nova grade; alternativas G6117, G6365 e G6079.</p></div></li></ul></div><div class="agday" data-key="01/01"><p class="agh">sex · 01/01</p><ul class="ag"><li class="t-flight"><time data-t="2027-01-01T19:10:00+08:00" data-tz=""></time><div><b>FM9343 parte de Xangai Pudong · T1</b><button class="flbtn" data-fl="chegada">Detalhes do voo<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-flight"><time data-t="2027-01-01T21:40:00+08:00" data-tz=""></time><div><b>Pouso em Zhangjiajie Hehua · T2</b><button class="flbtn" data-fl="chegada">Detalhes do voo<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-soft"><time data-t="2027-01-01T22:30:00+08:00" data-tz=""></time><div><b>Chegada ao hotel e check-in (estimativa)</b><p>Check-in liberado desde 14:00. Táxi ou Didi do aeroporto, ~15 min. Ceia, se precisar: Qindama, a 0,6 km (fecha tarde; horário não oficial).</p></div></li></ul></div><div class="agday" data-key="02/01"><p class="agh">sáb · 02/01</p><ul class="ag"><li class="t-soft"><time data-t="2027-01-02T07:00:00+08:00" data-tz=""></time><div><b>Café da manhã do hotel</b><p>Buffet 07:00–10:00. Sair às 07:20 para o portão de Wulingyuan.</p></div></li><li class="t-soft"><time data-t="2027-01-02T07:20:00+08:00" data-tz=""></time><div><b>Sair para Wulingyuan</b><p>Carro (~50 min) ou ônibus da rodoviária central (a cada 10 min, ~50 min). Destino: portão 武陵源标志门.</p></div></li><li class="t-soft"><time data-t="2027-01-02T08:30:00+08:00" data-tz=""></time><div><b>Bailong Elevator abre</b><p>Horário de baixa temporada (08:30–18:00). Subir logo na abertura.</p></div></li><li class="t-hard"><time data-t="2027-01-02T17:00:00+08:00" data-tz=""></time><div><b>Fim da entrada no parque</b><p>Portões 06:30–17:00. O ingresso vale 4 dias (serve para amanhã).</p></div></li><li class="t-soft"><time data-t="2027-01-02T17:45:00+08:00" data-tz=""></time><div><b>72 Qilou ao anoitecer</b><p>Na volta de Wulingyuan. Sessão noturna 16:30–23:00, último acesso 22:30. Jantar no complexo.</p></div></li><li class="t-soft"><time data-t="2027-01-02T17:52:00+08:00" data-tz=""></time><div><b>Pôr do sol</b><p>Cálculo astronômico; nos vales escurece antes.</p></div></li></ul></div><div class="agday" data-key="03/01"><p class="agh">dom · 03/01</p><ul class="ag"><li class="t-soft"><time data-t="2027-01-03T07:00:00+08:00" data-tz=""></time><div><b>Café da manhã do hotel</b><p>Buffet 07:00–10:00. Sair às 07:15.</p></div></li><li class="t-soft"><time data-t="2027-01-03T07:15:00+08:00" data-tz=""></time><div><b>Sair para o Grand Canyon</b><p>Carro com motorista para o dia (~1h15 até o cânion, estimativa).</p></div></li><li class="t-soft"><time data-t="2027-01-03T08:30:00+08:00" data-tz=""></time><div><b>Grand Canyon abre (a confirmar)</b><p>08:00 no site oficial; 08:30 de janeiro a março segundo o Ctrip. A ponte de vidro fecha com chuva forte, gelo ou vento.</p></div></li><li class="t-hard"><time data-t="2027-01-03T16:00:00+08:00" data-tz=""></time><div><b>Último acesso ao Grand Canyon</b></div></li><li class="t-hard"><time data-t="2027-01-03T17:00:00+08:00" data-tz=""></time><div><b>Fim da entrada no parque</b><p>Tarde no parque com o ingresso de ontem. Sair pelo portão sul por volta das 17:15.</p></div></li><li class="t-soft"><time data-t="2027-01-03T17:53:00+08:00" data-tz=""></time><div><b>Pôr do sol</b><p>Cálculo astronômico; no Riacho do Chicote Dourado escurece antes.</p></div></li></ul></div><div class="agday" data-key="04/01"><p class="agh">seg · 04/01</p><ul class="ag"><li class="t-soft"><time data-t="2027-01-04T07:00:00+08:00" data-tz=""></time><div><b>Café da manhã do hotel</b><p>Buffet 07:00–10:00.</p></div></li><li class="t-soft"><time data-t="2027-01-04T07:30:00+08:00" data-tz=""></time><div><b>Teleférico de Tianmen · linha A</b><p>Estação em frente ao hotel. Primeira subida entre 07:00 e 08:00 (a confirmar). Teleférico até a estação intermediária, ônibus pelas 99 curvas, escadas rolantes até o topo; volta pelo teleférico expresso e ônibus.</p></div></li><li class="t-soft"><time data-t="2027-01-04T08:30:00+08:00" data-tz=""></time><div><b>Escada rolante da Porta do Céu abre</b><p>Horário de inverno 08:30–17:30.</p></div></li><li class="t-soft"><time data-t="2027-01-04T14:30:00+08:00" data-tz=""></time><div><b>Ligar para o hotel de Furong</b><p>+86-15377438288 ou +86-15274328188. Avisar a chegada de amanhã e confirmar o ingresso da área cênica, onde o hotel fica.</p></div></li><li class="t-hard"><time data-t="2027-01-04T16:00:00+08:00" data-tz=""></time><div><b>Último ingresso no Tianmen</b></div></li><li class="t-soft"><time data-t="2027-01-04T17:53:00+08:00" data-tz=""></time><div><b>Pôr do sol</b><p>Cálculo astronômico.</p></div></li><li class="t-soft"><time data-t="2027-01-04T19:30:00+08:00" data-tz=""></time><div><b>Espetáculo 遇见大庸 · Dayong Fucheng</b><p>Horário habitual 19:30–20:30 (a confirmar). Noite no centro antigo, a 1,5 km.</p></div></li></ul></div><div class="agday" data-key="05/01"><p class="agh">ter · 05/01</p><ul class="ag"><li class="t-soft"><time data-t="2027-01-05T07:00:00+08:00" data-tz=""></time><div><b>Café da manhã do hotel</b><p>Buffet 07:00–10:00.</p></div></li><li class="t-hard"><time data-t="2027-01-05T12:00:00+08:00" data-tz=""></time><div><b>Check-out</b><p>Sair com as malas para o almoço no Nimo Kitchen (abre às 11:00).</p></div></li><li class="t-soft"><time data-t="2027-01-05T13:20:00+08:00" data-tz=""></time><div><b>Sair do Nimo Kitchen para a estação</b><p>Táxi até Zhangjiajie Oeste (张家界西), ~15 min (estimativa). Não confundir com 张家界站.</p></div></li><li class="t-soft"><time data-t="2027-01-05T13:45:00+08:00" data-tz=""></time><div><b>Chegar à estação Zhangjiajie Oeste</b><p>Uma hora antes: segurança e conferência manual do passaporte (estimativa).</p></div></li><li class="t-flight"><time data-t="2027-01-05T14:45:00+08:00" data-tz=""></time><div><b>G6057 parte de Zhangjiajie Oeste (a confirmar)</b><button class="flbtn" data-fl="saida">Detalhes do trem<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-flight"><time data-t="2027-01-05T15:08:00+08:00" data-tz=""></time><div><b>Chegada a Furong</b><button class="flbtn" data-fl="saida">Detalhes do trem<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li></ul></div>
+</section>
+
+<section class="sec" id="mapa">
+  <div class="sh"><h2>Mapa dos polos</h2></div>
+  <p class="sub">Toque em um ponto para ver o lugar, ou em um número para abrir o dia.</p>
+  <div class="mseg" role="group" aria-label="Quadro do mapa"><button data-map="regiao" aria-pressed="true">Região</button><button data-map="cidade" aria-pressed="false">Cidade</button></div>
+  <div class="mapbox" data-q="regiao"><svg viewBox="0 0 1000 1317" role="img" aria-label="Mapa esquemático: região de Zhangjiajie"><rect width="1000" height="1317" fill="var(--map)"/><path d="M100.2,993.9 L104.5,993.6 L112.8,996.7 L119.6,1018.5 L126.1,1032.1 L129.4,1036.1 L139.4,1038.3 L151.8,1034.1 L158.6,1029.4 L165.4,1021.6 L175.8,996.7 L186.7,986.2 L209.2,987.7 L225.2,1000.9 L239.6,1022.6 L245.1,1026.9 L271.7,1032.1 L297.0,1050.8 L319.0,1064.1 L324.0,1065.3 L330.0,1063.3 L343.8,1052.8 L348.0,1041.9 L350.0,1019.0 L357.3,1013.3 L373.5,1010.0 L395.8,1000.4 L430.2,993.3 L455.2,996.0 L491.6,1008.4 L509.3,1003.2 L572.2,966.3" fill="none" stroke="var(--water)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M-495.2,1005.4 L-486.6,1015.4 L-478.8,1013.1 L-439.4,1014.2 L-424.5,1018.4 L-417.3,1027.8 L-411.5,1051.9 L-412.3,1059.5 L-425.2,1085.4 L-431.5,1091.2 L-442.9,1096.2 L-450.0,1106.3 L-453.5,1118.1 L-458.4,1157.7 L-457.6,1165.5 L-454.5,1170.8 L-442.8,1177.0 L-418.6,1197.1 L-401.7,1192.4 L-389.5,1186.9 L-383.3,1181.2 L-371.0,1158.1 L-363.0,1150.7 L-346.9,1141.7 L-337.0,1138.9 L-325.8,1140.3 L-304.6,1124.9 L-281.8,1120.5 L-254.2,1110.5 L-218.2,1104.6 L-163.0,1105.7 L-129.6,1110.6 L-125.2,1112.7 L-120.8,1116.1 L-117.9,1123.9 L-115.1,1163.5 L-98.8,1188.1 L-95.1,1189.0 L-88.2,1185.5 L-69.2,1158.6 L-58.8,1134.1 L-3.4,1101.0" fill="none" stroke="var(--water)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M-3.4,1101.0 L16.1,1091.8 L27.5,1081.4 L43.1,1046.6 L62.9,1014.3 L76.2,1001.5 L87.5,995.8 L100.2,993.9" fill="none" stroke="var(--water)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M572.2,966.3 L581.0,957.6 L586.4,944.4 L589.5,913.0 L593.3,901.3 L602.2,897.2 L623.8,894.6 L637.5,887.9 L643.3,883.5 L653.0,869.5 L665.8,858.1 L696.6,840.4 L725.2,799.3 L736.3,793.1 L746.3,794.1 L755.6,792.2 L778.4,760.2 L795.3,743.1 L813.2,731.5 L840.2,706.6 L847.4,698.9 L856.4,683.6 L869.2,675.0 L883.9,671.2 L890.3,671.5 L895.7,674.2 L909.3,688.3 L929.6,675.9 L940.0,671.9 L973.2,677.4 L983.5,676.3 L1005.4,658.2 L1032.5,653.3 L1037.6,650.3 L1039.9,647.1 L1040.5,641.3 L1028.5,629.6 L1015.7,624.5 L997.2,625.7 L986.7,623.9 L981.0,622.1 L969.7,613.1 L958.6,593.5 L956.9,581.4 L961.1,574.8 L966.5,572.9 L974.0,574.9 L986.9,592.9 L997.2,598.4 L1005.0,598.9 L1034.8,591.0 L1046.0,592.2 L1050.1,596.6 L1057.3,622.6 L1062.4,626.2 L1069.9,627.7 L1079.2,620.6 L1102.4,612.5 L1107.3,609.1 L1126.8,576.5 L1166.0,550.2 L1170.4,541.2 L1170.4,533.2 L1173.5,528.2 L1185.2,526.5 L1210.5,515.6 L1233.3,520.2 L1244.8,516.4 L1252.2,509.9 L1259.5,498.4 L1267.2,479.1 L1268.7,468.3 L1272.6,461.4 L1278.5,457.7 L1288.3,458.9 L1301.6,456.3" fill="none" stroke="var(--water)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><path d="M753.1,-40.0 L760.8,-34.5 L769.1,-38.0 L773.2,-47.3 L768.8,-54.0 L764.1,-79.3 L770.6,-100.1 L765.8,-128.5 L778.3,-135.3 L788.8,-137.2 L790.5,-141.0 L787.6,-155.1 L788.5,-158.5 L793.7,-162.4 L797.9,-160.7 L810.0,-167.4 L810.2,-198.7 L816.3,-209.3 L815.6,-213.5 L813.3,-218.8 L799.5,-223.6 L798.5,-230.0 L801.5,-235.6 L806.8,-237.8 L814.5,-237.3 L825.5,-232.3 L832.9,-232.0 L855.0,-243.2 L864.8,-244.6 L870.2,-268.1 L872.8,-294.0 L877.7,-295.1 L884.2,-291.1 L887.6,-286.9 L890.8,-274.1 L911.5,-267.8 L915.9,-268.8 L934.9,-285.2 L941.0,-294.5 L960.7,-296.1 L961.5,-299.5 L958.9,-302.9 L958.7,-307.3 L964.8,-311.7 L972.0,-310.6 L980.3,-296.0 L999.3,-297.7 L1004.1,-293.7 L1010.1,-296.1 L1013.5,-299.7 L1014.1,-303.7 L1004.5,-312.2 L1003.2,-322.2 L1005.9,-325.3 L1012.9,-323.9 L1021.2,-317.3 L1042.8,-314.5 L1056.2,-315.3 L1060.8,-322.2 L1059.1,-331.0 L1061.3,-337.1 L1068.3,-341.1 L1071.4,-340.5 L1075.5,-334.8 L1086.8,-328.9 L1102.0,-315.2 L1114.5,-311.1" fill="none" stroke="var(--water)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M387.1,209.7 L395.6,216.9 L404.2,217.4 L407.7,221.5 L419.6,227.3 L433.0,237.1 L457.4,249.0 L461.1,250.1 L491.8,248.0 L518.5,236.7 L531.0,224.5 L552.3,195.8 L566.0,181.4 L575.5,179.8 L588.9,188.4 L608.4,178.7 L636.5,177.6 L644.8,183.3 L656.1,186.3 L668.0,173.2 L677.8,172.5 L685.7,174.8 L693.6,173.0 L702.1,160.7 L711.2,153.6 L732.5,153.4 L736.2,142.6 L732.5,136.4 L732.5,121.0 L742.0,111.8 L742.4,106.9 L732.8,96.0 L736.2,86.6 L734.4,82.2 L720.2,72.0 L720.5,69.5 L725.5,64.7 L726.4,60.4 L718.5,61.1 L717.1,57.0 L717.4,49.4 L723.3,37.0 L719.5,12.2 L723.7,-2.3 L732.8,-16.7 L736.4,-33.3 L739.7,-38.1 L744.1,-40.1 L753.1,-40.0 L768.8,-54.0" fill="none" stroke="var(--water)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><text x="379" y="62" text-anchor="middle" class="mreg">WULINGYUAN</text><text x="848" y="229" text-anchor="middle" class="mreg">CILI</text><text x="409" y="790" text-anchor="middle" class="mreg">YONGDING</text><text x="485" y="1258" text-anchor="middle" class="mreg">TIANMEN SHAN</text><circle class="pt" data-i="47" cx="269.9" cy="1014.8" r="7" fill="var(--muted)" opacity=".5"/><circle class="pt" data-i="43" cx="253.8" cy="1054.0" r="8" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="44" cx="257.5" cy="1056.5" r="8" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="45" cx="248.3" cy="1068.0" r="8" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="46" cx="250.7" cy="1037.3" r="8" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="7" cx="170.7" cy="939.2" r="8.5" fill="var(--c1)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="8" cx="170.5" cy="939.1" r="8.5" fill="var(--c1)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="9" cx="170.5" cy="935.7" r="8.5" fill="var(--c1)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="10" cx="170.1" cy="934.9" r="8.5" fill="var(--c1)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="12" cx="453.2" cy="294.3" r="8.5" fill="var(--c2)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="13" cx="464.4" cy="247.5" r="8.5" fill="var(--c2)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="14" cx="442.2" cy="239.6" r="8.5" fill="var(--c2)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="15" cx="473.9" cy="246.1" r="8.5" fill="var(--c2)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="16" cx="462.8" cy="236.3" r="8.5" fill="var(--c2)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="17" cx="438.8" cy="228.5" r="8.5" fill="var(--c2)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="18" cx="652.0" cy="184.3" r="8.5" fill="var(--c2)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="25" cx="250.6" cy="1047.0" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="26" cx="264.0" cy="1018.6" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="27" cx="264.7" cy="1016.2" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="28" cx="266.7" cy="1016.4" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="29" cx="264.8" cy="1014.7" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="30" cx="261.6" cy="1010.7" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="31" cx="262.1" cy="1007.6" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="32" cx="257.6" cy="1002.8" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="33" cx="256.1" cy="1001.5" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="34" cx="256.8" cy="1000.5" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="35" cx="262.9" cy="992.1" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="36" cx="261.7" cy="986.1" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="40" cx="261.7" cy="1010.8" r="8.5" fill="var(--c4)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="41" cx="195.1" cy="1004.4" r="8.5" fill="var(--c4)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="21" cx="249.9" cy="1046.7" r="11" fill="var(--c3)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="22" cx="264.8" cy="1017.9" r="11" fill="var(--c3)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="23" cx="255.0" cy="1008.1" r="11" fill="var(--c3)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="24" cx="253.6" cy="1002.9" r="11" fill="var(--c3)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="37" cx="263.3" cy="1017.8" r="11" fill="var(--c4)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="38" cx="219.9" cy="1003.9" r="11" fill="var(--c4)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="39" cx="188.5" cy="993.7" r="11" fill="var(--c4)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="2" cx="170.5" cy="939.0" r="14" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="3" cx="105.0" cy="347.0" r="14" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="4" cx="129.9" cy="242.6" r="14" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="5" cx="204.7" cy="228.9" r="14" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="6" cx="225.5" cy="161.0" r="14" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="11" cx="906.5" cy="61.1" r="14" fill="var(--c2)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="19" cx="254.2" cy="1049.9" r="14" fill="var(--c3)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="20" cx="265.7" cy="1272.0" r="14" fill="var(--c3)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><rect class="pt" data-i="1" x="122.9" y="1062.9" width="26" height="26" rx="4" fill="var(--c0)" stroke="var(--map)" stroke-width="2"/><rect class="pt" data-i="42" x="176.8" y="847.1" width="26" height="26" rx="4" fill="var(--c4)" stroke="var(--map)" stroke-width="2"/><a href="#dia1"><circle cx="166.3" cy="244.9" r="28" fill="var(--c1)"/><text x="166.3" y="255.9" text-anchor="middle" class="mnum">1</text></a><a href="#dia2"><path d="M906.5 61.1L846.5 95.1" stroke="var(--c2)" stroke-width="2.5"/><circle cx="846.5" cy="95.1" r="28" fill="var(--c2)"/><text x="846.5" y="106.1" text-anchor="middle" class="mnum">2</text></a><a href="#dia3"><path d="M259.9 1161.0L315.9 1161.0" stroke="var(--c3)" stroke-width="2.5"/><circle cx="315.9" cy="1161.0" r="28" fill="var(--c3)"/><text x="315.9" y="1172.0" text-anchor="middle" class="mnum">3</text></a><rect class="pt" data-i="0" x="241.9" y="1042.0" width="26" height="26" transform="rotate(45 254.9 1055.0)" fill="var(--ink)" stroke="var(--map)" stroke-width="2.5"/><text x="276.9" y="1095.0" class="mhot">Hotel</text><path d="M36 1267V1275H192.0V1267" fill="none" stroke="var(--ink)" stroke-width="3"/><text x="36" y="1305" class="mlab">5 km</text><rect x="115.2" y="842.4" width="178.8" height="256.5" rx="6" fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="7 6" opacity=".55"/><text x="303.9" y="978.6" class="mlab" data-map="cidade" style="cursor:pointer">cidade ›</text></svg>
+    <p class="cap">Região inteira, em escala de 5 km. O retângulo tracejado é o quadro da cidade. Jiangya Hot Springs fica fora do quadro, 51 km a nordeste do hotel. Losango: hotel; quadrados: aeroporto e estação; cinza: fora do roteiro; neutros: coringas. Rios pelo traçado do OpenStreetMap.</p>
+  </div>
+  <div class="mapbox" data-q="cidade" hidden><svg viewBox="0 0 1000 1434" role="img" aria-label="Mapa esquemático: cidade de Zhangjiajie (Yongding)"><rect width="1000" height="1434" fill="var(--map)"/><path d="M-83.9,846.9 L-59.5,845.2 L-12.9,862.6 L-1.4,880.1 L7.5,906.2 L13.2,940.9 L24.9,984.5 L45.6,1022.4 L61.4,1060.2 L79.7,1082.7 L103.9,1091.2 L135.4,1094.9 L172.0,1085.8 L205.3,1071.6 L243.1,1045.5 L280.8,1001.9 L339.2,862.6 L353.6,842.3 L400.2,803.7 L449.0,805.3 L526.1,812.1 L615.6,885.9 L696.1,1007.3 L726.6,1031.4 L759.7,1043.9 L810.5,1048.8 L875.4,1060.4 L950.0,1112.3 L1016.9,1164.6 L1116.3,1221.4 L1140.3,1239.0 L1168.3,1246.0 L1201.9,1234.6 L1251.9,1202.4 L1278.8,1176.3 L1293.4,1147.2 L1302.2,1115.2 L1305.1,1097.8 L1313.7,987.4 L1331.2,967.0 L1354.6,955.4 L1445.3,936.6 L1569.7,883.2 L1657.6,864.0 L1712.9,849.5 L1762.4,843.6 L1902.0,858.6 L1971.9,878.1 L2076.6,921.7 L2105.6,927.9 L2204.6,898.8 L2556.6,692.9" fill="none" stroke="var(--water)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M-3413.6,911.1 L-3395.9,923.3 L-3372.0,960.5 L-3365.6,967.0 L-3356.1,967.0 L-3328.6,955.0 L-3322.4,954.3 L-3291.4,959.1 L-3272.2,957.4 L-3260.3,962.2 L-3222.9,959.5 L-3139.0,957.5 L-3101.9,960.5 L-3018.6,983.9 L-3006.6,992.8 L-2993.1,1009.1 L-2978.0,1036.6 L-2945.6,1171.0 L-2945.4,1184.8 L-2950.3,1213.3 L-2962.2,1238.2 L-3006.3,1315.1 L-3018.8,1352.7 L-3022.4,1358.0 L-3057.5,1390.5 L-3098.6,1406.2 L-3121.2,1418.6 L-3135.8,1432.3 L-3148.3,1450.4 L-3161.2,1475.0 L-3180.7,1541.2 L-3185.1,1570.1 L-3190.0,1649.3 L-3196.3,1669.3 L-3196.9,1685.0 L-3208.1,1762.4 L-3207.5,1789.8 L-3203.7,1806.0 L-3194.1,1825.6 L-3186.4,1835.7 L-3170.5,1842.6 L-3159.5,1854.1 L-3131.2,1863.8 L-3120.8,1870.0 L-3063.4,1913.5 L-3020.7,1957.1 L-3000.5,1974.2 L-2985.3,1982.5 L-2970.5,1983.1 L-2890.7,1956.4 L-2844.1,1937.6 L-2822.9,1925.4 L-2805.9,1911.8 L-2788.1,1893.8 L-2773.7,1869.8 L-2770.8,1856.4 L-2760.3,1829.1 L-2749.7,1815.1 L-2742.4,1797.7 L-2719.2,1764.6 L-2674.2,1722.9 L-2584.6,1672.9 L-2548.0,1660.2 L-2529.0,1657.1 L-2504.1,1659.0 L-2481.5,1665.0 L-2466.4,1665.2 L-2455.6,1660.5 L-2422.2,1635.7 L-2384.1,1598.7 L-2361.5,1584.4 L-2348.0,1578.8 L-2220.5,1554.4 L-2066.1,1498.6 L-1999.0,1487.9 L-1933.1,1472.6 L-1864.6,1465.5 L-1640.2,1464.3 L-1555.6,1471.5 L-1369.0,1498.8 L-1344.1,1510.8 L-1319.8,1529.6 L-1309.3,1550.1 L-1303.6,1573.6 L-1293.9,1711.3 L-1294.7,1764.0 L-1292.5,1779.7 L-1287.8,1794.6 L-1230.3,1874.4 L-1196.8,1932.1 L-1190.5,1936.0 L-1175.8,1937.2 L-1160.5,1932.7 L-1137.1,1917.4 L-1108.0,1881.0 L-1031.0,1767.3 L-1003.4,1701.4 L-984.9,1649.1 L-978.1,1635.9 L-973.1,1630.1 L-843.9,1545.7 L-733.6,1480.6 L-663.1,1445.3" fill="none" stroke="var(--water)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M-663.1,1445.3 L-612.4,1423.2 L-554.1,1394.2 L-513.4,1365.1 L-490.2,1336.1 L-466.8,1295.4 L-449.3,1240.2 L-402.9,1141.4 L-335.9,1025.2 L-292.0,960.6 L-217.8,889.5 L-154.9,857.8 L-83.9,846.9" fill="none" stroke="var(--water)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M2556.6,692.9 L2577.6,676.8 L2605.6,644.1 L2635.6,570.1 L2644.4,516.5 L2653.1,394.8 L2662.9,351.2 L2674.6,329.3 L2695.6,316.0 L2723.9,306.5 L2812.0,298.1 L2844.7,291.7 L2921.5,254.7 L2954.2,229.7 L2980.8,187.5 L2999.0,161.8 L3008.5,151.5 L3080.0,87.9 L3135.6,50.4 L3220.3,11.8 L3252.4,-10.7 L3288.3,-64.3 L3355.8,-155.9 L3403.1,-229.9 L3412.2,-240.6 L3461.0,-272.4 L3474.1,-275.5 L3490.7,-275.9 L3530.2,-269.5 L3557.1,-272.2 L3569.8,-274.9 L3582.2,-280.3 L3592.0,-289.0 L3625.3,-349.1 L3664.2,-403.9 L3709.5,-459.3 L3738.5,-485.8 L3804.2,-554.8 L3904.1,-619.5 L3945.6,-664.5 L3972.9,-685.4 L4055.4,-758.8 L4095.8,-801.8 L4130.5,-864.4 L4146.1,-887.4 L4217.5,-935.3 L4253.1,-949.0 L4299.7,-956.6 L4335.4,-955.0 L4345.9,-952.1 L4365.9,-939.9 L4383.2,-926.4 L4401.7,-898.5 L4415.8,-881.0 L4432.2,-866.1 L4441.7,-860.9 L4451.7,-860.5 L4456.9,-862.6 L4521.7,-910.1 L4555.3,-930.4 L4593.9,-947.1 L4613.6,-952.3 L4633.9,-953.9 L4702.9,-941.9 L4770.0,-925.4 L4799.5,-921.9 L4829.2,-923.6 L4856.9,-928.1 L4879.7,-939.3 L4912.7,-967.8 L4940.8,-1001.1 L4979.3,-1029.0 L5000.5,-1037.2 L5050.3,-1048.2 L5130.7,-1056.7 L5141.5,-1060.4 L5159.5,-1073.4 L5172.2,-1091.0 L5175.6,-1101.7 L5175.4,-1123.4 L5169.8,-1133.4 L5128.6,-1177.8 L5108.6,-1189.0 L5048.1,-1215.4 L5036.8,-1217.5 L4990.2,-1215.8 L4933.6,-1210.5 L4874.7,-1220.8 L4843.1,-1231.1 L4802.7,-1258.4 L4779.5,-1280.9 L4742.7,-1338.2 L4717.5,-1390.9 L4707.8,-1434.7 L4708.0,-1458.3 L4716.9,-1479.0 L4731.7,-1495.1 L4740.7,-1501.1 L4751.2,-1505.2 L4762.0,-1506.0 L4783.6,-1502.9 L4794.1,-1500.0 L4803.7,-1494.7 L4811.7,-1487.6 L4840.8,-1439.7 L4875.9,-1394.0 L4892.2,-1379.5 L4902.0,-1374.0 L4911.7,-1369.4 L4933.2,-1363.2 L4955.3,-1360.3 L4977.1,-1360.5 L5121.4,-1400.8 L5143.9,-1404.5 L5165.8,-1405.4 L5206.4,-1397.7 L5216.8,-1392.1 L5224.4,-1383.7 L5229.3,-1373.1 L5254.9,-1260.9 L5262.9,-1240.0 L5269.7,-1228.2 L5278.0,-1218.7 L5298.0,-1208.0 L5318.3,-1200.7 L5340.3,-1199.3 L5350.7,-1203.2 L5360.0,-1209.4 L5383.2,-1233.6 L5392.4,-1239.2 L5442.9,-1261.1 L5489.2,-1272.9 L5521.9,-1284.7 L5541.0,-1296.4 L5549.3,-1303.5 L5584.7,-1351.8 L5624.2,-1430.0 L5650.3,-1475.5 L5658.1,-1485.6 L5667.6,-1494.9 L5726.3,-1536.8 L5860.0,-1619.1 L5877.5,-1632.6 L5890.3,-1650.9 L5902.2,-1683.0 L5902.2,-1727.8 L5912.2,-1747.3 L5919.3,-1755.7 L5929.0,-1761.3 L5962.0,-1761.9 L5984.9,-1765.2 L6017.5,-1776.4 L6072.0,-1808.7 L6104.6,-1821.5 L6126.4,-1826.2 L6148.5,-1826.9 L6171.0,-1823.5 L6232.5,-1803.3 L6253.9,-1800.0 L6276.3,-1804.1 L6298.0,-1811.6 L6318.1,-1821.3 L6336.4,-1834.1 L6359.8,-1857.9 L6388.6,-1901.1 L6400.3,-1922.1 L6412.7,-1964.9 L6443.4,-2030.2 L6451.9,-2090.2 L6455.9,-2100.9 L6473.9,-2128.8 L6486.6,-2140.2 L6506.6,-2149.3 L6529.2,-2148.7 L6561.9,-2143.1 L6610.2,-2148.5 L6627.6,-2153.4 L6635.9,-2157.6" fill="none" stroke="var(--water)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><text x="780" y="707" text-anchor="middle" class="mreg">CENTRO ANTIGO</text><text x="475" y="1056" text-anchor="middle" class="mreg">NANZHUANGPING</text><text x="636" y="1366" text-anchor="middle" class="mreg">GUANLIPING</text><circle class="pt" data-i="47" cx="865.5" cy="963.6" r="7" fill="var(--muted)" opacity=".5"/><circle class="pt" data-i="43" cx="775.4" cy="1182.8" r="8" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="44" cx="796.4" cy="1197.0" r="8" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="45" cx="744.9" cy="1261.2" r="8" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="46" cx="758.0" cy="1089.7" r="8" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="7" cx="310.5" cy="541.2" r="8.5" fill="var(--c1)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="8" cx="309.6" cy="540.6" r="8.5" fill="var(--c1)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="9" cx="309.5" cy="521.5" r="8.5" fill="var(--c1)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="10" cx="307.2" cy="517.2" r="8.5" fill="var(--c1)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="25" cx="757.3" cy="1143.8" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="26" cx="832.6" cy="984.7" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="27" cx="836.6" cy="971.5" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="28" cx="847.6" cy="972.7" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="29" cx="837.0" cy="963.4" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="30" cx="818.9" cy="940.7" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="31" cx="821.7" cy="923.5" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="32" cx="796.5" cy="896.6" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="33" cx="788.3" cy="889.2" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="34" cx="792.0" cy="884.0" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="35" cx="826.3" cy="837.0" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="36" cx="819.7" cy="803.5" r="8.5" fill="var(--c3)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="40" cx="819.5" cy="941.2" r="8.5" fill="var(--c4)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="41" cx="447.2" cy="905.4" r="8.5" fill="var(--c4)" opacity="0.6" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="21" cx="753.4" cy="1141.9" r="11" fill="var(--c3)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="22" cx="836.9" cy="980.8" r="11" fill="var(--c3)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="23" cx="782.4" cy="926.4" r="11" fill="var(--c3)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="24" cx="774.6" cy="896.9" r="11" fill="var(--c3)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="37" cx="828.7" cy="980.4" r="11" fill="var(--c4)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="38" cx="586.0" cy="902.5" r="11" fill="var(--c4)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="39" cx="410.4" cy="845.5" r="11" fill="var(--c4)" opacity="0.85" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="2" cx="309.4" cy="540.4" r="14" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><circle class="pt" data-i="19" cx="777.6" cy="1159.9" r="14" fill="var(--c3)" opacity="1" stroke="var(--map)" stroke-width="1.5"/><rect class="pt" data-i="1" x="102.9" y="1292.3" width="26" height="26" rx="4" fill="var(--c0)" stroke="var(--map)" stroke-width="2"/><rect class="pt" data-i="42" x="404.6" y="86.0" width="26" height="26" rx="4" fill="var(--c4)" stroke="var(--map)" stroke-width="2"/><a href="#dia0"><path d="M781.5 1188.2L723.5 1152.2" stroke="var(--c0)" stroke-width="2.5"/><circle cx="723.5" cy="1152.2" r="28" fill="var(--c0)"/><text x="723.5" y="1163.2" text-anchor="middle" class="mnum">0</text></a><a href="#dia3"><path d="M801.4 917.3L749.4 933.3" stroke="var(--c3)" stroke-width="2.5"/><circle cx="749.4" cy="933.3" r="28" fill="var(--c3)"/><text x="749.4" y="944.3" text-anchor="middle" class="mnum">3</text></a><a href="#dia4"><path d="M481.2 884.5L481.2 826.5" stroke="var(--c4)" stroke-width="2.5"/><circle cx="481.2" cy="826.5" r="28" fill="var(--c4)"/><text x="481.2" y="837.5" text-anchor="middle" class="mnum">4</text></a><rect class="pt" data-i="0" x="768.5" y="1175.2" width="26" height="26" transform="rotate(45 781.5 1188.2)" fill="var(--ink)" stroke="var(--map)" stroke-width="2.5"/><text x="803.5" y="1228.2" class="mhot">Hotel</text><path d="M36 1384V1392H210.3V1384" fill="none" stroke="var(--ink)" stroke-width="3"/><text x="36" y="1422" class="mlab">1 km</text></svg>
+    <p class="cap">Cidade (Yongding), em escala de 1 km. A Porta do Céu e o parque ficam fora deste quadro. Rio Li pelo traçado do OpenStreetMap. Posições pelas coordenadas da planilha, convertidas para WGS-84.</p>
+  </div>
+  <div class="sec" id="coringas" style="padding-top:22px">
+    <div class="sh"><h2>Coringas perto do hotel</h2></div>
+    <p class="sub">Para qualquer noite, do mais perto ao mais longe. Há poucos bares no acervo, e três dos cinco da cidade têm status incerto; os mais seguros são o Gulu, o Friends Circle Music Bar e o Luyao Music Live Bar, no centro antigo.</p>
+    <div class="jlist"><button class="jrow" data-i="43"><span>Suo Xi Shan Zhai – Tianmen Cableway</span><span class="jd">0,05 km</span></button><button class="jrow" data-i="44"><span>Zhai Zi Li De Bo Bo Cai – Tianmen</span><span class="jd">0,10 km</span></button><button class="jrow" data-i="25"><span>Impression Niyan – Tianmen Cableway</span><span class="jd">0,29 km</span></button><button class="jrow" data-i="21"><span>Gan Nian San Xia Guo</span><span class="jd">0,31 km</span></button><button class="jrow" data-i="45"><span>Lao Zhang Jia San Xia Guo</span><span class="jd">0,47 km</span></button><button class="jrow" data-i="46"><span>Qindama</span><span class="jd">0,58 km</span></button><button class="jrow" data-i="26"><span>Mofang Bar</span><span class="jd">1,20 km</span></button><button class="jrow" data-i="37"><span>Codo Cafe Bistro</span><span class="jd">1,22 km</span></button><button class="jrow" data-i="22"><span>Hololi Japanese Cuisine</span><span class="jd">1,23 km</span></button><button class="jrow" data-i="29"><span>Aini Pub</span><span class="jd">1,33 km</span></button><button class="jrow" data-i="40"><span>Zhu Nao Ke Liang Mian – Nanzheng</span><span class="jd">1,44 km</span></button><button class="jrow" data-i="23"><span>Gulu Restaurant &amp; Bar</span><span class="jd">1,50 km</span></button></div>
+  </div>
+</section>
+
+<section class="sec" id="uteis">
+  <div class="sh"><h2>Úteis</h2></div>
+  <div class="cards">
+    <div class="card">
+      <p class="lbl">Hotel</p>
+      <p class="cnbig">张家界天门山希尔顿欢朋酒店</p>
+      <p class="cnad">湖南省张家界市永定区南城金座1号栋（天门山索道对面）</p>
+      <p>Hampton by Hilton Zhangjiajie Tianmen Mountain · Building 1, Nancheng Jinzuo, Yongding · +86-744-8880888. Check-in a partir das 14:00; check-out até 12:00; café 07:00–10:00 (02 a 05/01).</p>
+      <div class="btns"><button class="btn pri" data-full="张家界天门山希尔顿欢朋酒店" data-sub="湖南省张家界市永定区南城金座1号栋（天门山索道对面）">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Parque, portão de Wulingyuan · Dia 1</p>
+      <p class="cnbig">张家界国家森林公园 武陵源标志门门票站</p>
+      <p class="cnad">湖南省张家界市武陵源区 武陵源标志门</p>
+      <p>Entrada do Dia 1. Endereço montado pelo Claude: a confirmar.</p>
+      <div class="btns"><button class="btn pri" data-full="张家界国家森林公园 武陵源标志门门票站" data-sub="湖南省张家界市武陵源区 武陵源标志门">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Parque, portão sul · Dia 2, saída</p>
+      <p class="cnbig">张家界国家森林公园门票站</p>
+      <p class="cnad">湖南省张家界市武陵源区金鞭路279号</p>
+      <p>Saída do Dia 2, no fim do Riacho do Chicote Dourado. Endereço montado pelo Claude: a confirmar.</p>
+      <div class="btns"><button class="btn pri" data-full="张家界国家森林公园门票站" data-sub="湖南省张家界市武陵源区金鞭路279号">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Grand Canyon · Dia 2</p>
+      <p class="cnbig">张家界大峡谷(玻璃桥)</p>
+      <p class="cnad">湖南省张家界市慈利县三官寺土家族乡241国道 张家界大峡谷</p>
+      <p>Ponte de vidro. ~1h15 de carro do hotel (estimativa).</p>
+      <div class="btns"><button class="btn pri" data-full="张家界大峡谷(玻璃桥)" data-sub="湖南省张家界市慈利县三官寺土家族乡241国道 张家界大峡谷">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">72 Qilou · Dia 1</p>
+      <p class="cnbig">七十二奇楼</p>
+      <p class="cnad">湖南省张家界市永定区武陵山大道1号</p>
+      <p>Na volta de Wulingyuan, ao anoitecer. A 4,6 km do hotel.</p>
+      <div class="btns"><button class="btn pri" data-full="七十二奇楼" data-sub="湖南省张家界市永定区武陵山大道1号">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Dayong Fucheng · Dia 3</p>
+      <p class="cnbig">大庸府城</p>
+      <p class="cnad">湖南省张家界市永定区解放路152号</p>
+      <p>Centro antigo iluminado; espetáculo 遇见大庸 geralmente 19:30–20:30.</p>
+      <div class="btns"><button class="btn pri" data-full="大庸府城" data-sub="湖南省张家界市永定区解放路152号">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Nimo Kitchen · Dia 4</p>
+      <p class="cnbig">泥茉厨房</p>
+      <p class="cnad">湖南省张家界市永定区南庄坪高盛澧园6栋101(融山东路附近)</p>
+      <p>Almoço de despedida, 11:00–21:00.</p>
+      <div class="btns"><button class="btn pri" data-full="泥茉厨房" data-sub="湖南省张家界市永定区南庄坪高盛澧园6栋101(融山东路附近)">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Estação de saída · Dia 4</p>
+      <p class="cnbig">张家界西站</p>
+      <p class="cnad">湖南省张家界市永定区沙堤乡 张家界西站</p>
+      <p>Estação Oeste, de alta velocidade. Não confundir com 张家界站.</p>
+      <div class="btns"><button class="btn pri" data-full="张家界西站" data-sub="湖南省张家界市永定区沙堤乡 张家界西站">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Transporte</p>
+      <dl class="kv">
+        <dt>Metrô</dt><dd>Zhangjiajie não tem metrô.</dd>
+        <dt>Na cidade</dt><dd>Táxi ou Didi.</dd>
+        <dt>Ônibus</dt><dd>Rodoviária central (张家界中心汽车站), a ~0,5 km do hotel: para Wulingyuan e para o portão sul do parque a cada 10 min, ~45–50 min, ¥12 (Ctrip). Rodam até ~17:30; depois, só táxi. Ponto de embarque a confirmar no local.</dd>
+        <dt>Táxi</dt><dd>Até os portões do parque: ~45 min, ¥80–120 (Ctrip).</dd>
+        <dt>Dia 2</dt><dd>Carro com motorista para o dia inteiro (preço a cotar).</dd>
+        <dt>Tianmen</dt><dd>Estação do teleférico em frente ao hotel (160 m).</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <p class="lbl">Emergência na China</p>
+      <dl class="kv"><dt>110</dt><dd>Polícia</dd><dt>120</dt><dd>Ambulância</dd><dt>119</dt><dd>Bombeiros</dd></dl>
+    </div>
+    <div class="card">
+      <p class="lbl">Clima esperado</p>
+      <p>Normais climatológicas, não previsão. Na cidade (~300 m), máximas de 5 a 8 °C e mínimas de −1 a +2 °C. Nas montanhas (1.050 a 1.518 m), máximas de 0 a 5 °C e mínimas de −4 a −6 °C; extremo plausível de −8 °C. Neblina muito frequente no Tianmen, ~10 dias de chuva ou neve em janeiro e risco de chuva congelante; em ondas de frio, passarelas de vidro e trilhas podem fechar. Sem aquecimento central: três camadas, gorro, luvas e calçado antiderrapante. Sol nasce às 07:32 e se põe entre 17:52 e 17:54.</p>
+    </div>
+  </div>
+  <p class="foot">Página sem códigos de reserva, números de bilhete ou dados de passaporte, por ficar em endereço público. Versão de 29/09/2026.</p>
+</section>
+
+</main>
+
+<div class="edge" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav class="tabbar" aria-label="Navegação">
+  <a href="#inicio" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>Início</span></a>
+  <a href="#roteiro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Roteiro</span></a>
+  <a href="#horarios"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Horários</span></a>
+  <a href="#mapa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10.5a6 6 0 0 1 12 0C18 15.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  <a href="#uteis"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="7.5" r="2" fill="currentColor"/><circle cx="16.5" cy="7.5" r="2" fill="currentColor"/><circle cx="7.5" cy="16.5" r="2" fill="currentColor"/><circle cx="16.5" cy="16.5" r="2" fill="currentColor"/></svg><span>Úteis</span></a>
+</nav>
+
+<dialog id="info" class="pop" aria-labelledby="infoT">
+  <div class="popc">
+    <div class="poph"><h2 id="infoT">Como funciona o roteiro de órbitas</h2><button class="xbtn" id="infoX" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <ul class="rules">
+      <li><b>Um polo por dia</b><span>Carro só para ir e voltar; dentro do polo, a pé ou com o transporte interno do parque.</span></li>
+      <li><b>Três órbitas</b><span>Núcleo: imperdíveis. Órbita média: preferenciais no caminho. Órbita externa: só se passar na porta.</span></li>
+      <li><b>Hora marcada só para o que tem hora</b><span>Voo, trem, abertura, fechamento e luz do dia. O resto é ordem sugerida.</span></li>
+      <li><b>Uma pausa longa por dia</b><span>Almoço sentado, casa de chá, bar ou o próprio hotel.</span></li>
+      <li><b>Válvula</b><span>Cada dia diz o que cortar primeiro e com qual outro dia trocar. O que ficou para trás não é compensado no dia seguinte.</span></li>
+      <li><b>Coringas</b><span>Restaurantes e bares perto do hotel para qualquer noite.</span></li>
+    </ul>
+  </div>
+</dialog>
+
+<dialog id="flsheet" aria-label="Detalhes do voo ou do trem">
+  <div class="sheet">
+    <div class="grab"></div>
+    <article class="fl" id="fl-chegada" hidden>
+    <div class="fl-h"><p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 20.5l1.5-1.2v-5l7.5 3v-2l-7.5-4.8V5a1.5 1.5 0 0 0-3 0v5.5L1.5 15.3v2l7.5-3v5l1.5 1.2z" fill="currentColor" transform="rotate(90 12 12)"/></svg>Chegada a Zhangjiajie · Shanghai Airlines (China Eastern)</p><h3>Xangai → Zhangjiajie</h3></div>
+    <div class="fl-sum"><span>2h30 em voo</span><span>Direto</span><span>Refeição a bordo</span></div>
+    <ol class="fr">
+      <li class="s"><time class="t">19:10</time><span class="r"></span><div class="x"><b>PVG · Xangai Pudong</b><small>sex 01/01 · Terminal 1</small></div></li>
+      <li class="g"><span></span><span class="r"></span><p class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 20.5l1.5-1.2v-5l7.5 3v-2l-7.5-4.8V5a1.5 1.5 0 0 0-3 0v5.5L1.5 15.3v2l7.5-3v5l1.5 1.2z" fill="currentColor" transform="rotate(90 12 12)"/></svg>FM9343 · 2h30 de voo · Boeing 737‑800</p></li>
+      <li class="s"><time class="t">21:40</time><span class="r"></span><div class="x"><b>DYG · Zhangjiajie Hehua</b><small>sex 01/01 · Terminal 2 · mesmo fuso</small></div></li>
+    </ol>
+    <div class="facts"><div><span>Chegar ao aeroporto</span><b>até 17:10</b></div><div><span>Check-in fecha</span><b>18:30</b></div><div><span>Portão fecha</span><b>18:50</b></div><div><span>Assentos</span><b>37J e 37K</b></div><div class="w"><span>Bagagem despachada</span><b>1 volume de 20 kg por pessoa · Pedro: 25 kg (+5 kg comprados, só neste trecho) · Gabriella: 20 kg</b></div><div class="w"><span>Bagagem de mão</span><b>1 peça de até 8 kg (55×40×20 cm) por pessoa + 1 item pessoal sob o assento</b></div><div class="w"><span>Na bagagem de mão</span><p>Carregador portátil só com selo 3C (regra da aviação civil chinesa para voos domésticos).</p></div><div class="w"><span>Depois do pouso</span><p>Bagagem em ~20–30 min e táxi ou Didi de ~15 min até o hotel (3,9 km em linha reta). Chegada por volta das 22:30. Estimativas.</p></div></div>
+  </article>
+    <article class="fl" id="fl-saida" hidden>
+    <div class="fl-h"><p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 11h16M9 21l2-3M15 21l-2-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.3" cy="14.4" r="1.2" fill="currentColor"/><circle cx="15.7" cy="14.4" r="1.2" fill="currentColor"/></svg>Saída de Zhangjiajie · China Railway (trem-bala)</p><h3>Zhangjiajie Oeste → Furong</h3></div>
+    <div class="fl-sum"><span>23 min</span><span>Direto</span><span>A confirmar: bilhete ainda não comprado</span></div>
+    <ol class="fr">
+      <li class="s"><time class="t">14:45</time><span class="r"></span><div class="x"><b>Zhangjiajie Oeste · 张家界西</b><small>ter 05/01 · estação de alta velocidade</small></div></li>
+      <li class="g"><span></span><span class="r"></span><p class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 11h16M9 21l2-3M15 21l-2-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.3" cy="14.4" r="1.2" fill="currentColor"/><circle cx="15.7" cy="14.4" r="1.2" fill="currentColor"/></svg>G6057 · 23 min · trem-bala com destino a Huiyang</p></li>
+      <li class="s"><time class="t">15:08</time><span class="r"></span><div class="x"><b>Furong · 芙蓉镇</b><small>ter 05/01 · mesmo fuso</small></div></li>
+    </ol>
+    <div class="facts"><div><span>Chegar à estação</span><b>até 13:45 (estimativa)</b></div><div><span>Embarque encerra</span><b>a confirmar no bilhete</b></div><div class="w"><span>Carro e assento</span><b>A definir na compra</b></div><div class="w"><span>Bagagem</span><b>20 kg por adulto; cada volume até 20 kg e até 130 cm (soma das três medidas) em trem-bala (regra do 12306)</b></div><div class="w"><span>Malas grandes</span><p>Uma mala despachável comum passa de 130 cm somados; a fiscalização na prática não foi verificada.</p></div><div class="w"><span>Venda</span><p>Abre ter 22/12/2026 às 16:30 de Pequim (05:30 de Brasília), no 12306. Horário projetado a partir das grades de 2025 e 2026.</p></div><div class="w"><span>Alternativas</span><p>G6117 12:40 → 13:03 · G6365 13:07 → 13:30 · G6079 15:10 → 15:33</p></div><div class="w"><span>Até a estação</span><p>Sair do Nimo Kitchen às 13:20; 4,3 km em linha reta, ~15 min de táxi (estimativa). É a estação Oeste (张家界西), não a estação convencional (张家界站).</p></div><div class="w"><span>Em Furong</span><p>O hotel fica dentro da área cênica paga: é preciso comprar ingresso para chegar a ele. Da estação ao núcleo da área cênica, ~10 min de carro.</p></div></div>
+  </article>
+    <div class="btns"><button class="btn" id="flClose">Fechar</button></div>
+  </div>
+</dialog>
+<dialog id="sheet" aria-label="Detalhes do lugar">
+  <div class="sheet">
+    <div class="grab"></div>
+    <div class="stags" id="sTags"></div>
+    <h2 id="sName"></h2>
+    <p class="cnbig" id="sCn"></p>
+    <p id="sOb"></p>
+    <dl class="kv" id="sKv"></dl>
+    <div class="btns">
+      <button class="btn pri" id="sFull">Mostrar em chinês</button>
+      <a class="btn" id="sAmap" target="_blank" rel="noopener">Amap (高德)</a>
+      <a class="btn" id="sApple" target="_blank" rel="noopener">Apple Maps</a>
+      <button class="btn" id="sClose">Fechar</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="full" id="full" hidden>
+  <div><div class="t" id="fT"></div><div class="s" id="fS"></div><div class="x">Toque para fechar</div></div>
+</div>
+
+<script>
+const POI = [{"n":"Hampton by Hilton Zhangjiajie Tianmen Mountain","cn":"张家界天门山希尔顿欢朋酒店","t":"Hospedagem","h":"","ob":"","f":"","c":"","ad":"湖南省张家界市永定区南城金座1号栋（天门山索道对面）","la":29.113661,"lo":110.479107,"d":"0","o":"hotel","dist":"0,00"},{"n":"Zhangjiajie Hehua International Airport","cn":"张家界荷花国际机场","t":"Transporte","h":"","ob":"Chegada pelo T2.","f":"","c":"","ad":"湖南省张家界市永定区机场路 张家界荷花国际机场","la":29.107617,"lo":110.439836,"d":"0","o":"transporte","dist":"3,9"},{"n":"72 Qilou (72 Wonder Tower)","cn":"七十二奇楼","t":"Passeio","h":"imp","ob":"Melhor ao anoitecer; fica no caminho de volta de Wulingyuan.","f":"Noite 16:30–23:00 (último acesso 22:30)","c":"¥88","ad":"湖南省张家界市永定区武陵山大道1号","la":29.147105,"lo":110.451254,"d":"1","o":"nucleo","dist":"4,6"},{"n":"Zhangjiajie National Forest Park","cn":"张家界国家森林公园","t":"Passeio","h":"imp","ob":"Ingresso nominal, válido por 4 dias: serve para o Dia 1 e o Dia 2.","f":"Portões 06:30–17:00 (entrada até 17:00)","c":"¥239 (4 dias, com ônibus internos)","ad":"湖南省张家界市武陵源区金鞭路279号","la":29.317901,"lo":110.429649,"d":"1","o":"nucleo","dist":"23,2"},{"n":"Yuanjiajie (Avatar Mountains)","cn":"袁家界景区","t":"Passeio","h":"imp","ob":"Mirante Mihuntai, Montanha Aleluia e Primeira Ponte sob o Céu.","f":"Horário do parque","c":"Incluído no ingresso do parque","ad":"张家界国家森林公园内 袁家界（百龙天梯上站）","la":29.348018,"lo":110.437861,"d":"1","o":"nucleo","dist":"26,4"},{"n":"Bailong Elevator","cn":"百龙天梯","t":"Passeio","h":"imp","ob":"Subir logo na abertura, antes das filas.","f":"Baixa temporada 08:30–18:00","c":"¥65 (subida)","ad":"张家界国家森林公园内 水绕四门 百龙天梯下站","la":29.351975,"lo":110.462548,"d":"1","o":"nucleo","dist":"26,6"},{"n":"Tianzi Mountain","cn":"天子山风景区","t":"Passeio","h":"imp","ob":"Teleférico costuma parar para manutenção anual em dez–jan: conferir.","f":"Área 06:30–17:00; teleférico a confirmar","c":"¥72 (teleférico, descida)","ad":"张家界国家森林公园内 天子山（索道下站：天子山索道下站）","la":29.371546,"lo":110.469412,"d":"1","o":"nucleo","dist":"28,7"},{"n":"Impression Niyan – 72 Qilou","cn":"印象鲵宴(七十二奇楼店)","t":"Comer","h":"","ob":"Salamandra-gigante de criação e pratos tujia.","f":"11:00–22:00","c":"¥¥","ad":"湖南省张家界市永定区七十二奇楼景区8栋8-1-03A(景区大门口旁)","la":29.147062,"lo":110.451317,"d":"1","o":"externa","dist":"4,6"},{"n":"Xiachi Xiashuan – 72 Qilou","cn":"虾吃虾涮(七十二奇楼店)","t":"Comer","h":"","ob":"Fondue de camarão.","f":"11:00–23:00","c":"¥¥","ad":"湖南省张家界市永定区七十二奇楼(茶颜悦色二楼)","la":29.147091,"lo":110.451267,"d":"1","o":"externa","dist":"4,6"},{"n":"Suo Xi Shan Zhai – 72 Qilou","cn":"索溪山寨·湘西民间土菜(72奇楼店)","t":"Comer","h":"","ob":"Comida caseira de Xiangxi, na entrada do 72 Qilou.","f":"","c":"¥¥¥","ad":"湖南省张家界市永定区武陵山大道七十二奇楼临街商铺(景区入口旁)","la":29.148078,"lo":110.451258,"d":"1","o":"externa","dist":"4,7"},{"n":"Zaozao Xiaobo Cai – 72 Qilou","cn":"灶灶小钵菜(72奇楼店)","t":"Comer","h":"","ob":"Tigelinhas de barro, barato e popular.","f":"","c":"¥","ad":"湖南省张家界市永定区72奇楼景区入口(近天门壹号小区)","la":29.1483,"lo":110.451127,"d":"1","o":"externa","dist":"4,7"},{"n":"Zhangjiajie Grand Canyon","cn":"张家界大峡谷(玻璃桥)","t":"Passeio","h":"imp","ob":"Ponte de vidro fecha com chuva forte, gelo ou vento.","f":"Entrada 08:00 ou 08:30 até 16:00 (a confirmar)","c":"A confirmar (cânion e ponte de vidro têm preços separados)","ad":"湖南省张家界市慈利县三官寺土家族乡241国道 张家界大峡谷","la":29.400364,"lo":110.69415,"d":"2","o":"nucleo","dist":"38,1"},{"n":"Baofeng Lake","cn":"宝峰湖风景区","t":"Passeio","h":"","ob":"Alternativa da tarde do Dia 2: barco no lago.","f":"Inverno 07:30–17:00","c":"¥110","ad":"湖南省张家界市武陵源区宝峰路3号","la":29.333091,"lo":110.544543,"d":"2","o":"externa","dist":"25,2"},{"n":"Impression Niyan – Xibu Jie (Wulingyuan)","cn":"印象鲵宴(溪布街店)","t":"Comer","h":"","ob":"Casa grande, com espetáculo tujia.","f":"11:00–22:00","c":"¥¥","ad":"湖南省张家界市武陵源区天子街宝峰桥头溪布街入口118号","la":29.346593,"lo":110.548266,"d":"2","o":"externa","dist":"26,8"},{"n":"Zhai Zi Li De Bo Bo Cai – Wulingyuan","cn":"寨子里的钵钵菜(魅力湘西店)","t":"Comer","h":"","ob":"Almoço do Dia 2, entre o cânion e o parque.","f":"09:30–22:30","c":"¥¥","ad":"湖南省张家界市武陵源区武陵路593号(近魅力湘西大剧院)","la":29.348875,"lo":110.540931,"d":"2","o":"externa","dist":"26,8"},{"n":"Xibu Street","cn":"溪布街","t":"Rua","h":"","ob":"Rua de bares e restaurantes à beira do rio, em Wulingyuan.","f":"Rua aberta 24h","c":"Grátis","ad":"湖南省张家界市武陵源区武陵路1号","la":29.347003,"lo":110.551398,"d":"2","o":"externa","dist":"26,9"},{"n":"Tea Doctor's House","cn":"茶博士家","t":"Cafeteria","h":"","ob":"Casa de chá e loja; degustação.","f":"","c":"","ad":"湖南省张家界市武陵源区天子街六栋一楼","la":29.349828,"lo":110.54774,"d":"2","o":"externa","dist":"27,1"},{"n":"Ming Tien Coffee Language","cn":"名典咖啡语茶","t":"Cafeteria","h":"","ob":"Status incerto: conferir antes.","f":"","c":"","ad":"湖南省张家界市武陵源区军地坪街道未央路家佳乐超市对面","la":29.352085,"lo":110.539805,"d":"2","o":"externa","dist":"27,1"},{"n":"Yellow Dragon Cave (Huanglong Cave)","cn":"黄龙洞景区","t":"Passeio","h":"","ob":"Plano B para chuva: visita quase toda dentro da caverna.","f":"Inverno 08:30–17:30","c":"¥121","ad":"湖南省张家界市武陵源区索溪峪镇河口村","la":29.364831,"lo":110.610169,"d":"2","o":"externa","dist":"30,7"},{"n":"Tianmen Mountain","cn":"天门山国家森林公园（天门山索道下站）","t":"Passeio","h":"imp","ob":"Estação do teleférico em frente ao hotel. Teleférico superior em obra: linha A sobe de ônibus pelas 99 curvas.","f":"Linha A: primeira subida 07:00–08:00, último ingresso 16:00 (a confirmar)","c":"¥288","ad":"湖南省张家界市永定区大庸中路11号 天门山索道下站","la":29.115126,"lo":110.478877,"d":"3","o":"nucleo","dist":"0,16"},{"n":"Heaven's Gate","cn":"天门洞","t":"Passeio","h":"imp","ob":"999 degraus ou escada rolante escavada na rocha.","f":"Escada rolante no inverno 08:30–17:30","c":"Escada rolante ¥32 (conferir se já está no ingresso)","ad":"湖南省张家界市永定区天门山国家森林公园内 天门洞","la":29.051057,"lo":110.482674,"d":"3","o":"nucleo","dist":"7,0"},{"n":"Gan Nian San Xia Guo","cn":"赶年三下锅(天门山索道店)","t":"Comer","h":"pref","ob":"Peça san xia guo. Almoço na volta de Tianmen.","f":"","c":"¥¥¥","ad":"湖南省张家界市永定区兴民路华天城S2栋(天门山索道站后门一条街)","la":29.116053,"lo":110.477453,"d":"3","o":"media","dist":"0,31"},{"n":"Hololi Japanese Cuisine","cn":"和楽里日本料理(维港十字街店)","t":"Comer","h":"pref","ob":"Japonesa; se o Amap não achar, buscar 和乐里.","f":"10:00–21:30","c":"¥¥¥","ad":"湖南省张家界市永定区维港十字街3栋128号一楼","la":29.124369,"lo":110.48238,"d":"3","o":"media","dist":"1,23"},{"n":"Gulu Restaurant & Bar","cn":"谷露餐厅&酒馆","t":"Comer","h":"pref","ob":"Pizzas e massas; à noite, jazz em vinil e coquetéis.","f":"10:30–23:45","c":"¥¥¥","ad":"湖南省张家界市永定区解放路28号中商广场一楼最西侧","la":29.127178,"lo":110.47916,"d":"3","o":"media","dist":"1,5"},{"n":"Ot Canteen & Wine Bar","cn":"Ot Canteen & Wine Bar","t":"Comer","h":"pref","ob":"Italiano; endereço só confirmado no TripAdvisor.","f":"10:00–22:00","c":"¥¥¥","ad":"湖南省张家界市永定区解放路188号泊富国际文化广场C栋1S01号","la":29.128698,"lo":110.4787,"d":"3","o":"media","dist":"1,7"},{"n":"Impression Niyan – Tianmen Cableway","cn":"印象鲵宴(天门山索道店)","t":"Comer","h":"","ob":"Alternativa de almoço na volta de Tianmen.","f":"10:30–22:00","c":"","ad":"湖南省张家界市永定区官黎坪街道华天城S1栋S06","la":29.115955,"lo":110.477683,"d":"3","o":"externa","dist":"0,29"},{"n":"Mofang Bar","cn":"魔方酒吧","t":"Beber","h":"","ob":"Status incerto: conferir antes.","f":"","c":"","ad":"湖南省张家界市永定区维港十字街11栋2楼204室","la":29.124167,"lo":110.482125,"d":"3","o":"externa","dist":"1,20"},{"n":"Nanmenkou","cn":"南门口美食街","t":"Região","h":"","ob":"Rua de comida noturna.","f":"","c":"Grátis","ad":"湖南省张家界市永定区回龙路11号 南门口美食街","la":29.124849,"lo":110.482358,"d":"3","o":"externa","dist":"1,28"},{"n":"Huilong Road","cn":"回龙路","t":"Rua","h":"","ob":"Calçadão comercial.","f":"Via pública","c":"Grátis","ad":"湖南省张家界市永定区回龙路（步步高百货）","la":29.12479,"lo":110.483006,"d":"3","o":"externa","dist":"1,29"},{"n":"Aini Pub","cn":"爱你酒吧","t":"Beber","h":"","ob":"Status incerto: ligar antes.","f":"","c":"","ad":"湖南省张家界市永定区回龙路(十字街步行街附近)","la":29.125269,"lo":110.482382,"d":"3","o":"externa","dist":"1,33"},{"n":"Nanzheng Street","cn":"南正街","t":"Rua","h":"","ob":"Rua tradicional de comércio e comida.","f":"Via pública","c":"Grátis","ad":"湖南省张家界市永定区南正街","la":29.12644,"lo":110.481318,"d":"3","o":"externa","dist":"1,44"},{"n":"Jiefang Road","cn":"解放路","t":"Rua","h":"","ob":"Eixo do centro antigo.","f":"Via pública","c":"Grátis","ad":"湖南省张家界市永定区解放路（文昌阁）","la":29.127325,"lo":110.481482,"d":"3","o":"externa","dist":"1,5"},{"n":"Luyao Music Live Bar","cn":"路瑶生活馆","t":"Beber","h":"","ob":"Música ao vivo; nome antigo 路瑶现场.","f":"","c":"","ad":"湖南省张家界市永定区解放路大操坪2037AB号(大庸府城附近)","la":29.128716,"lo":110.479996,"d":"3","o":"externa","dist":"1,7"},{"n":"Friends Circle Music Bar","cn":"朋友圈清吧","t":"Beber","h":"","ob":"Bar calmo com música ao vivo; registro ativo.","f":"","c":"","ad":"湖南省张家界市永定区解放路大庸府城C栋125A–128A号","la":29.129096,"lo":110.479507,"d":"3","o":"externa","dist":"1,7"},{"n":"Dayong Fucheng","cn":"大庸府城","t":"Região","h":"","ob":"Cidade antiga reconstruída, iluminada à noite.","f":"Aberto 24h; espetáculo 遇见大庸 geralmente 19:30–20:30","c":"Grátis","ad":"湖南省张家界市永定区解放路152号","la":29.129367,"lo":110.479728,"d":"3","o":"externa","dist":"1,8"},{"n":"Beizheng Street","cn":"北正街","t":"Rua","h":"","ob":"Rua de pequenos bares.","f":"Via pública","c":"Grátis","ad":"湖南省张家界市永定区北正街","la":29.131794,"lo":110.481751,"d":"3","o":"externa","dist":"2,0"},{"n":"Encounter Bar","cn":"邂逅酒吧","t":"Beber","h":"","ob":"Status incerto: conferir antes.","f":"","c":"","ad":"湖南省张家界市永定区北正街","la":29.133521,"lo":110.481361,"d":"3","o":"externa","dist":"2,2"},{"n":"Codo Cafe Bistro","cn":"刻度咖啡 CODO CAFÉ·BISTRO","t":"Cafeteria","h":"pref","ob":"Melhor café da cidade; equipe fala inglês.","f":"09:30–21:30 (seg. até 21:00)","c":"¥¥¥","ad":"湖南省张家界市永定区维港十字街(永定区中医院大门对面往左约100米)","la":29.124392,"lo":110.481895,"d":"4","o":"media","dist":"1,22"},{"n":"Puku Restaurant & Wine","cn":"Puku Restaurant & Wine","t":"Comer","h":"pref","ob":"Teppanyaki; endereço incerto (só TripAdvisor).","f":"","c":"¥¥¥","ad":"湖南省张家界市永定区南庄坪澧兰路水榭花都（水谢园102号）","la":29.128411,"lo":110.467576,"d":"4","o":"media","dist":"2,0"},{"n":"Nimo Kitchen — Fine Dining & Wine Bar","cn":"泥茉厨房","t":"Comer","h":"pref","ob":"Almoço de despedida; a caminho da estação.","f":"11:00–21:00","c":"¥¥¥","ad":"湖南省张家界市永定区南庄坪高盛澧园6栋101(融山东路附近)","la":29.131353,"lo":110.457214,"d":"4","o":"media","dist":"2,9"},{"n":"Zhu Nao Ke Liang Mian – Nanzheng","cn":"猪脑壳凉面(南正街店)","t":"Comer","h":"","ob":"Liang mian, macarrão frio típico.","f":"09:00–21:30","c":"¥","ad":"湖南省张家界市永定区南正街212号","la":29.126414,"lo":110.481353,"d":"4","o":"externa","dist":"1,44"},{"n":"Tusi City (Tujia Folk Custom Park)","cn":"张家界土家风情园（土司城）","t":"Passeio","h":"","ob":"Torre de madeira de nove andares; dança Baishou às 10:00.","f":"08:30–17:00 (entrada até 16:30); dança 10:00","c":"¥120 (online bem menos)","ad":"湖南省张家界市永定区大庸路 南庄坪 土家风情园","la":29.128264,"lo":110.459386,"d":"4","o":"externa","dist":"2,5"},{"n":"Zhangjiajie West Railway Station","cn":"张家界西站","t":"Transporte","h":"","ob":"Estação de alta velocidade. Não confundir com 张家界站.","f":"","c":"","ad":"湖南省张家界市永定区沙堤乡 张家界西站","la":29.169892,"lo":110.457636,"d":"4","o":"transporte","dist":"6,6"},{"n":"Suo Xi Shan Zhai – Tianmen Cableway","cn":"索溪山寨·湘西民间土菜(天门山索道店)","t":"Comer","h":"","ob":"No prédio do hotel.","f":"10:30–22:30","c":"¥¥¥","ad":"湖南省张家界市永定区大庸路南城金座1号楼","la":29.113943,"lo":110.47875,"d":"","o":"coringa","dist":"0,05"},{"n":"Zhai Zi Li De Bo Bo Cai – Tianmen","cn":"寨子里的钵钵菜(天门山索道店)","t":"Comer","h":"","ob":"Ao lado do hotel.","f":"10:00–21:30","c":"¥¥¥","ad":"湖南省张家界市永定区大庸路南城金座(希尔顿酒店旁)","la":29.11321,"lo":110.479987,"d":"","o":"coringa","dist":"0,10"},{"n":"Lao Zhang Jia San Xia Guo","cn":"老张家三下锅(天门山·天门居店)","t":"Comer","h":"","ob":"San xia guo popular entre moradores.","f":"11:00–22:00","c":"¥¥","ad":"湖南省张家界市永定区官黎路北侧天门居小区1号楼门面(中心汽车站对面)","la":29.109897,"lo":110.476952,"d":"","o":"coringa","dist":"0,47"},{"n":"Qindama","cn":"秦大妈传家菜(天门山索道一店)","t":"Comer","h":"","ob":"Fecha tarde: opção para a noite da chegada.","f":"Indicativo 09:00–01:00","c":"¥¥","ad":"湖南省张家界市永定区大庸路华天城华天大酒店东侧50米","la":29.118748,"lo":110.477723,"d":"","o":"coringa","dist":"0,58"},{"n":"Yese Liangban Karaoke","cn":"夜色量贩KTV","t":"Karaoke","h":"","ob":"Fora do perfil; status incerto.","f":"","c":"","ad":"湖南省张家界市永定区步行街3楼(新步步高百货对面)","la":29.125255,"lo":110.484063,"d":"","o":"fora","dist":"1,38"},{"n":"Jiangya Hot Springs Resort","cn":"江垭温泉度假村","t":"Passeio","h":"","ob":"A 51 km; exige um dia inteiro.","f":"12:00–22:00 (a confirmar)","c":"¥118","ad":"湖南省张家界市慈利县江垭镇江垭温泉度假村","la":29.507126,"lo":110.756818,"d":"","o":"fora","dist":"51,4"}];
+const EV = [{"k":"22/12","t":"2026-12-22T16:30:00+08:00","l":"Abre a venda do trem de 05/01 · 12306","d":"Zhangjiajie Oeste (张家界西) → Furong (芙蓉镇), G6057. 05:30 em Brasília. Conferir se o trem existe na nova grade; alternativas G6117, G6365 e G6079.","kind":"hard","tz":""},{"k":"01/01","t":"2027-01-01T19:10:00+08:00","l":"FM9343 parte de Xangai Pudong · T1","d":"","kind":"flight","tz":"","fl":"chegada"},{"k":"01/01","t":"2027-01-01T21:40:00+08:00","l":"Pouso em Zhangjiajie Hehua · T2","d":"","kind":"flight","tz":"","fl":"chegada"},{"k":"01/01","t":"2027-01-01T22:30:00+08:00","l":"Chegada ao hotel e check-in (estimativa)","d":"Check-in liberado desde 14:00. Táxi ou Didi do aeroporto, ~15 min. Ceia, se precisar: Qindama, a 0,6 km (fecha tarde; horário não oficial).","kind":"soft","tz":""},{"k":"02/01","t":"2027-01-02T07:00:00+08:00","l":"Café da manhã do hotel","d":"Buffet 07:00–10:00. Sair às 07:20 para o portão de Wulingyuan.","kind":"soft","tz":""},{"k":"02/01","t":"2027-01-02T07:20:00+08:00","l":"Sair para Wulingyuan","d":"Carro (~50 min) ou ônibus da rodoviária central (a cada 10 min, ~50 min). Destino: portão 武陵源标志门.","kind":"soft","tz":""},{"k":"02/01","t":"2027-01-02T08:30:00+08:00","l":"Bailong Elevator abre","d":"Horário de baixa temporada (08:30–18:00). Subir logo na abertura.","kind":"soft","tz":""},{"k":"02/01","t":"2027-01-02T17:00:00+08:00","l":"Fim da entrada no parque","d":"Portões 06:30–17:00. O ingresso vale 4 dias (serve para amanhã).","kind":"hard","tz":""},{"k":"02/01","t":"2027-01-02T17:45:00+08:00","l":"72 Qilou ao anoitecer","d":"Na volta de Wulingyuan. Sessão noturna 16:30–23:00, último acesso 22:30. Jantar no complexo.","kind":"soft","tz":""},{"k":"02/01","t":"2027-01-02T17:52:00+08:00","l":"Pôr do sol","d":"Cálculo astronômico; nos vales escurece antes.","kind":"soft","tz":""},{"k":"03/01","t":"2027-01-03T07:00:00+08:00","l":"Café da manhã do hotel","d":"Buffet 07:00–10:00. Sair às 07:15.","kind":"soft","tz":""},{"k":"03/01","t":"2027-01-03T07:15:00+08:00","l":"Sair para o Grand Canyon","d":"Carro com motorista para o dia (~1h15 até o cânion, estimativa).","kind":"soft","tz":""},{"k":"03/01","t":"2027-01-03T08:30:00+08:00","l":"Grand Canyon abre (a confirmar)","d":"08:00 no site oficial; 08:30 de janeiro a março segundo o Ctrip. A ponte de vidro fecha com chuva forte, gelo ou vento.","kind":"soft","tz":""},{"k":"03/01","t":"2027-01-03T16:00:00+08:00","l":"Último acesso ao Grand Canyon","d":"","kind":"hard","tz":""},{"k":"03/01","t":"2027-01-03T17:00:00+08:00","l":"Fim da entrada no parque","d":"Tarde no parque com o ingresso de ontem. Sair pelo portão sul por volta das 17:15.","kind":"hard","tz":""},{"k":"03/01","t":"2027-01-03T17:53:00+08:00","l":"Pôr do sol","d":"Cálculo astronômico; no Riacho do Chicote Dourado escurece antes.","kind":"soft","tz":""},{"k":"04/01","t":"2027-01-04T07:00:00+08:00","l":"Café da manhã do hotel","d":"Buffet 07:00–10:00.","kind":"soft","tz":""},{"k":"04/01","t":"2027-01-04T07:30:00+08:00","l":"Teleférico de Tianmen · linha A","d":"Estação em frente ao hotel. Primeira subida entre 07:00 e 08:00 (a confirmar). Teleférico até a estação intermediária, ônibus pelas 99 curvas, escadas rolantes até o topo; volta pelo teleférico expresso e ônibus.","kind":"soft","tz":""},{"k":"04/01","t":"2027-01-04T08:30:00+08:00","l":"Escada rolante da Porta do Céu abre","d":"Horário de inverno 08:30–17:30.","kind":"soft","tz":""},{"k":"04/01","t":"2027-01-04T14:30:00+08:00","l":"Ligar para o hotel de Furong","d":"+86-15377438288 ou +86-15274328188. Avisar a chegada de amanhã e confirmar o ingresso da área cênica, onde o hotel fica.","kind":"soft","tz":""},{"k":"04/01","t":"2027-01-04T16:00:00+08:00","l":"Último ingresso no Tianmen","d":"","kind":"hard","tz":""},{"k":"04/01","t":"2027-01-04T17:53:00+08:00","l":"Pôr do sol","d":"Cálculo astronômico.","kind":"soft","tz":""},{"k":"04/01","t":"2027-01-04T19:30:00+08:00","l":"Espetáculo 遇见大庸 · Dayong Fucheng","d":"Horário habitual 19:30–20:30 (a confirmar). Noite no centro antigo, a 1,5 km.","kind":"soft","tz":""},{"k":"05/01","t":"2027-01-05T07:00:00+08:00","l":"Café da manhã do hotel","d":"Buffet 07:00–10:00.","kind":"soft","tz":""},{"k":"05/01","t":"2027-01-05T12:00:00+08:00","l":"Check-out","d":"Sair com as malas para o almoço no Nimo Kitchen (abre às 11:00).","kind":"hard","tz":""},{"k":"05/01","t":"2027-01-05T13:20:00+08:00","l":"Sair do Nimo Kitchen para a estação","d":"Táxi até Zhangjiajie Oeste (张家界西), ~15 min (estimativa). Não confundir com 张家界站.","kind":"soft","tz":""},{"k":"05/01","t":"2027-01-05T13:45:00+08:00","l":"Chegar à estação Zhangjiajie Oeste","d":"Uma hora antes: segurança e conferência manual do passaporte (estimativa).","kind":"soft","tz":""},{"k":"05/01","t":"2027-01-05T14:45:00+08:00","l":"G6057 parte de Zhangjiajie Oeste (a confirmar)","d":"","kind":"flight","tz":"","fl":"saida"},{"k":"05/01","t":"2027-01-05T15:08:00+08:00","l":"Chegada a Furong","d":"","kind":"flight","tz":"","fl":"saida"}];
+const PHOTOS = {};
+// cada espaço usa a foto em img/; se ela faltar, fica o painel colorido com o nome do lugar
+document.querySelectorAll('img[data-slot]').forEach(img => {
+  const list = ['img/' + img.dataset.slot + '.jpg'].concat(PHOTOS[img.dataset.slot] || []);
+  let i = 0;
+  img.onerror = () => { i++; if (i < list.length) img.src = list[i]; else img.remove(); };
+  img.src = list[0];
+});
+const DAYNAMES = {'01/01':['0','Pouso e primeira noite'],'02/01':['1','Wulingyuan: Avatar, Bailong e Tianzi'],'03/01':['2','Grand Canyon e a tarde de volta ao parque'],'04/01':['3','Tianmen Shan e noite no centro antigo'],'05/01':['4','Manhã leve e almoço a caminho do trem']};
+const $ = id => document.getElementById(id);
+function hhmm(iso){ return iso.slice(11,16); }
+function tzNow(tz){ return new Intl.DateTimeFormat('pt-BR',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date()); }
+function shKey(){
+  const p = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Shanghai',day:'2-digit',month:'2-digit',year:'numeric'}).formatToParts(new Date());
+  const g = t => p.find(x => x.type === t).value;
+  return {key: g('day') + '/' + g('month'), year: g('year')};
+}
+function fmtDur(ms){
+  const m = Math.round(ms/60000), d = Math.floor(m/1440), h = Math.floor((m%1440)/60), mm = m%60;
+  if (d > 1) return 'em ' + d + ' dias e ' + h + ' h';
+  if (d === 1) return 'em 1 dia e ' + h + ' h';
+  if (h > 0) return 'em ' + h + ' h ' + String(mm).padStart(2,'0') + ' min';
+  return 'em ' + mm + ' min';
+}
+// agenda: texto de apoio em duas linhas; tocar no item mostra o resto
+function clampAgenda(){ document.querySelectorAll('.ag li').forEach(li => { const p = li.querySelector('p'); if (!p || li.classList.contains('x')) return; const more = p.scrollHeight > p.clientHeight + 1; li.classList.toggle('more', more); if (more) li.tabIndex = 0; else li.removeAttribute('tabindex'); }); }
+document.addEventListener('click', e => { if (e.target.closest('.flbtn')) return; const li = e.target.closest('.ag li.more'); if (li) li.classList.toggle('x'); });
+// janela com o cartão do voo
+const flsheet = $('flsheet');
+function openFl(k){ document.querySelectorAll('#flsheet .fl').forEach(f => f.hidden = f.id !== 'fl-' + k); if (flsheet.showModal) flsheet.showModal(); else flsheet.setAttribute('open', ''); }
+document.addEventListener('click', e => { const b = e.target.closest('[data-fl]'); if (b) { e.preventDefault(); openFl(b.dataset.fl); } });
+$('flClose').onclick = () => flsheet.close();
+flsheet.addEventListener('click', e => { if (e.target === flsheet) flsheet.close(); });
+document.addEventListener('keydown', e => { const li = e.target.closest && e.target.closest('.ag li.more'); if (li && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); li.classList.toggle('x'); } });
+window.addEventListener('resize', clampAgenda);
+document.querySelectorAll('time[data-t]').forEach(t => {
+  const tz = t.dataset.tz;
+  t.innerHTML = hhmm(t.dataset.t) + (tz ? '<small>' + tz + '</small>' : '');
+  t.setAttribute('datetime', t.dataset.t);
+});
+
+let todayDone = false;
+function tick(){
+  $('ckS').textContent = tzNow('Asia/Shanghai');
+  $('ckB').textContent = tzNow('America/Sao_Paulo');
+  const now = Date.now();
+  const {key, year} = shKey();
+  const inTrip = !!DAYNAMES[key] && year === '2027';
+  // durante a estadia, conta também os horários sugeridos; antes dela, só os fixos e voos
+  const next = EV.filter(e => inTrip || e.kind !== 'soft').find(e => Date.parse(e.t) > now);
+  document.querySelectorAll('[data-key]').forEach(el => el.classList.toggle('today', inTrip && el.dataset.key === key));
+  document.querySelectorAll('.ag li').forEach(li => {
+    li.classList.toggle('past', Date.parse(li.querySelector('time').dataset.t) < now - 30*60000);
+    li.classList.remove('next');
+  });
+  if (next) { const t = [...document.querySelectorAll('.ag time')].find(x => x.dataset.t === next.t); if (t) t.closest('li').classList.add('next'); }
+  if (inTrip && !todayDone) { const d = $('dia' + DAYNAMES[key][0]); if (d) d.open = true; todayDone = true; }
+  if (next) {
+    $('nowEy').textContent = inTrip ? 'Hoje · Dia ' + DAYNAMES[key][0] + ' · ' + DAYNAMES[key][1] : 'Próximo compromisso';
+    $('nowT').textContent = next.l;
+    $('nowC').textContent = fmtDur(Date.parse(next.t) - now);
+    $('nowX').textContent = next.k + ' · ' + hhmm(next.t) + (next.tz ? ' · ' + next.tz : '');
+    const a = $('nowA');
+    const fb = next.kind === 'flight' && [...document.querySelectorAll('.ag time')].find(x => x.dataset.t === next.t)?.closest('li').querySelector('.flbtn');
+    if (fb) { a.firstChild.textContent = fb.firstChild.textContent; a.href = '#horarios'; a.dataset.fl = fb.dataset.fl; delete a.dataset.open; }
+    else { delete a.dataset.fl; if (!inTrip) { a.firstChild.textContent = 'Ver horários'; a.href = '#horarios'; } }
+    if (inTrip && !fb) { a.firstChild.textContent = 'Abrir o roteiro de hoje'; a.href = '#dia' + DAYNAMES[key][0]; a.dataset.open = 'dia' + DAYNAMES[key][0]; }
+  } else {
+    $('nowEy').textContent = 'Zhangjiajie concluída'; $('nowT').textContent = 'Boa viagem para Furong'; $('nowC').textContent = ''; $('nowX').textContent = '';
+  }
+}
+tick(); setInterval(tick, 30000); clampAgenda();
+
+// open a day when navigating to it
+function openDay(id){ const d = $(id); if (d && d.tagName === 'DETAILS') d.open = true; }
+if (location.hash.startsWith('#dia')) openDay(location.hash.slice(1));
+window.addEventListener('hashchange', () => { if (location.hash.startsWith('#dia')) openDay(location.hash.slice(1)); });
+
+// sheet
+const sheet = $('sheet'); let cur = null;
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function openPoi(i){
+  const p = POI[i]; cur = p;
+  $('sName').textContent = p.n; $('sCn').textContent = p.cn; $('sOb').textContent = p.ob;
+  const tags = [];
+  if (p.h === 'imp') tags.push('<span class="stag imp">Imperdível</span>');
+  if (p.h === 'pref') tags.push('<span class="stag">Preferencial</span>');
+  if (p.t) tags.push('<span class="stag">' + esc(p.t) + '</span>');
+  tags.push('<span class="stag">' + ({hotel:'Hotel',coringa:'Coringa',fora:'Fora do roteiro'}[p.o] || 'Dia ' + p.d) + '</span>');
+  $('sTags').innerHTML = tags.join('');
+  const kv = [['Do hotel', p.dist + ' km']];
+  if (p.f) kv.push(['Horário', p.f]); if (p.c) kv.push(['Custo', p.c]); if (p.ad) kv.push(['Endereço local', p.ad]);
+  $('sKv').innerHTML = kv.map(([a,b]) => '<dt>' + a + '</dt><dd>' + esc(b) + '</dd>').join('');
+  $('sOb').hidden = !p.ob;
+  $('sAmap').href = 'https://uri.amap.com/marker?position=' + p.lo + ',' + p.la + '&name=' + encodeURIComponent(p.cn || p.n) + '&coordinate=wgs84&callnative=1';
+  $('sApple').href = 'https://maps.apple.com/?ll=' + p.la + ',' + p.lo + '&q=' + encodeURIComponent(p.n);
+  $('sFull').hidden = !p.cn;
+  if (sheet.showModal) sheet.showModal(); else sheet.setAttribute('open', '');
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-open]'); if (o) openDay(o.dataset.open);
+  const b = e.target.closest('[data-i]'); if (b) { e.preventDefault(); openPoi(+b.dataset.i); return; }
+  const f = e.target.closest('[data-full]'); if (f) showFull(f.dataset.full, f.dataset.sub || '');
+  const m = e.target.closest('[data-map]'); if (m) showMap(m.dataset.map);
+});
+$('sClose').onclick = () => sheet.close();
+const info = $('info');
+// alternar tema: o ícone mostra o modo para o qual vai mudar; a escolha fica guardada neste aparelho
+const root = document.documentElement, metaTheme = document.querySelector('meta[name="theme-color"]');
+function isDark(){ return root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
+function syncTheme(){ metaTheme.content = isDark() ? '#0D1113' : '#EEF0EF'; $('themeBtn').setAttribute('aria-label', isDark() ? 'Mudar para o modo claro' : 'Mudar para o modo escuro'); }
+$('themeBtn').onclick = () => { const t = isDark() ? 'light' : 'dark'; root.dataset.theme = t; try { localStorage.setItem('tema', t); } catch (e) {} syncTheme(); };
+syncTheme();
+$('infoBtn').onclick = () => { if (info.showModal) info.showModal(); else info.setAttribute('open', ''); };
+$('infoX').onclick = () => info.close();
+info.addEventListener('click', e => { if (e.target === info) info.close(); });
+sheet.addEventListener('click', e => { if (e.target === sheet) sheet.close(); });
+$('sFull').onclick = () => { if (cur) showFull(cur.cn, cur.ad || cur.n); };
+const full = $('full');
+function showFull(t, s){ if (sheet.open) sheet.close(); $('fT').textContent = t; $('fS').textContent = s; full.hidden = false; }
+full.onclick = () => { full.hidden = true; };
+
+// mapa em dois quadros: região e cidade
+function showMap(q){ document.querySelectorAll('.mapbox[data-q]').forEach(b => b.hidden = b.dataset.q !== q); document.querySelectorAll('.mseg [data-map]').forEach(b => b.setAttribute('aria-pressed', b.dataset.map === q)); }
+
+// tab bar highlight
+const tabs = [...document.querySelectorAll('.tabbar a')];
+const secs = tabs.map(a => document.querySelector(a.getAttribute('href')));
+function onScroll(){
+  const y = window.scrollY + window.innerHeight * .35; let k = 0;
+  secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top + window.scrollY <= y) k = i; });
+  if (window.scrollY < 40) k = 0;
+  tabs.forEach((a, i) => a.classList.toggle('on', i === k));
+}
+let raf; window.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(onScroll); }, {passive: true});
+onScroll();
+
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
