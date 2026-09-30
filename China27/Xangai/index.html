@@ -655,9 +655,10 @@ function tick(){
     $('nowX').textContent = next.k + ' · ' + hhmm(next.t) + (next.tz ? ' · ' + next.tz : '');
     const a = $('nowA');
     const fb = next.kind === 'flight' && [...document.querySelectorAll('.ag time')].find(x => x.dataset.t === next.t)?.closest('li').querySelector('.flbtn');
-    if (fb) { a.firstChild.textContent = 'Detalhes do voo'; a.href = '#horarios'; a.dataset.fl = fb.dataset.fl; delete a.dataset.open; }
-    else { delete a.dataset.fl; if (!inTrip) { a.firstChild.textContent = 'Ver horários'; a.href = '#horarios'; } }
-    if (inTrip) { a.firstChild.textContent = 'Abrir o roteiro de hoje'; a.href = '#dia' + DAYNAMES[key][0]; a.dataset.open = 'dia' + DAYNAMES[key][0]; }
+    // voo ou trem com bilhete tem prioridade, também durante a estadia; o rótulo vem do botão da agenda ("Detalhes do voo", "Detalhes do trem")
+    if (fb) { a.firstChild.textContent = fb.textContent.trim(); a.href = '#horarios'; a.dataset.fl = fb.dataset.fl; delete a.dataset.open; }
+    else if (inTrip) { delete a.dataset.fl; a.firstChild.textContent = 'Abrir o roteiro de hoje'; a.href = '#dia' + DAYNAMES[key][0]; a.dataset.open = 'dia' + DAYNAMES[key][0]; }
+    else { delete a.dataset.fl; delete a.dataset.open; a.firstChild.textContent = 'Ver horários'; a.href = '#horarios'; }
   } else {
     $('nowEy').textContent = 'Xangai concluída'; $('nowT').textContent = 'Boa viagem para Zhangjiajie'; $('nowC').textContent = ''; $('nowX').textContent = '';
   }
