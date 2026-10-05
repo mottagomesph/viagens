@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Madrid">
+<meta name="theme-color" content="#756440">
+<title>Madrid em Órbitas</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preload" as="image" href="img/capa.jpg">
+<script>
+// tema escolhido neste aparelho (mesma chave dos sites da China27), aplicado antes de desenhar
+(function () { try { var t = localStorage.getItem('tema'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {} })();
+</script>
+<style>
+@font-face{font-family:'Chelsea';src:url(data:font/woff2;base64,d09GMgABAAAAAAksABEAAAAAEAgAAAjQAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbgWwcKgZgAFQIEAmCcxEMCpNckQQBNgIkAxgLDgAEIAVSByAMgQQbeg1RVJIiAvw8sBs+DhAhIRIitX2ouK+22ZyAgSDwlg/hpv8uuYOQQipGSSWpuFBxygbUnM3pTOjmTOyLCfuar67w8P1+7SCazNO23T9zEW3aPIlXkxKZriWQ8RCZR8U7Jfz8xz09pkvuvwrtBklqvnea69MmxkpW5E3IV9y3CDxve39Zzn+ZcJGtKBy4agTBITTGzCuEoZZmUWgURqNKbWvXtSJXaLlZHcP5asCpyKNmgACM0OZwSA1D5LuI4mUjhxPrVkFAAXhaVB/MePBclC0oTsNM0VmICFSTLkYW6zBug26Ip//oVhyKZ0JFYfmPIZI/L/lbkn8YkL9nvcfbvMfn/JTzrhbKYIQQaf3HYV7lT57UPI+zB0sOsTMHczbvd+UCsr/bpUrHzVi77JD22t+8iJxMK3PJcTBgt6wIIINVLP4Ws+VhHRydIiVxYNucouBB3Tw1U/+rwFxOPogXyb+y8/KU4xgD8FDDI3IgVV9jJBy5md0mTHPz2LYY+QuB21zqYuc7lfvHRKQveJ1TdiveyH9C8D2QPavBsOQ8TchRl0YCe0dz710w4HdGczSQTFFa3M1+Mj4O5TINpKj2z+IzxernU6w2Z5JL8Sm+9mmfYlXmJ6b9NKW1AzeZ8bnyFD8GVt3zRPuq6q93yd5pMy5XZY4Gqsuixtfo1HnLtFjL7Nr8F7ERLOssL8qn9jn7nX5vs+yvb3bJqqq0+B/sc3LT7C9yuWIW6Ky15brtbrPd6It0xTpX0GQGWlNft8J14UMak1S/t22XfUmuZTUNDzapEqj6Eg1aR/IpLRrx9gUbb5EtV1rUXaFLZhs152gwZJ0DzpZmRDen54DghGJ5AMEAXCkYuwTgJnje5TKSAn8OpHLog0mQNTuVvpyIvLVbvRESd/gc7XJDfAPLzhtezZ67ptIhut4ofnvpyeuFi95IRcLL0RmxjaE2tscuLC+ehTVgER/ZufkNR/KOo/BxcyhxNs3DCN6FNnvPJNWnOht1R5z5MFkbSN5w/L7ROnvWIsDZue5cqXTg5G4uLrCW1J5d7XnSQxHOuACdeyFTCnkjMqPWjoqL8Z3+Uk85yTqccM827ubvE08ENf3Ya+TIgqK3kUWww3vfmM8Uy9uxZgOAa/7SpaX2rNwIi4VL4jaq1f2xYDFJYbK6DZeevVr8VowfraYRXjf9wa3mauJHNc3m+1CdvUPHwNsfexHgundMKIRzwGJr9U8e/3i9I858iOPpoFwOeNI0FTpMvM2SiYPMHUc3nAYdNpaj9mpvzwvtYVwxIltlbP+XqMD9rDNG4dObz1r23X1SA14/fST+/XEVeS85upoSfRpr7WjgZ0l3o1wT9UY4oCvRmUZdKg+tiw/Lzy15tssL6NaoHRc33Yl1dRDkeiD6bDDczZWc0kk5Iy4VoyKsT+launfe2c022pbHmQ8LMuH6N8q8f/rt7KGS4P2pp1KUmnnQvJI+MUln0hWVJNMFPigQBFb4+kkoE9hXHaw0oLVGSHM+dPN2x0MLebOTYM0h114XvNQoRagFvMSSilgyGisc0hIJbEh/vj4EZFeXlMxIUQHfbQ7PqFxXs8F68FCI1RfPipIpLUhkptbwcf4NVJydF8DGgwJBtBAn/wy75nozn1oQbr02um90std86abYux/NEcKEXF1GeMj+NyMveHn+vs+ilR9f7Hu+7Yw0IYTjudhIi1mNZgIVyjzVnWf1R+4wXmcbqG6Mblh2iTyl7rENn/zmtZhLm+itC/GTFW1O04U5YlDYZXjzKM52mutX6QH4jv8xHthvcn/86k9Xuq4Qjtx9e3hWZlt/Uoz1kxtG70uI65ft6Z15NmzyoI4nW8TBCyq5/+4HCLX/LPMrd7y8KFU40pz5FpaUyFhhIjttiwNrMSxZKup3+79JdUYjLWrk9c1qFJf+4Tcbj96jXVasko1DFrktN8JZ0vNmrC09JEasj/HqMzpXTvYkhHDoaierPLc8VP/77af716pX7Z4YNsfd5rClT+jdbPVYkakvqjexfet1pxyX+X9KW7Q/s9F62PokVtTbuxI++OgrWf76wxcTEl788GtZ/uqjD+64ghAQIY2JPAeuwIVysAwM4sZl8V6RFhTxNLmIiZb+ANJDpjx5dlPpgGM2rX4laYuZ2Wh55pmHon+9nIQTjuOG7RyXY9KFisbUTJtw8Klec796WYu3/uHzR3DLqnCDgT/buYZLZd1MvFcsk2dlKz4g6Rx9vF7JtHEh5EQXqzevrUs1dDbdEXADoEGWu61A8SU5sFNTMg0rGjQYE2lQcllBGU3UldaFP68BxyadDXlD2IzpRO5GkqoMatyCZdNdav+ExrCKu2Fr1VBJfoFV8TS20GCP4GkrsIvyJUlJkoIVbGeaA9UHgmjKCU5AsISl0rDwE0UUQ4yqUcadcce16W54RBltDKtAi44knqGh8HiyzDtW0WKoNYIQOZDn0AU8EOSZGL8gvQhqSbkpxwUOgcsNx5PtsTg4nB49OU6VvyW/mRox7kaOkryCU0QiCt6VyAYxJzEHKSSSSE529XGvSVOXiDQYaQQTTBqZZBYwQzP3M7hIVc2wDjV0SGoqTQ0/6aRTRKOD00MPHUzJVMjAlxnGBE6B0y0ZZJAOZpySOeYYxv3tu4NoWBsapGhgeJvkaxJuq0GGgSSGJIOkgqSdxEXiJtlMcpDkXJJrSe4ieYrEtKWBfmmQGjSEJg2hURChIohSUZiVGYuyEKfiUFBYixWrZH+RNzMv7kYVK3o9kV04klA1qudngQAIRDQ9mT8WXP2bIAsAgPc/Xg6SG//vcQXIzP/YCnY+AF0at/M+YAvZe4RCTDergCCdukpguogH0IYAysUhdyCVfT6y1sW4z2M/sZfDvaGcSpXikUpDieT54ZQEVbB0U5vMm7HCghQ4wdY1Z70VRYsHj6QXSHMW72rzfl+Gl8jdYIiHBw4qkUllFgoQSoDTEgW63o3j1KRYCjMayutUoV2URRTiZ3SLEtx9NHv1JQ34ZAUAAAA=) format('woff2');font-display:block}
+:root{--bg:#EEF0EF;--card:#FFFFFF;--ink:#16191B;--soft:#4A5256;--muted:#656D71;--line:#E3E6E6;--fill:#F4F5F5;--pill:#1D2023;--pillink:#FFFFFF;--hard:#BA3E2C;--flight:#2E62A3;--hotel:#5E676B;--ok:#2E7A4F;--warn:#8F6300;--c0:#56666F;--c1:#B23A2E;--c2:#2E7A5E;--c3:#94660A;--c4:#2D5C96;--c5:#7A4E9E;--c6:#1F7E8A;--accent:#1A9E96;--accent-ink:#0F7670;--accent-deep:#01827B;--accent-puro:#1A9E96;--veil:#756440;--veil-rgb:117 100 64;}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0D1113;--card:#171C1F;--ink:#EDF1F2;--soft:#B6C0C4;--muted:#8C979C;--line:#252C30;--fill:#1E2528;--pill:#F1F3F3;--pillink:#15181A;--hard:#EC7362;--flight:#7DA7E0;--hotel:#A9B3B7;--ok:#6CC495;--warn:#E0B04A;--c0:#8C9CA5;--c1:#DD6656;--c2:#4FAA86;--c3:#D39E38;--c4:#6F9BD8;--c5:#B08AD6;--c6:#4FB8C4;--accent:#1A9E96;--accent-ink:#26A49C;--accent-deep:#01827B;}}
+:root[data-theme=dark]{--bg:#0D1113;--card:#171C1F;--ink:#EDF1F2;--soft:#B6C0C4;--muted:#8C979C;--line:#252C30;--fill:#1E2528;--pill:#F1F3F3;--pillink:#15181A;--hard:#EC7362;--flight:#7DA7E0;--hotel:#A9B3B7;--ok:#6CC495;--warn:#E0B04A;--c0:#8C9CA5;--c1:#DD6656;--c2:#4FAA86;--c3:#D39E38;--c4:#6F9BD8;--c5:#B08AD6;--c6:#4FB8C4;--accent:#1A9E96;--accent-ink:#26A49C;--accent-deep:#01827B;}
+:root{
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --sombra:0 1px 2px rgba(20,28,30,.05),0 8px 24px rgba(20,28,30,.07);
+  --sol-encontro:var(--accent-deep);--sol-ingresso:#BA3E2C;--sol-reserva:#BA3E2C;--sol-transporte:#2E62A3;--sol-hotel:#5E676B;
+  --barra-h:calc(3.95rem + 12px);
+  --gut:16px;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--bg);scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top) + 1.25rem)}
+@supports (font:-apple-system-body){@media (hover:none) and (pointer:coarse){html{font:-apple-system-body}}}
+html:has(dialog[open]),html.travado{overflow:hidden}
+body{margin:0;font-family:var(--sans);font-size:1rem;line-height:1.45;overflow-wrap:break-word;color:var(--ink);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4{margin:0}
+.ic{width:1.25em;height:1.25em;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.25em}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[tabindex="-1"]:focus{outline:none}
+.so-leitor{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- vidro: só na moldura (6.6) ---------- */
+.vidro{background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);
+  border:1px solid rgba(255,255,255,.32);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.10),0 8px 24px rgba(0,0,0,.16)}
+.vidro.sobre-foto{background:rgba(18,22,26,.46);color:#fff;border-color:rgba(255,255,255,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.30),inset 0 -1px 0 rgba(255,255,255,.06),0 8px 24px rgba(0,0,0,.18)}
+.vidro.sobre-pagina{background:color-mix(in srgb,var(--card) 72%,transparent);color:var(--ink);border-color:color-mix(in srgb,var(--ink) 9%,transparent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 24px rgba(10,14,16,.12)}
+.redondo{width:48px;height:48px;min-width:48px;border-radius:50%;display:grid;place-items:center;padding:0;cursor:pointer}
+.redondo .ic{width:22px;height:22px}
+
+/* ---------- abertura em tela cheia (6.3.1) ---------- */
+.capa-fundo{position:fixed;inset:0;z-index:0;background:linear-gradient(170deg,var(--accent-deep),var(--veil))}
+.capa{position:fixed;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;display:block}
+.abertura{position:relative;z-index:1;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;
+  padding:calc(env(safe-area-inset-top) + 12px) max(var(--gut),env(safe-area-inset-right)) calc(var(--barra-h) + 12px) max(var(--gut),env(safe-area-inset-left));color:#fff}
+.abertura::before{content:"";position:absolute;left:0;right:0;top:0;height:calc(env(safe-area-inset-top) + 9rem);pointer-events:none;
+  background:linear-gradient(rgba(8,10,12,.42),rgba(8,10,12,0))}
+.topo{position:relative;display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;flex-wrap:wrap}
+.topo-bot{display:flex;gap:.5rem}
+.relogios{display:flex;flex-direction:column;align-items:flex-end;gap:.05rem;padding:.4rem .85rem;border-radius:22px;font-size:.8rem;line-height:1.3;margin-left:auto}
+.rel{white-space:nowrap}
+.rel-rot{font-weight:500;color:rgba(255,255,255,.88)}
+.rel-h{font-weight:700;font-variant-numeric:tabular-nums;margin-left:.3em}
+.pe{--fade:min(20svh,11rem);position:relative;display:flex;flex-direction:column;align-items:center;text-align:center}
+.veu{position:absolute;z-index:-1;pointer-events:none;top:calc(-1 * var(--fade));bottom:calc(-1 * (var(--barra-h) + 12px));
+  left:calc(-1 * max(var(--gut),env(safe-area-inset-left)));right:calc(-1 * max(var(--gut),env(safe-area-inset-right)))}
+.veu i{position:absolute;inset:0}
+.veu .b1{-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  -webkit-mask-image:linear-gradient(transparent calc(var(--fade) * .1),#000 calc(var(--fade) * .5));mask-image:linear-gradient(transparent calc(var(--fade) * .1),#000 calc(var(--fade) * .5))}
+.veu .b2{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  -webkit-mask-image:linear-gradient(transparent calc(var(--fade) * .3),#000 calc(var(--fade) * .8));mask-image:linear-gradient(transparent calc(var(--fade) * .3),#000 calc(var(--fade) * .8))}
+.veu .b3{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  -webkit-mask-image:linear-gradient(transparent calc(var(--fade) * .6),#000 calc(var(--fade) + 2rem));mask-image:linear-gradient(transparent calc(var(--fade) * .6),#000 calc(var(--fade) + 2rem))}
+.veu .cor{background:linear-gradient(rgb(var(--veil-rgb) / 0) 0,rgb(var(--veil-rgb) / .1) calc(var(--fade) * .25),rgb(var(--veil-rgb) / .34) calc(var(--fade) * .5),
+  rgb(var(--veil-rgb) / .64) calc(var(--fade) * .75),rgb(var(--veil-rgb) / .8) var(--fade),rgb(var(--veil-rgb) / .88) calc(var(--fade) + 5rem))}
+.titulo{display:flex;flex-direction:column;align-items:center}
+.boas{font-size:.8rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.92);padding-left:.2em}
+.cidade{font-family:Chelsea,var(--sans);font-weight:400;font-size:min(4.2rem,20vw);line-height:1.08;margin-top:.3rem;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.25);overflow-wrap:anywhere}
+.barrinha{display:block;width:56px;height:4px;border-radius:2px;background:var(--accent-puro);margin:.75rem auto .8rem}
+.pais{font-size:min(.85rem,3.8vw);font-weight:600;letter-spacing:.45em;text-transform:uppercase;padding-left:.45em;color:rgba(255,255,255,.94)}
+.quando{font-size:.95rem;margin-top:.55rem;color:rgba(255,255,255,.92)}
+.proximo-slot{width:100%;display:flex;justify-content:center;margin-top:1.25rem;container:px/inline-size}
+@container px (max-width:16rem){.proximo{grid-template-columns:1fr auto}.proximo.despedida{grid-template-columns:1fr}.px-ic{display:none}}
+.proximo{width:100%;max-width:28rem;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.75rem;min-height:4rem;
+  padding:.65rem .9rem .65rem .65rem;border-radius:28px;text-align:left;cursor:pointer;-webkit-backdrop-filter:blur(22px) saturate(160%);backdrop-filter:blur(22px) saturate(160%)}
+.proximo.despedida{cursor:default;grid-template-columns:auto 1fr}
+.px-ic{width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;color:#fff;background:var(--sol-encontro)}
+.px-ic .ic{width:1.3rem;height:1.3rem}
+.px-txt{display:flex;flex-direction:column;min-width:0}
+.px-rot{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.px-tit{font-size:1rem;font-weight:600;line-height:1.3}
+.px-quando{font-size:.9rem;color:rgba(255,255,255,.9);font-variant-numeric:tabular-nums}
+.px-quando b{color:#fff;font-weight:700}
+.proximo>.ic{color:rgba(255,255,255,.85)}
+
+/* ---------- a folha de conteúdo (6.3.2) ---------- */
+.folha-conteudo{position:relative;z-index:1;background:var(--bg);border-radius:32px 32px 0 0;box-shadow:0 -10px 30px rgba(0,0,0,.18);
+  padding:.55rem max(var(--gut),env(safe-area-inset-right)) calc(var(--barra-h) + 2.5rem) max(var(--gut),env(safe-area-inset-left))}
+.alca{width:36px;height:5px;border-radius:3px;background:color-mix(in srgb,var(--ink) 20%,transparent);margin:0 auto 1.4rem}
+.secao{scroll-margin-top:calc(env(safe-area-inset-top) + 1.75rem)}
+.secao+.secao{margin-top:2.75rem}
+.secao>h2{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin:0 .25rem 1rem}
+.card{background:var(--card);border-radius:24px;box-shadow:var(--sombra)}
+
+/* ---------- os dias: cartões empilhados (6.3.3) ---------- */
+.dias{display:flex;flex-direction:column}
+.dia{position:relative;border-radius:24px;overflow:hidden;background:var(--card);box-shadow:var(--sombra);isolation:isolate;
+  scroll-margin-top:calc(env(safe-area-inset-top) + 1.75rem)}
+.dia+.dia{margin-top:-1rem;box-shadow:0 -6px 18px rgba(8,12,14,.16),var(--sombra)}
+.faixa{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr auto;align-items:end;gap:.75rem;width:100%;min-height:4.9rem;
+  padding:.8rem 1rem 1.85rem 1.1rem;border:0;margin:0;background:#262c30;color:#fff;text-align:left;cursor:pointer;transition:min-height .28s ease}
+.dia:last-child:not(.aberto) .faixa{padding-bottom:.9rem}
+.dia.aberto .faixa{min-height:11rem;padding-bottom:1rem}
+.faixa:focus-visible{outline:3px solid #fff;outline-offset:-5px}
+.faixa-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;display:block}
+.sem-foto{display:flex;align-items:center;justify-content:flex-end;overflow:hidden;background:linear-gradient(135deg,var(--cor),color-mix(in srgb,var(--cor) 50%,#000))}
+.sem-foto span{font-size:3.4rem;font-weight:800;line-height:1;white-space:nowrap;color:rgba(255,255,255,.14);padding-right:.4rem;letter-spacing:-.02em}
+.faixa::before,.faixa::after{content:"";position:absolute;inset:0;z-index:-1;transition:opacity .28s ease}
+.faixa::before{background:linear-gradient(90deg,rgba(10,13,15,.8) 0%,rgba(10,13,15,.64) 62%,rgba(10,13,15,.5) 100%)}
+.faixa::after{opacity:0;background:linear-gradient(180deg,rgba(10,13,15,.06) 0%,rgba(10,13,15,.16) 35%,rgba(10,13,15,.58) 60%,rgba(10,13,15,.84) 100%)}
+.dia.aberto .faixa::before{opacity:0}
+.dia.aberto .faixa::after{opacity:1}
+.faixa-txt{display:flex;flex-direction:column;gap:.15rem;min-width:0;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+.faixa-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.25rem .5rem;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.94)}
+.bolinha{display:inline-block;width:.65rem;height:.65rem;border-radius:50%;background:var(--cor);box-shadow:0 0 0 2px rgba(255,255,255,.92);flex:none}
+.faixa-tit{font-size:1.15rem;font-weight:700;line-height:1.25;letter-spacing:-.01em}
+.dia.aberto .faixa-tit{font-size:1.45rem}
+.hoje-tag{background:#fff;color:#16191B;border-radius:999px;padding:.05rem .5rem;font-size:.72rem;font-weight:700;text-shadow:none}
+.faixa>.ic{width:1.4rem;height:1.4rem;align-self:center;transition:transform .28s ease;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.dia.aberto .faixa>.ic{transform:rotate(180deg);align-self:start}
+.dia-corpo{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+.dia.aberto .dia-corpo{grid-template-rows:1fr}
+.dia-int{min-height:0;overflow:hidden}
+.dia-conteudo{display:flex;flex-direction:column;gap:1.4rem;padding:1.2rem 1rem 2.6rem;container:dia/inline-size}
+@container dia (max-width:15rem){.pub{grid-template-columns:minmax(0,1fr) auto}.pub .circ{display:none}}
+.dia:last-child .dia-conteudo{padding-bottom:1.25rem}
+.bloco-tit{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 .55rem .1rem}
+
+/* compromissos (dia aberto e Horários) */
+.ag-lista{container:ag/inline-size}
+.ag{position:relative}
+.ag+.ag{border-top:1px solid var(--line)}
+.ag-btn{display:grid;grid-template-columns:3.6rem 2.25rem minmax(0,1fr);grid-template-areas:"hora ic txt";column-gap:.6rem;align-items:start;width:100%;
+  min-height:3.25rem;padding:.75rem .6rem;border:0;margin:0;background:none;text-align:left;border-radius:16px;cursor:pointer}
+div.ag-btn{cursor:default}
+.ag-hora{grid-area:hora;font-size:1.05rem;font-weight:700;font-variant-numeric:tabular-nums;padding-top:.3rem;line-height:1.35}
+.ag-tz{display:block;font-size:.72rem;font-weight:600;color:var(--muted)}
+.ag-ic{grid-area:ic;width:2.25rem;height:2.25rem;border-radius:50%;display:grid;place-items:center;color:var(--tc);background:color-mix(in srgb,var(--tc) 13%,var(--card))}
+.ag-txt{grid-area:txt;display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding-top:.3rem}
+.ag-tit{font-weight:600;line-height:1.35}
+.ag-local{display:flex;align-items:flex-start;gap:.3rem;margin-top:.15rem;color:var(--accent-ink);font-weight:600;font-size:.95rem}
+.ag-det{margin-top:.15rem;color:var(--soft);font-size:.95rem}
+.ag.passou{opacity:.5}
+.ag.e-prox .ag-btn{box-shadow:inset 0 0 0 2px var(--accent)}
+.ag.e-prox+.ag{border-top-color:transparent}
+@container ag (max-width:18rem){
+  .ag-btn{grid-template-columns:auto auto minmax(0,1fr);grid-template-areas:"hora ic ." "txt txt txt";row-gap:.35rem}
+  .ag-txt{padding-top:0}
+}
+.t-encontro{--tc:var(--accent)} .t-ingresso,.t-reserva{--tc:var(--hard)} .t-transporte{--tc:var(--flight)} .t-hotel{--tc:var(--hotel)}
+.t-encontro .ag-ic{color:var(--accent-ink)}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
+.tags:empty{display:none}
+.tag{display:inline-flex;align-items:center;gap:.25rem;font-size:.75rem;font-weight:600;line-height:1.25;padding:.22rem .6rem;border-radius:999px}
+.tag .ic{width:1em;height:1em;vertical-align:0}
+.tag-ok{background:color-mix(in srgb,var(--ok) 10%,var(--card));color:var(--ok)}
+.tag-warn{box-shadow:inset 0 0 0 1.5px var(--warn);color:var(--warn)}
+.tag-conf{border:1.5px dashed var(--muted);color:var(--soft);padding:.12rem .5rem}
+.tag-prox{display:none;background:var(--accent-deep);color:#fff}
+.ag.e-prox .tag-prox{display:inline-flex}
+.tag-neutra{background:var(--fill);color:var(--soft);box-shadow:inset 0 0 0 1px var(--line)}
+.tag-imp{background:var(--accent-deep);color:#fff}
+.btn-desloc{display:inline-flex;align-items:center;gap:.35rem;min-height:3rem;margin-top:.35rem;padding:.55rem 1rem;border-radius:999px;border:0;cursor:pointer;
+  background:color-mix(in srgb,var(--flight) 11%,var(--card));color:var(--flight);font-weight:600;text-align:left}
+
+/* o plano */
+.plano{display:flex;flex-direction:column;gap:.85rem}
+.plano-l{display:grid;grid-template-columns:1.6rem minmax(0,1fr);gap:.7rem;align-items:start}
+.plano-l>.ic{width:1.5rem;height:1.5rem;color:var(--accent);margin-top:.05rem}
+.plano-rot{display:block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* pílulas de lugares */
+.pilulas{display:flex;flex-wrap:wrap;gap:.5rem}
+.pil{display:inline-flex;align-items:center;gap:.45rem;min-height:3rem;padding:.55rem 1rem;border-radius:999px;border:0;cursor:pointer;
+  font-weight:600;font-size:.95rem;line-height:1.25;text-align:left;max-width:100%}
+.pil .ic{width:1.05em;height:1.05em}
+.pil-imp{background:var(--accent-deep);color:#fff}
+.pil-tempo{background:var(--fill);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.pil-tempo .ic{color:var(--accent)}
+.pil-perto{background:transparent;color:var(--soft);box-shadow:inset 0 0 0 1px var(--line);font-weight:500}
+
+/* pub do dia, avisos e "Mais deste dia" */
+.pub{display:grid;grid-template-columns:2.6rem minmax(0,1fr) auto;gap:.75rem;align-items:center;width:100%;min-height:3.5rem;padding:.75rem .85rem;
+  border:0;border-radius:16px;background:var(--fill);text-align:left;cursor:pointer}
+.circ{width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 16%,var(--card));color:var(--accent-ink)}
+.pub-rot{display:block;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pub-nome{display:block;font-weight:700;color:var(--accent-ink)}
+.pub-nota{display:block;color:var(--soft);font-size:.95rem}
+.seta-l{color:var(--muted)}
+.avisos{display:flex;flex-direction:column;gap:.5rem}
+.aviso{display:grid;grid-template-columns:1.5rem minmax(0,1fr);gap:.65rem;align-items:start;padding:.75rem .9rem;border-radius:16px;background:var(--fill)}
+.aviso>.ic{width:1.4rem;height:1.4rem;color:var(--soft)}
+.aviso-calcado>.ic{color:var(--accent-ink)} .aviso-escadas>.ic{color:var(--warn)}
+.btn-mais{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;min-height:3rem;padding:.7rem 1rem;border-radius:999px;border:0;cursor:pointer;
+  background:var(--fill);color:var(--ink);font-weight:600;box-shadow:inset 0 0 0 1px var(--line)}
+.btn-mais .ic{color:var(--accent-ink)}
+
+/* ---------- horários (6.3.4) ---------- */
+.legenda{display:flex;flex-wrap:wrap;gap:.35rem 1rem;font-size:.8rem;color:var(--soft);margin:-.35rem .25rem 1rem}
+.legenda li{display:flex;align-items:center;gap:.4rem}
+.legenda i{width:.6rem;height:.6rem;border-radius:50%;background:var(--tc)}
+.horarios{display:flex;flex-direction:column;gap:1rem}
+.data-card{padding:.6rem .5rem}
+.data-tit{display:flex;align-items:center;gap:.5rem;font-size:1.05rem;font-weight:700;margin:.35rem .6rem .25rem}
+.data-tit.hoje{color:var(--accent-ink)}
+.data-tit .tag{color:#fff;background:var(--accent-deep)}
+
+/* ---------- nosso mapa (6.3.5) ---------- */
+.mapa{position:relative;overflow:hidden;display:grid;grid-template-columns:3rem minmax(0,1fr) auto;align-items:center;gap:.9rem;min-height:5.5rem;padding:1.15rem 1.1rem;
+  border-radius:24px;color:#fff;text-decoration:none;box-shadow:var(--sombra);
+  background:linear-gradient(135deg,var(--accent-deep) 0%,var(--accent-deep) 60%,color-mix(in srgb,var(--accent-deep) 75%,var(--accent)) 100%)}
+.mapa-ic{width:3rem;height:3rem;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18)}
+.mapa-ic .ic{width:1.5rem;height:1.5rem}
+.mapa-tit{display:block;font-size:1.15rem;font-weight:700;line-height:1.3}
+.mapa-sub{display:block;font-size:.9rem;color:rgba(255,255,255,.94)}
+.mapa-fundo{position:absolute;right:-1.5rem;bottom:-2rem;width:9rem;height:9rem;opacity:.1;pointer-events:none}
+.mapa:focus-visible{outline-color:var(--ink)}
+#mapa{container:mapa/inline-size}
+@container mapa (max-width:16rem){.mapa{grid-template-columns:minmax(0,1fr) auto}.mapa-ic{display:none}}
+
+/* ---------- perto do hotel (6.3.6) ---------- */
+.lista{padding:.35rem;container:lista/inline-size}
+@container lista (max-width:15rem){.linha{grid-template-columns:minmax(0,1fr) auto}.linha .circ{display:none}.lista li+li::before{left:.75rem}}
+.lista li{position:relative}
+.lista li+li::before{content:"";position:absolute;top:0;left:3.85rem;right:.75rem;border-top:1px solid var(--line)}
+.linha{display:grid;grid-template-columns:2.6rem minmax(0,1fr) auto;gap:.8rem;align-items:center;width:100%;min-height:3.5rem;padding:.6rem .65rem;
+  border:0;background:none;text-align:left;border-radius:16px;cursor:pointer}
+.linha-nome{display:block;font-weight:600}
+.linha-sub{display:block;font-size:.9rem;color:var(--soft)}
+
+/* ---------- úteis (6.3.7) ---------- */
+.uteis{display:flex;flex-direction:column;gap:1rem}
+.card-u{padding:1.1rem 1.1rem 1.2rem}
+.card-u>h3{display:flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
+.card-u>h3 .ic{width:1.3rem;height:1.3rem;color:var(--accent-ink)}
+.hotel-nome{font-size:1.25rem;font-weight:700;line-height:1.3}
+.suave{color:var(--soft)}
+.info{display:flex;flex-direction:column;gap:.55rem;margin-top:.75rem}
+.info li{display:grid;grid-template-columns:1.35rem minmax(0,1fr);gap:.65rem;align-items:start}
+.info li>.ic{width:1.25rem;height:1.25rem;color:var(--soft);margin-top:.1rem}
+.info a{color:var(--accent-ink);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:3rem;margin:-.75rem 0}
+.botoes{display:flex;flex-direction:column;gap:.6rem;margin-top:1.1rem}
+.btn{display:flex;align-items:center;justify-content:center;gap:.5rem;min-height:3rem;padding:.7rem 1.1rem;border-radius:999px;border:0;cursor:pointer;
+  font-weight:600;text-decoration:none;text-align:center;line-height:1.3}
+.btn-pri{background:var(--pill);color:var(--pillink)}
+.btn-sec{background:var(--fill);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.marcadores{display:flex;flex-direction:column;gap:.55rem}
+.marcadores li{display:grid;grid-template-columns:.5rem minmax(0,1fr);gap:.7rem;align-items:start}
+.marcadores li::before{content:"";width:.4rem;height:.4rem;border-radius:50%;background:var(--accent);margin-top:.55em}
+.emerg{container:emerg/inline-size}
+.emerg li+li{border-top:1px solid var(--line)}
+.emerg a{display:grid;grid-template-columns:minmax(4.6rem,auto) minmax(0,1fr) auto;align-items:center;gap:.9rem;min-height:3.5rem;padding:.5rem .15rem;color:inherit;text-decoration:none}
+.emerg .num{font-size:2.2rem;font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums;color:var(--hard);line-height:1.1}
+.emerg a>.ic{color:var(--muted)}
+@container emerg (max-width:17rem){.emerg a{grid-template-columns:minmax(0,1fr) auto;row-gap:.1rem}.emerg a>span:nth-child(2){grid-column:1 / -1;grid-row:2}}
+.fonte{margin-top:.5rem;font-size:.85rem;color:var(--muted)}
+
+.rodape{margin-top:2.75rem;text-align:center;font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.selo{display:inline-block;padding:.2rem .8rem;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--warn);color:var(--warn);font-weight:700;letter-spacing:.14em;font-size:.75rem}
+
+/* ---------- barra inferior e bordas de desfoque (6.3.8) ---------- */
+.barra{position:fixed;z-index:20;left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));
+  max-width:30rem;margin:0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.2rem;padding:.35rem;border-radius:999px}
+.barra.duas{grid-template-columns:repeat(2,minmax(0,1fr));border-radius:30px}
+.barra a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.1rem;min-height:3.25rem;min-width:0;padding:.3rem .2rem;
+  border-radius:999px;color:inherit;text-decoration:none;font-size:.72rem;font-weight:600;line-height:1.2;transition:background-color .2s,color .2s}
+.barra a span{display:block;white-space:nowrap;max-width:100%}
+.barra a .ic{width:1.45rem;height:1.45rem}
+.barra.sobre-foto a[aria-current]{background:rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.barra.sobre-pagina a[aria-current]{background:color-mix(in srgb,var(--accent) 14%,var(--card));color:var(--accent-ink);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 1px 4px rgba(10,14,16,.08)}
+.borda-base,.borda-topo{position:fixed;left:0;right:0;z-index:15;pointer-events:none}
+.borda-base{bottom:0;height:calc(var(--barra-h) + 1.75rem)}
+.borda-topo{top:0;height:calc(env(safe-area-inset-top) + 1.6rem);opacity:0;transition:opacity .2s}
+body.na-folha .borda-topo{opacity:1}
+.borda-base i,.borda-topo i{position:absolute;inset:0}
+.borda-base i:nth-child(1){-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);-webkit-mask-image:linear-gradient(to top,#000 45%,transparent);mask-image:linear-gradient(to top,#000 45%,transparent)}
+.borda-base i:nth-child(2){-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);-webkit-mask-image:linear-gradient(to top,#000 25%,transparent 70%);mask-image:linear-gradient(to top,#000 25%,transparent 70%)}
+.borda-base i:nth-child(3){-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);-webkit-mask-image:linear-gradient(to top,#000 10%,transparent 45%);mask-image:linear-gradient(to top,#000 10%,transparent 45%)}
+.borda-base::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .2s;background:linear-gradient(to top,color-mix(in srgb,var(--bg) 78%,transparent),transparent)}
+body.barra-na-folha .borda-base::after{opacity:1}
+.borda-topo i:nth-child(1){-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);-webkit-mask-image:linear-gradient(#000 40%,transparent);mask-image:linear-gradient(#000 40%,transparent)}
+.borda-topo i:nth-child(2){-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);-webkit-mask-image:linear-gradient(#000 20%,transparent 65%);mask-image:linear-gradient(#000 20%,transparent 65%)}
+.borda-topo i:nth-child(3){-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);-webkit-mask-image:linear-gradient(#000 5%,transparent 40%);mask-image:linear-gradient(#000 5%,transparent 40%)}
+.borda-topo::after{content:"";position:absolute;inset:0;background:linear-gradient(color-mix(in srgb,var(--bg) 80%,transparent),transparent)}
+
+/* ---------- folhas que sobem de baixo (6.4) ---------- */
+dialog.folha{position:fixed;inset:auto 0 0 0;width:100%;max-width:40rem;max-height:90vh;max-height:90svh;margin:0 auto;padding:0;border:0;
+  border-radius:32px 32px 0 0;background:var(--card);color:var(--ink);overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 -12px 40px rgba(0,0,0,.25)}
+dialog.folha[open]{display:flex;flex-direction:column;animation:sobe .28s cubic-bezier(.2,.8,.2,1)}
+dialog.folha::backdrop{background:rgba(0,0,0,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+dialog.folha[open]::backdrop{animation:surge .28s ease}
+@keyframes sobe{from{transform:translateY(100%)}}
+@keyframes surge{from{opacity:0}}
+.folha-alca{flex:none;width:36px;height:5px;border-radius:3px;margin:8px auto 0;background:color-mix(in srgb,var(--ink) 20%,transparent)}
+.folha-cab{flex:none;display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;padding:.35rem .9rem .35rem 1.25rem}
+.folha-cab h2{font-size:1.35rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;padding-top:.65rem;min-width:0}
+.fechar.vidro.sobre-pagina{background:color-mix(in srgb,var(--fill) 85%,transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 2px 8px rgba(10,14,16,.08)}
+.folha-corpo{overflow-y:auto;overscroll-behavior:contain;padding:.35rem 1.25rem calc(1.75rem + env(safe-area-inset-bottom))}
+.folha-corpo>*+*{margin-top:1.1rem}
+.sub-tit{display:flex;align-items:center;gap:.45rem;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.sub-tit .ic{width:1.15rem;height:1.15rem;color:var(--accent-ink)}
+.nota-caixa{display:grid;grid-template-columns:1.4rem minmax(0,1fr);gap:.6rem;padding:.8rem .9rem;border-radius:16px;background:var(--fill)}
+.nota-caixa>.ic{color:var(--accent-ink);width:1.3rem;height:1.3rem}
+.comp-tipo{display:inline-flex;align-items:center;gap:.4rem;font-weight:700;color:var(--tc)}
+.t-encontro.comp-tipo{color:var(--accent-ink)}
+.comp-quando{font-size:1.6rem;font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.25}
+.comp-quando small{display:block;font-size:.9rem;font-weight:600;color:var(--soft);letter-spacing:0}
+.comp-falta{font-weight:600;color:var(--accent-ink)}
+.comp-local b{display:block}
+.lt{position:relative;container:lt/inline-size}
+.lt li{display:grid;grid-template-columns:3.6rem 1rem minmax(0,1fr);column-gap:.6rem;align-items:start;position:relative}
+.lt li::before{content:"";position:absolute;left:calc(3.6rem + .6rem + .5rem - 1px);top:0;bottom:0;border-left:2px solid var(--line)}
+.lt li:first-child::before{top:.85rem}
+.lt li:last-child::before{bottom:auto;height:.85rem}
+.lt-hora{font-size:1.15rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.4}
+.lt-pt{position:relative;z-index:1;width:1rem;height:1rem;margin-top:.3rem;border-radius:50%;background:var(--card);box-shadow:inset 0 0 0 3px var(--flight)}
+.lt-info{padding-bottom:1rem;min-width:0}
+.lt-info b{display:block;line-height:1.4}
+.lt-data,.lt-det{display:block;font-size:.9rem;color:var(--soft)}
+.lt-trecho .lt-info{display:flex;gap:.5rem;align-items:flex-start;color:var(--soft);font-size:.95rem;padding:.1rem 0 1rem}
+.lt-trecho .lt-info .ic{color:var(--flight);margin-top:.1rem}
+.lt-trecho::before{border-left-style:dashed!important}
+@container lt (max-width:18rem){
+  .lt li{grid-template-columns:1rem minmax(0,1fr)}
+  .lt li::before{left:calc(.5rem - 1px)}
+  .lt-hora{grid-column:2;grid-row:1}
+  .lt-pt{grid-column:1;grid-row:1}
+  .lt-info{grid-column:2}
+  .lt-trecho>span:empty{display:none}
+}
+.org{display:flex;flex-direction:column}
+.org li{padding:.65rem 0}
+.org li+li{border-top:1px solid var(--line)}
+.org-rot{display:block;font-size:.8rem;font-weight:600;color:var(--muted)}
+.regras{counter-reset:r;display:flex;flex-direction:column;gap:.9rem}
+.regras li{display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.75rem;align-items:start;counter-increment:r}
+.regras li::before{content:counter(r);width:2rem;height:2rem;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;background:var(--accent-deep)}
+.regras b{display:block}
+
+/* ---------- mostrar ao motorista ---------- */
+.motorista{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;justify-content:center;gap:1.5rem;overflow:auto;cursor:pointer;text-align:center;
+  padding:calc(env(safe-area-inset-top) + 2rem) 1.5rem calc(env(safe-area-inset-bottom) + 2rem);background:#fff;color:#000}
+.m-nome{font-size:2.6rem;font-weight:800;line-height:1.15;overflow-wrap:anywhere}
+.m-end{font-size:1.7rem;line-height:1.3;overflow-wrap:anywhere}
+.m-dica{font-size:.95rem;color:#555}
+
+/* ---------- preferências do sistema ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+@media (prefers-reduced-transparency:reduce){
+  .vidro,.proximo{-webkit-backdrop-filter:none;backdrop-filter:none;background:var(--card)}
+  .vidro.sobre-foto{background:#15191C}
+  .veu .b1,.veu .b2,.veu .b3,.borda-base i,.borda-topo i{display:none}
+  dialog.folha::backdrop{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(0,0,0,.5)}
+}
+@media (min-width:700px){
+  .folha-conteudo>*{max-width:40rem;margin-left:auto;margin-right:auto}
+  .folha-conteudo>.secao+.secao{margin-top:2.75rem}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5M12 7.6v.1"/></symbol>
+  <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+  <symbol id="i-lua" viewBox="0 0 24 24"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"/></symbol>
+  <symbol id="i-manha" viewBox="0 0 24 24"><path d="M3 19.5h18M7 16a5 5 0 0 1 10 0M12 4v4M5 9.4l1.5 1.4M19 9.4l-1.5 1.4M2.8 16h1.5M19.7 16h1.5"/></symbol>
+  <symbol id="i-casa" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-cartoes" viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="11.5" rx="2.6"/><path d="M5.8 6h12.4M8.2 3.2h7.6"/></symbol>
+  <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></symbol>
+  <symbol id="i-mala" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12.5" rx="2.6"/><path d="M9 7.5v-2A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5v2M3.5 12.5h17M10 12.5v1.8h4v-1.8"/></symbol>
+  <symbol id="i-encontro" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.2 19.5a5.8 5.8 0 0 1 11.6 0"/><circle cx="17" cy="9" r="2.6"/><path d="M15.6 14.1a4.6 4.6 0 0 1 5.6 4.5"/></symbol>
+  <symbol id="i-ingresso" viewBox="0 0 24 24"><path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h13A1.5 1.5 0 0 1 20 7.5V10a2 2 0 0 0 0 4v2.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 16.5V14a2 2 0 0 0 0-4z"/><path d="M14.5 6.5v1.6M14.5 11.2v1.6M14.5 15.9v1.6"/></symbol>
+  <symbol id="i-reserva" viewBox="0 0 24 24"><path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2 1.3-3.2 3.7-3.2 6.7V13H17"/></symbol>
+  <symbol id="i-trem" viewBox="0 0 24 24"><rect x="5.5" y="3" width="13" height="14" rx="3.6"/><path d="M5.5 10.5h13M9 14h.01M15 14h.01M8.6 21l1.8-4M15.4 21l-1.8-4"/></symbol>
+  <symbol id="i-voo" viewBox="0 0 24 24"><path d="M12 2.6c.8 0 1.4.8 1.4 1.8v5l7 4.2v2l-7-2.1v4.2l2.3 1.8v1.7L12 20.3l-3.7.9v-1.7l2.3-1.8v-4.2l-7 2.1v-2l7-4.2v-5c0-1 .6-1.8 1.4-1.8z"/></symbol>
+  <symbol id="i-hotel" viewBox="0 0 24 24"><path d="M3 19V6M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-7v6"/><circle cx="7" cy="11.5" r="2"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path d="m9.5 6 6 6-6 6"/></symbol>
+  <symbol id="i-baixo" viewBox="0 0 24 24"><path d="m6 9.5 6 6 6-6"/></symbol>
+  <symbol id="i-fechar" viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-mapa" viewBox="0 0 24 24"><path d="M9 4.5 3.5 6.5v13L9 17.5l6 2 5.5-2v-13L15 6.5z"/><path d="M9 4.5v13M15 6.5v13"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+  <symbol id="i-copo" viewBox="0 0 24 24"><path d="M6.5 8h9v11a2 2 0 0 1-2 2h-5a2 2 0 0 1-2-2z"/><path d="M15.5 10.5h1.7a2 2 0 0 1 2 2v2.6a2 2 0 0 1-2 2h-1.7"/><path d="M6.5 8a2.3 2.3 0 0 1 .9-4.4 3 3 0 0 1 5.2-.3 2.5 2.5 0 0 1 2.9 2.4V8M9.5 12v5.5M12.5 12v5.5"/></symbol>
+  <symbol id="i-pegadas" viewBox="0 0 24 24"><path d="M7.6 3.5c1.7 0 2.6 2 2.6 4.2 0 2-.9 3.4-1.1 4.9H6.4C6.1 11.1 5 9.8 5 7.7 5 5.5 5.9 3.5 7.6 3.5zM6.4 15.2h2.7v1.4a1.35 1.35 0 0 1-2.7 0zM16.4 7.5c1.6 0 2.6 2 2.6 4.2 0 2-1 3.4-1.3 4.9h-2.7c-.2-1.5-1.2-2.9-1.2-4.9 0-2.2 1-4.2 2.6-4.2zM15 19.2h2.7v1.3a1.35 1.35 0 0 1-2.7 0z"/></symbol>
+  <symbol id="i-escadas" viewBox="0 0 24 24"><path d="M3.5 20H8v-4.5h4.5V11H17V6.5h3.5"/></symbol>
+  <symbol id="i-dica" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1.1 1.2 1.1 2V16h5v-.2c0-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-estrela" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></symbol>
+  <symbol id="i-telefone" viewBox="0 0 24 24"><path d="M5.2 4h3.3l1.6 4-2 1.3a10.5 10.5 0 0 0 6.6 6.6l1.3-2 4 1.6v3.3a1.6 1.6 0 0 1-1.7 1.6A16.3 16.3 0 0 1 3.6 5.7 1.6 1.6 0 0 1 5.2 4z"/></symbol>
+  <symbol id="i-carro" viewBox="0 0 24 24"><path d="M5 12l1.8-4.6A2 2 0 0 1 8.7 6h6.6a2 2 0 0 1 1.9 1.4L19 12"/><path d="M3.5 12h17v4.5a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1zM6 17.5V20M18 17.5V20M7.5 14.8h.01M16.5 14.8h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-chuva" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 18 0zM12 12v6.5a2 2 0 0 1-4 0"/></symbol>
+  <symbol id="i-tesoura" viewBox="0 0 24 24"><circle cx="6.5" cy="7" r="2.5"/><circle cx="6.5" cy="17" r="2.5"/><path d="M8.6 8.4 19 17M8.6 15.6 19 7"/></symbol>
+  <symbol id="i-cafe" viewBox="0 0 24 24"><path d="M4.5 9.5h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M16.5 11H18a2.5 2.5 0 0 1 0 5h-1.6M8.5 3.5V6M12.5 3.5V6"/></symbol>
+  <symbol id="i-rota" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H16a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h7.8"/></symbol>
+  <symbol id="i-camadas" viewBox="0 0 24 24"><path d="m12 3.5 8.5 4.5-8.5 4.5L3.5 8z"/><path d="m3.5 12.3 8.5 4.5 8.5-4.5M3.5 16.3l8.5 4.5 8.5-4.5"/></symbol>
+  <symbol id="i-nuvem" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.6 3.8 3.8 0 0 1-.4 7.4z"/></symbol>
+  <symbol id="i-sirene" viewBox="0 0 24 24"><path d="M6.5 17.5V12a5.5 5.5 0 0 1 11 0v5.5M4.5 17.5h15V20h-15zM12 3v1.5M4.3 6.2l1 1M19.7 6.2l-1 1"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17.5 6.6A7 7 0 1 0 17.5 17.4M4.5 10.5h9M4.5 13.5h9"/></symbol>
+  <symbol id="i-externo" viewBox="0 0 24 24"><path d="M8 16 16 8M9.5 8H16v6.5"/></symbol>
+</svg>
+
+<div class="capa-fundo" aria-hidden="true"></div>
+<img class="capa" id="capa" src="img/capa.jpg" alt="" fetchpriority="high" style="object-position:42% 50%">
+<div class="borda-topo" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<header class="abertura" id="inicio">
+  <div class="topo">
+    <div class="topo-bot">
+      <button type="button" class="redondo vidro sobre-foto" id="btn-info" aria-label="Como funciona o roteiro de órbitas"><svg class="ic"><use href="#i-info"/></svg></button>
+      <button type="button" class="redondo vidro sobre-foto" id="btn-tema" aria-label="Mudar o tema"><svg class="ic"><use href="#i-lua"/></svg></button>
+    </div>
+    <p class="relogios vidro sobre-foto">
+      <span class="rel"><span class="rel-rot">Madrid</span><span class="rel-h" id="rel-cidade">--:--</span></span>
+      <span class="rel"><span class="rel-rot">Brasil</span><span class="rel-h" id="rel-brasil">--:--</span></span>
+    </p>
+  </div>
+  <div class="pe">
+    <div class="veu" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="cor"></i></div>
+    <h1 class="titulo"><span class="boas">Bem-vindos a</span> <span class="cidade">Madrid</span></h1>
+    <span class="barrinha" aria-hidden="true"></span>
+    <p class="pais">Espanha</p>
+    <p class="quando">12 – 16 nov · Hotel Exemplo Sol</p>
+    <div class="proximo-slot" id="proximo"></div>
+  </div>
+</header>
+
+<main class="folha-conteudo" id="conteudo">
+  <div class="alca" aria-hidden="true"></div>
+  <section class="secao" id="dias" aria-labelledby="t-dias">
+    <h2 id="t-dias">Os dias</h2>
+    <div class="dias" id="lista-dias"></div>
+  </section>
+  <section class="secao" id="horarios" aria-labelledby="t-horarios">
+    <h2 id="t-horarios">Horários</h2>
+    <ul class="legenda" aria-label="Cores dos horários">
+      <li class="t-encontro"><i></i>Encontro</li>
+      <li class="t-ingresso"><i></i>Ingresso e reserva</li>
+      <li class="t-transporte"><i></i>Trem e voo</li>
+      <li class="t-hotel"><i></i>Hotel</li>
+    </ul>
+    <div class="horarios" id="lista-horarios"></div>
+  </section>
+  <section class="secao" id="perto" aria-labelledby="t-perto">
+    <h2 id="t-perto">Perto do hotel</h2>
+    <ul class="card lista" id="lista-perto"></ul>
+  </section>
+  <section class="secao" id="uteis" aria-labelledby="t-uteis">
+    <h2 id="t-uteis">Úteis</h2>
+    <div class="uteis" id="lista-uteis"></div>
+  </section>
+  <footer class="rodape" id="rodape"></footer>
+</main>
+
+<div class="borda-base" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav class="barra vidro sobre-foto" id="barra" aria-label="Seções da página">
+  <a href="#inicio" data-nav="inicio"><svg class="ic" aria-hidden="true"><use href="#i-casa"/></svg><span>Início</span></a>
+  <a href="#dias" data-nav="dias"><svg class="ic" aria-hidden="true"><use href="#i-cartoes"/></svg><span>Dias</span></a>
+  <a href="#horarios" data-nav="horarios"><svg class="ic" aria-hidden="true"><use href="#i-relogio"/></svg><span>Horários</span></a>
+  <a href="#uteis" data-nav="uteis"><svg class="ic" aria-hidden="true"><use href="#i-mala"/></svg><span>Úteis</span></a>
+</nav>
+
+<dialog class="folha" id="folha" aria-labelledby="folha-tit">
+  <div class="folha-alca" aria-hidden="true"></div>
+  <div class="folha-cab">
+    <h2 id="folha-tit" tabindex="-1"></h2>
+    <button type="button" class="redondo vidro sobre-pagina fechar" id="folha-fechar" aria-label="Fechar"><svg class="ic"><use href="#i-fechar"/></svg></button>
+  </div>
+  <div class="folha-corpo" id="folha-corpo"></div>
+</dialog>
+
+<div class="motorista" id="motorista" role="dialog" aria-modal="true" aria-label="Mostrar ao motorista" tabindex="-1" hidden>
+  <p class="m-nome" id="m-nome"></p>
+  <p class="m-end" id="m-end"></p>
+  <p class="m-dica">Toque para fechar</p>
+</div>
+
+<script type="application/json" id="dados">{"versao":"05/10/2026","exemplo":true,"cidade":{"cidade":"Madrid","pais":"Espanha","fuso":"Europe/Madrid","inicio":"2026-11-12","fim":"2026-11-16","proximo_destino":"Barcelona","mymaps_mid":"1zSF5OfDEso-Pr6qJan9H0VbdgOvHVbg"},"hotel":{"nome":"Hotel Exemplo Sol","nome_local":"Hotel Ejemplo Sol","endereco":"Calle del Carmen 16, 28013 Madrid","lat":40.4185,"lon":-3.7047,"telefone":"+34 900 000 000 (comercial, fictício)","checkin":"15:00","checkout":"12:00","cafe":"07:00–10:30, incluído","metro":"Sol (L1, L2, L3) a 300 m"},"deslocamentos":[{"id":"chegada","sentido":"chegada","modo":"trem","operadora":"Renfe (AVE)","trecho":"Sevilha → Madrid","resumo":["2h32 em movimento","Direto"],"linha_do_tempo":[{"tipo":"parada","hora":"2026-11-12T10:00:00+01:00","local":"Sevilla Santa Justa","detalhe":"Controle de bagagem antes da plataforma","tz":""},{"tipo":"trecho","texto":"AVE 0000 (número fictício) · 2h32 · alta velocidade"},{"tipo":"parada","hora":"2026-11-12T12:32:00+01:00","local":"Madrid Puerta de Atocha","detalhe":"Saída pelo saguão principal","tz":""}],"bagagem":"Por pessoa: 1 mala grande e 1 bagagem de mão (a confirmar no site da Renfe).","assentos":"Carro 6, lugares próximos","chegar_ate":"Estação de Sevilha até 09:30","status":"comprado","notas":[{"rotulo":"Depois da chegada","texto":"Dois táxis da fila oficial até o hotel: ~15 min (estimativa). Para seis com malas, também dá para pedir um carro grande pelo aplicativo."}]},{"id":"saida","sentido":"saida","modo":"trem","operadora":"Renfe (AVE)","trecho":"Madrid → Barcelona","resumo":["2h45 em movimento","Direto"],"linha_do_tempo":[{"tipo":"parada","hora":"2026-11-16T13:30:00+01:00","local":"Madrid Puerta de Atocha","detalhe":"Controle de bagagem na entrada da área de embarque","tz":""},{"tipo":"trecho","texto":"AVE 0001 (número fictício) · 2h45 · alta velocidade"},{"tipo":"parada","hora":"2026-11-16T16:15:00+01:00","local":"Barcelona Sants","detalhe":"","tz":""}],"bagagem":"Por pessoa: 1 mala grande e 1 bagagem de mão (a confirmar no site da Renfe).","assentos":"","chegar_ate":"Estação até 13:00","status":"a comprar","notas":[{"rotulo":"Até a estação","texto":"Sair do hotel às 12:15. Dois táxis até Atocha: ~15 min (estimativa)."}]}],"agenda":[{"k":"12/11","t":"2026-11-12T12:32:00+01:00","tipo":"transporte","l":"Chegada do trem de Sevilha","d":"","local":"","status":"comprado","fl":"chegada","tz":""},{"k":"12/11","t":"2026-11-12T15:00:00+01:00","tipo":"hotel","l":"Check-in no hotel","d":"Se chegarmos antes, o hotel guarda as malas (a confirmar).","local":"Hotel Exemplo Sol","status":"","fl":"","tz":""},{"k":"13/11","t":"2026-11-13T09:50:00+01:00","tipo":"encontro","l":"Encontro no saguão do hotel","d":"Saída a pé para o Prado (15 min).","local":"Hotel Exemplo Sol","status":"","fl":"","tz":""},{"k":"13/11","t":"2026-11-13T10:30:00+01:00","tipo":"ingresso","l":"Museo del Prado","d":"Entrada pela Puerta de Velázquez. Fila de segurança: chegar 20 min antes (estimativa).","local":"Museo del Prado","status":"comprado","fl":"","tz":""},{"k":"14/11","t":"2026-11-14T10:30:00+01:00","tipo":"encontro","l":"Encontro no saguão do hotel","d":"Saída a pé para o Palácio Real (15 min).","local":"Hotel Exemplo Sol","status":"","fl":"","tz":""},{"k":"14/11","t":"2026-11-14T11:00:00+01:00","tipo":"ingresso","l":"Palacio Real","d":"Compra no site oficial do Patrimonio Nacional; aos sábados esgota cedo (a confirmar).","local":"Palacio Real","status":"a comprar","fl":"","tz":""},{"k":"14/11","t":"2026-11-14T21:00:00+01:00","tipo":"reserva","l":"Jantar no Sobrino de Botín","d":"Mesa para seis. Tolerância de 15 min (a confirmar).","local":"Sobrino de Botín","status":"","fl":"","tz":""},{"k":"16/11","t":"2026-11-16T12:00:00+01:00","tipo":"hotel","l":"Check-out","d":"As malas descem antes; o hotel guarda até a saída (a confirmar).","local":"Hotel Exemplo Sol","status":"","fl":"","tz":""},{"k":"16/11","t":"2026-11-16T12:15:00+01:00","tipo":"encontro","l":"Encontro no saguão, com as malas","d":"Dois táxis até Atocha (~15 min, estimativa).","local":"Hotel Exemplo Sol","status":"","fl":"","tz":""},{"k":"16/11","t":"2026-11-16T13:30:00+01:00","tipo":"transporte","l":"Trem para Barcelona","d":"","local":"","status":"a comprar","fl":"saida","tz":""}],"dias":[{"n":0,"data":"2026-11-12","rotulo":"qui 12/11","titulo":"Chegada e Puerta del Sol","cor":"c0","plano":{"manha":"Trem de Sevilha e táxi até o hotel.","tarde":"Check-in, descanso e uma volta pela Puerta del Sol e pela Calle de Preciados.","noite":"Plaza Mayor iluminada e churros na Chocolatería San Ginés."},"imperdiveis":["Puerta del Sol","Plaza Mayor"],"pub":null,"avisos":[],"como_ir":"Tudo a pé: a Puerta del Sol fica a 200 m do hotel e a Plaza Mayor, a 400 m.","pausa":"Descanso no hotel depois do check-in.","se_der_tempo":["Gran Vía"],"se_passar_perto":["Calle de Preciados"],"plano_b":{"cortar":"Gran Vía.","trocar":"Se chover, a Plaza Mayor fica para a noite do Dia 2."},"foto":"img/dia0.jpg"},{"n":1,"data":"2026-11-13","rotulo":"sex 13/11","titulo":"Prado e Retiro","cor":"c1","plano":{"manha":"Museo del Prado com ingresso às 10:30: Velázquez, Goya e El Bosco.","tarde":"Almoço sem pressa e passeio pelo Parque del Retiro até o lago.","noite":"Tapas no Barrio de las Letras e uma taça na La Venencia."},"imperdiveis":["Museo del Prado","Parque del Retiro"],"pub":{"nome":"La Venencia","nota":"Xerez servido do barril, num bar que parece parado em 1930."},"avisos":[{"tipo":"calcado","texto":"Dia de andar bastante: vá de tênis confortável."}],"como_ir":"A pé pela Carrera de San Jerónimo até o Prado (15 min). Volta de metrô: Retiro (L2) até Sol, 3 paradas.","pausa":"Almoço sem pressa perto do Retiro, ou descanso no hotel antes da noite.","se_der_tempo":["Palacio de Cristal","Real Jardín Botánico","Museo Thyssen-Bornemisza"],"se_passar_perto":["Palacio de Cibeles","Puerta de Alcalá"],"plano_b":{"cortar":"Real Jardín Botánico.","trocar":"Se chover, troque o Retiro pelo Museo Thyssen-Bornemisza e deixe o parque para o Dia 3."},"foto":"img/dia1.jpg"},{"n":2,"data":"2026-11-14","rotulo":"sáb 14/11","titulo":"Palácio Real e Madrid dos Áustrias","cor":"c2","plano":{"manha":"Palacio Real com ingresso às 11:00 e a Plaza de Oriente.","tarde":"Almoço no Mercado de San Miguel e pôr do sol no Templo de Debod.","noite":"Jantar com reserva no Sobrino de Botín, às 21:00."},"imperdiveis":["Palacio Real","Mercado de San Miguel","Templo de Debod"],"pub":null,"avisos":[{"tipo":"escadas","texto":"Há escadas e uma ladeira para subir ao Templo de Debod."}],"como_ir":"Tudo a pé: o Palacio Real fica a 15 min do hotel pela Calle del Arenal.","pausa":"Almoço sem pressa no Mercado de San Miguel, ou descanso no hotel antes do pôr do sol.","se_der_tempo":["Catedral de la Almudena"],"se_passar_perto":["Jardines de Sabatini","Plaza de Oriente"],"plano_b":{"cortar":"Catedral de la Almudena.","trocar":"Se chover, o Templo de Debod passa para o fim da tarde do Dia 3."},"foto":"img/dia2.jpg"},{"n":3,"data":"2026-11-15","rotulo":"dom 15/11","titulo":"El Rastro e La Latina","cor":"c3","plano":{"manha":"El Rastro, a feira de domingo, descendo a Ribera de Curtidores.","tarde":"Tapas na Cava Baja e volta sem pressa pela Plaza de la Paja.","noite":"Noite livre: uma taça na Taberna El Tempranillo ou algo perto do hotel."},"imperdiveis":["El Rastro","Cava Baja"],"pub":{"nome":"Taberna El Tempranillo","nota":"Vinhos espanhóis em taça, numa das ruas mais animadas de La Latina."},"avisos":[{"tipo":"outro","texto":"Feira cheia: bolsas e carteiras na frente do corpo."}],"como_ir":"A pé: 15 min do hotel até o Rastro, passando pela Plaza Mayor.","pausa":"Almoço sem pressa na Cava Baja, ou descanso no hotel.","se_der_tempo":["Basílica de San Francisco el Grande"],"se_passar_perto":["Plaza de la Paja"],"plano_b":{"cortar":"Basílica de San Francisco el Grande.","trocar":"Se chover, troque o Rastro pelo Museo Thyssen-Bornemisza."},"foto":"img/dia3.jpg"},{"n":4,"data":"2026-11-16","rotulo":"seg 16/11","titulo":"Saída para Barcelona","cor":"c4","plano":{"manha":"Café sem pressa e últimas compras na Calle de Preciados.","tarde":"Check-out, encontro com as malas e trem para Barcelona às 13:30.","noite":""},"imperdiveis":[],"pub":null,"avisos":[],"como_ir":"Dois táxis do hotel até Atocha (~15 min, estimativa).","pausa":"","se_der_tempo":[],"se_passar_perto":[],"plano_b":{"cortar":"","trocar":""},"foto":"img/dia4.jpg"}],"pois":{"Puerta del Sol":{"nome":"Puerta del Sol","nome_local":"Puerta del Sol","tipo":"Praça","imperdivel":true,"dia":0,"orbita":"imperdivel","lat":40.4169,"lon":-3.7035,"dist_hotel_km":0.2,"funcionamento":"Aberto o tempo todo","custo":"Grátis","endereco_local":"Puerta del Sol, 28013 Madrid","observacao":"O relógio da Casa de Correos marca a virada do ano na Espanha."},"Plaza Mayor":{"nome":"Plaza Mayor","nome_local":"Plaza Mayor","tipo":"Praça","imperdivel":true,"dia":0,"orbita":"imperdivel","lat":40.41553,"lon":-3.70742,"dist_hotel_km":0.4,"funcionamento":"Aberto o tempo todo","custo":"Grátis","endereco_local":"Plaza Mayor, 28012 Madrid","observacao":"Mais bonita à noite, com as arcadas iluminadas."},"Gran Vía":{"nome":"Gran Vía","nome_local":"Gran Vía","tipo":"Rua","imperdivel":false,"dia":0,"orbita":"se_der_tempo","lat":40.42,"lon":-3.7038,"dist_hotel_km":0.18,"funcionamento":"Aberto o tempo todo","custo":"Grátis","endereco_local":"Calle Gran Vía, 28013 Madrid","observacao":""},"Calle de Preciados":{"nome":"Calle de Preciados","nome_local":"Calle de Preciados","tipo":"Rua","imperdivel":false,"dia":0,"orbita":"se_passar_perto","lat":40.4187,"lon":-3.7056,"dist_hotel_km":0.08,"funcionamento":"Lojas das 10:00 às 21:00 (a confirmar)","custo":"Grátis","endereco_local":"Calle de Preciados, 28013 Madrid","observacao":""},"Museo del Prado":{"nome":"Museo del Prado","nome_local":"Museo Nacional del Prado","tipo":"Museu","imperdivel":true,"dia":1,"orbita":"imperdivel","lat":40.41378,"lon":-3.69214,"dist_hotel_km":1.19,"funcionamento":"Seg a sáb 10:00–20:00, dom 10:00–19:00 (a confirmar)","custo":"€€","endereco_local":"Calle de Ruiz de Alarcón 23, 28014 Madrid","observacao":"Entrada com horário marcado pela Puerta de Velázquez."},"Parque del Retiro":{"nome":"Parque del Retiro","nome_local":"Parque de El Retiro","tipo":"Parque","imperdivel":true,"dia":1,"orbita":"imperdivel","lat":40.4153,"lon":-3.6844,"dist_hotel_km":1.76,"funcionamento":"06:00–22:00 no inverno (a confirmar)","custo":"Grátis","endereco_local":"Plaza de la Independencia 7, 28001 Madrid","observacao":"Barcos a remo no lago grande (Estanque)."},"Palacio de Cristal":{"nome":"Palacio de Cristal","nome_local":"Palacio de Cristal","tipo":"Sightseeing","imperdivel":false,"dia":1,"orbita":"se_der_tempo","lat":40.41372,"lon":-3.68186,"dist_hotel_km":2.01,"funcionamento":"10:00–18:00 (a confirmar)","custo":"Grátis","endereco_local":"Paseo de República de Cuba 4, 28009 Madrid","observacao":"Fica dentro do Retiro."},"Real Jardín Botánico":{"nome":"Real Jardín Botánico","nome_local":"Real Jardín Botánico","tipo":"Parque","imperdivel":false,"dia":1,"orbita":"se_der_tempo","lat":40.41108,"lon":-3.69112,"dist_hotel_km":1.42,"funcionamento":"10:00–18:00 (a confirmar)","custo":"€","endereco_local":"Plaza de Murillo 2, 28014 Madrid","observacao":""},"Museo Thyssen-Bornemisza":{"nome":"Museo Thyssen-Bornemisza","nome_local":"Museo Nacional Thyssen-Bornemisza","tipo":"Museu","imperdivel":false,"dia":1,"orbita":"se_der_tempo","lat":40.41604,"lon":-3.69488,"dist_hotel_km":0.88,"funcionamento":"10:00–19:00 (a confirmar)","custo":"€€","endereco_local":"Paseo del Prado 8, 28014 Madrid","observacao":"Bom plano para dia de chuva."},"Palacio de Cibeles":{"nome":"Palacio de Cibeles","nome_local":"Palacio de Cibeles","tipo":"Sightseeing","imperdivel":false,"dia":1,"orbita":"se_passar_perto","lat":40.4189,"lon":-3.6921,"dist_hotel_km":1.07,"funcionamento":"Mirante 10:30–14:00 e 16:00–19:00 (a confirmar)","custo":"€","endereco_local":"Plaza de Cibeles 1, 28014 Madrid","observacao":""},"Puerta de Alcalá":{"nome":"Puerta de Alcalá","nome_local":"Puerta de Alcalá","tipo":"Sightseeing","imperdivel":false,"dia":1,"orbita":"se_passar_perto","lat":40.41998,"lon":-3.6888,"dist_hotel_km":1.36,"funcionamento":"Aberto o tempo todo","custo":"Grátis","endereco_local":"Plaza de la Independencia, 28001 Madrid","observacao":""},"Palacio Real":{"nome":"Palacio Real","nome_local":"Palacio Real de Madrid","tipo":"Sightseeing","imperdivel":true,"dia":2,"orbita":"imperdivel","lat":40.418,"lon":-3.7143,"dist_hotel_km":0.81,"funcionamento":"10:00–18:00 (a confirmar)","custo":"€€","endereco_local":"Calle de Bailén s/n, 28071 Madrid","observacao":"Ingresso com horário; aos sábados esgota cedo."},"Catedral de la Almudena":{"nome":"Catedral de la Almudena","nome_local":"Catedral de Santa María la Real de la Almudena","tipo":"Igreja","imperdivel":false,"dia":2,"orbita":"se_der_tempo","lat":40.4157,"lon":-3.7146,"dist_hotel_km":0.89,"funcionamento":"10:00–20:00 (a confirmar)","custo":"Grátis","endereco_local":"Calle de Bailén 10, 28013 Madrid","observacao":""},"Templo de Debod":{"nome":"Templo de Debod","nome_local":"Templo de Debod","tipo":"Sightseeing","imperdivel":true,"dia":2,"orbita":"imperdivel","lat":40.424,"lon":-3.7177,"dist_hotel_km":1.26,"funcionamento":"Parque aberto o tempo todo; templo 10:00–20:00 (a confirmar)","custo":"Grátis","endereco_local":"Calle de Ferraz 1, 28008 Madrid","observacao":"O melhor pôr do sol do centro."},"Mercado de San Miguel":{"nome":"Mercado de San Miguel","nome_local":"Mercado de San Miguel","tipo":"Comer","imperdivel":true,"dia":2,"orbita":"imperdivel","lat":40.4154,"lon":-3.709,"dist_hotel_km":0.5,"funcionamento":"10:00–24:00 (a confirmar)","custo":"€€","endereco_local":"Plaza de San Miguel s/n, 28005 Madrid","observacao":"Bancas de tapas; cheio na hora do almoço."},"Jardines de Sabatini":{"nome":"Jardines de Sabatini","nome_local":"Jardines de Sabatini","tipo":"Parque","imperdivel":false,"dia":2,"orbita":"se_passar_perto","lat":40.4207,"lon":-3.7138,"dist_hotel_km":0.81,"funcionamento":"09:00–21:00 (a confirmar)","custo":"Grátis","endereco_local":"Calle de Bailén 2, 28013 Madrid","observacao":""},"Plaza de Oriente":{"nome":"Plaza de Oriente","nome_local":"Plaza de Oriente","tipo":"Praça","imperdivel":false,"dia":2,"orbita":"se_passar_perto","lat":40.4187,"lon":-3.7124,"dist_hotel_km":0.65,"funcionamento":"Aberto o tempo todo","custo":"Grátis","endereco_local":"Plaza de Oriente, 28013 Madrid","observacao":""},"El Rastro":{"nome":"El Rastro","nome_local":"El Rastro","tipo":"Mercado","imperdivel":true,"dia":3,"orbita":"imperdivel","lat":40.4087,"lon":-3.7074,"dist_hotel_km":1.11,"funcionamento":"Domingos e feriados 09:00–15:00 (a confirmar)","custo":"Grátis","endereco_local":"Calle de la Ribera de Curtidores, 28005 Madrid","observacao":"Feira de rua só aos domingos e feriados."},"Cava Baja":{"nome":"Cava Baja","nome_local":"Calle de la Cava Baja","tipo":"Rua","imperdivel":true,"dia":3,"orbita":"imperdivel","lat":40.4125,"lon":-3.7092,"dist_hotel_km":0.77,"funcionamento":"Bares a partir das 12:00 (a confirmar)","custo":"€€","endereco_local":"Calle de la Cava Baja, 28005 Madrid","observacao":"A rua das tapas de La Latina."},"Basílica de San Francisco el Grande":{"nome":"Basílica de San Francisco el Grande","nome_local":"Real Basílica de San Francisco el Grande","tipo":"Igreja","imperdivel":false,"dia":3,"orbita":"se_der_tempo","lat":40.4104,"lon":-3.7144,"dist_hotel_km":1.22,"funcionamento":"Ter a sáb 10:30–12:30 e 16:00–18:00 (a confirmar)","custo":"€","endereco_local":"Calle de San Buenaventura 1, 28005 Madrid","observacao":""},"Plaza de la Paja":{"nome":"Plaza de la Paja","nome_local":"Plaza de la Paja","tipo":"Praça","imperdivel":false,"dia":3,"orbita":"se_passar_perto","lat":40.4119,"lon":-3.7113,"dist_hotel_km":0.92,"funcionamento":"Aberto o tempo todo","custo":"Grátis","endereco_local":"Plaza de la Paja, 28005 Madrid","observacao":""},"Taberna El Tempranillo":{"nome":"Taberna El Tempranillo","nome_local":"Taberna El Tempranillo","tipo":"Beber","imperdivel":false,"dia":3,"orbita":"se_der_tempo","lat":40.4118,"lon":-3.7096,"dist_hotel_km":0.85,"funcionamento":"13:00–24:00 (a confirmar)","custo":"€€","endereco_local":"Calle de la Cava Baja 38, 28005 Madrid","observacao":"Vinhos em taça; balcão concorrido."},"La Venencia":{"nome":"La Venencia","nome_local":"La Venencia","tipo":"Beber","imperdivel":false,"dia":1,"orbita":"se_der_tempo","lat":40.4153,"lon":-3.6994,"dist_hotel_km":0.57,"funcionamento":"19:30–01:30 (a confirmar)","custo":"€","endereco_local":"Calle de Echegaray 7, 28014 Madrid","observacao":"Só xerez; a casa pede para não fotografar."},"Chocolatería San Ginés":{"nome":"Chocolatería San Ginés","nome_local":"Chocolatería San Ginés","tipo":"Cafeteria","imperdivel":false,"dia":null,"orbita":"perto_hotel","lat":40.4168,"lon":-3.7066,"dist_hotel_km":0.25,"funcionamento":"Aberto 24 horas (a confirmar)","custo":"€","endereco_local":"Pasadizo de San Ginés 5, 28013 Madrid","observacao":"Churros com chocolate desde 1894."},"Casa Labra":{"nome":"Casa Labra","nome_local":"Casa Labra","tipo":"Comer","imperdivel":false,"dia":null,"orbita":"perto_hotel","lat":40.418,"lon":-3.7047,"dist_hotel_km":0.06,"funcionamento":"11:00–15:30 e 18:00–23:00 (a confirmar)","custo":"€","endereco_local":"Calle de Tetuán 12, 28013 Madrid","observacao":"Croquetes e bacalhau frito no balcão."},"Lhardy":{"nome":"Lhardy","nome_local":"Lhardy","tipo":"Comer","imperdivel":false,"dia":null,"orbita":"perto_hotel","lat":40.4167,"lon":-3.7012,"dist_hotel_km":0.36,"funcionamento":"Seg a sáb 09:00–22:00 (a confirmar)","custo":"€€€","endereco_local":"Carrera de San Jerónimo 8, 28014 Madrid","observacao":"Cozido madrilenho clássico."},"Sobrino de Botín":{"nome":"Sobrino de Botín","nome_local":"Restaurante Sobrino de Botín","tipo":"Comer","imperdivel":false,"dia":null,"orbita":"perto_hotel","lat":40.414,"lon":-3.708,"dist_hotel_km":0.57,"funcionamento":"13:00–16:00 e 20:00–24:00 (a confirmar)","custo":"€€€","endereco_local":"Calle de los Cuchilleros 17, 28005 Madrid","observacao":"Leitão assado; reserva recomendada."},"Taberna La Dolores":{"nome":"Taberna La Dolores","nome_local":"Taberna La Dolores","tipo":"Beber","imperdivel":false,"dia":null,"orbita":"perto_hotel","lat":40.4142,"lon":-3.6962,"dist_hotel_km":0.86,"funcionamento":"11:00–01:00 (a confirmar)","custo":"€","endereco_local":"Plaza de Jesús 4, 28014 Madrid","observacao":"Cerveja gelada e azulejos de 1908."}},"perto":[{"nome":"Casa Labra","tipo":"Tapas","dist_m":60},{"nome":"Chocolatería San Ginés","tipo":"Cafeteria","dist_m":250},{"nome":"Lhardy","tipo":"Restaurante","dist_m":360},{"nome":"La Venencia","tipo":"Pub","dist_m":570},{"nome":"Sobrino de Botín","tipo":"Restaurante","dist_m":570},{"nome":"Taberna La Dolores","tipo":"Pub","dist_m":860}],"uteis":{"motorista":[{"rotulo":"Hotel","nome_local":"Hotel Ejemplo Sol","endereco":"Calle del Carmen 16, 28013 Madrid"},{"rotulo":"Estação de Atocha","nome_local":"Estación de Madrid Puerta de Atocha","endereco":"Plaza del Emperador Carlos V s/n, 28045 Madrid"}],"transporte":["Metrô: estação Sol (linhas 1, 2 e 3), a 300 m do hotel.","Táxi: brancos com faixa vermelha; há ponto na Puerta del Sol (a confirmar).","Aplicativos: Cabify, Uber e FreeNow funcionam em Madrid (a confirmar).","Para seis com malas: dois táxis, ou um carro de 7 lugares pedido no aplicativo."],"emergencia":[{"numero":"112","rotulo":"Emergência (geral)"},{"numero":"091","rotulo":"Polícia Nacional"},{"numero":"092","rotulo":"Polícia Municipal"}],"clima":{"texto":"Novembro em Madrid: máximas perto de 15 °C, mínimas perto de 6 °C e alguns dias de chuva.","fonte":"normais climatológicas da AEMET (dado de exemplo, a conferir)"},"bom_saber":["Almoço a partir das 14:00; jantar a partir das 21:00.","Para seis pessoas, reserve os restaurantes mais procurados.","O Rastro só funciona aos domingos e feriados.","Gorjeta não é obrigatória; arredondar a conta é comum."]}}</script>
+<script>
+(() => {
+'use strict';
+const D = JSON.parse(document.getElementById('dados').textContent);
+const C = D.cidade, H = D.hotel, U = D.uteis || {};
+const POI = D.pois || {};
+const DESL = Object.fromEntries((D.deslocamentos || []).map(x => [x.id, x]));
+const AG = (D.agenda || []).map(a => ({...a, ms: Date.parse(a.t)})).sort((a, b) => a.ms - b.ms);
+AG.forEach((a, i) => { a.i = i; });
+
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+const ic = (n, cls = '') => `<svg class="ic ${cls}" aria-hidden="true"><use href="#i-${n}"/></svg>`;
+const reduzMov = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const tentar = (nome, fn) => { try { fn(); } catch (e) { console.error('Erro ao desenhar ' + nome + ':', e); } };
+
+// ---------- datas e horas ----------
+const SEM = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+const hhmm = iso => iso.slice(11, 16);
+const ymd = iso => iso.slice(0, 10);
+const rotData = d => {
+  const [y, m, dd] = d.split('-').map(Number);
+  return `${SEM[new Date(Date.UTC(y, m - 1, dd, 12)).getUTCDay()]} ${String(dd).padStart(2, '0')}/${String(m).padStart(2, '0')}`;
+};
+const fmtDia = new Intl.DateTimeFormat('en-CA', {timeZone: C.fuso, year: 'numeric', month: '2-digit', day: '2-digit'});
+const hoje = () => {
+  const p = Object.fromEntries(fmtDia.formatToParts(new Date()).map(x => [x.type, x.value]));
+  return `${p.year}-${p.month}-${p.day}`;
+};
+const relCidade = new Intl.DateTimeFormat('pt-BR', {timeZone: C.fuso, hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
+const relBrasil = new Intl.DateTimeFormat('pt-BR', {timeZone: 'America/Sao_Paulo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'});
+function falta(ms) {
+  const min = Math.ceil(ms / 60000);
+  if (min <= 0) return 'agora';
+  const d = Math.floor(min / 1440), h = Math.floor((min % 1440) / 60), m = min % 60;
+  if (d >= 7) return `em ${d} dias`;
+  if (d >= 1) return `em ${d} ${d === 1 ? 'dia' : 'dias'}` + (h ? ` e ${h} h` : '');
+  if (h >= 1) return `em ${h} h` + (m ? ` ${String(m).padStart(2, '0')} min` : '');
+  return `em ${m} min`;
+}
+const distTxt = km => km < 1 ? `${Math.max(10, Math.round(km * 100) * 10)} m` : `${km.toFixed(1).replace('.', ',')} km`;
+
+// ---------- lugares e mapas ----------
+const ehHotel = s => s === H.nome || s === H.nome_local;
+const nomeDoLocal = s => POI[s] ? POI[s].nome : ehHotel(s) ? H.nome : s;
+function urlMaps(s) {
+  const p = POI[s];
+  let q = s;
+  if (p) q = p.endereco_local ? `${p.nome_local || p.nome}, ${p.endereco_local}` : `${p.lat},${p.lon}`;
+  else if (ehHotel(s)) q = `${H.nome_local || H.nome}, ${H.endereco}`;
+  return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+}
+const botaoMaps = s => `<a class="btn btn-pri" href="${esc(urlMaps(s))}" target="_blank" rel="noopener">${ic('mapa')}Abrir no Google Maps</a>`;
+
+// ---------- compromissos ----------
+const TIPO = {encontro: ['Encontro', 'encontro'], ingresso: ['Ingresso', 'ingresso'], reserva: ['Reserva', 'reserva'], hotel: ['Hotel', 'hotel'], transporte: ['Trem', 'trem']};
+const modoDe = a => (DESL[a.fl] || {}).modo === 'voo' ? 'voo' : 'trem';
+const icTipo = a => a.tipo === 'transporte' ? modoDe(a) : TIPO[a.tipo][1];
+const rotTipo = a => a.tipo === 'transporte' ? (modoDe(a) === 'voo' ? 'Voo' : 'Trem') : TIPO[a.tipo][0];
+function tagsSituacao(a) {
+  const t = [];
+  if (a.tipo === 'ingresso' && a.status === 'comprado') t.push(`<span class="tag tag-ok">${ic('check')}Ingresso comprado</span>`);
+  if (a.tipo === 'ingresso' && a.status === 'a comprar') t.push('<span class="tag tag-warn">Ingresso a comprar</span>');
+  if (a.tipo === 'transporte' && a.status === 'a comprar') t.push('<span class="tag tag-warn">Bilhete a comprar</span>');
+  if (a.status === 'a confirmar') t.push('<span class="tag tag-conf">a confirmar</span>');
+  return t.join('');
+}
+function itemAg(a, completo) {
+  const cab = `<span class="ag-hora">${hhmm(a.t)}${a.tz ? `<span class="ag-tz">${esc(a.tz)}</span>` : ''}</span>`
+    + `<span class="ag-ic">${ic(icTipo(a))}</span>`;
+  const tags = `<span class="tags">${tagsSituacao(a)}<span class="tag tag-prox">próximo</span></span>`;
+  const li = `<li class="ag t-${a.tipo}" data-ai="${a.i}">`;
+  if (a.tipo === 'transporte') {
+    const rotulo = modoDe(a) === 'voo' ? 'Detalhes do voo' : 'Detalhes do trem';
+    if (completo) return `${li}<div class="ag-btn">${cab}<span class="ag-txt"><span class="ag-tit">${esc(a.l)}</span>${tags}`
+      + `<button type="button" class="btn-desloc" data-fl="${esc(a.fl)}">${rotulo}${ic('seta')}</button></span></div></li>`;
+    return `${li}<button type="button" class="ag-btn" data-fl="${esc(a.fl)}">${cab}<span class="ag-txt"><span class="ag-tit">${esc(a.l)}</span>${tags}</span></button></li>`;
+  }
+  const local = a.tipo === 'encontro' && a.local ? `<span class="ag-local">${ic('pin')}${esc(nomeDoLocal(a.local))}</span>` : '';
+  const det = completo && a.d ? `<span class="ag-det">${esc(a.d)}</span>` : '';
+  return `${li}<button type="button" class="ag-btn" data-ag="${a.i}">${cab}<span class="ag-txt"><span class="ag-tit">${esc(a.l)}</span>${local}${det}${tags}</span></button></li>`;
+}
+
+// ---------- abertura: relógios e próximo compromisso ----------
+function relogios() {
+  const agora = new Date();
+  $('#rel-cidade').textContent = relCidade.format(agora);
+  $('#rel-brasil').textContent = relBrasil.format(agora);
+}
+function proximo() {
+  const agora = Date.now();
+  const p = AG.find(a => a.ms > agora);
+  const slot = $('#proximo');
+  if (!p) {
+    slot.innerHTML = `<div class="proximo vidro sobre-foto despedida"><span class="px-ic" style="background:var(--sol-transporte)">${ic('trem')}</span>`
+      + `<span class="px-txt"><span class="px-tit">Até logo, ${esc(C.cidade)}.</span><span class="px-quando">Próxima parada: <b>${esc(C.proximo_destino)}</b></span></span></div>`;
+    return;
+  }
+  const quando = (ymd(p.t) === hoje() ? '' : rotData(ymd(p.t)) + ' · ') + hhmm(p.t);
+  const alvo = p.tipo === 'transporte' ? `data-fl="${esc(p.fl)}"` : `data-ag="${p.i}"`;
+  slot.innerHTML = `<button type="button" class="proximo vidro sobre-foto" ${alvo}>`
+    + `<span class="px-ic" style="background:var(--sol-${p.tipo})">${ic(icTipo(p))}</span>`
+    + `<span class="px-txt"><span class="px-rot">Próximo</span><span class="px-tit">${esc(p.l)}</span>`
+    + `<span class="px-quando">${quando} · <b>${falta(p.ms - agora)}</b></span></span>${ic('seta')}</button>`;
+}
+function estados() {
+  const agora = Date.now();
+  const p = AG.find(a => a.ms > agora);
+  $$('.ag[data-ai]').forEach(li => {
+    const a = AG[+li.dataset.ai];
+    li.classList.toggle('passou', a.ms <= agora);
+    li.classList.toggle('e-prox', !!p && a.i === p.i);
+  });
+  $$('[data-falta]').forEach(el => {
+    const ms = Date.parse(el.dataset.falta) - agora;
+    el.textContent = ms > 0 ? falta(ms) : 'Já passou';
+  });
+}
+
+// ---------- os dias ----------
+const pilula = (nome, tipo) => `<button type="button" class="pil pil-${tipo}" data-poi="${esc(nome)}">${tipo === 'imp' ? ic('estrela') : tipo === 'tempo' ? ic('pin') : ''}${esc(nome)}</button>`;
+const temMais = d => d.como_ir || d.pausa || (d.se_der_tempo || []).length || (d.se_passar_perto || []).length || (d.plano_b && (d.plano_b.cortar || d.plano_b.trocar));
+function conteudoDia(d) {
+  const b = [];
+  const ags = AG.filter(a => ymd(a.t) === d.data);
+  if (ags.length) b.push(`<div><h4 class="bloco-tit">Horários</h4><ul class="ag-lista">${ags.map(a => itemAg(a, false)).join('')}</ul></div>`);
+  const pl = [['manha', 'Manhã', 'manha'], ['tarde', 'Tarde', 'sol'], ['noite', 'Noite', 'lua']].filter(([k]) => d.plano && d.plano[k]);
+  if (pl.length) b.push(`<div><h4 class="bloco-tit">O plano</h4><ul class="plano">${pl.map(([k, r, i]) =>
+    `<li class="plano-l">${ic(i)}<div><span class="plano-rot">${r}</span><p>${esc(d.plano[k])}</p></div></li>`).join('')}</ul></div>`);
+  if ((d.imperdiveis || []).length) b.push(`<div><h4 class="bloco-tit">Imperdíveis</h4><div class="pilulas">${d.imperdiveis.map(n => pilula(n, 'imp')).join('')}</div></div>`);
+  if (d.pub) b.push(`<button type="button" class="pub" data-poi="${esc(d.pub.nome)}"><span class="circ">${ic('copo')}</span>`
+    + `<span><span class="pub-rot">Pub do dia</span><span class="pub-nome">${esc(d.pub.nome)}</span>${d.pub.nota ? `<span class="pub-nota">${esc(d.pub.nota)}</span>` : ''}</span>${ic('seta', 'seta-l')}</button>`);
+  if ((d.avisos || []).length) b.push(`<ul class="avisos">${d.avisos.map(a =>
+    `<li class="aviso aviso-${esc(a.tipo)}">${ic({calcado: 'pegadas', escadas: 'escadas'}[a.tipo] || 'dica')}<span>${esc(a.texto)}</span></li>`).join('')}</ul>`);
+  if (temMais(d)) b.push(`<button type="button" class="btn-mais" data-mais="${d.n}">${ic('camadas')}Mais deste dia</button>`);
+  return b.join('');
+}
+function desenharDias() {
+  const h = hoje();
+  $('#lista-dias').innerHTML = D.dias.map(d => {
+    const foto = d.foto ? `<img class="faixa-foto" src="${esc(d.foto)}" alt="" decoding="async">` : semFoto(d);
+    return `<article class="dia" id="dia${d.n}" data-n="${d.n}" style="--cor:var(--${esc(d.cor)})">`
+      + `<h3 class="dia-cab"><button type="button" class="faixa" data-dia="${d.n}" aria-expanded="false" aria-controls="dia${d.n}-corpo">${foto}`
+      + `<span class="faixa-txt"><span class="faixa-meta"><i class="bolinha"></i>Dia ${d.n} · ${esc(d.rotulo)}${d.data === h ? '<span class="hoje-tag">hoje</span>' : ''}</span>`
+      + `<span class="faixa-tit">${esc(d.titulo)}</span></span>${ic('baixo')}</button></h3>`
+      + `<div class="dia-corpo" id="dia${d.n}-corpo" inert><div class="dia-int"><div class="dia-conteudo">${conteudoDia(d)}</div></div></div></article>`;
+  }).join('');
+  $$('.faixa-foto').forEach(img => {
+    const falhou = () => { const d = D.dias.find(x => `dia${x.n}` === img.closest('.dia').id); img.outerHTML = semFoto(d); };
+    if (img.complete && !img.naturalWidth) falhou(); else img.addEventListener('error', falhou, {once: true});
+  });
+  // qual abre sozinho: hoje durante a estadia; antes da viagem, o primeiro; depois, nenhum
+  let abrir = null;
+  if (h < C.inicio) abrir = D.dias.length ? D.dias[0].n : null;
+  else if (h <= C.fim) { const d = D.dias.find(x => x.data === h); abrir = d ? d.n : null; }
+  const m = /^#dia(\d+)$/.exec(location.hash);
+  if (m && $('#dia' + m[1])) abrir = +m[1];
+  if (abrir !== null) abrirDia(abrir);
+  if (m) setTimeout(() => rolarAte($('#dia' + m[1])), 60);
+}
+const semFoto = d => `<span class="faixa-foto sem-foto" aria-hidden="true"><span>${esc(d.titulo)}</span></span>`;
+function abrirDia(n) {
+  $$('.dia').forEach(el => {
+    const sim = String(el.dataset.n) === String(n);
+    el.classList.toggle('aberto', sim);
+    $('.faixa', el).setAttribute('aria-expanded', String(sim));
+    $('.dia-corpo', el).inert = !sim;
+  });
+}
+function rolarAte(el) { if (el) el.scrollIntoView({behavior: reduzMov() ? 'auto' : 'smooth', block: 'start'}); }
+function alternarDia(n) {
+  const el = $('#dia' + n);
+  if (el.classList.contains('aberto')) { abrirDia(null); return; }
+  abrirDia(n);
+  setTimeout(() => {
+    const r = el.getBoundingClientRect();
+    if (r.top < 0 || r.top > innerHeight * .55) rolarAte(el);
+  }, reduzMov() ? 0 : 300);
+}
+
+// ---------- horários ----------
+function desenharHorarios() {
+  const h = hoje();
+  const grupos = [];
+  AG.forEach(a => { let g = grupos.find(x => x.k === a.k); if (!g) grupos.push(g = {k: a.k, data: ymd(a.t), itens: []}); g.itens.push(a); });
+  $('#lista-horarios').innerHTML = grupos.map(g => `<div class="card data-card"><h3 class="data-tit${g.data === h ? ' hoje' : ''}">${rotData(g.data)}`
+    + `${g.data === h ? '<span class="tag">hoje</span>' : ''}</h3><ul class="ag-lista">${g.itens.map(a => itemAg(a, true)).join('')}</ul></div>`).join('');
+}
+
+// ---------- nosso mapa, perto do hotel, úteis e rodapé ----------
+function desenharMapa() {
+  const mid = (C.mymaps_mid || '').trim();
+  if (!mid) return;
+  const s = document.createElement('section');
+  s.className = 'secao'; s.id = 'mapa'; s.setAttribute('aria-labelledby', 't-mapa');
+  s.innerHTML = `<h2 id="t-mapa">Nosso mapa</h2><a class="mapa" href="https://www.google.com/maps/d/viewer?mid=${encodeURIComponent(mid)}" target="_blank" rel="noopener">`
+    + `<span class="mapa-ic">${ic('mapa')}</span><span><span class="mapa-tit">Nosso mapa de ${esc(C.cidade)}</span><span class="mapa-sub" id="mapa-sub"></span></span>`
+    + `${ic('externo')}<svg class="ic mapa-fundo" aria-hidden="true"><use href="#i-mapa"/></svg></a>`;
+  $('#perto').before(s);
+  rede();
+}
+function rede() { const s = $('#mapa-sub'); if (s) s.textContent = navigator.onLine ? 'Todos os lugares do roteiro, no Google' : 'Abre com internet'; }
+const icPerto = t => /pub|bar|beber|taberna|vinho|cerve/i.test(t) ? 'copo' : /caf/i.test(t) ? 'cafe' : 'reserva';
+function desenharPerto() {
+  const lista = D.perto || [];
+  $('#perto').hidden = !lista.length;
+  $('#lista-perto').innerHTML = lista.map(p => `<li><button type="button" class="linha" data-poi="${esc(p.nome)}"><span class="circ">${ic(icPerto(p.tipo))}</span>`
+    + `<span><span class="linha-nome">${esc(p.nome)}</span><span class="linha-sub">${esc(p.tipo)} · ${distTxt(p.dist_m / 1000)}</span></span>${ic('seta', 'seta-l')}</button></li>`).join('');
+}
+const motoristaHotel = () => (U.motorista || []).find(m => m.rotulo === 'Hotel') || {rotulo: 'Hotel', nome_local: H.nome_local || H.nome, endereco: H.endereco};
+function desenharUteis() {
+  const c = [];
+  const telTxt = (H.telefone || '').split('(')[0].trim(), telObs = (H.telefone || '').slice(telTxt.length).trim();
+  const tel = telTxt.replace(/[^\d+]/g, '');
+  c.push(`<article class="card card-u"><h3>${ic('hotel')}Hotel</h3><p class="hotel-nome">${esc(H.nome)}</p>`
+    + (H.nome_local && H.nome_local !== H.nome ? `<p class="suave">${esc(H.nome_local)}</p>` : '')
+    + `<ul class="info"><li>${ic('pin')}<span>${esc(H.endereco)}</span></li>`
+    + (H.telefone ? `<li>${ic('telefone')}<span>${tel.replace(/\D/g, '').length >= 8 ? `<a href="tel:${esc(tel)}">${esc(telTxt)}</a>` : esc(telTxt)}`
+      + `${telObs ? ` <span class="suave">${esc(telObs)}</span>` : ''}</span></li>` : '')
+    + `<li>${ic('relogio')}<span>Check-in ${esc(H.checkin)} · check-out ${esc(H.checkout)}</span></li>`
+    + (H.cafe ? `<li>${ic('cafe')}<span>Café da manhã: ${esc(H.cafe)}</span></li>` : '')
+    + (H.metro ? `<li>${ic('trem')}<span>Metrô: ${esc(H.metro)}</span></li>` : '')
+    + `</ul><div class="botoes">${botaoMaps(H.nome)}<button type="button" class="btn btn-sec" data-motorista="hotel">${ic('carro')}Mostrar ao motorista</button></div></article>`);
+  const outros = (U.motorista || []).map((m, i) => [m, i]).filter(([m]) => m.rotulo !== 'Hotel');
+  if ((U.transporte || []).length || outros.length) c.push(`<article class="card card-u"><h3>${ic('rota')}Para se locomover</h3>`
+    + `<ul class="marcadores">${(U.transporte || []).map(t => `<li>${esc(t)}</li>`).join('')}</ul>`
+    + (outros.length ? `<div class="botoes">${outros.map(([m, i]) => `<button type="button" class="btn btn-sec" data-motorista="${i}">${ic('carro')}Mostrar ao motorista: ${esc(m.rotulo)}</button>`).join('')}</div>` : '')
+    + '</article>');
+  if ((U.emergencia || []).length) c.push(`<article class="card card-u"><h3>${ic('sirene')}Emergência</h3><ul class="emerg">`
+    + U.emergencia.map(e => `<li><a href="tel:${esc(e.numero)}"><span class="num">${esc(e.numero)}</span><span>${esc(e.rotulo)}</span>${ic('telefone')}</a></li>`).join('') + '</ul></article>');
+  if (U.clima && U.clima.texto) c.push(`<article class="card card-u"><h3>${ic('nuvem')}Clima esperado</h3><p>${esc(U.clima.texto)}</p>`
+    + (U.clima.fonte ? `<p class="fonte">Fonte: ${esc(U.clima.fonte)}</p>` : '') + '</article>');
+  if ((U.bom_saber || []).length) c.push(`<article class="card card-u"><h3>${ic('dica')}Bom saber</h3><ul class="marcadores">${U.bom_saber.map(t => `<li>${esc(t)}</li>`).join('')}</ul></article>`);
+  $('#lista-uteis').innerHTML = c.join('');
+}
+function desenharRodape() {
+  $('#rodape').innerHTML = `<p>Esta página não contém dados de reserva. Versão de ${esc(D.versao)}.</p>${D.exemplo ? '<span class="selo">EXEMPLO</span>' : ''}`;
+}
+
+// ---------- folhas ----------
+const folha = $('#folha'), folhaTit = $('#folha-tit'), folhaCorpo = $('#folha-corpo');
+let origem = null, indoAoMotorista = false;
+function abrirFolha(tipo, titulo, html, de) {
+  if (!folha.open) origem = de || document.activeElement;
+  folha.dataset.tipo = tipo;
+  folhaTit.textContent = titulo;
+  folhaCorpo.innerHTML = html;
+  folhaCorpo.scrollTop = 0;
+  if (!folha.open) folha.showModal();
+  folhaTit.focus({preventScroll: true});
+  estados();
+}
+folha.addEventListener('close', () => {   // o evento chega depois de close(): o foco volta aqui
+  const o = origem;
+  origem = null;
+  if (indoAoMotorista) { indoAoMotorista = false; return; }
+  if (o && o.isConnected) o.focus({preventScroll: true});
+});
+folha.addEventListener('click', e => {
+  if (e.target !== folha) return;
+  const r = folha.getBoundingClientRect();
+  if (e.clientY < r.top || e.clientY > r.bottom || e.clientX < r.left || e.clientX > r.right) folha.close();
+});
+$('#folha-fechar').addEventListener('click', () => folha.close());
+
+function folhaLugar(nome, de) {
+  const p = POI[nome];
+  if (!p) { console.error('Lugar não encontrado:', nome); return; }
+  const tags = [];
+  if (p.imperdivel) tags.push(`<span class="tag tag-imp">${ic('estrela')}Imperdível</span>`);
+  if (p.tipo) tags.push(`<span class="tag tag-neutra">${esc(p.tipo)}</span>`);
+  if (p.dia !== null && p.dia !== undefined) tags.push(`<span class="tag tag-neutra">Dia ${p.dia}</span>`);
+  const info = [];
+  if (typeof p.dist_hotel_km === 'number') info.push(`<li>${ic('pin')}<span>a ${distTxt(p.dist_hotel_km)} do hotel</span></li>`);
+  if (p.funcionamento) info.push(`<li>${ic('relogio')}<span>${esc(p.funcionamento)}</span></li>`);
+  if (p.custo) info.push(`<li>${ic('euro')}<span>${/^gr[áa]tis$/i.test(p.custo) ? 'Grátis' : 'Custo: ' + esc(p.custo)}</span></li>`);
+  if (p.endereco_local) info.push(`<li>${ic('mapa')}<span>${esc(p.endereco_local)}</span></li>`);
+  abrirFolha('lugar', p.nome, `<div class="tags">${tags.join('')}</div>`
+    + (p.nome_local && p.nome_local !== p.nome ? `<p class="suave">${esc(p.nome_local)}</p>` : '')
+    + (p.observacao ? `<p class="nota-caixa">${ic('dica')}<span>${esc(p.observacao)}</span></p>` : '')
+    + (info.length ? `<ul class="info">${info.join('')}</ul>` : '')
+    + `<div class="botoes">${botaoMaps(nome)}<button type="button" class="btn btn-sec" data-motorista-poi="${esc(nome)}">${ic('carro')}Mostrar ao motorista</button></div>`, de);
+}
+function folhaCompromisso(i, de) {
+  const a = AG[i];
+  if (!a) return;
+  const local = a.local || (a.tipo === 'hotel' ? H.nome : '');
+  const p = POI[local];
+  const end = p ? p.endereco_local : ehHotel(local) ? H.endereco : '';
+  abrirFolha('compromisso', a.l, `<p class="comp-tipo t-${a.tipo}">${ic(icTipo(a))}${rotTipo(a)}</p>`
+    + `<p class="comp-quando"><small>${rotData(ymd(a.t))}</small>${hhmm(a.t)}${a.tz ? ` <small>${esc(a.tz)}</small>` : ''}</p>`
+    + `<p class="comp-falta" data-falta="${esc(a.t)}"></p>`
+    + (a.d ? `<p>${esc(a.d)}</p>` : '')
+    + `<div class="tags">${tagsSituacao(a)}</div>`
+    + (local ? `<div class="comp-local"><p class="sub-tit">${ic('pin')}Local</p><b>${esc(nomeDoLocal(local))}</b>${end ? `<span class="suave">${esc(end)}</span>` : ''}`
+      + `<div class="botoes">${botaoMaps(local)}</div></div>` : ''), de);
+}
+function folhaDeslocamento(id, de) {
+  const f = DESL[id];
+  if (!f) { console.error('Deslocamento não encontrado:', id); return; }
+  const voo = f.modo === 'voo';
+  const item = AG.find(a => a.fl === id);
+  const lt = (f.linha_do_tempo || []).map(p => {
+    if (p.tipo === 'parada') return `<li><span class="lt-hora">${hhmm(p.hora)}</span><span class="lt-pt"></span><div class="lt-info"><b>${esc(p.local)}</b>`
+      + `<span class="lt-data">${rotData(ymd(p.hora))}${p.tz ? ' · ' + esc(p.tz) : ''}</span>${p.detalhe ? `<span class="lt-det">${esc(p.detalhe)}</span>` : ''}</div></li>`;
+    if (p.tipo === 'conexao') return `<li class="lt-trecho"><span></span><span></span><div class="lt-info">${ic('relogio')}<span>Conexão em ${esc(p.local)}${p.espera ? ' · ' + esc(p.espera) : ''}</span></div></li>`;
+    return `<li class="lt-trecho"><span></span><span></span><div class="lt-info">${ic(voo ? 'voo' : 'trem')}<span>${esc(p.texto)}</span></div></li>`;
+  }).join('');
+  const org = [`<li><span class="org-rot">Bagagem</span>${esc(f.bagagem)}</li>`];
+  if (f.assentos) org.push(`<li><span class="org-rot">Assentos</span>${esc(f.assentos)}</li>`);
+  if (f.chegar_ate) org.push(`<li><span class="org-rot">${voo ? 'Chegar ao aeroporto até' : 'Chegar à estação até'}</span>${esc(f.chegar_ate)}</li>`);
+  const enc = item && f.sentido === 'saida' ? AG.filter(a => a.tipo === 'encontro' && ymd(a.t) === ymd(item.t) && a.ms <= item.ms).pop() : null;
+  if (enc) org.push(`<li><span class="org-rot">Encontro antes da saída</span>${hhmm(enc.t)} · ${esc(nomeDoLocal(enc.local))}</li>`);
+  org.push(`<li><span class="org-rot">Situação</span>${f.status === 'a comprar' ? '<span class="tag tag-warn">Bilhete a comprar</span>' : `<span class="tag tag-ok">${ic('check')}Bilhete comprado</span>`}</li>`);
+  abrirFolha('deslocamento', (f.sentido === 'chegada' ? 'Chegada a ' : 'Saída de ') + C.cidade,
+    `<p class="suave">${esc(f.operadora)} · ${esc(f.trecho)}</p>`
+    + `<div class="tags">${(f.resumo || []).map(r => `<span class="tag tag-neutra">${esc(r)}</span>`).join('')}</div>`
+    + `<ol class="lt">${lt}</ol><ul class="org">${org.join('')}</ul>`
+    + (f.notas || []).map(n => `<div class="nota-caixa">${ic(f.sentido === 'chegada' ? 'hotel' : 'rota')}<div><b>${esc(n.rotulo)}</b><p>${esc(n.texto)}</p></div></div>`).join(''), de);
+}
+function folhaMais(n, de) {
+  const d = D.dias.find(x => String(x.n) === String(n));
+  if (!d) return;
+  const s = [];
+  if (d.como_ir) s.push(`<div><p class="sub-tit">${ic('rota')}Como ir</p><p>${esc(d.como_ir)}</p></div>`);
+  if (d.pausa) s.push(`<div><p class="sub-tit">${ic('cafe')}Pausa longa</p><p>${esc(d.pausa)}</p></div>`);
+  if ((d.se_der_tempo || []).length) s.push(`<div><p class="sub-tit">${ic('relogio')}Se der tempo</p><div class="pilulas">${d.se_der_tempo.map(x => pilula(x, 'tempo')).join('')}</div></div>`);
+  if ((d.se_passar_perto || []).length) s.push(`<div><p class="sub-tit">${ic('pin')}Se passar perto</p><div class="pilulas">${d.se_passar_perto.map(x => pilula(x, 'perto')).join('')}</div></div>`);
+  const pb = d.plano_b || {};
+  if (pb.cortar || pb.trocar) {
+    const chuva = (pb.trocar || '').replace(/^se chover[,:]?\s*/i, '');
+    s.push(`<div><p class="sub-tit">${ic('chuva')}Plano B</p><ul class="info">`
+      + (pb.cortar ? `<li>${ic('tesoura')}<span><b>Cortar primeiro:</b> ${esc(pb.cortar)}</span></li>` : '')
+      + (chuva ? `<li>${ic('chuva')}<span><b>Se chover:</b> ${esc(chuva.charAt(0).toUpperCase() + chuva.slice(1))}</span></li>` : '')
+      + '</ul></div>');
+  }
+  abrirFolha('mais', `Dia ${d.n} · ${d.titulo}`, s.join(''), de);
+}
+const REGRAS = [
+  ['Um bairro por dia.', 'Cada dia gira em torno de uma região da cidade. Metrô ou carro só para ir e voltar; lá dentro, a pé.'],
+  ['Imperdíveis primeiro.', 'Depois, o que der tempo; e, se passar na porta, o resto.'],
+  ['Hora marcada só para o que tem hora.', 'Encontros, ingressos, trens e reservas. O resto se ajusta no dia.'],
+  ['Uma pausa longa por dia.', 'Café, almoço sem pressa ou descanso no hotel.'],
+  ['Plano B.', 'Cada dia diz o que cortar primeiro e com qual dia trocar se chover.'],
+  ['Perto do hotel.', 'Lugares para comer e beber em qualquer noite.'],
+];
+const folhaInfo = de => abrirFolha('info', 'Como funciona o roteiro de órbitas',
+  `<ol class="regras">${REGRAS.map(([t, x]) => `<li><span><b>${t}</b>${x}</span></li>`).join('')}</ol>`, de);
+
+// ---------- mostrar ao motorista ----------
+const mot = $('#motorista');
+let motOrigem = null;
+function mostrarMotorista(nome, endereco, de) {
+  motOrigem = folha.open ? origem : de;
+  if (folha.open) { indoAoMotorista = true; folha.close(); }
+  $('#m-nome').textContent = nome;
+  $('#m-end').textContent = endereco || '';
+  mot.hidden = false;
+  document.documentElement.classList.add('travado');
+  mot.focus();
+}
+function fecharMotorista() {
+  mot.hidden = true;
+  document.documentElement.classList.remove('travado');
+  if (motOrigem && motOrigem.isConnected) motOrigem.focus({preventScroll: true});
+  motOrigem = null;
+}
+mot.addEventListener('click', fecharMotorista);
+mot.addEventListener('keydown', e => { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fecharMotorista(); } });
+
+// ---------- toques ----------
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-poi],[data-ag],[data-fl],[data-mais],[data-dia],[data-motorista],[data-motorista-poi]');
+  if (!el) return;
+  const ds = el.dataset;
+  if (ds.dia !== undefined) alternarDia(ds.dia);
+  else if (ds.poi !== undefined) folhaLugar(ds.poi, el);
+  else if (ds.ag !== undefined) folhaCompromisso(+ds.ag, el);
+  else if (ds.fl !== undefined) folhaDeslocamento(ds.fl, el);
+  else if (ds.mais !== undefined) folhaMais(ds.mais, el);
+  else if (ds.motoristaPoi !== undefined) { const p = POI[ds.motoristaPoi]; if (p) mostrarMotorista(p.nome_local || p.nome, p.endereco_local, el); }
+  else if (ds.motorista !== undefined) {
+    const m = ds.motorista === 'hotel' ? motoristaHotel() : (U.motorista || [])[+ds.motorista];
+    if (m) mostrarMotorista(m.nome_local, m.endereco, el);
+  }
+});
+$('#btn-info').addEventListener('click', e => folhaInfo(e.currentTarget));
+window.addEventListener('hashchange', () => {
+  const m = /^#dia(\d+)$/.exec(location.hash);
+  if (m && $('#dia' + m[1])) { abrirDia(+m[1]); rolarAte($('#dia' + m[1])); }
+});
+
+// ---------- tema ----------
+const raiz = document.documentElement;
+const escuroSistema = matchMedia('(prefers-color-scheme: dark)');
+const ehEscuro = () => raiz.dataset.theme ? raiz.dataset.theme === 'dark' : escuroSistema.matches;
+const btnTema = $('#btn-tema');
+function sincronizarTema() {
+  btnTema.querySelector('use').setAttribute('href', ehEscuro() ? '#i-sol' : '#i-lua');
+  btnTema.setAttribute('aria-label', ehEscuro() ? 'Mudar para o tema claro' : 'Mudar para o tema escuro');
+}
+btnTema.addEventListener('click', () => {
+  const t = ehEscuro() ? 'light' : 'dark';
+  raiz.dataset.theme = t;
+  try { localStorage.setItem('tema', t); } catch (e) {}
+  sincronizarTema();
+});
+escuroSistema.addEventListener('change', sincronizarTema);
+
+// ---------- barra inferior, bordas e rolagem ----------
+const barra = $('#barra'), abertura = $('#inicio'), conteudo = $('#conteudo');
+function medirBarra() {
+  barra.classList.remove('duas');
+  if ($$('a span', barra).some(s => s.scrollWidth > s.clientWidth + 1)) barra.classList.add('duas');
+  const r = barra.getBoundingClientRect();
+  raiz.style.setProperty('--barra-h', Math.ceil(innerHeight - r.top) + 'px');
+}
+function aoRolar() {
+  const ab = abertura.getBoundingClientRect(), br = barra.getBoundingClientRect();
+  const sobreFoto = ab.bottom > br.top + br.height / 2;
+  barra.classList.toggle('sobre-foto', sobreFoto);
+  barra.classList.toggle('sobre-pagina', !sobreFoto);
+  document.body.classList.toggle('barra-na-folha', !sobreFoto);
+  document.body.classList.toggle('na-folha', conteudo.getBoundingClientRect().top < 4);
+}
+let rafRolar = 0;
+addEventListener('scroll', () => { if (!rafRolar) rafRolar = requestAnimationFrame(() => { rafRolar = 0; aoRolar(); }); }, {passive: true});
+addEventListener('resize', () => { medirBarra(); aoRolar(); });
+if ('ResizeObserver' in window) new ResizeObserver(() => medirBarra()).observe(barra);
+function ativarNav(id) { $$('a', barra).forEach(a => { if (a.dataset.nav === id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); }); }
+function observarSecoes() {
+  ativarNav('inicio');
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting && ['inicio', 'dias', 'horarios', 'uteis'].includes(e.target.id)) ativarNav(e.target.id);
+  }), {rootMargin: '-40% 0px -55% 0px'});
+  ['inicio', 'dias', 'horarios', 'uteis'].forEach(id => { const s = $('#' + id); if (s) io.observe(s); });
+}
+
+// ---------- capa e início ----------
+const capa = $('#capa');
+if (capa) capa.addEventListener('error', () => { capa.hidden = true; });
+addEventListener('online', rede);
+addEventListener('offline', rede);
+tentar('tema', sincronizarTema);
+tentar('relógios', relogios);
+tentar('dias', desenharDias);
+tentar('horários', desenharHorarios);
+tentar('mapa', desenharMapa);
+tentar('perto do hotel', desenharPerto);
+tentar('úteis', desenharUteis);
+tentar('rodapé', desenharRodape);
+tentar('próximo compromisso', proximo);
+tentar('estados', estados);
+tentar('barra', () => { medirBarra(); aoRolar(); observarSecoes(); });
+setInterval(() => { tentar('relógios', relogios); tentar('próximo compromisso', proximo); tentar('estados', estados); }, 30000);
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname))) {
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+})();
+</script>
+</body>
+</html>
