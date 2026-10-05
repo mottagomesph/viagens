@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#EEF0EF">
+<script>
+// aplica o tema escolhido antes de desenhar a página (preferência guardada neste aparelho)
+(function(){ try { var t = localStorage.getItem('tema'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {} })();
+</script>
+<meta name="robots" content="noindex, nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Furong Town">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>Furong Town em Órbitas</title>
+<style>
+/* fonte Chelsea recortada só com as letras do nome da cidade, embutida em base64 */
+@font-face{font-family:'Chelsea';src:url(data:font/woff2;base64,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) format('woff2');font-display:block}
+:root{
+  color-scheme:light;
+  --bg:#EEF0EF; --card:#FFFFFF; --ink:#16191B; --soft:#4A5256; --muted:#8A9296; --line:#E3E6E6; --fill:#F4F5F5;
+  --pill:#1D2023; --pillink:#FFFFFF;
+  --map:#EAEEEE; --water:#C3D6DC; --accent:#1E9E96; --accent-ink:#0E7069; --accent-deep:#0E7069; --hard:#C2412F; --flight:#2E62A3;
+  --c0:#56666F; --c1:#B23A2E; --c2:#2E7A5E; --c3:#A26F0C; --c4:#2D5C96;
+  --sh:0 1px 2px rgba(20,28,30,.05),0 8px 24px rgba(20,28,30,.07);
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --bg:#0D1113; --card:#171C1F; --ink:#EDF1F2; --soft:#B6C0C4; --muted:#7F8B90; --line:#252C30; --fill:#1E2528;
+  --pill:#F1F3F3; --pillink:#15181A;
+  --map:#141B1E; --water:#1F3D49; --accent:#1E9E96; --accent-ink:#5FD3CA; --accent-deep:#0E7069; --hard:#EC7362; --flight:#7DA7E0;
+  --c0:#8C9CA5; --c1:#DD6656; --c2:#4FAA86; --c3:#D39E38; --c4:#6F9BD8;
+  --sh:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1113; --card:#171C1F; --ink:#EDF1F2; --soft:#B6C0C4; --muted:#7F8B90; --line:#252C30; --fill:#1E2528;
+  --pill:#F1F3F3; --pillink:#15181A;
+  --map:#141B1E; --water:#1F3D49; --accent:#1E9E96; --accent-ink:#5FD3CA; --accent-deep:#0E7069; --hard:#EC7362; --flight:#7DA7E0;
+  --c0:#8C9CA5; --c1:#DD6656; --c2:#4FAA86; --c3:#D39E38; --c4:#6F9BD8;
+  --sh:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+}
+/* texto grande: no iPhone, seguir o tamanho de texto dos Ajustes; todo o resto da página é em rem */
+@supports (font:-apple-system-body){@media (hover:none) and (pointer:coarse){html{font:-apple-system-body}}}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:16px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.5 var(--sans);letter-spacing:-.005em;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 112px)}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.15;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit}
+a{color:inherit}
+time,.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:560px;margin:0 auto;padding-inline:18px;padding-top:calc(env(safe-area-inset-top,0px) + 14px)}
+.k{font-size:.78rem;color:var(--muted);font-weight:500}
+.lbl{font-size:.76rem;color:var(--muted);font-weight:600;margin-bottom:2px}
+
+/* photo slot: photo if present, otherwise colored panel with the place name in Chinese */
+.ph{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 85% 10%,color-mix(in srgb,#fff 22%,transparent),transparent 55%),
+  linear-gradient(155deg,color-mix(in srgb,var(--pc) 70%,#000) 0%,var(--pc) 60%,color-mix(in srgb,var(--pc) 75%,#fff) 100%)}
+.ph::before{content:attr(data-g);position:absolute;right:-.06em;bottom:-.18em;font-weight:800;font-size:5.5rem;line-height:1;color:#fff;opacity:.16;white-space:nowrap;letter-spacing:-.04em}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+/* hero: foto da cidade + título */
+.hero{position:relative;margin-top:4px;border-radius:30px;overflow:hidden;box-shadow:var(--sh);min-height:330px;display:flex;flex-direction:column;justify-content:space-between;color:#fff}
+.hero-img{position:absolute;inset:0}
+.hero-img::before{font-size:9rem}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 45%,rgba(0,0,0,.7) 100%)}
+.hero-bar{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;padding:14px}
+.hero-c{position:relative;z-index:1;padding:20px;display:grid;gap:4px}
+.hero h1{display:grid;gap:6px;font-weight:400;letter-spacing:0;line-height:1}
+.hero h1 .bv{font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.88)}
+.hero h1 .cid{font-family:Chelsea,var(--sans);font-size:min(3.7rem,14.5vw);white-space:nowrap;line-height:.95;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5),0 2px 20px rgba(0,0,0,.45)}
+.hero h1 .cid::after{content:"";display:block;width:56px;height:4px;border-radius:2px;background:var(--accent);margin-top:10px;box-shadow:0 1px 6px rgba(0,0,0,.35)}
+.hero .k{color:rgba(255,255,255,.85)}
+.ibtn{width:42px;height:42px;border-radius:50%;border:0;display:grid;place-items:center;color:#fff;background:rgba(20,22,24,.4);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);cursor:pointer}
+.ibtn svg{width:22px;height:22px}
+.hbtns{display:flex;gap:8px;align-items:center}
+.ibtn.sm{width:34px;height:34px;opacity:.85}
+.ibtn.sm svg{width:17px;height:17px}
+.i-sun{display:none}
+:root[data-theme="dark"] .i-sun{display:block}:root[data-theme="dark"] .i-moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .i-sun{display:block}:root:not([data-theme="light"]) .i-moon{display:none}}
+.clock{display:grid;gap:1px;border-radius:14px;padding:6px 11px;font-size:.7rem;color:rgba(255,255,255,.8);text-align:right;background:rgba(20,22,24,.4);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.clock b{font-variant-numeric:tabular-nums;color:#fff;font-size:.86rem;font-weight:600;margin-left:6px}
+
+/* próximo compromisso, sem foto */
+.next{margin-top:12px;background:var(--card);border-radius:24px;box-shadow:var(--sh);padding:16px;display:grid;gap:4px}
+.next-h{display:flex;align-items:center;gap:8px}
+.next-ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.next-ic svg{width:17px;height:17px}
+.next h2{font-size:1.3rem;margin-top:4px}
+.next .cd{font-size:1.55rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;color:var(--accent-ink);font-variant-numeric:tabular-nums;margin-top:4px}
+.next .cdx{font-size:.86rem;color:var(--soft);font-variant-numeric:tabular-nums}
+.next .cd:empty,.next .cdx:empty{display:none}
+.pillbtn{margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--pill);color:var(--pillink);border-radius:999px;padding:6px 6px 6px 20px;text-decoration:none;font-weight:600;font-size:.95rem}
+.pillbtn .round{background:var(--pillink);color:var(--pill)}
+.round{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;color:#16191B;display:grid;place-items:center}
+.round svg{width:20px;height:20px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tags{margin-top:8px}
+.tag{color:#fff;font-size:.74rem;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* section heads */
+.sec{padding-top:44px}
+.sh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.sh h2{font-size:1.12rem;font-weight:650;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.sh h2::before{content:"";flex:none;width:4px;height:1.05em;border-radius:2px;background:var(--accent)}
+.sh a{font-size:.88rem;font-weight:600;color:var(--accent-ink);text-decoration:none}
+.sub{color:var(--soft);font-size:.92rem;margin:-4px 0 12px}
+
+/* carousel */
+.rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-18px;padding:4px 18px 14px;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.pcard{flex:none;width:72%;max-width:300px;scroll-snap-align:start;background:var(--card);border-radius:24px;padding:8px;box-shadow:var(--sh);text-decoration:none;display:grid;gap:10px}
+.pc-img{height:170px;border-radius:18px}
+.pc-body{padding:0 8px 6px;display:grid;gap:3px}
+.pc-body h3{font-size:1.05rem}
+.pc-foot{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.meta{font-size:.82rem;color:var(--muted)}
+.go{width:38px;height:38px;border-radius:50%;background:var(--pill);color:var(--pillink);display:grid;place-items:center}
+.go svg{width:18px;height:18px}
+
+/* accordion */
+.accs{display:grid;gap:10px}
+.acc{background:var(--card);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.acc summary{list-style:none;display:grid;grid-template-columns:64px 1fr 24px;gap:12px;align-items:center;padding:10px 14px 10px 10px;cursor:pointer}
+.acc summary::-webkit-details-marker{display:none}
+.thumb{width:64px;height:64px;border-radius:16px}
+.thumb::before{font-size:2.1rem}
+.acc-t h3{font-size:1rem}
+.acc-t .k{display:flex;align-items:center;gap:6px}
+.acc-t .k::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dc)}
+.acc.today .acc-t .k::after{content:"hoje";font-size:.68rem;font-weight:700;color:#fff;background:var(--dc);border-radius:999px;padding:1px 7px}
+.chev{width:22px;height:22px;color:var(--muted);transition:transform .2s}
+.acc[open] .chev{transform:rotate(180deg)}
+.acc-b{padding:4px 16px 18px;display:grid;gap:14px}
+.polo{font-size:.95rem}
+.polo span{display:block;font-size:.76rem;color:var(--muted);font-weight:600}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.facts div{background:var(--fill);border-radius:14px;padding:8px 12px;display:grid}
+.facts .w{grid-column:1/-1}
+.facts span{font-size:.72rem;color:var(--muted)}
+.facts b{font-size:.92rem}
+.tlbox{background:var(--fill);border-radius:16px;padding:12px 14px}
+.tl{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:6px;font-size:.92rem}
+.tl li{display:grid;grid-template-columns:3.2rem 1fr;gap:8px}
+.tl time{font-weight:600}
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.flow li{background:var(--fill);border-radius:16px;padding:10px 14px}
+.flow p:last-child{font-size:.95rem}
+.pub{border:1.5px dashed var(--line);border-radius:16px;padding:10px 14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 12px;font-size:.87rem;cursor:pointer;min-height:36px;text-align:left}
+.chip .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--dc)}
+.chip.o-a{background:var(--pill);color:var(--pillink);border-color:var(--pill);font-weight:600}
+.chip.o-a .dot{background:var(--dc);box-shadow:0 0 0 2px var(--pill)}
+.chip.o-o{color:var(--soft)}
+.chip.o-o .dot{background:transparent;border:1.6px solid var(--dc)}
+.chip:active{transform:scale(.97)}
+.valve{background:color-mix(in srgb,var(--dc) 10%,var(--card));border-radius:16px;padding:10px 14px}
+.valve p:last-child{font-size:.93rem;color:var(--soft)}
+
+/* voos e trens com bilhete: cartão de itinerário com linha do tempo */
+.fl{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:16px;display:grid;gap:14px;margin-bottom:10px}
+.fl-h h3{font-size:1.15rem;margin-top:2px}
+.fl-h .k{display:flex;align-items:center;gap:6px}
+.fl-h .k svg{width:1.2em;height:1.2em;flex:none;color:var(--flight)}
+.fl-sum{display:flex;flex-wrap:wrap;gap:6px}
+.fl-sum span{font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--fill);color:var(--soft);font-variant-numeric:tabular-nums}
+.fl-sum span:first-child{background:color-mix(in srgb,var(--flight) 14%,transparent);color:var(--ink)}
+.fr{list-style:none;margin:0;padding:0}
+.fr li{display:grid;grid-template-columns:3.3rem 14px 1fr;column-gap:10px;--dy:.74rem}
+.fr .r{background:linear-gradient(var(--flight),var(--flight)) center/2px 100% no-repeat;position:relative}
+.fr .s .r::before{content:"";position:absolute;left:50%;top:calc(var(--dy) - 6px);width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--card);border:2.5px solid var(--flight);box-sizing:border-box}
+.fr .s:first-child .r{background-size:2px calc(100% - var(--dy));background-position:center bottom}
+.fr .s:last-child .r{background-size:2px var(--dy);background-position:center top}
+.fr .c .r{background:repeating-linear-gradient(var(--muted) 0 4px,transparent 4px 8px) center/2px 100% no-repeat}
+.fr .t{font-weight:700;font-size:1.05rem;line-height:1.4;font-variant-numeric:tabular-nums}
+.fr .s .x{padding-bottom:2px}
+.fr .s .x b{font-size:.98rem}
+.fr .s .x small{display:block;font-size:.78rem;color:var(--muted);line-height:1.35}
+.fr .g .x{font-size:.82rem;color:var(--soft);padding:8px 0 12px;display:flex;align-items:center;gap:6px}
+.fr .g .x svg{flex:none;width:1.15em;height:1.15em;color:var(--flight)}
+.fr .c .x{padding:8px 0 12px}
+.fr .c .x span{display:inline-block;font-size:.84rem;font-weight:600;background:var(--fill);border-radius:12px;padding:6px 10px}
+.fl .facts{margin-top:-2px}
+.facts .w p{font-size:.9rem;line-height:1.45;margin-top:1px}
+
+#flsheet .fl{box-shadow:none;padding:0;margin:0;background:none}
+.flbtn{display:inline-flex;align-items:center;gap:4px;margin-top:8px;min-height:34px;padding:6px 10px 6px 12px;border:0;border-radius:999px;background:color-mix(in srgb,var(--flight) 13%,transparent);color:var(--flight);font-size:.82rem;font-weight:650;cursor:pointer}
+.flbtn svg{width:1.15em;height:1.15em;flex:none}
+.flbtn:active{transform:scale(.97)}
+
+/* agenda */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.8rem;color:var(--soft);margin-bottom:12px}
+.legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;background:var(--k)}
+.agday{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:12px 16px;margin-bottom:10px}
+.agh{font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding-bottom:4px}
+.agday.today .agh{color:var(--accent-ink)}
+.ag{list-style:none;margin:0;padding:0}
+.ag li{display:grid;grid-template-columns:3.7rem 1fr;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.ag time{font-size:.98rem;font-weight:600}
+.ag time small{display:block;font-size:.64rem;font-weight:500;color:var(--muted);line-height:1.2}
+.ag b{font-weight:600;font-size:.96rem}
+.ag p{color:color-mix(in srgb,var(--soft) 78%,var(--muted));font-size:.86rem;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.ag li.more{cursor:pointer}
+.ag li.more.x p{-webkit-line-clamp:unset;display:block}
+.t-hard time{color:var(--hard)}
+.t-flight time{color:var(--flight)}
+.t-soft time{color:var(--muted)}
+.ag li.past{opacity:.4}
+.ag li.next{background:color-mix(in srgb,var(--accent) 10%,transparent);margin-inline:-10px;padding-inline:10px;border-radius:12px;border-top-color:transparent}
+
+/* map */
+.mapbox{background:var(--card);border-radius:24px;overflow:hidden;box-shadow:var(--sh)}
+.mapbox svg{display:block;width:100%;height:auto}
+.pt{cursor:pointer}
+.mreg{font-size:26px;letter-spacing:.2em;fill:var(--muted);opacity:.5;font-family:var(--sans);font-weight:700}
+.mnum{font-family:var(--sans);font-variant-numeric:tabular-nums;font-size:22px;font-weight:600;fill:#fff}
+.mhot{font-family:var(--sans);font-size:22px;font-weight:700;fill:var(--ink)}
+.mlab{font-family:var(--sans);font-size:18px;fill:var(--muted)}
+.cap{font-size:.78rem;color:var(--muted);padding:10px 14px 14px}
+
+/* jokers */
+.jlist{background:var(--card);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.jrow{width:100%;display:flex;justify-content:space-between;gap:10px;padding:13px 16px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer;font-size:.95rem}
+.jrow:last-child{border-bottom:0}
+.jd{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.84rem;white-space:nowrap}
+
+/* useful */
+.cards{display:grid;gap:10px}
+.card{background:var(--card);border-radius:22px;box-shadow:var(--sh);padding:16px;display:grid;gap:6px}
+.card .cnbig{font-size:1.3rem;line-height:1.35;font-weight:700}
+.card p{color:var(--soft);font-size:.9rem}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--fill);color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:600;cursor:pointer}
+.btn.pri{background:var(--pill);color:var(--pillink);border-color:var(--pill)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.92rem;margin:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.foot{margin-top:22px;font-size:.76rem;color:var(--muted)}
+
+/* desfoque progressivo na base da tela (efeito de borda do iOS): camadas com desfoque crescente, cada uma mascarada por um degradê */
+.edge{position:fixed;left:0;right:0;bottom:0;height:calc(env(safe-area-inset-bottom,0px) + 118px);z-index:29;pointer-events:none}
+.edge i{position:absolute;inset:0}
+.edge i:nth-child(1){-webkit-backdrop-filter:blur(1px);backdrop-filter:blur(1px);-webkit-mask:linear-gradient(transparent 0%,#000 30%);mask:linear-gradient(transparent 0%,#000 30%)}
+.edge i:nth-child(2){-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);-webkit-mask:linear-gradient(transparent 25%,#000 55%);mask:linear-gradient(transparent 25%,#000 55%)}
+.edge i:nth-child(3){-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-mask:linear-gradient(transparent 50%,#000 80%);mask:linear-gradient(transparent 50%,#000 80%)}
+.edge::after{content:"";position:absolute;inset:0;background:linear-gradient(color-mix(in srgb,var(--bg) 0%,transparent),color-mix(in srgb,var(--bg) 70%,transparent))}
+/* bottom tab bar */
+.tabbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 14px);z-index:30;display:flex;gap:4px;background:color-mix(in srgb,var(--pill) 76%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(18px);backdrop-filter:saturate(1.4) blur(18px);border:1px solid color-mix(in srgb,var(--pillink) 10%,transparent);border-radius:999px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.tabbar a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;color:var(--pillink);opacity:.7;text-decoration:none;transition:background .2s,opacity .2s}
+.tabbar a svg{width:22px;height:22px}
+.tabbar a.on{background:var(--pillink);color:var(--pill);opacity:1}
+.tabbar a span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* info pop-up */
+dialog.pop{margin:auto;width:calc(100% - 32px);max-width:440px;max-height:85dvh;border-radius:26px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.popc{padding:18px 18px 20px;display:grid;gap:12px;overflow:auto;max-height:85dvh}
+.poph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.poph h2{font-size:1.2rem}
+.xbtn{flex:none;width:36px;height:36px;border-radius:50%;border:0;background:var(--fill);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.xbtn svg{width:18px;height:18px}
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.rules li{background:var(--fill);border-radius:14px;padding:10px 12px;display:grid;gap:2px}
+.rules b{font-size:.95rem}
+.rules span{font-size:.9rem;color:var(--soft)}
+
+/* sheet */
+dialog{border:0;padding:0;background:var(--card);color:var(--ink)}
+#sheet,#flsheet{margin:auto auto 0;width:100%;max-width:560px;max-height:88dvh;border-radius:28px 28px 0 0;background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(5,10,12,.5)}
+.sheet{padding:14px 20px calc(env(safe-area-inset-bottom,0px) + 20px);display:grid;gap:10px;overflow:auto;max-height:88dvh}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 6px}
+.sheet h2{font-size:1.4rem}
+.sheet .cnbig{font-size:1.7rem;font-weight:700;line-height:1.3}
+.stags{display:flex;flex-wrap:wrap;gap:6px}
+.stag{font-size:.74rem;padding:4px 10px;border-radius:999px;background:var(--fill);color:var(--soft);font-weight:600}
+.stag.imp{background:var(--accent-deep);color:#fff}
+.full{position:fixed;inset:0;z-index:60;background:#fff;color:#000;display:grid;place-items:center;padding:24px;text-align:center}
+.full .t{font-size:clamp(2rem,11vw,4.5rem);font-weight:800;line-height:1.25;word-break:break-word}
+.full .s{font-size:1.1rem;margin-top:18px;color:#333}
+.full .x{margin-top:28px;font-size:.9rem;color:#666}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Furong Town: endereço local nos cartões, notas das órbitas, coringas com acesso e mapa de 100 m */
+.card .cnad{font-size:1rem;line-height:1.4;font-weight:600;color:var(--ink)}
+.card .cnbig{color:var(--ink)}
+.ag .flbtn{display:flex;width:fit-content}
+.chip small{font-size:.76rem;color:var(--muted)}
+.onote{font-size:.9rem;color:var(--soft)}
+.pub.alt{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.jrow small{display:block;font-size:.78rem;color:var(--muted);margin-top:2px}
+.jrow .jd{white-space:nowrap}
+#mapa svg .mreg{font-size:34px}#mapa svg .mnum{font-size:32px}#mapa svg .mhot{font-size:30px}#mapa svg .mlab{font-size:26px}#mapa svg .mst{font-size:30px;font-weight:600;fill:var(--ink)}
+.facts small{font-size:.76rem;color:var(--soft);line-height:1.3}
+.facts .w p.tr{font-size:.92rem}
+</style>
+</head>
+<body>
+<main class="wrap" id="inicio">
+
+<section class="hero" aria-label="Furong Town em Órbitas">
+  <div class="ph hero-img" style="--pc:var(--c0)" data-g="芙蓉镇"><img data-slot="capa" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="hero-bar">
+    <div class="hbtns"><button class="ibtn" id="infoBtn" aria-label="Como funciona o roteiro de órbitas" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.6" r="1.2" fill="currentColor"/></svg></button><button class="ibtn sm" id="themeBtn" aria-label="Alternar modo claro e escuro"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button></div>
+    <div class="clock"><span>Furong<b id="ckS">--:--</b></span><span>Brasil<b id="ckB">--:--</b></span></div>
+  </div>
+  <div class="hero-c">
+    <h1><span class="bv">Bem-vindos a</span><span class="cid">Furong Town</span></h1>
+    <p class="k">5 – 7 jan · 12C Waterfall View, na vila</p>
+    <div class="tags"><span class="tag">2 noites</span><span class="tag">3 polos</span><span class="tag">5 imperdíveis</span></div>
+  </div>
+</section>
+
+<section class="next" aria-label="Próximo compromisso">
+  <div class="next-h">
+    <span class="next-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+    <p class="k" id="nowEy">Próximo compromisso</p>
+  </div>
+  <h2 id="nowT">Carregando…</h2>
+  <p class="cd" id="nowC"></p>
+  <p class="cdx" id="nowX"></p>
+  <a class="pillbtn" id="nowA" href="#horarios">Ver horários<span class="round"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+</section>
+
+<section class="sec">
+  <div class="sh"><h2>Os três polos</h2><a href="#roteiro">Ver todos</a></div>
+  <div class="rail">
+<a class="pcard" href="#dia0" data-open="dia0">
+  <div class="ph pc-img" style="--pc:var(--c0)" data-g="瀑布"><img data-slot="dia0" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="pc-body">
+    <p class="k">Dia 0 · ter 05/01</p>
+    <h3>Chegada e a cachoeira acesa</h3>
+    <div class="pc-foot"><span class="meta">Ao lado do hotel</span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  </div>
+</a>
+<a class="pcard" href="#dia1" data-open="dia1">
+  <div class="ph pc-img" style="--pc:var(--c1)" data-g="王村古街"><img data-slot="dia1" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="pc-body">
+    <p class="k">Dia 1 · qua 06/01</p>
+    <h3>A vila a pé, do pilar à ponte</h3>
+    <div class="pc-foot"><span class="meta">A pé, na vila</span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  </div>
+</a>
+<a class="pcard" href="#dia2" data-open="dia2">
+  <div class="ph pc-img" style="--pc:var(--c2)" data-g="芙蓉镇站"><img data-slot="dia2" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+  <div class="pc-body">
+    <p class="k">Dia 2 · qui 07/01</p>
+    <h3>Café e estação</h3>
+    <div class="pc-foot"><span class="meta">5,3 km · estação</span><span class="go"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+  </div>
+</a>
+  </div>
+</section>
+
+<section class="sec" id="roteiro">
+  <div class="sh"><h2>Roteiro dia a dia</h2></div>
+  <p class="sub">Furong Town é a etapa de descanso: poucos compromissos, tudo a pé e nenhum bate-e-volta. Toque em um dia para abrir; toque em um lugar para ver nome em chinês, endereço e mapa.</p>
+  <div class="accs">
+<details class="acc" id="dia0" data-key="05/01" style="--dc:var(--c0)">
+  <summary>
+    <div class="ph thumb" style="--pc:var(--c0)" data-g="瀑布"><img data-slot="dia0" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+    <div class="acc-t"><p class="k">Dia 0 · ter 05/01</p><h3>Chegada e a cachoeira acesa</h3></div>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="acc-b">
+    <p class="polo"><span>Centro de gravidade</span>Mirante da cachoeira, ao lado do hotel</p>
+    <div class="facts"><div><span>Do hotel</span><b>64 m</b></div><div><span>Raio</span><b>≈0,15 km</b></div><div class="w"><span>Transporte</span><p class="tr">Trem G6057 (provável) e carro do hotel até o portão; depois, a pé</p></div></div>
+    <div class="tlbox"><p class="lbl">Horários do dia</p><ul class="tl"><li class="t-flight"><time data-t="2027-01-05T14:45:00+08:00"></time><span>G6057 (provável) parte de Zhangjiajie Oeste</span></li><li class="t-flight"><time data-t="2027-01-05T15:08:00+08:00"></time><span>Chegada à estação Furong Town</span></li><li class="t-soft"><time data-t="2027-01-05T15:20:00+08:00"></time><span>Encontro com o motorista do hotel</span></li><li class="t-soft"><time data-t="2027-01-05T15:45:00+08:00"></time><span>Registro do ingresso no centro de visitantes</span></li><li class="t-soft"><time data-t="2027-01-05T16:00:00+08:00"></time><span>Check-in no hotel</span></li><li class="t-soft"><time data-t="2027-01-05T17:56:00+08:00"></time><span>Pôr do sol</span></li><li class="t-soft"><time data-t="2027-01-05T19:00:00+08:00"></time><span>Luzes da cachoeira</span></li></ul></div>
+    <ol class="flow"><li><p class="lbl">Tarde</p><p>Check-in sem pressa; testar aquecimento, água quente, porta da varanda e vista.</p></li><li><p class="lbl">Fim de tarde</p><p>Primeira volta curta pela Rua Hepan até o mirante da <b>Furong Waterfall</b> e o cais do Youshui River, com luz até ≈18:20.</p></li><li><p class="lbl">Noite</p><p>Jantar a 100 m no Hongyun Lou (comida caseira, até 21:00) ou no No. 1 Viewing Platform Restaurant (vista direta da queda, comida mediana, até 23:00). Depois, luzes da cachoeira da varanda.</p></li></ol>
+    <div class="pub"><p class="lbl">Pausa longa</p><p>O próprio quarto, com varanda sobre a cachoeira.</p></div><div class="pub"><p class="lbl">Pub do dia</p><p>Tianyi Bar (mesma rua, 222 m, 17:00–23:00, sem avaliações).</p></div>
+    <div class="orb"><p class="lbl">Núcleo · imperdíveis</p><div class="chips"><button class="chip o-a" data-i="1"><span class="dot"></span>Furong Waterfall</button></div></div><div class="orb"><p class="lbl">Órbita média · preferenciais</p><p class="onote">Nenhuma: a planilha não tem preferenciais.</p></div><div class="orb"><p class="lbl">Órbita externa · se passar perto</p><div class="chips"><button class="chip o-o" data-i="4"><span class="dot"></span>Youshui River (You River)</button><button class="chip o-o" data-i="16"><span class="dot"></span>No. 1 Viewing Platform Restaurant (壹號观景台餐厅)</button><button class="chip o-o" data-i="19"><span class="dot"></span>Hongyun Lou (鸿运楼)</button><button class="chip o-o" data-i="21"><span class="dot"></span>Tianyi Bar</button></div></div>
+    <div class="valve"><p class="lbl">Válvula</p><p>Com atraso do trem ou chuva, a noite fica em hotel e jantar ao lado. A cachoeira acesa se repete em 06/01.</p></div>
+  </div>
+</details>
+<details class="acc" id="dia1" data-key="06/01" style="--dc:var(--c1)">
+  <summary>
+    <div class="ph thumb" style="--pc:var(--c1)" data-g="王村古街"><img data-slot="dia1" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+    <div class="acc-t"><p class="k">Dia 1 · qua 06/01</p><h3>A vila a pé, do pilar à ponte</h3></div>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="acc-b">
+    <p class="polo"><span>Centro de gravidade</span>Rua antiga, entre o cais e a Ponte Tuwang</p>
+    <div class="facts"><div><span>Do hotel</span><b>55 m</b></div><div><span>Raio</span><b>0,08 km</b><small>núcleo; até o portão leste, 0,44 km</small></div><div class="w"><span>Transporte</span><p class="tr">Só a pé (piso de pedra molhado; calçado antiderrapante)</p></div></div>
+    <div class="tlbox"><p class="lbl">Horários do dia</p><ul class="tl"><li class="t-soft"><time data-t="2027-01-06T07:30:00+08:00"></time><span>Café da manhã incluído</span></li><li class="t-soft"><time data-t="2027-01-06T09:30:00+08:00"></time><span>Water-Curtain Walk, cedo</span></li><li class="t-soft"><time data-t="2027-01-06T15:00:00+08:00"></time><span>Pausa longa no hotel</span></li><li class="t-soft"><time data-t="2027-01-06T16:00:00+08:00"></time><span>Barco no Youshui (opcional, decidir na hora)</span></li><li class="t-soft"><time data-t="2027-01-06T17:56:00+08:00"></time><span>Pôr do sol</span></li><li class="t-soft"><time data-t="2027-01-06T19:00:00+08:00"></time><span>Luzes da cachoeira</span></li><li class="t-soft"><time data-t="2027-01-06T19:30:00+08:00"></time><span>Espetáculo tujia (incluído no ingresso)</span></li><li class="t-soft"><time data-t="2027-01-06T20:00:00+08:00"></time><span>Confirmar com o hotel o carro e o café de amanhã</span></li></ul></div>
+    <ol class="flow"><li><p class="lbl">Manhã</p><p>Café sem pressa. <b>Pilar de Bronze de Xizhou</b> no museu da própria Rua Hepan (39 m). Depois o pé da cachoeira e a <b>Water-Curtain Walk</b>, de capa e com o celular protegido (funcionamento em janeiro a confirmar).</p></li><li><p class="lbl">Almoço</p><p>Mi doufu no Zhengzong No. 113 Mi Doufu (290 m, ≈¥13), ou petiscos nas barracas da <b>Wuli Slate Street</b>.</p></li><li><p class="lbl">Tarde</p><p>Subir a Wuli Slate Street devagar até o Youyang Palace e a Tuwang Bridge. Às 15:00, hotel: varanda e banheira.</p></li><li><p class="lbl">Fim de tarde</p><p>Pôr do sol (17:56) da Ponte Tuwang ou da varanda.</p></li><li><p class="lbl">Noite</p><p>Espetáculo tujia, se o horário bater. Jantar no Tuwang Yuchu Hunan Restaurant, junto ao portão leste (437 m, até 22:00), ou de novo na Rua Hepan. Tianyi Bar e luzes.</p></li></ol>
+    <div class="pub alt"><p class="lbl">Alternativa · decidir na hora</p><p>Barco no Youshui River, a partir do cais. Fontes divergem: ¥50–60 e ≈40 min passando diante da cachoeira; ¥100, com aviso de custo-benefício ruim; ou travessia de ≈5 min. Horário 09:00–18:00 ou ≈08:30–19:00. Operação em janeiro não confirmada. Um guia sugere a saída das 16:00, pela luz.</p></div><div class="pub"><p class="lbl">Pausa longa</p><p>Hotel, das 15:00 ao fim da tarde.</p></div><div class="pub"><p class="lbl">Pub do dia</p><p>Tianyi Bar.</p></div>
+    <div class="orb"><p class="lbl">Núcleo · imperdíveis</p><div class="chips"><button class="chip o-a" data-i="0"><span class="dot"></span>Furong Ancient Town (Wangcun)</button><button class="chip o-a" data-i="7"><span class="dot"></span>Pilar de Bronze de Xizhou</button><button class="chip o-a" data-i="5"><span class="dot"></span>Water-Curtain Walk</button><button class="chip o-a" data-i="2"><span class="dot"></span>Wuli Slate Street (Rua de Pedra dos Cinco Li)</button></div></div><div class="orb"><p class="lbl">Órbita média · preferenciais</p><p class="onote">Nenhuma: a planilha não tem preferenciais.</p></div><div class="orb"><p class="lbl">Órbita externa · se passar perto</p><div class="chips"><button class="chip o-o" data-i="3"><span class="dot"></span>Youyang Palace (Tusi Palace)</button><button class="chip o-o" data-i="6"><span class="dot"></span>Tuwang Bridge</button><button class="chip o-o" data-i="11"><span class="dot"></span>Zhengzong No. 113 Mi Doufu (正宗113号米豆腐店)</button><button class="chip o-o" data-i="14"><span class="dot"></span>Tuwang Yuchu Hunan Restaurant (土王御厨湘菜馆)</button></div></div>
+    <div class="valve"><p class="lbl">Válvula</p><p>Cortar primeiro o Palácio Youyang, depois a subida até a ponte. Com chuva forte: pilar, cachoeira vista da varanda e refeições na Rua Hepan. Se a passagem atrás da queda estiver fechada ou escorregadia, ver a queda só do mirante. A única troca possível é com a noite de 05/01, para as luzes.</p></div>
+  </div>
+</details>
+<details class="acc" id="dia2" data-key="07/01" style="--dc:var(--c2)">
+  <summary>
+    <div class="ph thumb" style="--pc:var(--c2)" data-g="芙蓉镇站"><img data-slot="dia2" alt="" decoding="async" referrerpolicy="no-referrer"></div>
+    <div class="acc-t"><p class="k">Dia 2 · qui 07/01</p><h3>Café e estação</h3></div>
+    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </summary>
+  <div class="acc-b">
+    <p class="polo"><span>Centro de gravidade</span>Hotel → estação Furong Town</p>
+    <div class="facts"><div><span>Do hotel</span><b>5,3 km</b><small>em linha reta</small></div><div><span>Raio</span><b>sem raio</b><small>dia de deslocamento</small></div><div class="w"><span>Transporte</span><p class="tr">Carro gratuito do hotel</p></div></div>
+    <div class="tlbox"><p class="lbl">Horários do dia</p><ul class="tl"><li class="t-soft"><time data-t="2027-01-07T07:30:00+08:00"></time><span>Café da manhã incluído</span></li><li class="t-soft"><time data-t="2027-01-07T08:30:00+08:00"></time><span>Check-out</span></li><li class="t-soft"><time data-t="2027-01-07T08:40:00+08:00"></time><span>Carro do hotel até a estação</span></li><li class="t-flight"><time data-t="2027-01-07T09:39:00+08:00"></time><span>G6422 (provável) parte de Furong Town</span></li><li class="t-flight"><time data-t="2027-01-07T10:02:00+08:00"></time><span>Chegada a Zhangjiajie Oeste</span></li><li class="t-flight"><time data-t="2027-01-07T10:56:00+08:00"></time><span>G2430 (provável) parte de Zhangjiajie Oeste</span></li><li class="t-flight"><time data-t="2027-01-07T13:25:00+08:00"></time><span>Chegada a Chongqing Leste</span></li></ul></div>
+    <ol class="flow"><li><p class="lbl">Manhã</p><p>Café às 07:30 (embalado, se apertar), check-out às 08:30, carro às 08:40, trem às 09:39.</p></li></ol>
+    
+    <div class="orb"><p class="lbl">Órbitas</p><p class="onote">Nenhuma: dia de saída.</p></div>
+    <div class="valve"><p class="lbl">Válvula</p><p>Nada a cortar. Se o G6422 não existir na grade de 2027, o plano B (G6498 + G2322) devolve ≈2 h na Rua Hepan.</p></div>
+  </div>
+</details>
+  </div>
+</section>
+
+<section class="sec" id="horarios">
+  <div class="sh"><h2>Horários</h2></div>
+  <div class="legend"><span style="--k:var(--flight)">Trem</span><span style="--k:var(--hard)">Horário fixo</span><span style="--k:var(--muted)">Sugerido ou estimado</span></div>
+  <div class="agday" data-key="05/01"><p class="agh">ter · 05/01</p><ul class="ag"><li class="t-flight"><time data-t="2027-01-05T14:45:00+08:00" data-tz=""></time><div><b>G6057 (provável) parte de Zhangjiajie Oeste</b><button class="flbtn" data-fl="chegada">Detalhes do trem<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-flight"><time data-t="2027-01-05T15:08:00+08:00" data-tz=""></time><div><b>Chegada à estação Furong Town</b><button class="flbtn" data-fl="chegada">Detalhes do trem<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-soft"><time data-t="2027-01-05T15:20:00+08:00" data-tz=""></time><div><b>Encontro com o motorista do hotel</b><p>Traslado gratuito do hotel até o portão da área cênica, ≈6 km, 10–20 min (estimativa). Ponto de encontro a combinar com o hotel na véspera.</p></div></li><li class="t-soft"><time data-t="2027-01-05T15:45:00+08:00" data-tz=""></time><div><b>Registro do ingresso no centro de visitantes</b><p>Janela para estrangeiros, 07:30–23:30: passaporte, e-ticket e reconhecimento facial. Ingresso vale 3 dias, com reentrada.</p></div></li><li class="t-soft"><time data-t="2027-01-05T16:00:00+08:00" data-tz=""></time><div><b>Check-in no hotel</b><p>Liberado a partir de 14:00. Caução a confirmar. Testar aquecimento, água quente, porta da varanda e vista.</p></div></li><li class="t-soft"><time data-t="2027-01-05T17:56:00+08:00" data-tz=""></time><div><b>Pôr do sol</b><p>Crepúsculo civil até 18:21 (cálculo astronômico próprio).</p></div></li><li class="t-soft"><time data-t="2027-01-05T19:00:00+08:00" data-tz=""></time><div><b>Luzes da cachoeira</b><p>Fontes divergem: 18:30, 19:00–19:30 ou 19:30 (a confirmar). Ver da varanda.</p></div></li></ul></div><div class="agday" data-key="06/01"><p class="agh">qua · 06/01</p><ul class="ag"><li class="t-soft"><time data-t="2027-01-06T07:30:00+08:00" data-tz=""></time><div><b>Café da manhã incluído</b><p>07:30–10:00, para 2.</p></div></li><li class="t-soft"><time data-t="2027-01-06T09:30:00+08:00" data-tz=""></time><div><b>Water-Curtain Walk, cedo</b><p>Funcionamento em janeiro a confirmar com o hotel. Capa de chuva e calçado antiderrapante.</p></div></li><li class="t-soft"><time data-t="2027-01-06T15:00:00+08:00" data-tz=""></time><div><b>Pausa longa no hotel</b><p>Varanda e banheira.</p></div></li><li class="t-soft"><time data-t="2027-01-06T16:00:00+08:00" data-tz=""></time><div><b>Barco no Youshui (opcional, decidir na hora)</b><p>Fora do roteiro principal. Preço, duração e operação no inverno a confirmar no cais ou com o hotel.</p></div></li><li class="t-soft"><time data-t="2027-01-06T17:56:00+08:00" data-tz=""></time><div><b>Pôr do sol</b><p>Da Ponte Tuwang ou da varanda.</p></div></li><li class="t-soft"><time data-t="2027-01-06T19:00:00+08:00" data-tz=""></time><div><b>Luzes da cachoeira</b><p>Horário a confirmar.</p></div></li><li class="t-soft"><time data-t="2027-01-06T19:30:00+08:00" data-tz=""></time><div><b>Espetáculo tujia (incluído no ingresso)</b><p>Horário a confirmar: fontes citam 10:30, 16:30 e 19:30 no 摆手堂 e 20:30 no 翼南剧场, ou ≈21:00.</p></div></li><li class="t-soft"><time data-t="2027-01-06T20:00:00+08:00" data-tz=""></time><div><b>Confirmar com o hotel o carro e o café de amanhã</b><p>Pedir carro até a estação para o trem das 09:39 e café embalado.</p></div></li></ul></div><div class="agday" data-key="07/01"><p class="agh">qui · 07/01</p><ul class="ag"><li class="t-soft"><time data-t="2027-01-07T07:30:00+08:00" data-tz=""></time><div><b>Café da manhã incluído</b><p>07:30–10:00; pedir embalado se apertar.</p></div></li><li class="t-soft"><time data-t="2027-01-07T08:30:00+08:00" data-tz=""></time><div><b>Check-out</b><p>Limite: 12:00.</p></div></li><li class="t-soft"><time data-t="2027-01-07T08:40:00+08:00" data-tz=""></time><div><b>Carro do hotel até a estação</b><p>Traslado gratuito, ≈15 min (estimativa). Horário a combinar com o hotel.</p></div></li><li class="t-flight"><time data-t="2027-01-07T09:39:00+08:00" data-tz=""></time><div><b>G6422 (provável) parte de Furong Town</b><button class="flbtn" data-fl="saida">Detalhes do trem<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-flight"><time data-t="2027-01-07T10:02:00+08:00" data-tz=""></time><div><b>Chegada a Zhangjiajie Oeste</b><button class="flbtn" data-fl="saida">Detalhes do trem<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-flight"><time data-t="2027-01-07T10:56:00+08:00" data-tz=""></time><div><b>G2430 (provável) parte de Zhangjiajie Oeste</b><button class="flbtn" data-fl="saida">Detalhes do trem<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li><li class="t-flight"><time data-t="2027-01-07T13:25:00+08:00" data-tz=""></time><div><b>Chegada a Chongqing Leste</b><button class="flbtn" data-fl="saida">Detalhes do trem<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></li></ul></div>
+</section>
+
+<section class="sec" id="mapa">
+  <div class="sh"><h2>Mapa dos polos</h2></div>
+  <div class="mapbox"><svg viewBox="0 0 1000 828" role="img" aria-label="Mapa esquemático de Furong Town"><rect width="1000" height="828" fill="var(--map)"/><path d="M-62.7,892.3 L55.5,788.8 L128.2,737.0 L255.5,696.6 L363.6,675.9 L527.3,727.7 L709.1,811.5 L980.9,852.9" fill="none" stroke="var(--water)" stroke-width="46" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/><text x="782" y="937" text-anchor="middle" class="mlab">酉水 · rio Youshui (traçado esquemático)</text><text x="27" y="435" text-anchor="start" class="mreg">VILA ANTIGA</text><text x="600" y="155" text-anchor="middle" class="mreg">FURONG ROAD 芙蓉路</text><circle class="pt" data-i="10" cx="432.5" cy="494.0" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="12" cx="916.4" cy="79.5" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="13" cx="854.3" cy="141.0" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="15" cx="699.0" cy="312.6" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="17" cx="927.8" cy="76.0" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="18" cx="580.8" cy="432.3" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="22" cx="599.1" cy="476.7" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="23" cx="659.8" cy="357.8" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="25" cx="603.5" cy="551.7" r="14" fill="var(--muted)" opacity=".85" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="3" cx="336.6" cy="648.3" r="15" fill="var(--c1)" opacity="0.75" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="4" cx="105.7" cy="737.2" r="15" fill="var(--c0)" opacity="0.75" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="6" cx="462.0" cy="594.8" r="15" fill="var(--c1)" opacity="0.75" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="11" cx="432.5" cy="494.0" r="15" fill="var(--c1)" opacity="0.75" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="14" cx="599.3" cy="494.3" r="15" fill="var(--c1)" opacity="0.75" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="16" cx="257.9" cy="637.9" r="15" fill="var(--c0)" opacity="0.75" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="19" cx="146.4" cy="720.2" r="15" fill="var(--c0)" opacity="0.75" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="21" cx="405.1" cy="560.0" r="15" fill="var(--c0)" opacity="0.75" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="0" cx="184.1" cy="585.0" r="22" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="1" cx="291.5" cy="655.0" r="22" fill="var(--c0)" opacity="1" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="2" cx="273.6" cy="604.5" r="22" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="5" cx="294.9" cy="680.5" r="22" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="2"/><circle class="pt" data-i="7" cx="218.5" cy="651.1" r="22" fill="var(--c1)" opacity="1" stroke="var(--map)" stroke-width="2"/><a href="#dia0"><path d="M291.5 655.0L411.5 695.0" stroke="var(--c0)" stroke-width="3"/><circle cx="411.5" cy="695.0" r="34" fill="var(--c0)"/><text x="411.5" y="707.0" text-anchor="middle" class="mnum">0</text></a><a href="#dia1"><path d="M242.7 630.3L202.7 505.3" stroke="var(--c1)" stroke-width="3"/><circle cx="202.7" cy="505.3" r="34" fill="var(--c1)"/><text x="202.7" y="517.3" text-anchor="middle" class="mnum">1</text></a><rect class="pt" data-i="8" x="224.5" y="667.0" width="28" height="28" transform="rotate(45 238.5 681.0)" fill="var(--ink)" stroke="var(--map)" stroke-width="3"/><text x="208.5" y="693.0" text-anchor="end" class="mhot">Hotel</text><a href="#dia2"><rect x="560" y="18" width="424" height="64" rx="32" fill="var(--card)" stroke="var(--c2)" stroke-width="3"/><circle cx="596" cy="50" r="22" fill="var(--c2)"/><text x="596" y="61" text-anchor="middle" class="mnum">2</text><text x="630" y="60" class="mlab mst">Estação · 5,3 km ↗</text></a><path d="M36 778V786H129.1V778" fill="none" stroke="var(--ink)" stroke-width="3"/><text x="36" y="816" class="mlab">100 m</text></svg>
+    <p class="cap">Escala de 100 m: tudo o que importa cabe em ≈1 km. Losango: hotel; cinza: coringas. A estação fica 5,3 km a nordeste. Rio em traçado esquemático; posições pelas coordenadas da planilha, convertidas para WGS-84. Fora do roteiro (não aparecem): Xiangduowei Hamburger and Fried Chicken (rodoviária, 2,5 km); KFC Yongshun – unidade de Yongshun, Guo Sanfeng Fresh Beef e Maitianfang Bakery (sede do condado, ≈30 km); Lebeizi Bakery (Huayuan, ≈49 km).</p>
+  </div>
+  <div class="sec" id="coringas" style="padding-top:22px">
+    <div class="sh"><h2>Coringas perto do hotel</h2></div>
+    <p class="sub">Para qualquer noite, do mais perto ao mais longe. "Fora do portão" exige sair e voltar pela catraca (o ingresso de 3 dias permite reentrada; fechamento dos portões à noite a confirmar). Só um bar tem endereço confirmado: o Tianyi Bar, ainda sem avaliações.</p>
+    <div class="jlist"><button class="jrow" data-i="16"><span>No. 1 Viewing Platform Restaurant (壹號观景台餐厅)<small>Comer · dentro</small></span><span class="jd">51 m</span></button><button class="jrow" data-i="19"><span>Hongyun Lou (鸿运楼)<small>Comer · dentro</small></span><span class="jd">108 m</span></button><button class="jrow" data-i="21"><span>Tianyi Bar<small>Beber · dentro</small></span><span class="jd">222 m</span></button><button class="jrow" data-i="11"><span>Zhengzong No. 113 Mi Doufu (正宗113号米豆腐店)<small>Comer · dentro</small></span><span class="jd">290 m</span></button><button class="jrow" data-i="10"><span>Liu Xiaoqing Mi Doufu (刘晓庆米豆腐店)<small>Comer · dentro · possível duplicata do anterior</small></span><span class="jd">290 m</span></button><button class="jrow" data-i="25"><span>KFC Yongshun (肯德基) – unidade de Furong Town<small>Comer · fora do portão</small></span><span class="jd">416 m</span></button><button class="jrow" data-i="14"><span>Tuwang Yuchu Hunan Restaurant (土王御厨湘菜馆)<small>Comer · fora do portão</small></span><span class="jd">437 m</span></button><button class="jrow" data-i="22"><span>Old Wharf Theme Culture Bar<small>Beber · fora do portão · endereço não confirmado</small></span><span class="jd">446 m</span></button><button class="jrow" data-i="18"><span>Tujia Memory Theme Restaurant (土家记忆主题餐厅)<small>Comer · fora do portão</small></span><span class="jd">455 m</span></button><button class="jrow" data-i="23"><span>Baker Hamburger<small>Comer · fora do portão · ponto impreciso</small></span><span class="jd">571 m</span></button><button class="jrow" data-i="15"><span>Qieman Inn Restaurant (且慢客栈·中餐厅)<small>Comer · fora do portão</small></span><span class="jd">634 m</span></button><button class="jrow" data-i="13"><span>Xunxiangji Traditional Hunan Cuisine (寻湘记·传统湘菜)<small>Comer · fora do portão</small></span><span class="jd">881 m</span></button><button class="jrow" data-i="12"><span>Xiangla Gancai Restaurant (湘腊干菜馆)<small>Comer · fora do portão</small></span><span class="jd">975 m</span></button><button class="jrow" data-i="17"><span>Jinmu Lawei Restaurant (今慕腊味馆)<small>Comer · fora do portão</small></span><span class="jd">987 m</span></button></div>
+  </div>
+</section>
+
+<section class="sec" id="uteis">
+  <div class="sh"><h2>Úteis</h2></div>
+  <div class="cards">
+    <div class="card">
+      <p class="lbl">Hotel</p>
+      <p class="cnbig">十二城·瀑上仙·280度观瀑星空云宿(芙蓉镇景区内大瀑布店)</p>
+      <p class="cnad">湖南省湘西土家族苗族自治州永顺县芙蓉镇河畔街30号</p>
+      <p>12C · Waterfall View Prime Location · Rua Hepan nº 30, dentro da área cênica paga · tel. +86 153 7743 8288. Check-in a partir das 14:00; check-out até 12:00; café 07:30–10:00 (06 e 07/01); silêncio 23:00–10:00; recepção 24 h.</p>
+      <div class="btns"><button class="btn pri" data-full="十二城·瀑上仙·280度观瀑星空云宿(芙蓉镇景区内大瀑布店)" data-sub="湖南省湘西土家族苗族自治州永顺县芙蓉镇河畔街30号">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Centro de visitantes · ingresso</p>
+      <p class="cnbig">芙蓉镇景区游客中心</p>
+      <p class="cnad">湖南省湘西土家族苗族自治州永顺县芙蓉镇芙蓉路南150米</p>
+      <p>Janela para estrangeiros, 07:30–23:30: passaporte, e-ticket e reconhecimento facial. O ingresso vale 3 dias, com reentrada.</p><p class="cnad">请带我到芙蓉镇景区游客中心，外国游客窗口。</p>
+      <div class="btns"><button class="btn pri" data-full="芙蓉镇景区游客中心" data-sub="湖南省湘西土家族苗族自治州永顺县芙蓉镇芙蓉路南150米">Mostrar ao motorista</button><button class="btn" data-full="请带我到芙蓉镇景区游客中心，外国游客窗口。" data-sub="">Mostrar a frase</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Estação de saída · Dia 2</p>
+      <p class="cnbig">芙蓉镇站（高铁站）</p>
+      <p class="cnad">湖南省湘西土家族苗族自治州永顺县芙蓉镇朱家湾</p>
+      <p>Estação Furong Town, de alta velocidade, ≈6 km do portão por estrada.</p><p class="cnad">请帮我叫车去芙蓉镇站。</p>
+      <div class="btns"><button class="btn pri" data-full="芙蓉镇站（高铁站）" data-sub="湖南省湘西土家族苗族自治州永顺县芙蓉镇朱家湾">Mostrar ao motorista</button><button class="btn" data-full="请帮我叫车去芙蓉镇站。" data-sub="">Mostrar a frase</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Estação de conexão</p>
+      <p class="cnbig">张家界西站</p>
+      
+      <p>Zhangjiajie Oeste: chegada do primeiro trem e conexão de 54 min para Chongqing.</p>
+      <div class="btns"><button class="btn pri" data-full="张家界西站" data-sub="">Mostrar ao motorista</button></div>
+    </div>
+    <div class="card">
+      <p class="lbl">Transporte</p>
+      <dl class="kv">
+        <dt>Metrô</dt><dd>Furong Town não tem metrô.</dd>
+        <dt>Na vila</dt><dd>Tudo a pé, por ruelas de pedra (escorregadias quando molhadas).</dd>
+        <dt>Estação</dt><dd>Carro gratuito do hotel entre a estação e o portão, ≈6 km por estrada, 10–20 min (estimativa). Combinar com o hotel um dia antes.</dd>
+        <dt>Táxi</dt><dd>Na saída da estação, ≈¥20–30 e 10–15 min até o centro de visitantes (não confirmado para 2027).</dd>
+        <dt>Didi</dt><dd>Disponibilidade em Furong não verificada.</dd>
+      </dl>
+    </div>
+    <div class="card">
+      <p class="lbl">Emergência na China</p>
+      <dl class="kv"><dt>110</dt><dd>Polícia</dd><dt>120</dt><dd>Ambulância</dd><dt>119</dt><dd>Bombeiros</dd><dt>Área cênica</dt><dd>0743-5811888 (central)</dd></dl>
+    </div>
+    <div class="card">
+      <p class="lbl">Clima esperado</p>
+      <p>Normais estimadas, não previsão: máximas de 6 a 9 °C e mínimas de 0 a 3 °C, com extremo plausível de −2 °C. Umidade muito alta (borrifo da cachoeira), chuvisco frequente e neve ocasional; ruas de pedra molhadas e escorregadias. Sem aquecimento central: camadas, capa de chuva e calçado antiderrapante. Sol nasce ≈07:33 e se põe às 17:56 (05 e 06/01) e 17:57 (07/01).</p>
+    </div>
+  </div>
+  <p class="foot">Página sem códigos de reserva, números de bilhete ou dados de passaporte, por ficar em endereço público. Versão de 05/10/2026.</p>
+</section>
+
+</main>
+
+<div class="edge" aria-hidden="true"><i></i><i></i><i></i></div>
+<nav class="tabbar" aria-label="Navegação">
+  <a href="#inicio" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6 8 6v8a1 1 0 0 1-1 1h-4v-5H9v5H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>Início</span></a>
+  <a href="#roteiro"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 10h8M8 14h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Roteiro</span></a>
+  <a href="#horarios"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Horários</span></a>
+  <a href="#mapa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.5-6-10.5a6 6 0 0 1 12 0C18 15.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Mapa</span></a>
+  <a href="#uteis"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="7.5" r="2" fill="currentColor"/><circle cx="16.5" cy="7.5" r="2" fill="currentColor"/><circle cx="7.5" cy="16.5" r="2" fill="currentColor"/><circle cx="16.5" cy="16.5" r="2" fill="currentColor"/></svg><span>Úteis</span></a>
+</nav>
+
+<dialog id="info" class="pop" aria-labelledby="infoT">
+  <div class="popc">
+    <div class="poph"><h2 id="infoT">Como funciona o roteiro de órbitas</h2><button class="xbtn" id="infoX" aria-label="Fechar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <ul class="rules">
+      <li><b>Um polo por dia</b><span>Carro só entre a estação e o portão; dentro da vila, tudo a pé.</span></li>
+      <li><b>Três órbitas</b><span>Núcleo: imperdíveis. Órbita média: preferenciais no caminho. Órbita externa: só se passar na porta.</span></li>
+      <li><b>Hora marcada só para o que tem hora</b><span>Trem, fechamento e luz do dia. O resto é ordem sugerida.</span></li>
+      <li><b>Uma pausa longa por dia</b><span>Café, bar ou o próprio hotel, com a varanda sobre a cachoeira.</span></li>
+      <li><b>Válvula</b><span>Cada dia diz o que cortar primeiro e com qual outro dia trocar. O que ficou para trás não é compensado no dia seguinte.</span></li>
+      <li><b>Coringas</b><span>Restaurantes e bares perto do hotel para qualquer noite.</span></li>
+    </ul>
+  </div>
+</dialog>
+
+<dialog id="flsheet" aria-label="Detalhes do trem">
+  <div class="sheet">
+    <div class="grab"></div>
+    <article class="fl" id="fl-chegada" hidden>
+    <div class="fl-h"><p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 11h16M9 21l2-3M15 21l-2-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.3" cy="14.4" r="1.2" fill="currentColor"/><circle cx="15.7" cy="14.4" r="1.2" fill="currentColor"/></svg>Chegada a Furong Town · China Railway (trem-bala G)</p><h3>Zhangjiajie → Furong Town</h3></div>
+    <div class="fl-sum"><span>23 min</span><span>Direto</span><span>A confirmar: bilhete ainda não comprado</span></div>
+    <ol class="fr">
+      <li class="s"><time class="t">14:45</time><span class="r"></span><div class="x"><b>Zhangjiajie Oeste · 张家界西</b><small>ter 05/01 · estação de alta velocidade</small></div></li>
+      <li class="g"><span></span><span class="r"></span><p class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 11h16M9 21l2-3M15 21l-2-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.3" cy="14.4" r="1.2" fill="currentColor"/><circle cx="15.7" cy="14.4" r="1.2" fill="currentColor"/></svg>G6057 (provável) · 23 min · trem-bala com destino a Huiyang</p></li>
+      <li class="s"><time class="t">15:08</time><span class="r"></span><div class="x"><b>Furong Town · 芙蓉镇站</b><small>ter 05/01 · mesmo fuso</small></div></li>
+    </ol>
+    <div class="facts"><div><span>Chegar à estação</span><b>≈14:00 (estimativa)</b></div><div><span>Assentos</span><b>A definir na compra</b></div><div class="w"><span>Bagagem</span><b>20 kg por adulto, por pessoa (vale para os dois); em trem-bala, cada volume com no máximo 130 cm na soma das três medidas (regra do 12306)</b></div><div class="w"><span>Malas da Turkish</span><p>As malas despachadas de 23 kg passam do limite de peso; a fiscalização na prática não foi verificada.</p></div><div class="w"><span>Situação</span><p>Bilhete ainda não comprado. Número e horário projetados da grade de 2026: conferir na compra.</p></div><div class="w"><span>Na bagagem de mão</span><p>Passaportes (o ingresso e o check-in exigem o original), agasalho, capa de chuva.</p></div><div class="w"><span>Depois do desembarque</span><p>Encontrar o motorista do hotel (ponto a combinar na véspera); ≈6 km até o portão, 10–20 min (estimativa). No centro de visitantes, registrar o ingresso na janela de estrangeiros (07:30–23:30). Do portão ao hotel, a pé por ruelas de pedra; o hotel tem carregador.</p></div><div class="w"><span>Plano B</span><p>Táxi na saída da estação, ≈¥20–30 e 10–15 min até o centro de visitantes (guia da Trip.com, não confirmado para 2027); ou o ônibus-lançadeira da área cênica (sem horário publicado).</p></div></div>
+  </article>
+    <article class="fl" id="fl-saida" hidden>
+    <div class="fl-h"><p class="k"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 11h16M9 21l2-3M15 21l-2-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.3" cy="14.4" r="1.2" fill="currentColor"/><circle cx="15.7" cy="14.4" r="1.2" fill="currentColor"/></svg>Saída de Furong Town · China Railway (trens-bala G)</p><h3>Furong Town → Zhangjiajie → Chongqing</h3></div>
+    <div class="fl-sum"><span>3h46 de trem a trem</span><span>2h52 em movimento</span><span>1 conexão</span><span>Dois bilhetes separados</span><span>A confirmar: bilhetes ainda não comprados</span></div>
+    <ol class="fr">
+      <li class="s"><time class="t">09:39</time><span class="r"></span><div class="x"><b>Furong Town · 芙蓉镇站</b><small>qui 07/01</small></div></li>
+      <li class="g"><span></span><span class="r"></span><p class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 11h16M9 21l2-3M15 21l-2-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.3" cy="14.4" r="1.2" fill="currentColor"/><circle cx="15.7" cy="14.4" r="1.2" fill="currentColor"/></svg>G6422 (provável; confiança média) · 23 min · vindo de Changsha Sul</p></li>
+      <li class="s"><time class="t">10:02</time><span class="r"></span><div class="x"><b>Zhangjiajie Oeste · 张家界西</b><small>qui 07/01</small></div></li>
+      <li class="c"><span></span><span class="r"></span><p class="x"><span>Conexão em Zhangjiajie Oeste: 54 min, não protegida</span></p></li>
+      <li class="s"><time class="t">10:56</time><span class="r"></span><div class="x"><b>Zhangjiajie Oeste · 张家界西</b><small>qui 07/01</small></div></li>
+      <li class="g"><span></span><span class="r"></span><p class="x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h10a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V6.5a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 11h16M9 21l2-3M15 21l-2-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.3" cy="14.4" r="1.2" fill="currentColor"/><circle cx="15.7" cy="14.4" r="1.2" fill="currentColor"/></svg>G2430 (provável; confiança alta) · 2h29</p></li>
+      <li class="s"><time class="t">13:25</time><span class="r"></span><div class="x"><b>Chongqing Leste · 重庆东</b><small>qui 07/01 · mesmo fuso</small></div></li>
+    </ol>
+    <div class="facts"><div><span>Sair do hotel</span><b>≈08:40 (estimativa)</b></div><div><span>Assentos</span><b>A definir na compra</b></div><div class="w"><span>Bagagem</span><b>20 kg por adulto, por pessoa (vale para os dois); em trem-bala, cada volume com no máximo 130 cm na soma das três medidas (regra do 12306)</b></div><div class="w"><span>Malas da Turkish</span><p>As malas despachadas de 23 kg passam do limite de peso; a fiscalização na prática não foi verificada.</p></div><div class="w"><span>Conexão</span><p>Dois bilhetes separados: se o primeiro trem atrasar, o segundo não espera.</p></div><div class="w"><span>Situação</span><p>Bilhetes ainda não comprados. Números e horários projetados da grade de 2026: conferir na compra. Do hotel a Chongqing Leste, ≈4h45 (estimativa).</p></div><div class="w"><span>Até a estação</span><p>Carro gratuito do hotel, ≈15 min mais folga (combinar na véspera). Se falhar, pedir à recepção que chame um carro: 请帮我叫车去芙蓉镇站。</p></div><div class="w"><span>Café</span><p>Abre às 07:30; pedir embalado se necessário.</p></div><div class="w"><span>Plano B</span><p>Só se a grade de 2027 mudar: G6498 11:58 → Zhangjiajie Oeste 12:21, e G2322 13:28 → Chongqing Leste 15:56.</p></div></div>
+  </article>
+    <div class="btns"><button class="btn" id="flClose">Fechar</button></div>
+  </div>
+</dialog>
+<dialog id="sheet" aria-label="Detalhes do lugar">
+  <div class="sheet">
+    <div class="grab"></div>
+    <div class="stags" id="sTags"></div>
+    <h2 id="sName"></h2>
+    <p class="cnbig" id="sCn"></p>
+    <p id="sOb"></p>
+    <dl class="kv" id="sKv"></dl>
+    <div class="btns">
+      <button class="btn pri" id="sFull">Mostrar em chinês</button>
+      <a class="btn" id="sAmap" target="_blank" rel="noopener">Amap (高德)</a>
+      <a class="btn" id="sApple" target="_blank" rel="noopener">Apple Maps</a>
+      <button class="btn" id="sClose">Fechar</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="full" id="full" hidden>
+  <div><div class="t" id="fT"></div><div class="s" id="fS"></div><div class="x">Toque para fechar</div></div>
+</div>
+
+<script>
+const POI = [{"n":"Furong Ancient Town (Wangcun)","cn":"芙蓉镇景区","t":"Região","h":"imp","ob":"","f":"Diariamente 08:00–24:00 (Amap, Ctrip e Baidu Baike concordam).","c":"¥ 108","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇芙蓉路南150米","la":28.745548,"lo":109.938625,"d":"1","o":"nucleo","dist":"118 m"},{"n":"Furong Waterfall","cn":"芙蓉镇景区大瀑布","t":"Passeio","h":"imp","ob":"Inverno é estação seca: vazão menor (fontes divergem). Luzes acendem ~18:30–19:30 (a confirmar).","f":"⚠ Fontes divergem: Amap: 08:00–18:00 Ctrip: 08:00–24:00","c":"Grátis","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇景区内(东侧)","la":28.744872,"lo":109.939807,"d":"0","o":"nucleo","dist":"64 m"},{"n":"Wuli Slate Street (Rua de Pedra dos Cinco Li)","cn":"芙蓉镇景区-王村古街","t":"Rua","h":"imp","ob":"Linha fundida após verificação: \"Wangcun Ancient Street\" (王村古街, também 王村老街) é a mesma rua (Baidu Baike: \"王村老街，就是古镇著名的五里石板街\"), e \"Furong Snack Street\" não é um lugar à parte, e sim as barracas e lojinhas de comida ao longo desta rua. 五里石板街 é o nome mais conhecido; 王村古街 é o do cadastro no Amap, 360 e Ctrip. Dentro do parque (¥108), sem bilheteria própria. O pino marca o trecho junto à cachoeira; a rua é longa (cinco li ≈ 2,5 km, pelo nome). Segundo o Baidu Baike, nela ficam o museu do Pilar de Bronze e as locações do filme \"Furong Zhen\" (Hibiscus Town); um centro de experiência do patrimônio imaterial foi inaugurado ali em 08/06/2024.","f":"⚠ Fontes divergem: Amap (王村古街): 06:30–24:00 Ctrip (石板街): 08:00–24:00, entrada livre Ctrip (王村古街): 07:00–17:30 (última entrada 17:30), exige o ingresso do parque Qunar: aberto o dia todo","c":"Grátis","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉路，芙蓉镇景区内（王村古街）","la":28.74536,"lo":109.93961,"d":"1","o":"nucleo","dist":"91 m"},{"n":"Youyang Palace (Tusi Palace)","cn":"酉阳宫(永顺芙蓉镇景区店)","t":"Sight seeing","h":"","ob":"Custo divergente: planilha diz grátis; avaliações citam ingresso pago; guia de 2026 diz incluído nos ¥108. A confirmar.","f":"Ctrip: 08:00–18:00 (todo o ano). Amap não informa horário.","c":"Grátis","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇景区内土王桥往西100米","la":28.744937,"lo":109.940303,"d":"1","o":"externa","dist":"111 m"},{"n":"Youshui River (You River)","cn":"酉水河","t":"Rio","h":"","ob":"Barco: alternativa fora do roteiro principal, decidir na hora. Fontes divergem (¥50–60 e ~40 min; ¥100; travessia de ~5 min); horário 09:00–18:00 ou ~08:30–19:00; operação em janeiro a confirmar.","f":"","c":"Grátis","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉路南150米芙蓉镇景区(西南角) 芙蓉镇码头","la":28.744078,"lo":109.937763,"d":"0","o":"externa","dist":"155 m"},{"n":"Water-Curtain Walk","cn":"芙蓉镇景区大瀑布","t":"Passeio","h":"imp","ob":"Um guia de 2026 diz que só abre na estação chuvosa (jun–set): funcionamento em janeiro a confirmar com o hotel. Confirmado: é a passagem por trás da cortina d'água (trilha de lajes ao pé da queda; \"水帘洞\" nos relatos do Ctrip). Pino no pé da queda; a entrada exata não foi localizada (não há ponto próprio no Amap). Piso molhado e escorregadio. Sem horário próprio divulgado: acompanha o da cachoeira.","f":"","c":"Grátis","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇景区内(东侧) 大瀑布水帘洞","la":28.744626,"lo":109.939844,"d":"1","o":"nucleo","dist":"61 m"},{"n":"Tuwang Bridge","cn":"芙蓉镇景区-土王桥","t":"Passeio","h":"","ob":"","f":"","c":"Grátis","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇景区内(东侧) 土王桥","la":28.745454,"lo":109.941682,"d":"1","o":"externa","dist":"258 m"},{"n":"Pilar de Bronze de Xizhou","cn":"芙蓉镇景区-溪州铜柱","t":"Sight seeing","h":"imp","ob":"Original no museu da rua antiga (河畔街 14/15), na mesma rua do hotel (nº 30); a réplica fica na praça do 铜柱园. Sem ingresso próprio (dentro do parque, ¥108). Nota: Ctrip/Trip.com; Amap 3,8 (6).","f":"⚠ Fontes divergem: Ctrip e Trip.com: 07:30–19:00 Amap: 24 horas Tripadvisor: 08:00–18:00","c":"Grátis","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇河畔街社区15号","la":28.74491,"lo":109.939004,"d":"1","o":"nucleo","dist":"39 m"},{"n":"12C · Waterfall View Prime Location","cn":"十二城·瀑上仙280度观瀑星空云宿(芙蓉镇景区内大瀑布店)","t":"Hospedagem","h":"","ob":"Traslado gratuito da estação de trem (免费专车接站): a Ctrip pede para ligar ao hotel 1 dia antes. Fica dentro do parque: a Ctrip avisa que a entrada exige o ingresso do parque; combine com o hotel a compra e os horários. Distâncias (Ctrip): cachoeira 61 m em linha reta (4 min a pé), rodoviária 3 km (10 min de carro), estação de trem 6,1 km (14 min). Nota: ficha chinesa da Ctrip (692 avaliações).","f":"Recepção 24 h. Check-in a partir das 14:00; check-out até 12:00 (Ctrip). Café da manhã 07:30–10:00.","c":"","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇河畔街30号","la":28.744621,"lo":109.939223,"d":"","o":"hotel","dist":"0 m"},{"n":"Furong Town Railway Station","cn":"芙蓉镇站","t":"Transporte","h":"","ob":"Estação de chegada e de volta de/para Zhangjiajie (张家界西): ~23–26 min de trem, 2ª classe ≈ ¥ 40 (gaotie.com.cn, chinatrain12306.com e Asia Odyssey Travel; confirme no 12306). Da estação ao hotel: 6,1 km / 14 min de carro (Ctrip); o hotel oferece traslado gratuito (avise 1 dia antes). Táxi até o parque ≈ 10 min (Baidu Baike); o site do parque e a Rednet citam ônibus de traslado da estação, sem horários confirmados. Algumas matérias dizem 2 km até o parque: a distância real em linha reta é ~5 km.","f":"Trens para 张家界西: cerca de 17 por dia, do primeiro (~06:34) ao último (~22:01), com lacunas de 2 a 3 h (ex.: 06:34 → 09:39). Grade de exemplo no comentário da célula. Agregadores; conferir no 12306.","c":"≈ ¥ 40 (passagem)","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇朱家湾","la":28.773258,"lo":109.982407,"d":"2","o":"transporte","dist":"5,3 km"},{"n":"Liu Xiaoqing Mi Doufu (刘晓庆米豆腐店)","cn":"刘晓庆米豆腐店","t":"Comer","h":"","ob":"Possível duplicata do Zhengzong No. 113 (mesmo telefone e mesmo ponto). Não usado nos dias.","f":"","c":"¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇河畔街113号","la":28.746428,"lo":109.941357,"d":"","o":"coringa","dist":"290 m"},{"n":"Zhengzong No. 113 Mi Doufu (正宗113号米豆腐店)","cn":"正宗113号米豆腐店","t":"Comer","h":"","ob":"Precisão do ponto: Média (ver Endereço).","f":"Todos os dias, 07:00–22:00","c":"¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇芙蓉路永顺三和芙蓉酒店西南侧","la":28.746428,"lo":109.941357,"d":"1","o":"externa","dist":"290 m"},{"n":"Xiangla Gancai Restaurant (湘腊干菜馆)","cn":"湘腊干菜馆(芙蓉镇店)","t":"Comer","h":"","ob":"","f":"Todos os dias, 09:00–22:30 (uma página da Ctrip indica abertura às 08:30)","c":"¥¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇商合街258号","la":28.750432,"lo":109.94668,"d":"","o":"coringa","dist":"975 m"},{"n":"Xunxiangji Traditional Hunan Cuisine (寻湘记·传统湘菜)","cn":"寻湘记·传统湘菜(芙蓉镇广播站店)","t":"Comer","h":"","ob":"","f":"Seg, sex, sáb e dom: 09:00–21:30; ter a qui: 09:00–21:00","c":"¥¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇芙蓉路商合社区249号","la":28.749838,"lo":109.945997,"d":"","o":"coringa","dist":"881 m"},{"n":"Tuwang Yuchu Hunan Restaurant (土王御厨湘菜馆)","cn":"土王御厨湘菜馆(芙蓉镇景区店)","t":"Comer","h":"","ob":"","f":"Todos os dias, 09:30–22:00","c":"¥¥","ad":"湖南省湘西土家族苗族自治州永顺县听涛路芙蓉古镇，芙蓉镇景区东门旁","la":28.746425,"lo":109.943192,"d":"1","o":"externa","dist":"437 m"},{"n":"Qieman Inn Restaurant (且慢客栈·中餐厅)","cn":"且慢客栈(芙蓉镇景区门口店)·中餐厅","t":"Comer","h":"","ob":"","f":"Todos os dias, 10:00–21:00","c":"¥¥","ad":"湖南省湘西自治州永顺县芙蓉镇商合街芙蓉路117号","la":28.74818,"lo":109.944289,"d":"","o":"coringa","dist":"634 m"},{"n":"No. 1 Viewing Platform Restaurant (壹號观景台餐厅)","cn":"壹號观景台餐厅","t":"Comer","h":"","ob":"Vista da cachoeira.","f":"Todos os dias, 08:00–23:00","c":"¥¥¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇河畔街42号","la":28.745037,"lo":109.939437,"d":"0","o":"externa","dist":"51 m"},{"n":"Jinmu Lawei Restaurant (今慕腊味馆)","cn":"今慕腊味馆(芙蓉镇店)","t":"Comer","h":"","ob":"","f":"Todos os dias, 09:00–22:30","c":"¥¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇芙蓉路商合社区263号","la":28.750466,"lo":109.946806,"d":"","o":"coringa","dist":"987 m"},{"n":"Tujia Memory Theme Restaurant (土家记忆主题餐厅)","cn":"土家记忆主题餐厅(芙蓉镇店)","t":"Comer","h":"","ob":"","f":"Todos os dias, 07:00–23:30","c":"¥¥¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇芙蓉路商合社区三角坪创业大酒店楼下","la":28.747024,"lo":109.942989,"d":"","o":"coringa","dist":"455 m"},{"n":"Hongyun Lou (鸿运楼)","cn":"鸿运楼","t":"Comer","h":"","ob":"","f":"Todos os dias, 10:00–21:00","c":"¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇河畔街8号","la":28.744242,"lo":109.93821,"d":"0","o":"externa","dist":"108 m"},{"n":"Guo Sanfeng Fresh Beef (郭三疯·鲜炒黄牛肉)","cn":"郭三疯·鲜炒黄牛肉(府正店)","t":"Comer","h":"","ob":"","f":"Todos os dias, 09:00–21:00 (unidade de Yongshun)","c":"¥¥¥","ad":"湖南省湘西土家族苗族自治州永顺县府正家园A栋201号","la":29.00453,"lo":109.846631,"d":"","o":"fora","dist":"30,3 km"},{"n":"Tianyi Bar","cn":"天衣酒馆","t":"Beber","h":"","ob":"Precisão do ponto: Média (±70 m).","f":"Todos os dias, 17:00–23:00","c":"","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇河畔社区河畔街164号","la":28.74579,"lo":109.941056,"d":"0","o":"externa","dist":"222 m"},{"n":"Old Wharf Theme Culture Bar","cn":"老码头主题文化酒吧","t":"Beber","h":"","ob":"Precisão do ponto: Baixa (genérico; pode errar 100–500 m).","f":"","c":"¥","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇（地址未确认）","la":28.746595,"lo":109.94319,"d":"","o":"coringa","dist":"446 m"},{"n":"Baker Hamburger","cn":"贝克汉堡","t":"Comer","h":"","ob":"Precisão do ponto: Baixa (genérico; pode errar 100–500 m).","f":"","c":"","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇","la":28.747743,"lo":109.943858,"d":"","o":"coringa","dist":"571 m"},{"n":"Xiangduowei Hamburger and Fried Chicken (享哆味·汉堡炸鸡)","cn":"享哆味·汉堡炸鸡(永顺芙蓉店)","t":"Comer","h":"","ob":"Precisão do ponto: Boa (±45 m).","f":"Todos os dias, 08:00 às 02:00 do dia seguinte (filial de Furong)","c":"","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇新汽车站对面","la":28.761786,"lo":109.954984,"d":"","o":"fora","dist":"2,5 km"},{"n":"KFC Yongshun (肯德基) – unidade de Furong Town","cn":"肯德基(芙蓉镇店)","t":"Comer","h":"","ob":"Precisão do ponto: Boa (±20 m).","f":"Todos os dias, 10:00–23:00","c":"","ad":"湖南省湘西土家族苗族自治州永顺县芙蓉镇听涛路芙蓉镇游客服务中心旁","la":28.74587,"lo":109.943239,"d":"","o":"coringa","dist":"416 m"},{"n":"KFC Yongshun (肯德基) – unidade de Yongshun (溪州路)","cn":"肯德基(永顺溪州路店)","t":"Comer","h":"","ob":"Precisão do ponto: Boa (±45 m).","f":"Todos os dias, 08:00–23:00","c":"","ad":"湖南省湘西土家族苗族自治州永顺县猛洞河路溪州国际大厦","la":29.002918,"lo":109.848861,"d":"","o":"fora","dist":"30,1 km"},{"n":"Maitianfang Bakery (麦田坊西饼屋)","cn":"麦田坊西饼屋(永顺店)","t":"Padaria","h":"","ob":"Precisão do ponto: Média (±70 m).","f":"Todos os dias, 09:00–18:00 (unidade de Yongshun)","c":"","ad":"湖南省湘西土家族苗族自治州永顺县书院街39号","la":29.005663,"lo":109.849284,"d":"","o":"fora","dist":"30,3 km"},{"n":"Lebeizi Bakery","cn":"乐焙滋(建设西路店)","t":"Padaria","h":"","ob":"Precisão do ponto: Boa (±20 m).","f":"Todos os dias, 07:00–23:00 (unidade de Huayuan)","c":"","ad":"湖南省湘西土家族苗族自治州花垣县建设中路与赶秋路交叉口处","la":28.585105,"lo":109.474337,"d":"","o":"fora","dist":"48,7 km"}];
+const EV = [{"k":"05/01","t":"2027-01-05T14:45:00+08:00","l":"G6057 (provável) parte de Zhangjiajie Oeste","d":"","kind":"flight","tz":"","fl":"chegada"},{"k":"05/01","t":"2027-01-05T15:08:00+08:00","l":"Chegada à estação Furong Town","d":"","kind":"flight","tz":"","fl":"chegada"},{"k":"05/01","t":"2027-01-05T15:20:00+08:00","l":"Encontro com o motorista do hotel","d":"Traslado gratuito do hotel até o portão da área cênica, ≈6 km, 10–20 min (estimativa). Ponto de encontro a combinar com o hotel na véspera.","kind":"soft","tz":""},{"k":"05/01","t":"2027-01-05T15:45:00+08:00","l":"Registro do ingresso no centro de visitantes","d":"Janela para estrangeiros, 07:30–23:30: passaporte, e-ticket e reconhecimento facial. Ingresso vale 3 dias, com reentrada.","kind":"soft","tz":""},{"k":"05/01","t":"2027-01-05T16:00:00+08:00","l":"Check-in no hotel","d":"Liberado a partir de 14:00. Caução a confirmar. Testar aquecimento, água quente, porta da varanda e vista.","kind":"soft","tz":""},{"k":"05/01","t":"2027-01-05T17:56:00+08:00","l":"Pôr do sol","d":"Crepúsculo civil até 18:21 (cálculo astronômico próprio).","kind":"soft","tz":""},{"k":"05/01","t":"2027-01-05T19:00:00+08:00","l":"Luzes da cachoeira","d":"Fontes divergem: 18:30, 19:00–19:30 ou 19:30 (a confirmar). Ver da varanda.","kind":"soft","tz":""},{"k":"06/01","t":"2027-01-06T07:30:00+08:00","l":"Café da manhã incluído","d":"07:30–10:00, para 2.","kind":"soft","tz":""},{"k":"06/01","t":"2027-01-06T09:30:00+08:00","l":"Water-Curtain Walk, cedo","d":"Funcionamento em janeiro a confirmar com o hotel. Capa de chuva e calçado antiderrapante.","kind":"soft","tz":""},{"k":"06/01","t":"2027-01-06T15:00:00+08:00","l":"Pausa longa no hotel","d":"Varanda e banheira.","kind":"soft","tz":""},{"k":"06/01","t":"2027-01-06T16:00:00+08:00","l":"Barco no Youshui (opcional, decidir na hora)","d":"Fora do roteiro principal. Preço, duração e operação no inverno a confirmar no cais ou com o hotel.","kind":"soft","tz":""},{"k":"06/01","t":"2027-01-06T17:56:00+08:00","l":"Pôr do sol","d":"Da Ponte Tuwang ou da varanda.","kind":"soft","tz":""},{"k":"06/01","t":"2027-01-06T19:00:00+08:00","l":"Luzes da cachoeira","d":"Horário a confirmar.","kind":"soft","tz":""},{"k":"06/01","t":"2027-01-06T19:30:00+08:00","l":"Espetáculo tujia (incluído no ingresso)","d":"Horário a confirmar: fontes citam 10:30, 16:30 e 19:30 no 摆手堂 e 20:30 no 翼南剧场, ou ≈21:00.","kind":"soft","tz":""},{"k":"06/01","t":"2027-01-06T20:00:00+08:00","l":"Confirmar com o hotel o carro e o café de amanhã","d":"Pedir carro até a estação para o trem das 09:39 e café embalado.","kind":"soft","tz":""},{"k":"07/01","t":"2027-01-07T07:30:00+08:00","l":"Café da manhã incluído","d":"07:30–10:00; pedir embalado se apertar.","kind":"soft","tz":""},{"k":"07/01","t":"2027-01-07T08:30:00+08:00","l":"Check-out","d":"Limite: 12:00.","kind":"soft","tz":""},{"k":"07/01","t":"2027-01-07T08:40:00+08:00","l":"Carro do hotel até a estação","d":"Traslado gratuito, ≈15 min (estimativa). Horário a combinar com o hotel.","kind":"soft","tz":""},{"k":"07/01","t":"2027-01-07T09:39:00+08:00","l":"G6422 (provável) parte de Furong Town","d":"","kind":"flight","tz":"","fl":"saida"},{"k":"07/01","t":"2027-01-07T10:02:00+08:00","l":"Chegada a Zhangjiajie Oeste","d":"","kind":"flight","tz":"","fl":"saida"},{"k":"07/01","t":"2027-01-07T10:56:00+08:00","l":"G2430 (provável) parte de Zhangjiajie Oeste","d":"","kind":"flight","tz":"","fl":"saida"},{"k":"07/01","t":"2027-01-07T13:25:00+08:00","l":"Chegada a Chongqing Leste","d":"","kind":"flight","tz":"","fl":"saida"}];
+const PHOTOS = {};
+// cada espaço usa a foto em img/; se ela faltar, fica o painel colorido com o nome do lugar
+document.querySelectorAll('img[data-slot]').forEach(img => {
+  const list = ['img/' + img.dataset.slot + '.jpg'].concat(PHOTOS[img.dataset.slot] || []);
+  let i = 0;
+  img.onerror = () => { i++; if (i < list.length) img.src = list[i]; else img.remove(); };
+  img.src = list[0];
+});
+const DAYNAMES = {'05/01':['0','Chegada e a cachoeira acesa'],'06/01':['1','A vila a pé, do pilar à ponte'],'07/01':['2','Café e estação']};
+const $ = id => document.getElementById(id);
+function hhmm(iso){ return iso.slice(11,16); }
+function tzNow(tz){ return new Intl.DateTimeFormat('pt-BR',{timeZone:tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date()); }
+function shKey(){
+  const p = new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Shanghai',day:'2-digit',month:'2-digit',year:'numeric'}).formatToParts(new Date());
+  const g = t => p.find(x => x.type === t).value;
+  return {key: g('day') + '/' + g('month'), year: g('year')};
+}
+function fmtDur(ms){
+  const m = Math.round(ms/60000), d = Math.floor(m/1440), h = Math.floor((m%1440)/60), mm = m%60;
+  if (d > 1) return 'em ' + d + ' dias e ' + h + ' h';
+  if (d === 1) return 'em 1 dia e ' + h + ' h';
+  if (h > 0) return 'em ' + h + ' h ' + String(mm).padStart(2,'0') + ' min';
+  return 'em ' + mm + ' min';
+}
+// agenda: texto de apoio em duas linhas; tocar no item mostra o resto
+function clampAgenda(){ document.querySelectorAll('.ag li').forEach(li => { const p = li.querySelector('p'); if (!p || li.classList.contains('x')) return; const more = p.scrollHeight > p.clientHeight + 1; li.classList.toggle('more', more); if (more) li.tabIndex = 0; else li.removeAttribute('tabindex'); }); }
+document.addEventListener('click', e => { if (e.target.closest('.flbtn')) return; const li = e.target.closest('.ag li.more'); if (li) li.classList.toggle('x'); });
+// janela com o cartão do voo
+const flsheet = $('flsheet');
+function openFl(k){ document.querySelectorAll('#flsheet .fl').forEach(f => f.hidden = f.id !== 'fl-' + k); if (flsheet.showModal) flsheet.showModal(); else flsheet.setAttribute('open', ''); }
+document.addEventListener('click', e => { const b = e.target.closest('[data-fl]'); if (b) { e.preventDefault(); openFl(b.dataset.fl); } });
+$('flClose').onclick = () => flsheet.close();
+flsheet.addEventListener('click', e => { if (e.target === flsheet) flsheet.close(); });
+document.addEventListener('keydown', e => { const li = e.target.closest && e.target.closest('.ag li.more'); if (li && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); li.classList.toggle('x'); } });
+window.addEventListener('resize', clampAgenda);
+document.querySelectorAll('time[data-t]').forEach(t => {
+  const tz = t.dataset.tz;
+  t.innerHTML = hhmm(t.dataset.t) + (tz ? '<small>' + tz + '</small>' : '');
+  t.setAttribute('datetime', t.dataset.t);
+});
+
+let todayDone = false;
+function tick(){
+  $('ckS').textContent = tzNow('Asia/Shanghai');
+  $('ckB').textContent = tzNow('America/Sao_Paulo');
+  const now = Date.now();
+  const {key, year} = shKey();
+  const inTrip = !!DAYNAMES[key] && year === '2027';
+  // durante a estadia, conta também os horários sugeridos; antes dela, só os fixos e voos
+  const next = EV.filter(e => inTrip || e.kind !== 'soft').find(e => Date.parse(e.t) > now);
+  document.querySelectorAll('[data-key]').forEach(el => el.classList.toggle('today', inTrip && el.dataset.key === key));
+  document.querySelectorAll('.ag li').forEach(li => {
+    li.classList.toggle('past', Date.parse(li.querySelector('time').dataset.t) < now - 30*60000);
+    li.classList.remove('next');
+  });
+  if (next) { const t = [...document.querySelectorAll('.ag time')].find(x => x.dataset.t === next.t); if (t) t.closest('li').classList.add('next'); }
+  if (inTrip && !todayDone) { const d = $('dia' + DAYNAMES[key][0]); if (d) d.open = true; todayDone = true; }
+  if (next) {
+    $('nowEy').textContent = inTrip ? 'Hoje · Dia ' + DAYNAMES[key][0] + ' · ' + DAYNAMES[key][1] : 'Próximo compromisso';
+    $('nowT').textContent = next.l;
+    $('nowC').textContent = fmtDur(Date.parse(next.t) - now);
+    $('nowX').textContent = next.k + ' · ' + hhmm(next.t) + (next.tz ? ' · ' + next.tz : '');
+    const a = $('nowA');
+    const fb = next.kind === 'flight' && [...document.querySelectorAll('.ag time')].find(x => x.dataset.t === next.t)?.closest('li').querySelector('.flbtn');
+    if (fb) { a.firstChild.textContent = fb.firstChild.textContent; a.href = '#horarios'; a.dataset.fl = fb.dataset.fl; delete a.dataset.open; }
+    else { delete a.dataset.fl; if (!inTrip) { a.firstChild.textContent = 'Ver horários'; a.href = '#horarios'; } }
+    if (inTrip && !fb) { a.firstChild.textContent = 'Abrir o roteiro de hoje'; a.href = '#dia' + DAYNAMES[key][0]; a.dataset.open = 'dia' + DAYNAMES[key][0]; }
+  } else {
+    $('nowEy').textContent = 'Furong Town concluída'; $('nowT').textContent = 'Boa viagem para Chongqing'; $('nowC').textContent = ''; $('nowX').textContent = '';
+  }
+}
+tick(); setInterval(tick, 30000); clampAgenda();
+
+// open a day when navigating to it
+function openDay(id){ const d = $(id); if (d && d.tagName === 'DETAILS') d.open = true; }
+if (location.hash.startsWith('#dia')) openDay(location.hash.slice(1));
+window.addEventListener('hashchange', () => { if (location.hash.startsWith('#dia')) openDay(location.hash.slice(1)); });
+
+// sheet
+const sheet = $('sheet'); let cur = null;
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function openPoi(i){
+  const p = POI[i]; cur = p;
+  $('sName').textContent = p.n; $('sCn').textContent = p.cn; $('sOb').textContent = p.ob;
+  const tags = [];
+  if (p.h === 'imp') tags.push('<span class="stag imp">Imperdível</span>');
+  if (p.h === 'pref') tags.push('<span class="stag">Preferencial</span>');
+  if (p.t) tags.push('<span class="stag">' + esc(p.t) + '</span>');
+  tags.push('<span class="stag">' + ({hotel:'Hotel',coringa:'Coringa',fora:'Fora do roteiro',transporte:'Estação · Dia 2'}[p.o] || 'Dia ' + p.d) + '</span>');
+  $('sTags').innerHTML = tags.join('');
+  const kv = p.o === 'hotel' ? [] : [['Do hotel', p.dist]];
+  if (p.f) kv.push(['Horário', p.f]); if (p.c) kv.push(['Custo', p.c]); if (p.ad) kv.push(['Endereço local', p.ad]);
+  $('sKv').innerHTML = kv.map(([a,b]) => '<dt>' + a + '</dt><dd>' + esc(b) + '</dd>').join('');
+  $('sOb').hidden = !p.ob;
+  $('sAmap').href = 'https://uri.amap.com/marker?position=' + p.lo + ',' + p.la + '&name=' + encodeURIComponent(p.cn || p.n) + '&coordinate=wgs84&callnative=1';
+  $('sApple').href = 'https://maps.apple.com/?ll=' + p.la + ',' + p.lo + '&q=' + encodeURIComponent(p.n);
+  $('sFull').hidden = !p.cn;
+  if (sheet.showModal) sheet.showModal(); else sheet.setAttribute('open', '');
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-open]'); if (o) openDay(o.dataset.open);
+  const b = e.target.closest('[data-i]'); if (b) { e.preventDefault(); openPoi(+b.dataset.i); return; }
+  const f = e.target.closest('[data-full]'); if (f) showFull(f.dataset.full, f.dataset.sub || '');
+});
+$('sClose').onclick = () => sheet.close();
+const info = $('info');
+// alternar tema: o ícone mostra o modo para o qual vai mudar; a escolha fica guardada neste aparelho
+const root = document.documentElement, metaTheme = document.querySelector('meta[name="theme-color"]');
+function isDark(){ return root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
+function syncTheme(){ metaTheme.content = isDark() ? '#0D1113' : '#EEF0EF'; $('themeBtn').setAttribute('aria-label', isDark() ? 'Mudar para o modo claro' : 'Mudar para o modo escuro'); }
+$('themeBtn').onclick = () => { const t = isDark() ? 'light' : 'dark'; root.dataset.theme = t; try { localStorage.setItem('tema', t); } catch (e) {} syncTheme(); };
+syncTheme();
+$('infoBtn').onclick = () => { if (info.showModal) info.showModal(); else info.setAttribute('open', ''); };
+$('infoX').onclick = () => info.close();
+info.addEventListener('click', e => { if (e.target === info) info.close(); });
+sheet.addEventListener('click', e => { if (e.target === sheet) sheet.close(); });
+$('sFull').onclick = () => { if (cur) showFull(cur.cn, cur.ad || cur.n); };
+const full = $('full');
+function showFull(t, s){ if (sheet.open) sheet.close(); $('fT').textContent = t; $('fS').textContent = s; full.hidden = false; }
+full.onclick = () => { full.hidden = true; };
+
+// tab bar highlight
+const tabs = [...document.querySelectorAll('.tabbar a')];
+const secs = tabs.map(a => document.querySelector(a.getAttribute('href')));
+function onScroll(){
+  const y = window.scrollY + window.innerHeight * .35; let k = 0;
+  secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top + window.scrollY <= y) k = i; });
+  if (window.scrollY < 40) k = 0;
+  tabs.forEach((a, i) => a.classList.toggle('on', i === k));
+}
+let raf; window.addEventListener('scroll', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(onScroll); }, {passive: true});
+onScroll();
+
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>

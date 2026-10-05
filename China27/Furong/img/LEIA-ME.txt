@@ -1,0 +1,9 @@
+As fotos da página ficam aqui, em JPG, com exatamente estes nomes:
+
+capa.jpg  - foto principal (cachoeira de Furong e a vila iluminadas)
+dia0.jpg  - cachoeira iluminada à noite
+dia1.jpg  - Ponte Tuwang e a vila
+dia2.jpg  - estação Furong Town
+
+Tamanho ideal: cerca de 1200 px de largura (capa: 1600 px) e até 300 KB cada.
+Se nenhuma foto carregar, aparece um painel colorido com o nome do lugar em chinês.
