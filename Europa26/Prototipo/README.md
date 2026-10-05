@@ -7,7 +7,7 @@ Site de bolso da viagem Europa26: um bairro por dia, horários só do que tem ho
 - Página única (`index.html`) com estilos, dados e fonte embutidos; nada externo no carregamento.
   As únicas saídas são os links do Google Maps e do My Maps.
 - **Uso offline:** abra uma vez com internet; o service worker guarda página, ícones e fotos
-  (cache `europa26-prototipo-v4`). Toda nova publicação troca o número do cache.
+  (cache `europa26-prototipo-v5`). Toda nova publicação troca o número do cache.
 - Gerado por `gerar-site.py` a partir do arquivo de passagem da cidade. Não editar o `index.html` à mão.
 - Versão de 05/10/2026.
 
