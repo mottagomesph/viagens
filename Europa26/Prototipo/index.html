@@ -144,7 +144,10 @@ h1,h2,h3,h4{margin:0}
 .dia:last-child:not(.aberto) .faixa{padding-bottom:1rem}
 .dia.aberto .faixa{min-height:13rem;grid-template-rows:auto 1fr auto;grid-template-areas:"meta seta" ". ." "tit tit";padding:1rem 1rem 1.15rem 1.2rem}
 .faixa:focus-visible{outline:3px solid #fff;outline-offset:-5px}
-.faixa-foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;display:block}
+/* camada gráfica fixa: sem isso, ao fim da animação de abrir, o celular desfazia a camada e a foto piscava em branco */
+.faixa-foto{position:absolute;left:0;right:0;top:calc(50% - max(6.5rem,50%));width:100%;height:max(13rem,100%);object-fit:cover;z-index:-2;display:block;
+  will-change:transform;backface-visibility:hidden}
+/* altura fixa (a do cartão aberto), só recortada pela faixa: não é redimensionada enquanto o cartão cresce */
 .sem-foto{display:flex;align-items:center;justify-content:flex-end;overflow:hidden;background:linear-gradient(135deg,var(--cor),color-mix(in srgb,var(--cor) 50%,#000))}
 .sem-foto span{font-size:3.4rem;font-weight:800;line-height:1;white-space:nowrap;color:rgba(255,255,255,.14);padding-right:.4rem;letter-spacing:-.02em}
 .faixa::before,.faixa::after{content:"";position:absolute;inset:0;z-index:-1;transition:opacity .3s ease}
@@ -154,14 +157,14 @@ h1,h2,h3,h4{margin:0}
 .dia.aberto .faixa::after{opacity:1}
 .faixa-meta{grid-area:meta;justify-self:start;display:inline-flex;align-items:center;flex-wrap:wrap;gap:.25rem .45rem;font-size:.78rem;font-weight:600;
   color:rgba(255,255,255,.95);text-shadow:0 1px 6px rgba(0,0,0,.3)}
-.dia.aberto .faixa-meta{padding:.35rem .75rem .35rem .6rem;border-radius:999px;background:rgba(12,14,16,.48);border:1px solid rgba(255,255,255,.2);
-  -webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);text-shadow:none}
+/* dentro do cartão, sem backdrop-filter: ele piscava no celular quando a camada da foto mudava */
+.dia.aberto .faixa-meta{padding:.35rem .75rem .35rem .6rem;border-radius:999px;background:rgba(12,14,16,.5);border:1px solid rgba(255,255,255,.2);text-shadow:none}
 .bolinha{display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:var(--cor);box-shadow:0 0 0 2px rgba(255,255,255,.9);flex:none}
 .faixa-tit{grid-area:tit;font-size:1.2rem;font-weight:600;line-height:1.22;letter-spacing:-.015em;text-shadow:0 1px 12px rgba(0,0,0,.28)}
 .dia.aberto .faixa-tit{font-size:1.7rem;letter-spacing:-.02em}
 .hoje-tag{background:#fff;color:#16191B;border-radius:999px;padding:.05rem .5rem;font-size:.7rem;font-weight:700;text-shadow:none}
-.faixa-seta{grid-area:seta;width:2.25rem;height:2.25rem;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);
-  border:1px solid rgba(255,255,255,.26);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.faixa-seta{grid-area:seta;width:2.25rem;height:2.25rem;border-radius:50%;display:grid;place-items:center;background:rgba(20,22,24,.3);
+  border:1px solid rgba(255,255,255,.28)}
 .faixa-seta .ic{width:1.1rem;height:1.1rem;transition:transform .3s ease}
 .dia.aberto .faixa-seta{align-self:start}
 .dia.aberto .faixa-seta .ic{transform:rotate(180deg)}
@@ -416,7 +419,7 @@ dialog.folha[open]::backdrop{animation:surge .28s ease}
 /* 2. resposta ao toque: encolhe de leve ao pressionar */
 .pil,.btn,.btn-mais,.pub,.linha,.btn-desloc,.proximo,.redondo,.mapa,button.ag-btn{transition:transform .15s ease}
 :is(.pil,.btn,.btn-mais,.pub,.linha,.btn-desloc,.proximo,.redondo,.mapa,button.ag-btn,.barra a):active{transform:scale(.97)}
-.dia{transition:transform .18s ease}
+.dia{transition:transform .18s ease;will-change:transform}
 .dia:has(.faixa:active){transform:scale(.985)}
 /* 4. cartão que abre: a foto recua o zoom e o conteúdo sobe em sequência */
 .dia.aberto .faixa-foto{animation:recua .7s cubic-bezier(.2,.7,.2,1) both}
@@ -705,7 +708,7 @@ function conteudoDia(d) {
 function desenharDias() {
   const h = hoje();
   $('#lista-dias').innerHTML = D.dias.map(d => {
-    const foto = d.foto ? `<img class="faixa-foto" src="${esc(d.foto)}" alt="" decoding="async">` : semFoto(d);
+    const foto = d.foto ? `<img class="faixa-foto" src="${esc(d.foto)}" alt="" decoding="sync">` : semFoto(d);
     return `<article class="dia" id="dia${d.n}" data-n="${d.n}" style="--cor:var(--${esc(d.cor)})">`
       + `<h3 class="dia-cab"><button type="button" class="faixa" data-dia="${d.n}" aria-expanded="false" aria-controls="dia${d.n}-corpo">${foto}`
       + `<span class="faixa-meta"><i class="bolinha"></i>Dia ${d.n} · ${esc(d.rotulo)}${d.data === h ? '<span class="hoje-tag">hoje</span>' : ''}</span>`
