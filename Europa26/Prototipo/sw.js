@@ -1,6 +1,6 @@
 // Uso offline: abra a página uma vez com internet e ela passa a funcionar sem rede.
 // Toda nova publicação troca o número do cache (campo "cache" da ficha da cidade).
-const CACHE = 'europa26-prototipo-v5';
+const CACHE = 'europa26-prototipo-v6';
 const PREFIXO = 'europa26-prototipo-';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-180.png', './icon-512.png'];
 const FOTOS = ["./img/capa.jpg", "./img/dia0.jpg", "./img/dia1.jpg", "./img/dia2.jpg", "./img/dia3.jpg", "./img/dia4.jpg"];
